@@ -62,6 +62,13 @@ const COORD_OVERRIDES={
   171:{lat:43.3183,lon:-1.9812,source:'City fallback — San Sebastián'}
 };
 
+// City names are loaded from Wikidata alongside university age/history.
+// These overrides cover CBS campus names where the city is explicit but Wikidata may resolve to a parent institution.
+const CITY_OVERRIDES={
+  2:'Buenos Aires / Pilar',3:'Rosario',26:'Leuven',28:'São Paulo',46:'Santiago',51:'Shenzhen',55:'Ningbo',113:'Milan',
+  125:'Bandar Sunway',127:'Mexico City',128:'Guadalajara',129:'Mexico City',130:'Monterrey',131:'Querétaro',132:'Mexico City',170:'Bilbao',171:'San Sebastián'
+};
+
 const state={
   all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),profiles:new Map(),
   favorites:new Set(),compare:new Set(),
@@ -88,6 +95,8 @@ function costVsDenmarkText(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct
 function costLevel(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct))return '';if(pct<=-35)return 'Much cheaper';if(pct<=-15)return 'Cheaper';if(pct<15)return 'Similar';if(pct<35)return 'More expensive';return 'Much more expensive'}
 function profile(u){return state.profiles.get(u.id)||null}
 function foundedYear(u){const y=profile(u)?.foundedYear;return Number.isFinite(y)?y:null}
+function city(u){return CITY_OVERRIDES[u.id]||profile(u)?.city||null}
+function locationText(u){const c=city(u);return c?`${c}, ${u.country}`:u.country}
 function ageText(year){if(!Number.isFinite(year))return 'Unknown';const age=Math.max(0,new Date().getFullYear()-year);return `${year} · about ${age} years old`}
 function heritageLabel(year){if(!Number.isFinite(year))return null;if(year<1800)return 'Very old institution';if(year<1900)return 'Historic institution';if(year<1950)return 'Long-established institution';return 'Modern institution'}
 function yearsOld(year){return Number.isFinite(year)?Math.max(0,new Date().getFullYear()-year):null}
@@ -201,7 +210,7 @@ function summaryExplanation(s){
 function markerIcon(u){const s=competitionSummary(u),m=STATUS_META[s.status]||STATUS_META.unknown;return L.divIcon({className:'',html:`<div class="uni-marker" style="background:${m.bg};border-color:${m.border}"></div>`,iconSize:[17,17],iconAnchor:[8,8]})}
 function popupHtml(u){
   const c=state.climate.get(u.id),s=competitionSummary(u),avg=climateValue(c,'AVG'),fy=foundedYear(u),ci=costIndex(u);
-  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(u.country)} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
+  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(city(u)||'City loading…')} · ${esc(u.country)} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
 }
 
 function sortValue(u,key){
@@ -215,7 +224,7 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td>${esc(u.country)}</td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Loading…</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td><strong>${esc(city(u)||'—')}</strong><br><span class="muted">${esc(u.country)}</span></td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Loading…</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
   body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(body);
 }
 function renderMarkers(){
@@ -225,7 +234,7 @@ function updateLegend(){const el=$('#legendWindow');if(el)el.textContent=`Map co
 function applyFilters(){
   const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),demand=$('#demandLevel').value,last2=$('#last2').checked,favoritesOnly=$('#favoritesOnly')?.checked;
   const arwuMax=Number($('#arwuMax').value||0),tempMetric=$('#tempMetric').value,minTemp=$('#minTemp').value===''?null:Number($('#minTemp').value),maxCost=$('#maxCost').value===''?null:Number($('#maxCost').value),foundedBefore=$('#foundedBefore').value===''?null:Number($('#foundedBefore').value);
-  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),fy=foundedYear(u);return (!q||`${u.name} ${u.school} ${u.country}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!last2||u.availableLast2)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))});
+  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),fy=foundedYear(u);return (!q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!last2||u.availableLast2)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))});
   $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
 }
 
@@ -249,7 +258,7 @@ function renderCompare(){
     age:Number.isFinite(foundedYear(u))?`~${yearsOld(foundedYear(u))} years<br><span class="muted">Founded ${foundedYear(u)}</span>`:'—'
   });
   const rows=[
-    ['Country',u=>`${esc(u.country)}<br><span class="muted">${esc(continent(u))}</span>`],
+    ['Location',u=>`${city(u)?`<strong>${esc(city(u))}</strong><br>`:''}${esc(u.country)}<br><span class="muted">${esc(continent(u))}</span>`],
     [`CBS demand · ${windowLabel()}`,u=>cell(u).demand],
     ['CBS places 2026–27',u=>cell(u).places],
     [`Years with places available · ${windowLabel()}`,u=>cell(u).avail],
@@ -270,7 +279,7 @@ function openDetail(id){
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent shift</span>':'';
-  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||u.country)}${u.school?` · ${esc(u.country)}`:''} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
+  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||u.country)}${u.school?` · ${esc(city(u)||'City loading…')}, ${esc(u.country)}`:` · ${esc(city(u)||'City loading…')}, ${esc(u.country)}`} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
     <div class="detail-metrics">
       <div class="metric-card"><span>CBS demand · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
       <div class="metric-card"><span>ARWU 2026</span>${rankMeta}<a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">Source</a></div>
@@ -330,22 +339,43 @@ async function loadClimateAll(){
 }
 
 // University age and short background: Wikipedia intro + Wikidata inception (P571).
-const profileKey='cbs-exchange-profiles-v2';
+const profileKey='cbs-exchange-profiles-v3-city';
 function loadProfileCache(){try{const p=JSON.parse(localStorage.getItem(profileKey)||'{}');for(const [id,v] of Object.entries(p))state.profiles.set(Number(id),v)}catch{}}
 function saveProfileCache(){try{localStorage.setItem(profileKey,JSON.stringify(Object.fromEntries(state.profiles)))}catch{}}
 function titleAliases(query){const m=new Map();for(const x of query?.normalized||[])m.set(x.from,x.to);for(const x of query?.redirects||[])m.set(x.from,x.to);return m}
 function resolveAlias(title,aliases){let t=title;for(let i=0;i<4&&aliases.has(t);i++)t=aliases.get(t);return t}
-function pageToProfile(p,method='title'){return {wikiTitle:p.title||null,wikiUrl:p.fullurl||null,extract:(p.extract||'').trim(),qid:p.pageprops?.wikibase_item||null,foundedYear:null,matchMethod:method}}
-async function fetchFoundedForProfiles(items){const byQ=new Map(items.filter(x=>x.p?.qid).map(x=>[x.p.qid,x]));if(!byQ.size)return;const ids=[...byQ.keys()];for(let i=0;i<ids.length;i+=50){const batch=ids.slice(i,i+50);try{const url='https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&origin=*&props=claims&ids='+encodeURIComponent(batch.join('|'));const r=await fetch(url);if(!r.ok)continue;const j=await r.json();for(const qid of batch){const ent=j.entities?.[qid],item=byQ.get(qid);const claims=ent?.claims?.P571||[];const years=claims.map(c=>c?.mainsnak?.datavalue?.value?.time).filter(Boolean).map(t=>{const m=String(t).match(/^\+?(\d{1,4})-/);return m?Number(m[1]):null}).filter(y=>Number.isFinite(y)&&y>0&&y<=new Date().getFullYear());if(years.length)item.p.foundedYear=Math.min(...years)}}catch(e){console.warn('Wikidata founded-year lookup failed',e)}}}
+function pageToProfile(p,method='title'){return {wikiTitle:p.title||null,wikiUrl:p.fullurl||null,extract:(p.extract||'').trim(),qid:p.pageprops?.wikibase_item||null,foundedYear:null,city:null,matchMethod:method}}
+async function fetchProfileMeta(items){
+  const byQ=new Map(items.filter(x=>x.p?.qid).map(x=>[x.p.qid,x]));if(!byQ.size)return;
+  const ids=[...byQ.keys()],locationRefs=new Map();
+  for(let i=0;i<ids.length;i+=50){const batch=ids.slice(i,i+50);try{
+    const url='https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&origin=*&props=claims&ids='+encodeURIComponent(batch.join('|'));
+    const r=await fetch(url);if(!r.ok)continue;const j=await r.json();
+    for(const qid of batch){const ent=j.entities?.[qid],item=byQ.get(qid);const claims=ent?.claims?.P571||[];
+      const years=claims.map(c=>c?.mainsnak?.datavalue?.value?.time).filter(Boolean).map(t=>{const m=String(t).match(/^\+?(\d{1,4})-/);return m?Number(m[1]):null}).filter(y=>Number.isFinite(y)&&y>0&&y<=new Date().getFullYear());if(years.length)item.p.foundedYear=Math.min(...years);
+      if(!CITY_OVERRIDES[item.u.id]){
+        // P159 = headquarters location, P131 = administrative location, P276 = location.
+        const locClaim=['P159','P131','P276'].flatMap(prop=>ent?.claims?.[prop]||[]).map(c=>c?.mainsnak?.datavalue?.value?.id).find(Boolean);
+        if(locClaim)locationRefs.set(item.u.id,{qid:locClaim,p:item.p});
+      }
+    }
+  }catch(e){console.warn('Wikidata university metadata lookup failed',e)}}
+  const locIds=[...new Set([...locationRefs.values()].map(x=>x.qid))];
+  const labels=new Map();for(let i=0;i<locIds.length;i+=50){const batch=locIds.slice(i,i+50);try{
+    const url='https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&origin=*&props=labels&languages=en&ids='+encodeURIComponent(batch.join('|'));
+    const r=await fetch(url);if(!r.ok)continue;const j=await r.json();for(const qid of batch){const label=j.entities?.[qid]?.labels?.en?.value;if(label)labels.set(qid,label)}
+  }catch(e){console.warn('Wikidata city-label lookup failed',e)}}
+  for(const {qid,p} of locationRefs.values()){const label=labels.get(qid);if(label)p.city=label}
+}
 async function loadProfileBatch(batch){
   const titles=batch.map(u=>u.lookupName).join('|');const url='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageprops%7Cextracts%7Cinfo&exintro=1&explaintext=1&exsentences=3&inprop=url&titles='+encodeURIComponent(titles);
   const r=await fetch(url);if(!r.ok)throw new Error('Wikipedia profile lookup failed');const j=await r.json(),pages=Object.values(j.query?.pages||{}).filter(p=>!p.missing),aliases=titleAliases(j.query),byTitle=new Map(pages.map(p=>[(p.title||'').toLowerCase(),p])),items=[];
   for(const u of batch){const resolved=resolveAlias(u.lookupName,aliases),p=byTitle.get(resolved.toLowerCase());if(p){const prof=pageToProfile(p,'title');items.push({u,p:prof});state.profiles.set(u.id,prof)}}
-  await fetchFoundedForProfiles(items);for(const {u,p} of items)state.profiles.set(u.id,p);return new Set(items.map(x=>x.u.id));
+  await fetchProfileMeta(items);for(const {u,p} of items)state.profiles.set(u.id,p);return new Set(items.map(x=>x.u.id));
 }
 async function loadProfileSearchOne(u){
   if(state.profiles.has(u.id))return state.profiles.get(u.id);const query=`${u.lookupName} ${u.country} university`;const url='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=0&gsrlimit=1&gsrsearch='+encodeURIComponent(query)+'&prop=pageprops%7Cextracts%7Cinfo%7Ccoordinates&exintro=1&explaintext=1&exsentences=3&inprop=url';
-  try{const r=await fetch(url);if(!r.ok)throw new Error('Wikipedia search failed');const j=await r.json(),p=Object.values(j.query?.pages||{})[0];if(!p)return null;const prof=pageToProfile(p,'search');await fetchFoundedForProfiles([{u,p:prof}]);state.profiles.set(u.id,prof);if(p.coordinates?.[0]&&!state.coords.has(u.id)&&!COORD_OVERRIDES[u.id]){state.coords.set(u.id,{lat:p.coordinates[0].lat,lon:p.coordinates[0].lon,source:'Wikipedia profile search'});saveCached()}saveProfileCache();applyFilters();refreshDataStatus();return prof}catch(e){console.warn('Profile search failed for',u.name,e);return null}
+  try{const r=await fetch(url);if(!r.ok)throw new Error('Wikipedia search failed');const j=await r.json(),p=Object.values(j.query?.pages||{})[0];if(!p)return null;const prof=pageToProfile(p,'search');await fetchProfileMeta([{u,p:prof}]);state.profiles.set(u.id,prof);if(p.coordinates?.[0]&&!state.coords.has(u.id)&&!COORD_OVERRIDES[u.id]){state.coords.set(u.id,{lat:p.coordinates[0].lat,lon:p.coordinates[0].lon,source:'Wikipedia profile search'});saveCached()}saveProfileCache();applyFilters();refreshDataStatus();return prof}catch(e){console.warn('Profile search failed for',u.name,e);return null}
 }
 async function loadProfilesBackground(){
   loadProfileCache();state.profileTotal=state.all.length;const missing=state.all.filter(u=>!state.profiles.has(u.id));if(!missing.length){$('#foundedBefore').disabled=false;refreshDataStatus();return}state.profileLoading=true;state.profileDone=state.profiles.size;refreshDataStatus();const unresolved=[];
