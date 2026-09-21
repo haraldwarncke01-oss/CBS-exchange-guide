@@ -23,3 +23,10 @@ Static GitHub Pages site for exploring CBS bachelor exchange destinations.
 ## Publish on GitHub Pages
 
 Upload the contents of this folder to the repository root. Keep Pages set to `main` / `(root)`. GitHub Pages will redeploy automatically after the commit.
+
+## v5 interface update
+
+- Fixed continent filtering with explicit continent options and validation against the dataset.
+- Replaced the large always-visible filter grid with a compact **Filters** dropdown.
+- Active filters now appear as removable chips above both the map and list.
+- The list now shows approximate university age together with the founding year.

@@ -85,6 +85,51 @@ function profile(u){return state.profiles.get(u.id)||null}
 function foundedYear(u){const y=profile(u)?.foundedYear;return Number.isFinite(y)?y:null}
 function ageText(year){if(!Number.isFinite(year))return 'Unknown';const age=Math.max(0,new Date().getFullYear()-year);return `${year} · about ${age} years old`}
 function heritageLabel(year){if(!Number.isFinite(year))return null;if(year<1800)return 'Very old institution';if(year<1900)return 'Historic institution';if(year<1950)return 'Long-established institution';return 'Modern institution'}
+function yearsOld(year){return Number.isFinite(year)?Math.max(0,new Date().getFullYear()-year):null}
+function selectedText(id){const el=$('#'+id);return el?.selectedOptions?.[0]?.textContent?.trim()||''}
+function activeFilterDescriptors(){
+  const out=[];
+  const q=$('#search')?.value.trim();
+  if(q)out.push({key:'search',label:`Search: “${q}”`});
+  if($('#country')?.value)out.push({key:'country',label:`Country: ${selectedText('country')}`});
+  if($('#continent')?.value)out.push({key:'continent',label:`Continent: ${selectedText('continent')}`});
+  if($('#minPlaces')?.value&&$('#minPlaces').value!=='0')out.push({key:'minPlaces',label:`Places: ${selectedText('minPlaces')}`});
+  if($('#historyWindow')?.value&&$('#historyWindow').value!=='5')out.push({key:'historyWindow',label:`History: ${selectedText('historyWindow')}`});
+  if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`CBS demand: ${selectedText('demandLevel')}`});
+  if($('#arwuMax')?.value&&$('#arwuMax').value!=='0')out.push({key:'arwuMax',label:`ARWU: ${selectedText('arwuMax')}`});
+  if($('#minTemp')?.value!=='')out.push({key:'temperature',label:`Temperature · ${selectedText('tempMetric')}: ${selectedText('minTemp')}`});
+  if($('#maxCost')?.value!=='')out.push({key:'maxCost',label:`Cost + rent: ${selectedText('maxCost')}`});
+  if($('#foundedBefore')?.value!=='')out.push({key:'foundedBefore',label:`University age: ${selectedText('foundedBefore')}`});
+  if($('#last2')?.checked)out.push({key:'last2',label:'Places available in both latest years'});
+  return out;
+}
+function resetFilter(key){
+  if(key==='search')$('#search').value='';
+  else if(key==='country')$('#country').value='';
+  else if(key==='continent')$('#continent').value='';
+  else if(key==='minPlaces')$('#minPlaces').value='0';
+  else if(key==='historyWindow')$('#historyWindow').value='5';
+  else if(key==='demandLevel')$('#demandLevel').value='';
+  else if(key==='arwuMax')$('#arwuMax').value='0';
+  else if(key==='temperature'){ $('#minTemp').value=''; $('#tempMetric').value='AVG'; }
+  else if(key==='maxCost')$('#maxCost').value='';
+  else if(key==='foundedBefore')$('#foundedBefore').value='';
+  else if(key==='last2')$('#last2').checked=false;
+  applyFilters();
+}
+function resetAllFilters(){
+  $('#search').value='';$('#country').value='';$('#continent').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#demandLevel').value='';$('#arwuMax').value='0';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#foundedBefore').value='';$('#last2').checked=false;applyFilters();
+}
+function renderActiveFilters(){
+  const box=$('#activeFilters'),items=activeFilterDescriptors(),count=$('#filterCount');
+  if(count){count.textContent=items.length;count.setAttribute('aria-label',`${items.length} active filter${items.length===1?'':'s'}`);count.classList.toggle('has-filters',items.length>0)}
+  if(!box)return;
+  if(!items.length){box.hidden=true;box.innerHTML='';return}
+  box.hidden=false;
+  box.innerHTML=`<span class="active-filter-label">Active filters</span>${items.map(x=>`<button type="button" class="filter-chip" data-clear-filter="${esc(x.key)}"><span>${esc(x.label)}</span><b aria-hidden="true">×</b><span class="sr-only">Remove ${esc(x.label)}</span></button>`).join('')}<button type="button" class="clear-filter-chips" data-clear-all>Clear all</button>`;
+  box.querySelectorAll('[data-clear-filter]').forEach(b=>b.addEventListener('click',()=>resetFilter(b.dataset.clearFilter)));
+  box.querySelector('[data-clear-all]')?.addEventListener('click',resetAllFilters);
+}
 
 function competitionSummary(u){
   const years=selectedYears();
@@ -127,7 +172,7 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),ci=costIndex(u);return `<tr><td><button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button><br><span class="muted">${esc(u.school||'Regular')}</span></td><td>${esc(u.country)}</td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td>${Number.isFinite(ci)?ci.toFixed(1):'—'}</td><td>${Number.isFinite(fy)?fy:'…'}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button><br><span class="muted">${esc(u.school||'Regular')}</span></td><td>${esc(u.country)}</td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td>${Number.isFinite(ci)?ci.toFixed(1):'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Loading…</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
   body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));
 }
 function renderMarkers(){
@@ -138,7 +183,7 @@ function applyFilters(){
   const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),demand=$('#demandLevel').value,last2=$('#last2').checked;
   const arwuMax=Number($('#arwuMax').value||0),tempMetric=$('#tempMetric').value,minTemp=$('#minTemp').value===''?null:Number($('#minTemp').value),maxCost=$('#maxCost').value===''?null:Number($('#maxCost').value),foundedBefore=$('#foundedBefore').value===''?null:Number($('#foundedBefore').value);
   state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costIndex(u),fy=foundedYear(u);return (!q||`${u.name} ${u.school} ${u.country}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!last2||u.availableLast2)&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))});
-  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderMarkers();renderTable();
+  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();renderMarkers();renderTable();
 }
 
 function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate is loading for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
@@ -239,9 +284,13 @@ async function loadArwu(){
 
 async function init(){
   const r=await fetch('data/universities.json');state.all=await r.json();state.filtered=[...state.all];loadProfileCache();
-  const countries=[...new Set(state.all.map(u=>u.country))].sort(),continents=[...new Set(state.all.map(continent))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;$('#country').insertAdjacentHTML('beforeend',countries.map(c=>`<option>${esc(c)}</option>`).join(''));$('#continent').insertAdjacentHTML('beforeend',continents.map(c=>`<option>${esc(c)}</option>`).join(''));
+  const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
+  const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  // Continent options are deliberately present in the HTML as well as validated here, so they work even before async data finishes loading.
+  const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));
+  for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
   for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','last2'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
-  $('#reset').addEventListener('click',()=>{$('#search').value='';$('#country').value='';$('#continent').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#demandLevel').value='';$('#arwuMax').value='0';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#foundedBefore').value='';$('#last2').checked=false;applyFilters()});
+  $('#reset').addEventListener('click',resetAllFilters);
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='foundedYear')?1:-1}renderTable()}));
   $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
   loadClimateCache();applyFilters();loadArwu();resolveCoordinates();loadProfilesBackground();refreshDataStatus();

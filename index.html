@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=5" />
 </head>
 <body>
   <header class="topbar">
@@ -20,80 +20,108 @@
   </header>
 
   <main>
-    <section class="controls" aria-label="Filters">
-      <label class="search-field">
-        <span>Search</span>
+    <section class="browse-controls" aria-label="Search and filters">
+      <label class="main-search">
+        <span>Search universities</span>
         <input id="search" type="search" placeholder="University or country…" autocomplete="off" />
       </label>
-      <label>
-        <span>Country</span>
-        <select id="country"><option value="">All countries</option></select>
-      </label>
-      <label>
-        <span>Continent</span>
-        <select id="continent"><option value="">All continents</option></select>
-      </label>
-      <label>
-        <span>Min. places 2026–27</span>
-        <select id="minPlaces">
-          <option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option>
-        </select>
-      </label>
-      <label>
-        <span>History window</span>
-        <select id="historyWindow">
-          <option value="1">2026–27 only</option>
-          <option value="2">Last 2 years</option>
-          <option value="3">Last 3 years</option>
-          <option value="4">Last 4 years</option>
-          <option value="5" selected>All 5 years</option>
-        </select>
-      </label>
-      <label>
-        <span>CBS demand level</span>
-        <select id="demandLevel">
-          <option value="">Any level</option>
-          <option value="available">Places available</option>
-          <option value="filled">All places filled</option>
-          <option value="competitive">Competitive</option>
-          <option value="very_competitive">Very competitive</option>
-          <option value="unknown">No comparable years</option>
-        </select>
-      </label>
-      <label>
-        <span>ARWU 2026</span>
-        <select id="arwuMax">
-          <option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option>
-        </select>
-      </label>
-      <label>
-        <span>Temperature basis</span>
-        <select id="tempMetric">
-          <option value="AVG">Sep–Dec average</option>
-          <option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option>
-        </select>
-      </label>
-      <label>
-        <span>Min. temperature</span>
-        <select id="minTemp">
-          <option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option>
-        </select>
-      </label>
-      <label>
-        <span>Max. cost + rent index</span>
-        <select id="maxCost">
-          <option value="">Any</option><option value="25">25 or less</option><option value="35">35 or less</option><option value="45">45 or less</option><option value="55">55 or less</option><option value="70">70 or less</option>
-        </select>
-      </label>
-      <label>
-        <span>University age</span>
-        <select id="foundedBefore" disabled>
-          <option value="">Any founding date</option><option value="1800">Founded before 1800</option><option value="1850">Founded before 1850</option><option value="1900">Founded before 1900</option><option value="1950">Founded before 1950</option><option value="2000">Founded before 2000</option>
-        </select>
-      </label>
-      <label class="check-row"><input id="last2" type="checkbox" /> <span>Places available in both 2026–27 and 2025–26</span></label>
-      <button id="reset" type="button" class="secondary">Reset</button>
+
+      <details id="filterMenu" class="filter-menu">
+        <summary>
+          <span class="filter-summary-label">Filters</span>
+          <span id="filterCount" class="filter-count" aria-label="0 active filters">0</span>
+          <span class="filter-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="filter-panel">
+          <div class="filter-panel-head">
+            <div>
+              <strong>Filter universities</strong>
+              <span>Combine as many filters as you like.</span>
+            </div>
+            <button id="reset" type="button" class="text-button">Clear all</button>
+          </div>
+          <div class="filter-grid">
+            <label>
+              <span>Country</span>
+              <select id="country"><option value="">All countries</option></select>
+            </label>
+            <label>
+              <span>Continent</span>
+              <select id="continent">
+                <option value="">All continents</option>
+                <option value="Africa">Africa</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="North America">North America</option>
+                <option value="Oceania">Oceania</option>
+                <option value="South America">South America</option>
+              </select>
+            </label>
+            <label>
+              <span>Min. places 2026–27</span>
+              <select id="minPlaces">
+                <option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option>
+              </select>
+            </label>
+            <label>
+              <span>History window</span>
+              <select id="historyWindow">
+                <option value="1">2026–27 only</option>
+                <option value="2">Last 2 years</option>
+                <option value="3">Last 3 years</option>
+                <option value="4">Last 4 years</option>
+                <option value="5" selected>All 5 years</option>
+              </select>
+            </label>
+            <label>
+              <span>CBS demand level</span>
+              <select id="demandLevel">
+                <option value="">Any level</option>
+                <option value="available">Places available</option>
+                <option value="filled">All places filled</option>
+                <option value="competitive">Competitive</option>
+                <option value="very_competitive">Very competitive</option>
+                <option value="unknown">No comparable years</option>
+              </select>
+            </label>
+            <label>
+              <span>ARWU 2026</span>
+              <select id="arwuMax">
+                <option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option>
+              </select>
+            </label>
+            <label>
+              <span>Temperature basis</span>
+              <select id="tempMetric">
+                <option value="AVG">Sep–Dec average</option>
+                <option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option>
+              </select>
+            </label>
+            <label>
+              <span>Min. temperature</span>
+              <select id="minTemp">
+                <option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option>
+              </select>
+            </label>
+            <label>
+              <span>Max. cost + rent index</span>
+              <select id="maxCost">
+                <option value="">Any</option><option value="25">25 or less</option><option value="35">35 or less</option><option value="45">45 or less</option><option value="55">55 or less</option><option value="70">70 or less</option>
+              </select>
+            </label>
+            <label>
+              <span>University age</span>
+              <select id="foundedBefore" disabled>
+                <option value="">Any founding date</option><option value="1800">Founded before 1800</option><option value="1850">Founded before 1850</option><option value="1900">Founded before 1900</option><option value="1950">Founded before 1950</option><option value="2000">Founded before 2000</option>
+              </select>
+            </label>
+            <label class="check-row"><input id="last2" type="checkbox" /> <span>Places available in both 2026–27 and 2025–26</span></label>
+          </div>
+        </div>
+      </details>
     </section>
+
+    <section id="activeFilters" class="active-filters" aria-label="Active filters" aria-live="polite" hidden></section>
 
     <section class="toolbar">
       <div class="segmented" role="group" aria-label="View">
@@ -128,7 +156,7 @@
             <th data-sort="arwuSort">ARWU 2026 ↕</th>
             <th data-sort="tempAVG">Sep–Dec avg. ↕</th>
             <th data-sort="costIndex">Cost + rent ↕</th>
-            <th data-sort="foundedYear">Founded ↕</th>
+            <th data-sort="foundedYear">University age ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
             <th data-sort="availabilityWindow">Places available ↕</th>
             <th data-sort="availableLast2">Last 2 avail. ↕</th>
@@ -149,6 +177,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js"></script>
+  <script src="assets/app.js?v=5"></script>
 </body>
 </html>
