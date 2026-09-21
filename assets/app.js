@@ -97,7 +97,7 @@ function englishCoursesLabel(v){return ({all:'All',many:'Many',several:'Several'
 function englishOnlyLabel(v){return ({yes:'Yes',no:'No',unclear:'Unclear'})[v]||'Unclear'}
 function housingLabel(v){return ({available:'On-campus available',unavailable:'No on-campus housing',unclear:'Unclear'})[v]||'Unclear'}
 function academicLabel(v){return ({semester:'Semester',trimester:'Trimester',quarter:'Quarter',term:'Term',unclear:'Unclear'})[v]||'Unclear'}
-function nonEnglishLabel(r){if(!r)return 'Unclear';if(r.nonEnglishRequirement==='required')return `Required${r.nonEnglishLanguages?`: ${r.nonEnglishLanguages}`:''}`;if(r.nonEnglishRequirement==='conditional')return `Conditional${r.nonEnglishLanguages?`: ${r.nonEnglishLanguages}`:''}`;if(r.nonEnglishRequirement==='not_required')return 'Not required';return 'Unclear'}
+function nonEnglishLabel(r){if(!r)return 'Unclear';if(r.nonEnglishRequirement==='required')return `Required${r.nonEnglishLanguages?`: ${r.nonEnglishLanguages}`:''}`;if(r.nonEnglishRequirement==='conditional')return `Only if using ${r.nonEnglishLanguages||'local-language'} courses`;if(r.nonEnglishRequirement==='not_required')return 'Not required';return 'Unclear'}
 function selectedText(id){const el=$('#'+id);return el?.selectedOptions?.[0]?.textContent?.trim()||''}
 const favoritesKey='cbs-exchange-favorites-v1',compareKey='cbs-exchange-compare-v1';
 function loadSavedSelections(){
@@ -300,7 +300,7 @@ function renderCompare(){
     ['Sep–Dec average',u=>cell(u).avg],
     ['September',u=>cell(u).sep],['October',u=>cell(u).oct],['November',u=>cell(u).nov],['December',u=>cell(u).dec],
     ['Cost vs Denmark',u=>cell(u).cost],['University age',u=>cell(u).age],
-    ['Minimum CBS GPA',u=>cell(u).gpa],['Language proof',u=>cell(u).proof],['Courses in English',u=>cell(u).english],['Other language requirement',u=>cell(u).otherLang],['Academic structure',u=>cell(u).academic],['On-campus housing',u=>cell(u).housing]
+    ['Minimum CBS GPA',u=>cell(u).gpa],['Language proof',u=>cell(u).proof],['Courses in English',u=>cell(u).english],['Non-English language',u=>cell(u).otherLang],['Academic structure',u=>cell(u).academic],['On-campus housing',u=>cell(u).housing]
   ];
   box.innerHTML=`<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Criteria</th>${chosen.map(u=>`<th><div class="compare-university-head"><div class="compare-head-buttons">${favoriteButton(u,true)}<button type="button" class="remove-compare" data-compare="${u.id}" title="Remove from comparison">×</button></div><button class="compare-name" data-detail="${u.id}">${esc(u.name)}</button><span>${esc(u.school||u.country)}</span></div></th>`).join('')}</tr></thead><tbody>${rows.map(([label,fn])=>`<tr><th>${esc(label)}</th>${chosen.map(u=>`<td>${fn(u)}</td>`).join('')}</tr>`).join('')}<tr><th>Details</th>${chosen.map(u=>`<td><button type="button" class="secondary-button small" data-detail="${u.id}">View details</button></td>`).join('')}</tr></tbody></table></div>`;
   box.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(box);
@@ -329,7 +329,7 @@ function requirementsHtml(u){
     <div class="metric-card"><span>Minimum GPA</span><strong>${esc(gpa)}</strong><small>Danish 7-point scale${r.minimumGpaRaw&&r.minimumGpaRaw!==gpa?` · MoveON: ${esc(r.minimumGpaRaw)}`:''}</small></div>
     <div class="metric-card"><span>Language proof</span><strong>${esc(proofLabel(r.proofCategory))}</strong>${tests.length?`<small>${esc(tests.join(' · '))}</small>`:''}${r.cbsLetterAccepted?'<small>CBS proficiency letter accepted</small>':''}</div>
     <div class="metric-card"><span>English-taught courses</span><strong>${esc(englishCoursesLabel(r.englishCoursesCategory))}</strong><small>English-only exchange possible: ${esc(englishOnlyLabel(r.englishOnlyPossible))}</small></div>
-    <div class="metric-card"><span>Other language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}</div>
+    <div class="metric-card"><span>Non-English language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}</div>
   </div>
   <div class="detail-metrics">
     <div class="metric-card"><span>Academic structure</span><strong>${esc(academicLabel(r.academicStructure))}</strong><small>${esc(r.academicCalendarRaw||'No calendar note')}</small></div>
