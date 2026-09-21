@@ -1,0 +1,259 @@
+﻿id,university,country,city,continent
+1,Universidad Argentina de la Empresa (UADE),Argentina,Buenos Aires,South America
+2,"Universidad Austral, Campus Pilar and Campus Buenos Aires",Argentina,Buenos Aires / Pilar,South America
+3,"Universidad Austral, Campus Rosario",Argentina,Rosario,South America
+4,Universidad Torcuato di Tella (UTDT),Argentina,Buenos Aires,South America
+5,Australian National University,Australia,Canberra,Oceania
+6,Bond University,Australia,Gold Coast,Oceania
+7,Curtin University,Australia,Perth,Oceania
+8,Deakin University,Australia,Melbourne,Oceania
+9,Griffith University,Australia,Brisbane / Gold Coast,Oceania
+10,La Trobe University,Australia,Melbourne,Oceania
+11,Macquarie University,Australia,Sydney,Oceania
+12,Monash University,Australia,Melbourne,Oceania
+13,Queensland University of Technology,Australia,Brisbane,Oceania
+14,Swinburne University of Technology,Australia,Melbourne,Oceania
+15,University of Melbourne,Australia,Melbourne,Oceania
+16,University of New South Wales,Australia,Sydney,Oceania
+17,University of Newcastle,Australia,Newcastle,Oceania
+18,University of Queensland,Australia,Brisbane,Oceania
+19,University of Sydney,Australia,Sydney,Oceania
+20,"University of Technology, Sydney",Australia,Sydney,Oceania
+21,University of Western Australia,Australia,Perth,Oceania
+22,Leopold-Franzens-Universität Innsbruck,Austria,Innsbruck,Europe
+23,Universität Wien,Austria,Vienna,Europe
+24,Wirtschaftsuniversität Wien,Austria,Vienna,Europe
+25,ICHEC - Brussels Management School,Belgium,Brussels,Europe
+26,KU Leuven,Belgium,Leuven,Europe
+27,Fundação Getulio Vargas (FGV-EAESP),Brazil,São Paulo,South America
+28,INSPER,Brazil,São Paulo,South America
+29,Concordia University,Canada,Montreal,North America
+30,Dalhousie University,Canada,Halifax,North America
+31,HEC Montréal,Canada,Montreal,North America
+32,McGill University,Canada,Montreal,North America
+33,Queen's University,Canada,Kingston,North America
+34,Toronto Metropolitan University,Canada,Toronto,North America
+35,Simon Fraser University,Canada,Burnaby,North America
+36,Université Laval,Canada,Québec City,North America
+37,University of Alberta,Canada,Edmonton,North America
+38,University of British Columbia,Canada,Vancouver,North America
+39,University of Calgary,Canada,Calgary,North America
+40,University of Ottawa,Canada,Ottawa,North America
+41,University of Toronto,Canada,Toronto,North America
+42,University of Victoria,Canada,Victoria,North America
+43,Western University,Canada,London,North America
+44,Pontificia Universidad Católica de Chile,Chile,Santiago,South America
+45,Universidad de Chile,Chile,Santiago,South America
+46,"Universidad del Desarrollo (UDD), Campus Santiago",Chile,Santiago,South America
+47,Fudan University,China,Shanghai,Asia
+48,Peking University,China,Beijing,Asia
+49,Shanghai Jiao Tong University,China,Shanghai,Asia
+50,Shanghai University of Finance and Economics,China,Shanghai,Asia
+51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",China,Shenzhen,Asia
+52,Tongji University,China,Shanghai,Asia
+53,Tsinghua University,China,Beijing,Asia
+54,University of International Business and Economics (UIBE),China,Beijing,Asia
+55,"University of Nottingham Ningbo, China",China,Ningbo,Asia
+56,Universidad De Los Andes,Colombia,Bogotá,South America
+57,Universidad EAFIT,Colombia,Medellín,South America
+58,American University in Cairo,Egypt,Cairo,Africa
+59,Estonian Business School,Estonia,Tallinn,Europe
+60,University of the Faroe Islands,Faroe Islands,Tórshavn,Europe
+61,Hanken School of Economics,Finland,Helsinki,Europe
+62,Aalto University,Finland,Espoo,Europe
+63,Audencia Business School,France,Nantes,Europe
+64,Ecole de Management de Lyon,France,Lyon,Europe
+65,EDHEC Business School,France,Lille,Europe
+66,EDHEC Business School,France,Nice,Europe
+67,ESSEC Business School,France,Cergy,Europe
+68,Grenoble Ecole de Management,France,Grenoble,Europe
+69,HEC Paris,France,Jouy-en-Josas,Europe
+70,IÉSEG School of Management,France,Lille / Paris,Europe
+71,INSEEC Grande Ecole,France,Paris,Europe
+72,ISC Paris School of Management,France,Paris,Europe
+73,Kedge Business School,France,Bordeaux,Europe
+74,Kedge Business School,France,Marseille,Europe
+75,Paris School of Business,France,Paris,Europe
+76,Rennes School of Business,France,Rennes,Europe
+77,Sciences Po (Institut d'Etudes Politiques de Paris),France,Paris,Europe
+78,Sciences Po (Institut d'Etudes Politiques de Paris),France,Regional campuses,Europe
+79,Toulouse Business School,France,Toulouse,Europe
+80,Université Catholique de Lyon,France,Lyon,Europe
+81,Université de Strasbourg,France,Strasbourg,Europe
+82,Université Paris Dauphine,France,Paris,Europe
+83,Université Toulouse Capitole,France,Toulouse,Europe
+84,Frankfurt School of Finance and Management,Germany,Frankfurt,Europe
+85,Freie Universität Berlin,Germany,Berlin,Europe
+86,Humboldt-Universität zu Berlin,Germany,Berlin,Europe
+87,Johann Wolfgang Goethe Universität,Germany,Frankfurt,Europe
+88,Ludwig-Maximilians-Universität München,Germany,Munich,Europe
+89,Technische Universität München,Germany,Munich,Europe
+90,Universität Hamburg,Germany,Hamburg,Europe
+91,Universität Mannheim,Germany,Mannheim,Europe
+92,Universität zu Köln,Germany,Cologne,Europe
+93,Universität Münster,Germany,Münster,Europe
+94,WHU,Germany,Vallendar,Europe
+95,Zeppelin University,Germany,Friedrichshafen,Europe
+96,Athens University of Economics & Business - AUEB,Greece,Athens,Europe
+97,Greenland University,Greenland,Nuuk,North America
+98,City University of Hong Kong (CityU),Hong Kong,Hong Kong,Asia
+99,Hong Kong Baptist University,Hong Kong,Hong Kong,Asia
+100,The Chinese University of Hong Kong (CUHK),Hong Kong,Hong Kong,Asia
+101,The Hong Kong Polytechnic University,Hong Kong,Hong Kong,Asia
+102,The Hong Kong University of Science and Technology (HKUST),Hong Kong,Hong Kong,Asia
+103,The University of Hong Kong (HKU),Hong Kong,Hong Kong,Asia
+104,Reykjavik University,Iceland,Reykjavík,Europe
+105,University of Iceland,Iceland,Reykjavík,Europe
+106,Universitas Gadjah Mada,Indonesia,Yogyakarta,Asia
+107,University College Cork,Ireland,Cork,Europe
+108,University College Dublin,Ireland,Dublin,Europe
+109,University of Limerick,Ireland,Limerick,Europe
+110,Reichman University (IDC Herzliya),Israel,Herzliya,Asia
+111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',Italy,Rome,Europe
+112,Università Ca' Foscari Venezia,Italy,Venice,Europe
+113,Università Commerciale Luigi Bocconi,Italy,Milan,Europe
+114,Università degli Studi di Bologna 'Alma Mater Studiorum',Italy,Bologna,Europe
+115,Università degli Studi di Bologna 'Alma Mater Studiorum',Italy,Bologna,Europe
+116,Università degli Studi di Torino,Italy,Turin,Europe
+117,Hitotsubashi University,Japan,Kunitachi (Tokyo),Asia
+118,Keio University,Japan,Tokyo,Asia
+119,NUCB Undergraduate School,Japan,Nagoya,Asia
+120,Rikkyo University,Japan,Tokyo,Asia
+121,Ritsumeikan Asia Pacific University,Japan,Beppu,Asia
+122,Ritsumeikan University,Japan,Kyoto,Asia
+123,Waseda University,Japan,Tokyo,Asia
+124,Vilnius University,Lithuania,Vilnius,Europe
+125,Monash University Malaysia,Malaysia,Bandar Sunway,Asia
+126,University of Malaya,Malaysia,Kuala Lumpur,Asia
+127,Instituto Tecnológico Autónomo de México (ITAM),Mexico,Mexico City,North America
+128,"Tec de Monterrey, Campus Guadalajara",Mexico,Guadalajara,North America
+129,"Tec de Monterrey, Campus Mexico City",Mexico,Mexico City,North America
+130,"Tec de Monterrey, Campus Monterrey",Mexico,Monterrey,North America
+131,"Tec de Monterrey, Campus Querétaro",Mexico,Querétaro,North America
+132,"Tec de Monterrey, Campus Santa Fe",Mexico,Mexico City,North America
+133,Al Akhawayn University,Morocco,Ifrane,Africa
+134,Rabat Business School,Morocco,Rabat,Africa
+135,Erasmus Universiteit Rotterdam,Netherlands,Rotterdam,Europe
+136,Maastricht University,Netherlands,Maastricht,Europe
+137,Radboud Universiteit Nijmegen,Netherlands,Nijmegen,Europe
+138,Tilburg University,Netherlands,Tilburg,Europe
+139,Universiteit Utrecht,Netherlands,Utrecht,Europe
+140,Universiteit van Amsterdam,Netherlands,Amsterdam,Europe
+141,University of Groningen,Netherlands,Groningen,Europe
+142,Vrije Universiteit Amsterdam,Netherlands,Amsterdam,Europe
+143,Auckland University of Technology,New Zealand,Auckland,Oceania
+144,Lincoln University,New Zealand,Lincoln,Oceania
+145,University of Canterbury,New Zealand,Christchurch,Oceania
+146,University of Otago,New Zealand,Dunedin,Oceania
+147,Victoria University of Wellington,New Zealand,Wellington,Oceania
+148,BI Norwegian Business School,Norway,Oslo,Europe
+149,Norwegian School of Economics,Norway,Bergen,Europe
+150,Universidad ESAN,Peru,Lima,South America
+151,Universidad San Ignacio de Loyola (USIL),Peru,Lima,South America
+152,Kozminski University,Poland,Warsaw,Europe
+153,ISCTE - Instituto Universitário de Lisboa,Portugal,Lisbon,Europe
+154,Universidade Católica Portuguesa,Portugal,Lisbon,Europe
+155,Universidade Católica Portuguesa,Portugal,Porto,Europe
+156,Universidade de Lisboa,Portugal,Lisbon,Europe
+157,Universidade Nova de Lisboa,Portugal,Lisbon,Europe
+158,Nanyang Technological University,Singapore,Singapore,Asia
+159,National University of Singapore,Singapore,Singapore,Asia
+160,Singapore Management University,Singapore,Singapore,Asia
+161,University of Ljubljana,Slovenia,Ljubljana,Europe
+162,Chung-Ang University,South Korea,Seoul,Asia
+163,Ewha Womans University,South Korea,Seoul,Asia
+164,Korea University,South Korea,Seoul,Asia
+165,Korea University,South Korea,Seoul,Asia
+166,Yonsei University,South Korea,Seoul,Asia
+167,IE University,Spain,Madrid,Europe
+168,Universidad Carlos III de Madrid,Spain,Madrid,Europe
+169,Universidad CEU San Pablo,Spain,Madrid,Europe
+170,"Universidad de Deusto, Campus Bilbao",Spain,Bilbao,Europe
+171,"Universidad de Deusto, Campus San Sebastian",Spain,San Sebastián,Europe
+172,Universidad de Navarra,Spain,Pamplona,Europe
+173,Universidad Pontificia Comillas de Madrid (ICADE),Spain,Madrid,Europe
+174,Universidad Rey Juan Carlos,Spain,Madrid,Europe
+175,Universitat Autònoma de Barcelona (UAB),Spain,Bellaterra / Barcelona,Europe
+176,Universitat de Barcelona,Spain,Barcelona,Europe
+177,Universitat de València,Spain,Valencia,Europe
+178,Universitat Pompeu Fabra,Spain,Barcelona,Europe
+179,Universitat Pompeu Fabra,Spain,Barcelona,Europe
+180,Universitat Ramon Llull,Spain,Sant Cugat del Vallès,Europe
+181,Universitat Ramon Llull,Spain,Sant Cugat del Vallès,Europe
+182,Lund University,Sweden,Lund,Europe
+183,Stockholm School of Economics,Sweden,Stockholm,Europe
+184,Stockholm University,Sweden,Stockholm,Europe
+185,University of Gothenburg,Sweden,Gothenburg,Europe
+186,Uppsala universitet,Sweden,Uppsala,Europe
+187,Université de Genève,Switzerland,Geneva,Europe
+188,Université de Lausanne,Switzerland,Lausanne,Europe
+189,Universität Bern,Switzerland,Bern,Europe
+190,Universität St. Gallen,Switzerland,St. Gallen,Europe
+191,Universität Zürich,Switzerland,Zurich,Europe
+192,National Chengchi University (NCCU),Taiwan,Taipei,Asia
+193,National Taiwan University (NTU),Taiwan,Taipei,Asia
+194,Soochow University,Taiwan,Taipei,Asia
+195,Chulalongkorn University,Thailand,Bangkok,Asia
+196,Chulalongkorn University,Thailand,Bangkok,Asia
+197,Thammasat University,Thailand,Bangkok,Asia
+198,Istanbul Bilgi University,Turkey,Istanbul,Asia
+199,Koc University,Turkey,Istanbul,Asia
+200,Sabanci University,Turkey,Istanbul,Asia
+201,Aston University,United Kingdom,Birmingham,Europe
+202,Cardiff University,United Kingdom,Cardiff,Europe
+203,"City St. George's, University of London",United Kingdom,London,Europe
+204,"European Business School (EBS) London, Regent's University London",United Kingdom,London,Europe
+205,King's College London,United Kingdom,London,Europe
+206,London Metropolitan University,United Kingdom,London,Europe
+207,Oxford Brookes University,United Kingdom,Oxford,Europe
+208,Regent's University London,United Kingdom,London,Europe
+209,The University of Manchester,United Kingdom,Manchester,Europe
+210,University of Aberdeen,United Kingdom,Aberdeen,Europe
+211,University of Bath,United Kingdom,Bath,Europe
+212,University of Bristol,United Kingdom,Bristol,Europe
+213,University of Edinburgh,United Kingdom,Edinburgh,Europe
+214,University of Essex,United Kingdom,Colchester,Europe
+215,University of Exeter,United Kingdom,Exeter,Europe
+216,University of Glasgow,United Kingdom,Glasgow,Europe
+217,University of Leeds,United Kingdom,Leeds,Europe
+218,University of Leicester,United Kingdom,Leicester,Europe
+219,University of Liverpool,United Kingdom,Liverpool,Europe
+220,University of Sheffield,United Kingdom,Sheffield,Europe
+221,University of Sheffield,United Kingdom,Sheffield,Europe
+222,University of Strathclyde Glasgow,United Kingdom,Glasgow,Europe
+223,University of Warwick,United Kingdom,Coventry,Europe
+224,University of Westminster,United Kingdom,London,Europe
+225,University of Westminster,United Kingdom,London,Europe
+226,Arizona State University,United States,Tempe,North America
+227,Babson College,United States,Wellesley,North America
+228,Bentley University,United States,Waltham,North America
+229,Boston College,United States,Chestnut Hill / Boston,North America
+230,Boston University,United States,Boston,North America
+231,City University of New York,United States,New York City,North America
+232,Cornell University,United States,Ithaca,North America
+233,Cornell University,United States,Ithaca,North America
+234,Emory University,United States,Atlanta,North America
+235,George Washington University,United States,"Washington, D.C.",North America
+236,Indiana University,United States,Bloomington,North America
+237,New York University,United States,New York City,North America
+238,North Carolina State University,United States,Raleigh,North America
+239,Ohio State University,United States,Columbus,North America
+240,Purdue University,United States,West Lafayette,North America
+241,"State University of New York, Stony Brook",United States,Stony Brook,North America
+242,Texas A&M University,United States,College Station,North America
+243,Tulane University,United States,New Orleans,North America
+244,University of Hawaii at Manoa,United States,Honolulu,North America
+245,University of Maryland,United States,College Park,North America
+246,University of Michigan,United States,Ann Arbor,North America
+247,"University of Minnesota, Twin Cities",United States,Minneapolis,North America
+248,University of North Carolina at Chapel Hill,United States,Chapel Hill,North America
+249,University of Pennsylvania,United States,Philadelphia,North America
+250,University of Richmond,United States,Richmond,North America
+251,University of South Carolina,United States,Columbia,North America
+252,University of Southern California,United States,Los Angeles,North America
+253,University of Texas at Austin,United States,Austin,North America
+254,University of Washington,United States,Seattle,North America
+255,University of Wisconsin - La Crosse,United States,La Crosse,North America
+256,University of Wisconsin - Madison,United States,Madison,North America
+257,Universidad Católica del Uruguay,Uruguay,Montevideo,South America
+258,Universidad de Montevideo,Uruguay,Montevideo,South America
