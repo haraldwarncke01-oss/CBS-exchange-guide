@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Interactive world map and sortable list of CBS bachelor exchange universities, including historical placement availability, climate normals and ARWU 2026 rankings." />
+  <meta name="description" content="Interactive world map and sortable list of CBS bachelor exchange universities, including CBS historical competitiveness, Sep-Dec climate normals and ARWU 2026 rankings." />
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
@@ -14,7 +14,7 @@
     <div>
       <p class="eyebrow">CBS bachelor exchange</p>
       <h1>Exchange Explorer</h1>
-      <p class="sub">Compare CBS exchange destinations by historical availability, autumn climate and ShanghaiRanking's ARWU 2026.</p>
+      <p class="sub">Compare destinations by CBS historical demand, exchange-period temperature and ShanghaiRanking's ARWU 2026.</p>
     </div>
     <div class="dataset-pill"><strong id="totalCount">258</strong> universities · <strong id="countryCount">46</strong> countries</div>
   </header>
@@ -36,9 +36,24 @@
         </select>
       </label>
       <label>
-        <span>Available years</span>
-        <select id="minAvailability">
-          <option value="0">Any</option><option value="1">1+ of 5</option><option value="3">3+ of 5</option><option value="4">4+ of 5</option><option value="5">5 of 5</option>
+        <span>History window</span>
+        <select id="historyWindow">
+          <option value="1">2026–27 only</option>
+          <option value="2">Last 2 years</option>
+          <option value="3">Last 3 years</option>
+          <option value="4">Last 4 years</option>
+          <option value="5" selected>All 5 years</option>
+        </select>
+      </label>
+      <label>
+        <span>CBS demand level</span>
+        <select id="demandLevel">
+          <option value="">Any level</option>
+          <option value="available">Places available</option>
+          <option value="filled">All places filled</option>
+          <option value="competitive">Competitive</option>
+          <option value="very_competitive">Very competitive</option>
+          <option value="unknown">No comparable years</option>
         </select>
       </label>
       <label>
@@ -48,18 +63,19 @@
         </select>
       </label>
       <label>
-        <span>Climate month</span>
-        <select id="tempMonth">
+        <span>Temperature basis</span>
+        <select id="tempMetric">
+          <option value="AVG">Sep–Dec average</option>
           <option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option>
         </select>
       </label>
       <label>
-        <span>Min. average temp.</span>
+        <span>Min. temperature</span>
         <select id="minTemp">
           <option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option>
         </select>
       </label>
-      <label class="check-row"><input id="last2" type="checkbox" /> <span>Available in both 2026–27 and 2025–26</span></label>
+      <label class="check-row"><input id="last2" type="checkbox" /> <span>Places available in both 2026–27 and 2025–26</span></label>
       <button id="reset" type="button" class="secondary">Reset</button>
     </section>
 
@@ -76,11 +92,13 @@
 
     <section id="mapView" class="view active">
       <div id="map" aria-label="Interactive world map of exchange universities"></div>
-      <div class="legend">
-        <span><i class="dot excellent"></i> Available 5/5 years</span>
-        <span><i class="dot strong"></i> Available 3–4/5</span>
-        <span><i class="dot limited"></i> Available 1–2/5</span>
-        <span><i class="dot none"></i> No historical leftover places</span>
+      <div class="legend" aria-label="CBS historical demand legend">
+        <strong id="legendWindow">Map colors · all 5 years</strong>
+        <span><i class="dot very-competitive"></i> Very competitive</span>
+        <span><i class="dot competitive"></i> Competitive</span>
+        <span><i class="dot filled"></i> All places filled</span>
+        <span><i class="dot available"></i> Places available</span>
+        <span><i class="dot unknown"></i> No comparable years</span>
       </div>
     </section>
 
@@ -90,14 +108,12 @@
           <thead><tr>
             <th data-sort="name">University ↕</th>
             <th data-sort="country">Country ↕</th>
+            <th data-sort="demandScore">CBS demand ↕</th>
             <th data-sort="arwuSort">ARWU 2026 ↕</th>
-            <th data-sort="tempSEP">Sep ↕</th>
-            <th data-sort="tempOCT">Oct ↕</th>
-            <th data-sort="tempNOV">Nov ↕</th>
-            <th data-sort="tempDEC">Dec ↕</th>
+            <th data-sort="tempAVG">Sep–Dec avg. ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
-            <th data-sort="availabilityYears">Available years ↕</th>
-            <th data-sort="availableLast2">Last 2 years ↕</th>
+            <th data-sort="availabilityWindow">Places available ↕</th>
+            <th data-sort="availableLast2">Last 2 avail. ↕</th>
           </tr></thead>
           <tbody id="tableBody"></tbody>
         </table>
@@ -105,7 +121,7 @@
     </section>
 
     <section class="note source-note">
-      <strong>Sources & interpretation:</strong> CBS availability comes from the historical distribution file you provided. Temperature values are NASA POWER 2 m air-temperature climatologies (monthly averages; the API's pre-computed climatological period). ARWU is the 2026 Academic Ranking of World Universities; after rank 100, ARWU publishes institutions in bands such as 101–150 rather than exact positions. “Not in published top 1000” does not mean a university was not assessed. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking 2026</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a>
+      <strong>Sources & interpretation:</strong> CBS colors and labels come directly from the original Excel workbook. CBS states that the color code considers applicants, number of places and the academic standing of selected students. Map colors use the selected history window: the most frequent comparable category wins, ties favor the most recent year, and a strong recent reversal can override older history. “No places” and “No data” are not treated as demand observations. Temperature is NASA POWER 2 m air-temperature climatology; the headline value is the average of September–December. ARWU is the 2026 Academic Ranking of World Universities. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking 2026</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a>
     </section>
   </main>
 
