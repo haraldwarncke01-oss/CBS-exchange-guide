@@ -36,6 +36,7 @@ const COST_RENT_2026={
   'Turkey':27.44,'United Kingdom':50.76,'United States':54.81,'Uruguay':35.90
 };
 const NUMBEO_URL='https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp';
+const DENMARK_COST_RENT_2026=54.80; // Numbeo 2026 Mid-Year country Cost of Living + Rent Index
 const WIKIDATA_URL='https://www.wikidata.org/wiki/Property:P571';
 
 // City-centre or campus-area coordinate fallbacks for partner names that are often not
@@ -63,6 +64,7 @@ const COORD_OVERRIDES={
 
 const state={
   all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),profiles:new Map(),
+  favorites:new Set(),compare:new Set(),
   arwuReady:false,arwuRankedCount:0,arwuPendingCount:0,sortKey:'demandScore',sortDir:1,
   climateLoading:false,climateDone:0,climateTotal:0,profileLoading:false,profileDone:0,profileTotal:0,currentDetailId:null
 };
@@ -81,12 +83,51 @@ function formatRank(rank){const s=String(rank||'');return /^\d+$/.test(s)?`#${s}
 function rankText(u){if(!state.arwuReady)return '…';if(u.arwuRank)return formatRank(u.arwuRank);return 'No ARWU match'}
 function continent(u){return CONTINENT_BY_COUNTRY[u.country]||'Other'}
 function costIndex(u){const v=COST_RENT_2026[u.country];return Number.isFinite(v)?v:null}
+function costVsDenmark(u){const v=costIndex(u);return Number.isFinite(v)?((v/DENMARK_COST_RENT_2026)-1)*100:null}
+function costVsDenmarkText(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct))return '—';const n=Math.round(Math.abs(pct));if(n<3)return 'About the same as Denmark';return pct<0?`${n}% cheaper than Denmark`:`${n}% more expensive than Denmark`}
+function costLevel(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct))return '';if(pct<=-35)return 'Much cheaper';if(pct<=-15)return 'Cheaper';if(pct<15)return 'Similar';if(pct<35)return 'More expensive';return 'Much more expensive'}
 function profile(u){return state.profiles.get(u.id)||null}
 function foundedYear(u){const y=profile(u)?.foundedYear;return Number.isFinite(y)?y:null}
 function ageText(year){if(!Number.isFinite(year))return 'Unknown';const age=Math.max(0,new Date().getFullYear()-year);return `${year} · about ${age} years old`}
 function heritageLabel(year){if(!Number.isFinite(year))return null;if(year<1800)return 'Very old institution';if(year<1900)return 'Historic institution';if(year<1950)return 'Long-established institution';return 'Modern institution'}
 function yearsOld(year){return Number.isFinite(year)?Math.max(0,new Date().getFullYear()-year):null}
 function selectedText(id){const el=$('#'+id);return el?.selectedOptions?.[0]?.textContent?.trim()||''}
+const favoritesKey='cbs-exchange-favorites-v1',compareKey='cbs-exchange-compare-v1';
+function loadSavedSelections(){
+  try{state.favorites=new Set((JSON.parse(localStorage.getItem(favoritesKey)||'[]')||[]).map(Number))}catch{state.favorites=new Set()}
+  try{state.compare=new Set((JSON.parse(localStorage.getItem(compareKey)||'[]')||[]).map(Number))}catch{state.compare=new Set()}
+  const fromUrl=new URLSearchParams(location.search).get('compare');
+  if(fromUrl){const ids=fromUrl.split(',').map(Number).filter(Number.isFinite);if(ids.length)state.compare=new Set(ids)}
+}
+function saveSelections(){
+  try{localStorage.setItem(favoritesKey,JSON.stringify([...state.favorites]));localStorage.setItem(compareKey,JSON.stringify([...state.compare]))}catch{}
+}
+function isFavorite(id){return state.favorites.has(Number(id))}
+function isCompared(id){return state.compare.has(Number(id))}
+function favoriteButton(u,compact=false){const on=isFavorite(u.id);return `<button type="button" class="favorite-btn ${on?'active':''} ${compact?'compact':''}" data-favorite="${u.id}" aria-pressed="${on}" title="${on?'Remove from favorites':'Add to favorites'}"><span aria-hidden="true">${on?'★':'☆'}</span>${compact?'':`<span>${on?'Favorite':'Add favorite'}</span>`}</button>`}
+function compareButton(u,compact=false){const on=isCompared(u.id);return `<button type="button" class="compare-toggle ${on?'active':''} ${compact?'compact':''}" data-compare="${u.id}" aria-pressed="${on}" title="${on?'Remove from comparison':'Add to comparison'}"><span aria-hidden="true">${on?'✓':'＋'}</span>${compact?'':`<span>${on?'Comparing':'Compare'}</span>`}</button>`}
+function updateSavedCounts(){
+  const f=$('#favoriteCount'),c=$('#compareCount');if(f)f.textContent=state.favorites.size;if(c)c.textContent=state.compare.size;
+  $('#compareBtn')?.classList.toggle('has-items',state.compare.size>0);
+}
+function refreshSelectionUI(){
+  updateSavedCounts();renderTable();renderMarkers();renderCompare();
+  if($('#detailDialog')?.open&&state.currentDetailId!=null)openDetail(state.currentDetailId);
+}
+function toggleFavorite(id){id=Number(id);if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);saveSelections();if($('#favoritesOnly')?.checked)applyFilters();else refreshSelectionUI()}
+function toggleCompare(id){
+  id=Number(id);if(state.compare.has(id))state.compare.delete(id);else{if(state.compare.size>=6){alert('You can compare up to 6 universities at a time. Remove one before adding another.');return}state.compare.add(id)}
+  saveSelections();refreshSelectionUI();
+}
+function wireSelectionControls(root=document){
+  root.querySelectorAll?.('[data-favorite]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFavorite(b.dataset.favorite)}));
+  root.querySelectorAll?.('[data-compare]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleCompare(b.dataset.compare)}));
+}
+function comparisonUrl(){const url=new URL(location.href);url.searchParams.delete('compare');if(state.compare.size)url.searchParams.set('compare',[...state.compare].join(','));url.hash='';return url.toString()}
+async function shareComparison(){
+  if(state.compare.size<2){const el=$('#compareShareStatus');if(el)el.textContent='Add at least two universities before sharing a comparison.';return}
+  const url=comparisonUrl(),status=$('#compareShareStatus');try{await navigator.clipboard.writeText(url);if(status)status.textContent='Comparison link copied.'}catch{if(status)status.innerHTML=`Share this link: <a href="${esc(url)}">${esc(url)}</a>`}
+}
 function activeFilterDescriptors(){
   const out=[];
   const q=$('#search')?.value.trim();
@@ -98,8 +139,9 @@ function activeFilterDescriptors(){
   if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`CBS demand: ${selectedText('demandLevel')}`});
   if($('#arwuMax')?.value&&$('#arwuMax').value!=='0')out.push({key:'arwuMax',label:`ARWU: ${selectedText('arwuMax')}`});
   if($('#minTemp')?.value!=='')out.push({key:'temperature',label:`Temperature · ${selectedText('tempMetric')}: ${selectedText('minTemp')}`});
-  if($('#maxCost')?.value!=='')out.push({key:'maxCost',label:`Cost + rent: ${selectedText('maxCost')}`});
+  if($('#maxCost')?.value!=='')out.push({key:'maxCost',label:`Cost: ${selectedText('maxCost')}`});
   if($('#foundedBefore')?.value!=='')out.push({key:'foundedBefore',label:`University age: ${selectedText('foundedBefore')}`});
+  if($('#favoritesOnly')?.checked)out.push({key:'favoritesOnly',label:'Favorites only'});
   if($('#last2')?.checked)out.push({key:'last2',label:'Places available in both latest years'});
   return out;
 }
@@ -114,11 +156,12 @@ function resetFilter(key){
   else if(key==='temperature'){ $('#minTemp').value=''; $('#tempMetric').value='AVG'; }
   else if(key==='maxCost')$('#maxCost').value='';
   else if(key==='foundedBefore')$('#foundedBefore').value='';
+  else if(key==='favoritesOnly')$('#favoritesOnly').checked=false;
   else if(key==='last2')$('#last2').checked=false;
   applyFilters();
 }
 function resetAllFilters(){
-  $('#search').value='';$('#country').value='';$('#continent').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#demandLevel').value='';$('#arwuMax').value='0';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#foundedBefore').value='';$('#last2').checked=false;applyFilters();
+  $('#search').value='';$('#country').value='';$('#continent').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#demandLevel').value='';$('#arwuMax').value='0';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#foundedBefore').value='';$('#favoritesOnly').checked=false;$('#last2').checked=false;applyFilters();
 }
 function renderActiveFilters(){
   const box=$('#activeFilters'),items=activeFilterDescriptors(),count=$('#filterCount');
@@ -158,13 +201,13 @@ function summaryExplanation(s){
 function markerIcon(u){const s=competitionSummary(u),m=STATUS_META[s.status]||STATUS_META.unknown;return L.divIcon({className:'',html:`<div class="uni-marker" style="background:${m.bg};border-color:${m.border}"></div>`,iconSize:[17,17],iconAnchor:[8,8]})}
 function popupHtml(u){
   const c=state.climate.get(u.id),s=competitionSummary(u),avg=climateValue(c,'AVG'),fy=foundedYear(u),ci=costIndex(u);
-  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(u.country)} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost+rent index: <strong>${ci.toFixed(1)}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><button class="popup-btn" data-detail="${u.id}">View details</button>`
+  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(u.country)} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
 }
 
 function sortValue(u,key){
   if(key==='demandScore'){const s=competitionSummary(u);return s.order==null?99:s.order}
   if(key==='availabilityWindow')return availabilityInWindow(u);
-  if(key==='costIndex')return costIndex(u);
+  if(key==='costIndex')return costVsDenmark(u);
   if(key==='foundedYear')return foundedYear(u);
   if(key.startsWith('temp')){const metric=key.slice(4);return climateValue(state.climate.get(u.id),metric)}
   return u[key];
@@ -172,28 +215,62 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button><br><span class="muted">${esc(u.school||'Regular')}</span></td><td>${esc(u.country)}</td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td>${Number.isFinite(ci)?ci.toFixed(1):'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Loading…</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
-  body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td>${esc(u.country)}</td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Loading…</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
+  body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(body);
 }
 function renderMarkers(){
-  layer.clearLayers();state.markers.clear();for(const u of state.filtered){const c=state.coords.get(u.id);if(!c)continue;const m=L.marker([c.lat,c.lon],{icon:markerIcon(u)}).bindPopup(popupHtml(u));m.on('popupopen',e=>{const btn=e.popup.getElement()?.querySelector('[data-detail]');if(btn)btn.onclick=()=>openDetail(Number(btn.dataset.detail))});m.addTo(layer);state.markers.set(u.id,m)}
+  layer.clearLayers();state.markers.clear();for(const u of state.filtered){const c=state.coords.get(u.id);if(!c)continue;const m=L.marker([c.lat,c.lon],{icon:markerIcon(u)}).bindPopup(popupHtml(u));m.on('popupopen',e=>{const root=e.popup.getElement();const btn=root?.querySelector('[data-detail]');if(btn)btn.onclick=()=>openDetail(Number(btn.dataset.detail));if(root)wireSelectionControls(root)});m.addTo(layer);state.markers.set(u.id,m)}
 }
 function updateLegend(){const el=$('#legendWindow');if(el)el.textContent=`Map colors · ${windowLabel()}`}
 function applyFilters(){
-  const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),demand=$('#demandLevel').value,last2=$('#last2').checked;
+  const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),demand=$('#demandLevel').value,last2=$('#last2').checked,favoritesOnly=$('#favoritesOnly')?.checked;
   const arwuMax=Number($('#arwuMax').value||0),tempMetric=$('#tempMetric').value,minTemp=$('#minTemp').value===''?null:Number($('#minTemp').value),maxCost=$('#maxCost').value===''?null:Number($('#maxCost').value),foundedBefore=$('#foundedBefore').value===''?null:Number($('#foundedBefore').value);
-  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costIndex(u),fy=foundedYear(u);return (!q||`${u.name} ${u.school} ${u.country}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!last2||u.availableLast2)&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))});
-  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();renderMarkers();renderTable();
+  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),fy=foundedYear(u);return (!q||`${u.name} ${u.school} ${u.country}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!last2||u.availableLast2)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))});
+  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
+}
+
+function renderCompare(){
+  const box=$('#compareContent');if(!box)return;const chosen=[...state.compare].map(id=>state.all.find(u=>u.id===id)).filter(Boolean);
+  updateSavedCounts();
+  if(!chosen.length){box.innerHTML=`<div class="compare-empty"><div class="compare-empty-icon">⇄</div><h3>No universities selected yet</h3><p>Use the <strong>Compare</strong> button next to a university on the map, list or detail view. You can compare up to six.</p></div>`;return}
+  if(chosen.length===1){const u=chosen[0];box.innerHTML=`<div class="compare-empty"><div class="compare-one">${favoriteButton(u,true)}<strong>${esc(u.name)}</strong><span>${esc(u.country)}</span></div><h3>Add one more university</h3><p>A comparison becomes most useful with two or more universities.</p><button type="button" class="secondary-button" data-detail="${u.id}">View selected university</button></div>`;box.querySelector('[data-detail]')?.addEventListener('click',()=>openDetail(u.id));wireSelectionControls(box);return}
+  const cell=u=>({
+    demand:demandChip(competitionSummary(u).status),
+    places:String(u.latestPlaces??'—'),
+    avail:`${availabilityInWindow(u)}/${selectedYears().length}`,
+    last2:`<span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span>`,
+    arwu:esc(rankText(u)),
+    avg:tempText(climateValue(state.climate.get(u.id),'AVG')),
+    sep:tempText(climateValue(state.climate.get(u.id),'SEP')),
+    oct:tempText(climateValue(state.climate.get(u.id),'OCT')),
+    nov:tempText(climateValue(state.climate.get(u.id),'NOV')),
+    dec:tempText(climateValue(state.climate.get(u.id),'DEC')),
+    cost:esc(costVsDenmarkText(u)),
+    age:Number.isFinite(foundedYear(u))?`~${yearsOld(foundedYear(u))} years<br><span class="muted">Founded ${foundedYear(u)}</span>`:'—'
+  });
+  const rows=[
+    ['Country',u=>`${esc(u.country)}<br><span class="muted">${esc(continent(u))}</span>`],
+    [`CBS demand · ${windowLabel()}`,u=>cell(u).demand],
+    ['CBS places 2026–27',u=>cell(u).places],
+    [`Years with places available · ${windowLabel()}`,u=>cell(u).avail],
+    ['Places available in both latest years',u=>cell(u).last2],
+    ['ARWU 2026',u=>cell(u).arwu],
+    ['Sep–Dec average',u=>cell(u).avg],
+    ['September',u=>cell(u).sep],['October',u=>cell(u).oct],['November',u=>cell(u).nov],['December',u=>cell(u).dec],
+    ['Cost vs Denmark',u=>cell(u).cost],['University age',u=>cell(u).age]
+  ];
+  box.innerHTML=`<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Criteria</th>${chosen.map(u=>`<th><div class="compare-university-head"><div class="compare-head-buttons">${favoriteButton(u,true)}<button type="button" class="remove-compare" data-compare="${u.id}" title="Remove from comparison">×</button></div><button class="compare-name" data-detail="${u.id}">${esc(u.name)}</button><span>${esc(u.school||u.country)}</span></div></th>`).join('')}</tr></thead><tbody>${rows.map(([label,fn])=>`<tr><th>${esc(label)}</th>${chosen.map(u=>`<td>${fn(u)}</td>`).join('')}</tr>`).join('')}<tr><th>Details</th>${chosen.map(u=>`<td><button type="button" class="secondary-button small" data-detail="${u.id}">View details</button></td>`).join('')}</tr></tbody></table></div>`;
+  box.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(box);
 }
 
 function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate is loading for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
-function costDetails(u){const ci=costIndex(u);if(!Number.isFinite(ci))return `<strong>Not in the 2026 country index</strong><span class="muted">Numbeo has price pages for some smaller territories, but no comparable country index value is shown here.</span>`;return `<strong>${ci.toFixed(1)}</strong><span class="muted">2026 Mid-Year country Cost of Living + Rent Index. Lower is cheaper.</span>`}
+function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><span class="muted">This country is not in the comparable Numbeo 2026 Mid-Year country table used here.</span>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><span class="muted">${esc(costLevel(u))}. Based on Numbeo's 2026 Mid-Year country Cost of Living + Rent Index: ${ci.toFixed(1)} for ${esc(u.country)} versus 54.8 for Denmark.</span><small>Country averages are a rough comparison, not a city-specific student budget.</small>`}
 function historyProfileHtml(u){const p=profile(u),fy=foundedYear(u);if(!p)return `<div class="history-profile loading-profile"><strong>Loading university history…</strong><span class="muted">Founded year and a short background note are being looked up from Wikidata/Wikipedia.</span></div>`;const badge=heritageLabel(fy);const source=p.wikiUrl?`<a href="${esc(p.wikiUrl)}" target="_blank" rel="noopener">Wikipedia</a>`:'Wikipedia';const wd=p.qid?` · <a href="https://www.wikidata.org/wiki/${esc(p.qid)}" target="_blank" rel="noopener">Wikidata</a>`:'';return `<div class="history-profile"><div class="history-profile-head"><div><span class="mini-label">Founded / institution age</span><strong>${esc(ageText(fy))}</strong>${badge?`<span class="heritage-badge">${esc(badge)}</span>`:''}</div></div><p>${p.extract?esc(p.extract):'No short English-language history summary was found automatically.'}</p><small>Sources: ${source}${wd}. Institution age does not guarantee that the exchange campus itself has old buildings.</small></div>`}
 function openDetail(id){
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent shift</span>':'';
-  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||u.country)}${u.school?` · ${esc(u.country)}`:''} · ${esc(continent(u))}</p>
+  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||u.country)}${u.school?` · ${esc(u.country)}`:''} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
     <div class="detail-metrics">
       <div class="metric-card"><span>CBS demand · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
       <div class="metric-card"><span>ARWU 2026</span>${rankMeta}<a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">Source</a></div>
@@ -205,6 +282,7 @@ function openDetail(id){
     <div class="section-head placement-head"><h3 class="section-title">CBS placement history</h3><span class="window-note">Highlighted years are used for the current map color</span></div>
     <div class="history">${YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('')}</div>
     <p class="summary-explain"><strong>Overall for ${esc(windowLabel())}:</strong> ${esc(STATUS_META[s.status]?.short||'No comparable years')}. ${esc(summaryExplanation(s))}</p>`;
+  wireSelectionControls($('#detailContent'));
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
   if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
   if(!profile(u))loadProfileSearchOne(u).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
@@ -283,17 +361,22 @@ async function loadArwu(){
 }
 
 async function init(){
-  const r=await fetch('data/universities.json');state.all=await r.json();state.filtered=[...state.all];loadProfileCache();
+  const r=await fetch('data/universities.json');state.all=await r.json();state.filtered=[...state.all];loadProfileCache();loadSavedSelections();
+  const validIds=new Set(state.all.map(u=>u.id));state.favorites=new Set([...state.favorites].filter(id=>validIds.has(id)));state.compare=new Set([...state.compare].filter(id=>validIds.has(id)).slice(0,6));saveSelections();
   const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
   const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
   // Continent options are deliberately present in the HTML as well as validated here, so they work even before async data finishes loading.
   const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));
   for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
-  for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','last2'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
+  for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','favoritesOnly','last2'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
   $('#reset').addEventListener('click',resetAllFilters);
+  $('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});
+  $('#shareCompare').addEventListener('click',shareComparison);
+  $('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='foundedYear')?1:-1}renderTable()}));
-  $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
-  loadClimateCache();applyFilters();loadArwu();resolveCoordinates();loadProfilesBackground();refreshDataStatus();
+  $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#compareBtn').addEventListener('click',()=>switchView('compare'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
+  updateSavedCounts();loadClimateCache();applyFilters();loadArwu();resolveCoordinates();loadProfilesBackground();refreshDataStatus();
+  if(new URLSearchParams(location.search).has('compare')&&state.compare.size) switchView('compare');
 }
-function switchView(v){const isMap=v==='map';$('#mapView').classList.toggle('active',isMap);$('#listView').classList.toggle('active',!isMap);$('#mapBtn').classList.toggle('active',isMap);$('#listBtn').classList.toggle('active',!isMap);if(isMap)setTimeout(()=>map.invalidateSize(),50)}
+function switchView(v){const isMap=v==='map',isList=v==='list',isCompare=v==='compare';$('#mapView').classList.toggle('active',isMap);$('#listView').classList.toggle('active',isList);$('#compareView').classList.toggle('active',isCompare);$('#mapBtn').classList.toggle('active',isMap);$('#listBtn').classList.toggle('active',isList);$('#compareBtn').classList.toggle('active',isCompare);if(isMap)setTimeout(()=>map.invalidateSize(),50);if(isCompare)renderCompare()}
 init().catch(e=>{$('#geoStatus').textContent='· could not load dataset';console.error(e)});

@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=5" />
+  <link rel="stylesheet" href="assets/styles.css?v=7" />
 </head>
 <body>
   <header class="topbar">
@@ -16,7 +16,10 @@
       <h1>Exchange Explorer</h1>
       <p class="sub">Compare destinations by CBS historical demand, exchange-period temperature, ARWU ranking, relative living costs and university history.</p>
     </div>
-    <div class="dataset-pill"><strong id="totalCount">258</strong> universities · <strong id="countryCount">46</strong> countries</div>
+    <div class="header-actions">
+      <button id="favoritesQuick" class="saved-pill" type="button" title="Show starred universities"><span aria-hidden="true">☆</span> <strong id="favoriteCount">0</strong> favorites</button>
+      <div class="dataset-pill"><strong id="totalCount">258</strong> universities · <strong id="countryCount">46</strong> countries</div>
+    </div>
   </header>
 
   <main>
@@ -104,9 +107,14 @@
               </select>
             </label>
             <label>
-              <span>Max. cost + rent index</span>
+              <span>Cost vs Denmark</span>
               <select id="maxCost">
-                <option value="">Any</option><option value="25">25 or less</option><option value="35">35 or less</option><option value="45">45 or less</option><option value="55">55 or less</option><option value="70">70 or less</option>
+                <option value="">Any cost</option>
+                <option value="20">No more than 20% above Denmark</option>
+                <option value="0">Same as Denmark or cheaper</option>
+                <option value="-10">At least 10% cheaper than Denmark</option>
+                <option value="-25">At least 25% cheaper than Denmark</option>
+                <option value="-40">At least 40% cheaper than Denmark</option>
               </select>
             </label>
             <label>
@@ -115,6 +123,7 @@
                 <option value="">Any founding date</option><option value="1800">Founded before 1800</option><option value="1850">Founded before 1850</option><option value="1900">Founded before 1900</option><option value="1950">Founded before 1950</option><option value="2000">Founded before 2000</option>
               </select>
             </label>
+            <label class="check-row"><input id="favoritesOnly" type="checkbox" /> <span>Starred universities only</span></label>
             <label class="check-row"><input id="last2" type="checkbox" /> <span>Places available in both 2026–27 and 2025–26</span></label>
           </div>
         </div>
@@ -127,6 +136,7 @@
       <div class="segmented" role="group" aria-label="View">
         <button id="mapBtn" class="active" type="button">World map</button>
         <button id="listBtn" type="button">List</button>
+        <button id="compareBtn" type="button">Compare <span id="compareCount" class="view-count">0</span></button>
       </div>
       <div class="status-stack">
         <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
@@ -155,7 +165,7 @@
             <th data-sort="demandScore">CBS demand ↕</th>
             <th data-sort="arwuSort">ARWU 2026 ↕</th>
             <th data-sort="tempAVG">Sep–Dec avg. ↕</th>
-            <th data-sort="costIndex">Cost + rent ↕</th>
+            <th data-sort="costIndex">Cost vs Denmark ↕</th>
             <th data-sort="foundedYear">University age ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
             <th data-sort="availabilityWindow">Places available ↕</th>
@@ -166,8 +176,23 @@
       </div>
     </section>
 
+    <section id="compareView" class="view" aria-label="University comparison">
+      <div class="compare-head">
+        <div>
+          <h2>Compare universities</h2>
+          <p>Choose universities with the Compare button anywhere on the site. Your selection is saved on this browser.</p>
+        </div>
+        <div class="compare-head-actions">
+          <button id="shareCompare" class="secondary-button" type="button">Share comparison</button>
+          <button id="clearCompare" class="secondary-button danger-light" type="button">Clear comparison</button>
+        </div>
+      </div>
+      <div id="compareShareStatus" class="compare-share-status" aria-live="polite"></div>
+      <div id="compareContent"></div>
+    </section>
+
     <section class="note source-note">
-      <strong>Sources & interpretation:</strong> CBS colors and labels come directly from the original Excel workbook. Map colors use the selected history window; “No places” and “No data” are excluded from the demand summary. Temperature uses NASA POWER 1991–2020 2 m air-temperature climatology and averages September–December for the headline value. ARWU is the 2026 Academic Ranking of World Universities. Living cost uses Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index as a relative proxy, not a student budget; lower values are cheaper. Founded year uses Wikidata's inception property and the short history text comes from Wikipedia, so institution age should not be read as the age of the campus buildings. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a> · <a href="https://www.wikidata.org/wiki/Property:P571" target="_blank" rel="noopener">Wikidata P571</a>
+      <strong>Sources & interpretation:</strong> CBS colors and labels come directly from the original Excel workbook. Map colors use the selected history window; “No places” and “No data” are excluded from the demand summary. Temperature uses NASA POWER 1991–2020 2 m air-temperature climatology and averages September–December for the headline value. ARWU is the 2026 Academic Ranking of World Universities. Living cost uses Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index and converts it into a percentage relative to Denmark (Denmark = 54.8 in the same table). This is a rough country-level comparison, not a city-specific student budget. Founded year uses Wikidata's inception property and the short history text comes from Wikipedia, so institution age should not be read as the age of the campus buildings. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a> · <a href="https://www.wikidata.org/wiki/Property:P571" target="_blank" rel="noopener">Wikidata P571</a>
     </section>
   </main>
 
@@ -177,6 +202,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=5"></script>
+  <script src="assets/app.js?v=7"></script>
 </body>
 </html>
