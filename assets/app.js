@@ -145,7 +145,7 @@ function activeFilterDescriptors(){
   if($('#continent')?.value)out.push({key:'continent',label:`Continent: ${selectedText('continent')}`});
   if($('#minPlaces')?.value&&$('#minPlaces').value!=='0')out.push({key:'minPlaces',label:`Places: ${selectedText('minPlaces')}`});
   if($('#historyWindow')?.value&&$('#historyWindow').value!=='5')out.push({key:'historyWindow',label:`History: ${selectedText('historyWindow')}`});
-  if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`CBS demand: ${selectedText('demandLevel')}`});
+  if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`Competitiveness: ${selectedText('demandLevel')}`});
   if($('#arwuMax')?.value&&$('#arwuMax').value!=='0')out.push({key:'arwuMax',label:`ARWU: ${selectedText('arwuMax')}`});
   if($('#minTemp')?.value!=='')out.push({key:'temperature',label:`Temperature · ${selectedText('tempMetric')}: ${selectedText('minTemp')}`});
   if($('#maxCost')?.value!=='')out.push({key:'maxCost',label:`Cost: ${selectedText('maxCost')}`});
@@ -185,25 +185,42 @@ function renderActiveFilters(){
 
 function competitionSummary(u){
   const years=selectedYears();
-  const allObs=years.map(year=>({year,status:u.history[year]?.status||'unknown'}));
+  // Recency-weighted categorical vote. In a five-year window the weights are
+  // 5, 4, 3, 2, 1 from newest to oldest. This lets a consistent recent shift
+  // outweigh older history, while one unusual year normally cannot dominate.
+  const allObs=years.map((year,index)=>({
+    year,
+    status:u.history[year]?.status||'unknown',
+    weight:years.length-index
+  }));
   const obs=allObs.filter(x=>Number.isFinite(STATUS_META[x.status]?.order));
-  if(!obs.length)return{status:'unknown',order:null,observed:0,selected:years.length,excluded:years.length,override:null,base:'unknown'};
-  const counts={};for(const x of obs)counts[x.status]=(counts[x.status]||0)+1;
+  if(!obs.length)return{status:'unknown',order:null,observed:0,selected:years.length,excluded:years.length,override:null,base:'unknown',counts:{},scores:{}};
+
+  const counts={},scores={};
+  for(const x of obs){
+    counts[x.status]=(counts[x.status]||0)+1;
+    scores[x.status]=(scores[x.status]||0)+x.weight;
+  }
+
+  // Plain majority is kept only so the UI can say when recency changed the result.
   const maxCount=Math.max(...Object.values(counts));
-  const candidates=new Set(Object.keys(counts).filter(k=>counts[k]===maxCount));
-  const base=obs.find(x=>candidates.has(x.status)).status;
-  let status=base,override=null;const baseOrder=STATUS_META[base].order;
-  if(obs.length>=2&&obs[0].status===obs[1].status){const recentOrder=STATUS_META[obs[0].status].order;if(Math.abs(recentOrder-baseOrder)>=2){status=obs[0].status;override='two_recent'}}
-  if(!override&&obs.length>=1){const recentOrder=STATUS_META[obs[0].status].order;if(Math.abs(recentOrder-baseOrder)>=3){status=obs[0].status;override='latest_extreme'}}
-  return{status,order:STATUS_META[status].order,observed:obs.length,selected:years.length,excluded:years.length-obs.length,override,base,counts};
+  const majorityCandidates=new Set(Object.keys(counts).filter(k=>counts[k]===maxCount));
+  const base=obs.find(x=>majorityCandidates.has(x.status)).status;
+
+  const maxScore=Math.max(...Object.values(scores));
+  const weightedCandidates=new Set(Object.keys(scores).filter(k=>scores[k]===maxScore));
+  // obs is newest -> oldest, so this also makes ties favor the most recent category.
+  const status=obs.find(x=>weightedCandidates.has(x.status)).status;
+  const override=status!==base?'recency_weighted':null;
+
+  return{status,order:STATUS_META[status].order,observed:obs.length,selected:years.length,excluded:years.length-obs.length,override,base,counts,scores};
 }
 function availabilityInWindow(u){return selectedYears().filter(y=>u.history[y]?.status==='available').length}
 function demandChip(status,label=null){const meta=STATUS_META[status]||STATUS_META.unknown;return `<span class="status-chip status-${esc(status)}">${esc(label||meta.short)}</span>`}
 function summaryExplanation(s){
-  if(s.status==='unknown')return 'No comparable CBS demand observation in the selected period.';
-  let text='Most frequent comparable category in the selected period; ties favor the most recent year.';
-  if(s.override==='two_recent')text='Recent shift applied: the two most recent comparable years agree and differ strongly from the older majority.';
-  if(s.override==='latest_extreme')text='Recent shift applied: the latest comparable year is an extreme reversal from the older majority.';
+  if(s.status==='unknown')return 'No comparable CBS competitiveness observation in the selected period.';
+  let text=`Recency-weighted classification: the newest selected year gets ${s.selected} point${s.selected===1?'':'s'}, then ${Math.max(1,s.selected-1)}, down to 1 for the oldest. The category with the highest total wins; ties favor the most recent year.`;
+  if(s.override==='recency_weighted')text+=' Recent results changed the classification compared with a simple majority of years.';
   if(s.excluded)text+=` ${s.excluded} selected year${s.excluded===1?' was':'s were'} excluded because CBS recorded “No places” or “No data”.`;
   return text;
 }
@@ -259,7 +276,7 @@ function renderCompare(){
   });
   const rows=[
     ['Location',u=>`${city(u)?`<strong>${esc(city(u))}</strong><br>`:''}${esc(u.country)}<br><span class="muted">${esc(continent(u))}</span>`],
-    [`CBS demand · ${windowLabel()}`,u=>cell(u).demand],
+    [`Competitiveness · ${windowLabel()}`,u=>cell(u).demand],
     ['CBS places 2026–27',u=>cell(u).places],
     [`Years with places available · ${windowLabel()}`,u=>cell(u).avail],
     ['Places available in both latest years',u=>cell(u).last2],
@@ -278,10 +295,10 @@ function historyProfileHtml(u){const p=profile(u),fy=foundedYear(u);if(!p)return
 function openDetail(id){
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
-  const shift=s.override?'<span class="recent-shift">Recent shift</span>':'';
+  const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
   $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||u.country)}${u.school?` · ${esc(city(u)||'City loading…')}, ${esc(u.country)}`:` · ${esc(city(u)||'City loading…')}, ${esc(u.country)}`} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
     <div class="detail-metrics">
-      <div class="metric-card"><span>CBS demand · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
+      <div class="metric-card"><span>Competitiveness · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
       <div class="metric-card"><span>ARWU 2026</span>${rankMeta}<a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">Source</a></div>
       <div class="metric-card climate-metric"><span>Exchange-period temperature</span>${climateDetails(c)}<small>NASA POWER 1991–2020 T2M climatology</small></div>
       <div class="metric-card"><span>Cost of living + rent</span>${costDetails(u)}<a href="${NUMBEO_URL}" target="_blank" rel="noopener">Numbeo source</a></div>
