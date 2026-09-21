@@ -1,0 +1,25 @@
+{
+  "year": 2026,
+  "status": "partial",
+  "source": "https://www.shanghairanking.com/rankings/arwu/2026",
+  "note": "Starter data. The included GitHub Action replaces this with a complete conservative match against the published ARWU 2026 top 1000.",
+  "universities": {
+    "5": {"rank": "101-150", "matchedInstitution": "The Australian National University", "matchMethod": "verified"},
+    "6": {"rank": "901-1000", "matchedInstitution": "Bond University", "matchMethod": "verified"},
+    "7": {"rank": "201-300", "matchedInstitution": "Curtin University", "matchMethod": "verified"},
+    "8": {"rank": "201-300", "matchedInstitution": "Deakin University", "matchMethod": "verified"},
+    "9": {"rank": "301-400", "matchedInstitution": "Griffith University", "matchMethod": "verified"},
+    "10": {"rank": "401-500", "matchedInstitution": "La Trobe University", "matchMethod": "verified"},
+    "11": {"rank": "301-400", "matchedInstitution": "Macquarie University", "matchMethod": "verified"},
+    "12": {"rank": "76", "matchedInstitution": "Monash University", "matchMethod": "verified"},
+    "13": {"rank": "301-400", "matchedInstitution": "Queensland University of Technology", "matchMethod": "verified"},
+    "14": {"rank": "201-300", "matchedInstitution": "Swinburne University of Technology", "matchMethod": "verified"},
+    "15": {"rank": "37", "matchedInstitution": "The University of Melbourne", "matchMethod": "verified"},
+    "16": {"rank": "81", "matchedInstitution": "The University of New South Wales", "matchMethod": "verified"},
+    "17": {"rank": "401-500", "matchedInstitution": "The University of Newcastle, Australia", "matchMethod": "verified"},
+    "18": {"rank": "73", "matchedInstitution": "The University of Queensland", "matchMethod": "verified"},
+    "19": {"rank": "79", "matchedInstitution": "University of Sydney", "matchMethod": "verified"},
+    "20": {"rank": "201-300", "matchedInstitution": "University of Technology Sydney", "matchMethod": "verified"},
+    "21": {"rank": "101-150", "matchedInstitution": "The University of Western Australia", "matchMethod": "verified"}
+  }
+}

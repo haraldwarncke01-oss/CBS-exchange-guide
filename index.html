@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Interactive world map and sortable list of CBS bachelor exchange universities, based on historical placement distribution data." />
+  <meta name="description" content="Interactive world map and sortable list of CBS bachelor exchange universities, including historical placement availability, climate normals and ARWU 2026 rankings." />
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
@@ -14,7 +14,7 @@
     <div>
       <p class="eyebrow">CBS bachelor exchange</p>
       <h1>Exchange Explorer</h1>
-      <p class="sub">Explore all partner entries from the historical CBS distribution file on a world map or as a sortable list.</p>
+      <p class="sub">Compare CBS exchange destinations by historical availability, autumn climate and ShanghaiRanking's ARWU 2026.</p>
     </div>
     <div class="dataset-pill"><strong id="totalCount">258</strong> universities · <strong id="countryCount">46</strong> countries</div>
   </header>
@@ -41,6 +41,24 @@
           <option value="0">Any</option><option value="1">1+ of 5</option><option value="3">3+ of 5</option><option value="4">4+ of 5</option><option value="5">5 of 5</option>
         </select>
       </label>
+      <label>
+        <span>ARWU 2026</span>
+        <select id="arwuMax">
+          <option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option>
+        </select>
+      </label>
+      <label>
+        <span>Climate month</span>
+        <select id="tempMonth">
+          <option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option>
+        </select>
+      </label>
+      <label>
+        <span>Min. average temp.</span>
+        <select id="minTemp">
+          <option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option>
+        </select>
+      </label>
       <label class="check-row"><input id="last2" type="checkbox" /> <span>Available in both 2026–27 and 2025–26</span></label>
       <button id="reset" type="button" class="secondary">Reset</button>
     </section>
@@ -50,7 +68,10 @@
         <button id="mapBtn" class="active" type="button">World map</button>
         <button id="listBtn" type="button">List</button>
       </div>
-      <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
+      <div class="status-stack">
+        <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
+        <div id="dataStatus" class="data-status muted">ARWU: loading · Climate: waiting for locations</div>
+      </div>
     </section>
 
     <section id="mapView" class="view active">
@@ -69,6 +90,11 @@
           <thead><tr>
             <th data-sort="name">University ↕</th>
             <th data-sort="country">Country ↕</th>
+            <th data-sort="arwuSort">ARWU 2026 ↕</th>
+            <th data-sort="tempSEP">Sep ↕</th>
+            <th data-sort="tempOCT">Oct ↕</th>
+            <th data-sort="tempNOV">Nov ↕</th>
+            <th data-sort="tempDEC">Dec ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
             <th data-sort="availabilityYears">Available years ↕</th>
             <th data-sort="availableLast2">Last 2 years ↕</th>
@@ -78,8 +104,8 @@
       </div>
     </section>
 
-    <section class="note">
-      <strong>How to read the data:</strong> “Places available” means places remained after that year's CBS distribution. Historical availability is useful context, but it does not guarantee future availability. The source file itself states that it is historical and not a list of current partners or current places.
+    <section class="note source-note">
+      <strong>Sources & interpretation:</strong> CBS availability comes from the historical distribution file you provided. Temperature values are NASA POWER 2 m air-temperature climatologies (monthly averages; the API's pre-computed climatological period). ARWU is the 2026 Academic Ranking of World Universities; after rank 100, ARWU publishes institutions in bands such as 101–150 rather than exact positions. “Not in published top 1000” does not mean a university was not assessed. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking 2026</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a>
     </section>
   </main>
 
