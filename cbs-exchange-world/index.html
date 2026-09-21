@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive world map and sortable list of CBS bachelor exchange universities, based on historical placement distribution data." />
+  <title>CBS Exchange Explorer</title>
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">CBS bachelor exchange</p>
+      <h1>Exchange Explorer</h1>
+      <p class="sub">Explore all partner entries from the historical CBS distribution file on a world map or as a sortable list.</p>
+    </div>
+    <div class="dataset-pill"><strong id="totalCount">258</strong> universities · <strong id="countryCount">46</strong> countries</div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Filters">
+      <label class="search-field">
+        <span>Search</span>
+        <input id="search" type="search" placeholder="University or country…" autocomplete="off" />
+      </label>
+      <label>
+        <span>Country</span>
+        <select id="country"><option value="">All countries</option></select>
+      </label>
+      <label>
+        <span>Min. places 2026–27</span>
+        <select id="minPlaces">
+          <option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option>
+        </select>
+      </label>
+      <label>
+        <span>Available years</span>
+        <select id="minAvailability">
+          <option value="0">Any</option><option value="1">1+ of 5</option><option value="3">3+ of 5</option><option value="4">4+ of 5</option><option value="5">5 of 5</option>
+        </select>
+      </label>
+      <label class="check-row"><input id="last2" type="checkbox" /> <span>Available in both 2026–27 and 2025–26</span></label>
+      <button id="reset" type="button" class="secondary">Reset</button>
+    </section>
+
+    <section class="toolbar">
+      <div class="segmented" role="group" aria-label="View">
+        <button id="mapBtn" class="active" type="button">World map</button>
+        <button id="listBtn" type="button">List</button>
+      </div>
+      <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
+    </section>
+
+    <section id="mapView" class="view active">
+      <div id="map" aria-label="Interactive world map of exchange universities"></div>
+      <div class="legend">
+        <span><i class="dot excellent"></i> Available 5/5 years</span>
+        <span><i class="dot strong"></i> Available 3–4/5</span>
+        <span><i class="dot limited"></i> Available 1–2/5</span>
+        <span><i class="dot none"></i> No historical leftover places</span>
+      </div>
+    </section>
+
+    <section id="listView" class="view">
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th data-sort="name">University ↕</th>
+            <th data-sort="country">Country ↕</th>
+            <th data-sort="latestPlaces">Places 26/27 ↕</th>
+            <th data-sort="availabilityYears">Available years ↕</th>
+            <th data-sort="availableLast2">Last 2 years ↕</th>
+          </tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="note">
+      <strong>How to read the data:</strong> “Places available” means places remained after that year's CBS distribution. Historical availability is useful context, but it does not guarantee future availability. The source file itself states that it is historical and not a list of current partners or current places.
+    </section>
+  </main>
+
+  <dialog id="detailDialog">
+    <button id="closeDialog" class="dialog-close" aria-label="Close">×</button>
+    <div id="detailContent"></div>
+  </dialog>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
