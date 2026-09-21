@@ -123,6 +123,43 @@
                 <option value="">Any founding date</option><option value="1800">Founded before 1800</option><option value="1850">Founded before 1850</option><option value="1900">Founded before 1900</option><option value="1950">Founded before 1950</option><option value="2000">Founded before 2000</option>
               </select>
             </label>
+            <label>
+              <span>My CBS GPA</span>
+              <select id="myGpa">
+                <option value="">Don't filter by GPA</option>
+                <option value="2">2.0 or higher</option><option value="4">4.0 or higher</option><option value="5">5.0 or higher</option><option value="6">6.0 or higher</option><option value="7">7.0 or higher</option><option value="8">8.0 or higher</option><option value="10">10.0 or higher</option><option value="12">12.0</option>
+              </select>
+            </label>
+            <label>
+              <span>Language proof</span>
+              <select id="languageProof">
+                <option value="">Any requirement</option>
+                <option value="none">No documentation required</option>
+                <option value="documentation">Documentation required</option>
+                <option value="test">Language test required</option>
+              </select>
+            </label>
+            <label>
+              <span>On-campus housing</span>
+              <select id="housingFilter">
+                <option value="">Any housing</option>
+                <option value="available">Available</option>
+                <option value="unavailable">Not available</option>
+                <option value="unclear">Unclear</option>
+              </select>
+            </label>
+            <label>
+              <span>Academic structure</span>
+              <select id="academicStructure">
+                <option value="">Any structure</option>
+                <option value="semester">Semester</option>
+                <option value="trimester">Trimester</option>
+                <option value="quarter">Quarter</option>
+                <option value="term">Term</option>
+                <option value="unclear">Unclear</option>
+              </select>
+            </label>
+            <label class="check-row"><input id="englishOnly" type="checkbox" /> <span>English-only exchange possible</span></label>
             <label class="check-row"><input id="favoritesOnly" type="checkbox" /> <span>Starred universities only</span></label>
             <label class="check-row"><input id="last2" type="checkbox" /> <span>Places available in both 2026–27 and 2025–26</span></label>
           </div>
@@ -163,6 +200,8 @@
             <th data-sort="name">University ↕</th>
             <th data-sort="country">Country · City ↕</th>
             <th data-sort="demandScore">Competitiveness ↕</th>
+            <th data-sort="minGpa">GPA min. ↕</th>
+            <th data-sort="languageProof">Language proof ↕</th>
             <th data-sort="arwuSort">ARWU 2026 ↕</th>
             <th data-sort="tempAVG">Sep–Dec avg. ↕</th>
             <th data-sort="costIndex">Cost vs Denmark ↕</th>
@@ -192,7 +231,7 @@
     </section>
 
     <section class="note source-note">
-      <strong>Sources & interpretation:</strong> The website now reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU is a curated local 2026 match snapshot for CBS partners. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. University profiles store official university websites and, where found, official History/About pages; founding metadata is refreshed into the repository rather than looked up on every page load. Institution age should not be read as the age of the exchange campus buildings. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
+      <strong>Sources & interpretation:</strong> The website now reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Current GPA, language, calendar, housing and related exchange requirements are a local snapshot of CBS MoveON Regular / Undergraduate agreements checked on 21 September 2026; ten historical workbook entries are no longer present in that current MoveON list and are shown without current requirements rather than guessed. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU is a curated local 2026 match snapshot for CBS partners. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. University profiles store official university websites and, where found, official History/About pages; founding metadata is refreshed into the repository rather than looked up on every page load. Institution age should not be read as the age of the exchange campus buildings. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
     </section>
   </main>
 
@@ -202,6 +241,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=8-static-data"></script>
+  <script src="assets/app.js?v=9-moveon-requirements"></script>
 </body>
 </html>
