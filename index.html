@@ -14,7 +14,7 @@
     <div>
       <p class="eyebrow">CBS bachelor exchange</p>
       <h1>Exchange Explorer</h1>
-      <p class="sub">Compare destinations by CBS historical demand, exchange-period temperature, ARWU ranking, relative living costs and university history.</p>
+      <p class="sub">Compare destinations by CBS historical competitiveness, exchange-period temperature, ARWU ranking, relative living costs and university history.</p>
     </div>
     <div class="header-actions">
       <button id="favoritesQuick" class="saved-pill" type="button" title="Show starred universities"><span aria-hidden="true">☆</span> <strong id="favoriteCount">0</strong> favorites</button>
@@ -140,13 +140,13 @@
       </div>
       <div class="status-stack">
         <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
-        <div id="dataStatus" class="data-status muted">ARWU: loading · Climate: waiting for locations</div>
+        <div id="dataStatus" class="data-status muted">Loading local data snapshots…</div>
       </div>
     </section>
 
     <section id="mapView" class="view active">
       <div id="map" aria-label="Interactive world map of exchange universities"></div>
-      <div class="legend" aria-label="CBS historical demand legend">
+      <div class="legend" aria-label="CBS historical competitiveness legend">
         <strong id="legendWindow">Map colors · all 5 years</strong>
         <span><i class="dot very-competitive"></i> Very competitive</span>
         <span><i class="dot competitive"></i> Competitive</span>
@@ -161,7 +161,7 @@
         <table>
           <thead><tr>
             <th data-sort="name">University ↕</th>
-            <th data-sort="country">City · Country ↕</th>
+            <th data-sort="country">Country · City ↕</th>
             <th data-sort="demandScore">Competitiveness ↕</th>
             <th data-sort="arwuSort">ARWU 2026 ↕</th>
             <th data-sort="tempAVG">Sep–Dec avg. ↕</th>
@@ -192,7 +192,7 @@
     </section>
 
     <section class="note source-note">
-      <strong>Sources & interpretation:</strong> CBS colors and labels come directly from the original Excel workbook. Map colors use the selected history window; “No places” and “No data” are excluded from the competitiveness summary. Temperature uses NASA POWER 1991–2020 2 m air-temperature climatology and averages September–December for the headline value. ARWU is the 2026 Academic Ranking of World Universities. Living cost uses Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index and converts it into a percentage relative to Denmark (Denmark = 54.8 in the same table). This is a rough country-level comparison, not a city-specific student budget. Founded year uses Wikidata's inception property and the short history text comes from Wikipedia, so institution age should not be read as the age of the campus buildings. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a> · <a href="https://www.wikidata.org/wiki/Property:P571" target="_blank" rel="noopener">Wikidata P571</a>
+      <strong>Sources & interpretation:</strong> The website now reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU is a curated local 2026 match snapshot for CBS partners. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. University profiles store official university websites and, where found, official History/About pages; founding metadata is refreshed into the repository rather than looked up on every page load. Institution age should not be read as the age of the exchange campus buildings. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
     </section>
   </main>
 
@@ -202,6 +202,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=7-competitiveness"></script>
+  <script src="assets/app.js?v=8-static-data"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const BUILTIN_ARWU={"5":{"rank":"101-150","matchedInstitution":"The Australian National University","matchMethod":"verified"},"6":{"rank":"901-1000","matchedInstitution":"Bond University","matchMethod":"verified"},"7":{"rank":"201-300","matchedInstitution":"Curtin University","matchMethod":"verified"},"8":{"rank":"201-300","matchedInstitution":"Deakin University","matchMethod":"verified"},"9":{"rank":"301-400","matchedInstitution":"Griffith University","matchMethod":"verified"},"10":{"rank":"401-500","matchedInstitution":"La Trobe University","matchMethod":"verified"},"11":{"rank":"301-400","matchedInstitution":"Macquarie University","matchMethod":"verified"},"12":{"rank":"76","matchedInstitution":"Monash University","matchMethod":"verified"},"14":{"rank":"201-300","matchedInstitution":"Swinburne University of Technology","matchMethod":"verified"},"15":{"rank":"37","matchedInstitution":"The University of Melbourne","matchMethod":"verified"},"16":{"rank":"81","matchedInstitution":"The University of New South Wales","matchMethod":"verified"},"17":{"rank":"401-500","matchedInstitution":"The University of Newcastle, Australia","matchMethod":"verified"},"18":{"rank":"73","matchedInstitution":"The University of Queensland","matchMethod":"verified"},"19":{"rank":"79","matchedInstitution":"University of Sydney","matchMethod":"verified"},"20":{"rank":"201-300","matchedInstitution":"University of Technology Sydney","matchMethod":"verified"},"21":{"rank":"101-150","matchedInstitution":"The University of Western Australia","matchMethod":"verified"},"22":{"rank":"201-300","matchedInstitution":"University of Innsbruck","matchMethod":"verified"},"23":{"rank":"101-150","matchedInstitution":"University of Vienna","matchMethod":"verified"},"26":{"rank":"87","matchedInstitution":"KU Leuven","matchMethod":"verified"},"29":{"rank":"601-700","matchedInstitution":"Concordia University","matchMethod":"verified"},"30":{"rank":"301-400","matchedInstitution":"Dalhousie University","matchMethod":"verified"},"32":{"rank":"73","matchedInstitution":"McGill University","matchMethod":"verified"},"33":{"rank":"201-300","matchedInstitution":"Queen's University","matchMethod":"verified"},"34":{"rank":"801-900","matchedInstitution":"Toronto Metropolitan University","matchMethod":"verified"},"35":{"rank":"401-500","matchedInstitution":"Simon Fraser University","matchMethod":"verified"},"36":{"rank":"501-600","matchedInstitution":"Laval University","matchMethod":"verified"},"37":{"rank":"101-150","matchedInstitution":"University of Alberta","matchMethod":"verified"},"38":{"rank":"54","matchedInstitution":"University of British Columbia","matchMethod":"verified"},"39":{"rank":"201-300","matchedInstitution":"University of Calgary","matchMethod":"verified"},"40":{"rank":"201-300","matchedInstitution":"University of Ottawa","matchMethod":"verified"},"41":{"rank":"24","matchedInstitution":"University of Toronto","matchMethod":"verified"},"42":{"rank":"301-400","matchedInstitution":"University of Victoria","matchMethod":"verified"},"43":{"rank":"201-300","matchedInstitution":"Western University","matchMethod":"verified"},"44":{"rank":"501-600","matchedInstitution":"Pontifical Catholic University of Chile","matchMethod":"verified"},"45":{"rank":"501-600","matchedInstitution":"University of Chile","matchMethod":"verified"},"47":{"rank":"41","matchedInstitution":"Fudan University","matchMethod":"verified"},"48":{"rank":"22","matchedInstitution":"Peking University","matchMethod":"verified"},"49":{"rank":"27","matchedInstitution":"Shanghai Jiao Tong University","matchMethod":"verified"},"52":{"rank":"101-150","matchedInstitution":"Tongji University","matchMethod":"verified"},"53":{"rank":"18","matchedInstitution":"Tsinghua University","matchMethod":"verified"},"55":{"rank":"101-150","matchedInstitution":"University of Nottingham (parent university)","matchMethod":"verified"},"62":{"rank":"401-500","matchedInstitution":"Aalto University","matchMethod":"verified"},"81":{"rank":"101-150","matchedInstitution":"University of Strasbourg","matchMethod":"verified"},"83":{"rank":"401-500","matchedInstitution":"Toulouse Capitole University","matchMethod":"verified"},"87":{"rank":"151-200","matchedInstitution":"Goethe University Frankfurt","matchMethod":"verified"},"88":{"rank":"49","matchedInstitution":"LMU Munich","matchMethod":"verified"},"89":{"rank":"45","matchedInstitution":"Technical University of Munich","matchMethod":"verified"},"90":{"rank":"201-300","matchedInstitution":"University of Hamburg","matchMethod":"verified"},"91":{"rank":"701-800","matchedInstitution":"University of Mannheim","matchMethod":"verified"},"92":{"rank":"151-200","matchedInstitution":"University of Cologne","matchMethod":"verified"},"93":{"rank":"151-200","matchedInstitution":"University of Muenster","matchMethod":"verified"},"98":{"rank":"95","matchedInstitution":"City University of Hong Kong","matchMethod":"verified"},"99":{"rank":"601-700","matchedInstitution":"Hong Kong Baptist University","matchMethod":"verified"},"100":{"rank":"101-150","matchedInstitution":"The Chinese University of Hong Kong","matchMethod":"verified"},"101":{"rank":"101-150","matchedInstitution":"The Hong Kong Polytechnic University","matchMethod":"verified"},"102":{"rank":"201-300","matchedInstitution":"The Hong Kong University of Science and Technology","matchMethod":"verified"},"103":{"rank":"62","matchedInstitution":"The University of Hong Kong","matchMethod":"verified"},"105":{"rank":"601-700","matchedInstitution":"University of Iceland","matchMethod":"verified"},"107":{"rank":"401-500","matchedInstitution":"University College Cork","matchMethod":"verified"},"108":{"rank":"301-400","matchedInstitution":"University College Dublin","matchMethod":"verified"},"114":{"rank":"201-300","matchedInstitution":"University of Bologna","matchMethod":"verified"},"115":{"rank":"201-300","matchedInstitution":"University of Bologna","matchMethod":"verified"},"116":{"rank":"201-300","matchedInstitution":"University of Turin","matchMethod":"verified"},"118":{"rank":"301-400","matchedInstitution":"Keio University","matchMethod":"verified"},"123":{"rank":"601-700","matchedInstitution":"Waseda University","matchMethod":"verified"},"124":{"rank":"401-500","matchedInstitution":"Vilnius University","matchMethod":"verified"},"125":{"rank":"76","matchedInstitution":"Monash University (parent university)","matchMethod":"verified"},"126":{"rank":"601-700","matchedInstitution":"University of Malaya","matchMethod":"verified"},"135":{"rank":"101-150","matchedInstitution":"Erasmus University Rotterdam","matchMethod":"verified"},"136":{"rank":"301-400","matchedInstitution":"Maastricht University","matchMethod":"verified"},"137":{"rank":"151-200","matchedInstitution":"Radboud University Nijmegen","matchMethod":"verified"},"138":{"rank":"801-900","matchedInstitution":"Tilburg University","matchMethod":"verified"},"139":{"rank":"60","matchedInstitution":"Utrecht University","matchMethod":"verified"},"140":{"rank":"101-150","matchedInstitution":"University of Amsterdam","matchMethod":"verified"},"141":{"rank":"84","matchedInstitution":"University of Groningen","matchMethod":"verified"},"142":{"rank":"151-200","matchedInstitution":"Vrije Universiteit Amsterdam","matchMethod":"verified"},"143":{"rank":"801-900","matchedInstitution":"Auckland University of Technology","matchMethod":"verified"},"145":{"rank":"501-600","matchedInstitution":"University of Canterbury","matchMethod":"verified"},"146":{"rank":"401-500","matchedInstitution":"University of Otago","matchMethod":"verified"},"147":{"rank":"501-600","matchedInstitution":"Victoria University of Wellington","matchMethod":"verified"},"156":{"rank":"301-400","matchedInstitution":"University of Lisbon","matchMethod":"verified"},"157":{"rank":"701-800","matchedInstitution":"NOVA University Lisbon","matchMethod":"verified"},"158":{"rank":"84","matchedInstitution":"Nanyang Technological University","matchMethod":"verified"},"159":{"rank":"53","matchedInstitution":"National University of Singapore","matchMethod":"verified"},"161":{"rank":"601-700","matchedInstitution":"University of Ljubljana","matchMethod":"verified"},"162":{"rank":"601-700","matchedInstitution":"Chung-Ang University","matchMethod":"verified"},"163":{"rank":"701-800","matchedInstitution":"Ewha Womans University","matchMethod":"verified"},"164":{"rank":"201-300","matchedInstitution":"Korea University","matchMethod":"verified"},"165":{"rank":"201-300","matchedInstitution":"Korea University","matchMethod":"verified"},"166":{"rank":"151-200","matchedInstitution":"Yonsei University","matchMethod":"verified"},"172":{"rank":"401-500","matchedInstitution":"University of Navarra","matchMethod":"verified"},"175":{"rank":"201-300","matchedInstitution":"Autonomous University of Barcelona","matchMethod":"verified"},"176":{"rank":"151-200","matchedInstitution":"University of Barcelona","matchMethod":"verified"},"177":{"rank":"301-400","matchedInstitution":"University of Valencia","matchMethod":"verified"},"178":{"rank":"401-500","matchedInstitution":"Pompeu Fabra University","matchMethod":"verified"},"179":{"rank":"401-500","matchedInstitution":"Pompeu Fabra University","matchMethod":"verified"},"182":{"rank":"101-150","matchedInstitution":"Lund University","matchMethod":"verified"},"184":{"rank":"101-150","matchedInstitution":"Stockholm University","matchMethod":"verified"},"185":{"rank":"151-200","matchedInstitution":"University of Gothenburg","matchMethod":"verified"},"186":{"rank":"94","matchedInstitution":"Uppsala University","matchMethod":"verified"},"187":{"rank":"55","matchedInstitution":"University of Geneva","matchMethod":"verified"},"188":{"rank":"151-200","matchedInstitution":"University of Lausanne","matchMethod":"verified"},"189":{"rank":"151-200","matchedInstitution":"University of Bern","matchMethod":"verified"},"191":{"rank":"65","matchedInstitution":"University of Zurich","matchMethod":"verified"},"193":{"rank":"201-300","matchedInstitution":"National Taiwan University","matchMethod":"verified"},"195":{"rank":"601-700","matchedInstitution":"Chulalongkorn University","matchMethod":"verified"},"196":{"rank":"601-700","matchedInstitution":"Chulalongkorn University","matchMethod":"verified"},"199":{"rank":"701-800","matchedInstitution":"Koc University","matchMethod":"verified"},"202":{"rank":"201-300","matchedInstitution":"Cardiff University","matchMethod":"verified"},"203":{"rank":"601-700","matchedInstitution":"City St George's, University of London","matchMethod":"verified"},"205":{"rank":"67","matchedInstitution":"King's College London","matchMethod":"verified"},"209":{"rank":"51","matchedInstitution":"The University of Manchester","matchMethod":"verified"},"210":{"rank":"301-400","matchedInstitution":"University of Aberdeen","matchMethod":"verified"},"211":{"rank":"501-600","matchedInstitution":"University of Bath","matchMethod":"verified"},"212":{"rank":"91","matchedInstitution":"University of Bristol","matchMethod":"verified"},"213":{"rank":"38","matchedInstitution":"The University of Edinburgh","matchMethod":"verified"},"214":{"rank":"501-600","matchedInstitution":"University of Essex","matchMethod":"verified"},"215":{"rank":"151-200","matchedInstitution":"University of Exeter","matchMethod":"verified"},"216":{"rank":"151-200","matchedInstitution":"University of Glasgow","matchMethod":"verified"},"217":{"rank":"151-200","matchedInstitution":"University of Leeds","matchMethod":"verified"},"218":{"rank":"301-400","matchedInstitution":"University of Leicester","matchMethod":"verified"},"219":{"rank":"151-200","matchedInstitution":"University of Liverpool","matchMethod":"verified"},"220":{"rank":"151-200","matchedInstitution":"The University of Sheffield","matchMethod":"verified"},"221":{"rank":"151-200","matchedInstitution":"The University of Sheffield","matchMethod":"verified"},"222":{"rank":"701-800","matchedInstitution":"University of Strathclyde","matchMethod":"verified"},"223":{"rank":"101-150","matchedInstitution":"The University of Warwick","matchMethod":"verified"},"226":{"rank":"101-150","matchedInstitution":"Arizona State University","matchMethod":"verified"},"229":{"rank":"501-600","matchedInstitution":"Boston College","matchMethod":"verified"},"230":{"rank":"101-150","matchedInstitution":"Boston University","matchMethod":"verified"},"232":{"rank":"12","matchedInstitution":"Cornell University","matchMethod":"verified"},"233":{"rank":"12","matchedInstitution":"Cornell University","matchMethod":"verified"},"234":{"rank":"101-150","matchedInstitution":"Emory University","matchMethod":"verified"},"236":{"rank":"151-200","matchedInstitution":"Indiana University, Bloomington","matchMethod":"verified"},"237":{"rank":"26","matchedInstitution":"New York University","matchMethod":"verified"},"238":{"rank":"201-300","matchedInstitution":"North Carolina State University at Raleigh","matchMethod":"verified"},"239":{"rank":"93","matchedInstitution":"Ohio State University, Columbus","matchMethod":"verified"},"240":{"rank":"100","matchedInstitution":"Purdue University, West Lafayette","matchMethod":"verified"},"241":{"rank":"151-200","matchedInstitution":"Stony Brook University","matchMethod":"verified"},"242":{"rank":"151-200","matchedInstitution":"Texas A&M University","matchMethod":"verified"},"243":{"rank":"501-600","matchedInstitution":"Tulane University","matchMethod":"verified"},"244":{"rank":"401-500","matchedInstitution":"University of Hawaii at Manoa","matchMethod":"verified"},"245":{"rank":"57","matchedInstitution":"University of Maryland, College Park","matchMethod":"verified"},"246":{"rank":"35","matchedInstitution":"University of Michigan, Ann Arbor","matchMethod":"verified"},"247":{"rank":"52","matchedInstitution":"University of Minnesota, Twin Cities","matchMethod":"verified"},"248":{"rank":"40","matchedInstitution":"University of North Carolina at Chapel Hill","matchMethod":"verified"},"249":{"rank":"14","matchedInstitution":"University of Pennsylvania","matchMethod":"verified"},"251":{"rank":"401-500","matchedInstitution":"University of South Carolina, Columbia","matchMethod":"verified"},"252":{"rank":"68","matchedInstitution":"University of Southern California","matchMethod":"verified"},"253":{"rank":"47","matchedInstitution":"The University of Texas at Austin","matchMethod":"verified"},"254":{"rank":"16","matchedInstitution":"University of Washington","matchMethod":"verified"},"256":{"rank":"35","matchedInstitution":"University of Wisconsin, Madison","matchMethod":"verified"}};
+const BUILTIN_ARWU={}; // Fallback only; primary ARWU snapshot is data/arwu_2026.csv.
 
 const YEARS=['2026-2027','2025-2026','2024-2025','2023-2024','2022-2023'];
 const STATUS_META={
@@ -26,15 +26,7 @@ const CONTINENT_BY_COUNTRY={
 
 // Numbeo 2026 Mid-Year country-level Cost of Living Plus Rent Index.
 // This is deliberately a country-level comparison proxy, not a student monthly budget.
-const COST_RENT_2026={
-  'Argentina':30.21,'Australia':53.92,'Austria':49.28,'Belgium':47.17,'Brazil':21.89,'Canada':46.60,'Chile':25.84,
-  'China':21.02,'Colombia':24.60,'Egypt':13.39,'Estonia':39.21,'Faroe Islands':null,'Finland':46.35,'France':45.73,
-  'Germany':46.97,'Greece':34.84,'Greenland':null,'Hong Kong':68.48,'Iceland':74.81,'Indonesia':16.97,'Ireland':57.39,
-  'Israel':64.78,'Italy':41.90,'Japan':32.09,'Lithuania':33.53,'Malaysia':22.36,'Mexico':31.90,'Morocco':20.41,
-  'Netherlands':56.02,'New Zealand':43.94,'Norway':59.29,'Peru':22.14,'Poland':32.59,'Portugal':37.14,'Singapore':80.54,
-  'Slovenia':37.23,'South Korea':36.96,'Spain':38.08,'Sweden':44.74,'Switzerland':81.52,'Taiwan':32.58,'Thailand':25.82,
-  'Turkey':27.44,'United Kingdom':50.76,'United States':54.81,'Uruguay':35.90
-};
+const COST_RENT_2026={}; // Fallback only; primary cost snapshot is data/cost_of_living.csv.
 const NUMBEO_URL='https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp';
 const DENMARK_COST_RENT_2026=54.80; // Numbeo 2026 Mid-Year country Cost of Living + Rent Index
 const WIKIDATA_URL='https://www.wikidata.org/wiki/Property:P571';
@@ -68,7 +60,7 @@ const COORD_OVERRIDES={
 // Wikidata is used only as a fallback if a row is missing from that file.
 
 const state={
-  all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),profiles:new Map(),
+  all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),profiles:new Map(),costByCountry:new Map(),
   favorites:new Set(),compare:new Set(),
   arwuReady:false,arwuRankedCount:0,arwuPendingCount:0,sortKey:'demandScore',sortDir:1,
   climateLoading:false,climateDone:0,climateTotal:0,profileLoading:false,profileDone:0,profileTotal:0,currentDetailId:null
@@ -87,14 +79,14 @@ function climateValue(c,key){if(!c)return null;if(key==='AVG'){const vals=['SEP'
 function formatRank(rank){const s=String(rank||'');return /^\d+$/.test(s)?`#${s}`:s.replace('-', '–')}
 function rankText(u){if(!state.arwuReady)return '…';if(u.arwuRank)return formatRank(u.arwuRank);return 'No ARWU match'}
 function continent(u){return u.continent||CONTINENT_BY_COUNTRY[u.country]||'Other'}
-function costIndex(u){const v=COST_RENT_2026[u.country];return Number.isFinite(v)?v:null}
-function costVsDenmark(u){const v=costIndex(u);return Number.isFinite(v)?((v/DENMARK_COST_RENT_2026)-1)*100:null}
+function costIndex(u){const row=state.costByCountry.get(u.country);const v=row?.index;return Number.isFinite(v)?v:null}
+function costVsDenmark(u){const row=state.costByCountry.get(u.country);if(Number.isFinite(row?.pct))return row.pct;const v=costIndex(u),dk=Number.isFinite(row?.denmark)?row.denmark:DENMARK_COST_RENT_2026;return Number.isFinite(v)&&Number.isFinite(dk)?((v/dk)-1)*100:null}
 function costVsDenmarkText(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct))return '—';const n=Math.round(Math.abs(pct));if(n<3)return 'About the same as Denmark';return pct<0?`${n}% cheaper than Denmark`:`${n}% more expensive than Denmark`}
 function costLevel(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct))return '';if(pct<=-35)return 'Much cheaper';if(pct<=-15)return 'Cheaper';if(pct<15)return 'Similar';if(pct<35)return 'More expensive';return 'Much more expensive'}
 function profile(u){return state.profiles.get(u.id)||null}
 function foundedYear(u){const y=profile(u)?.foundedYear;return Number.isFinite(y)?y:null}
 function city(u){return u.city||profile(u)?.city||null}
-function locationText(u){const c=city(u);return c?`${c}, ${u.country}`:u.country}
+function locationText(u){const c=city(u);return c?`${u.country} · ${c}`:u.country}
 function ageText(year){if(!Number.isFinite(year))return 'Unknown';const age=Math.max(0,new Date().getFullYear()-year);return `${year} · about ${age} years old`}
 function heritageLabel(year){if(!Number.isFinite(year))return null;if(year<1800)return 'Very old institution';if(year<1900)return 'Historic institution';if(year<1950)return 'Long-established institution';return 'Modern institution'}
 function yearsOld(year){return Number.isFinite(year)?Math.max(0,new Date().getFullYear()-year):null}
@@ -225,7 +217,7 @@ function summaryExplanation(s){
 function markerIcon(u){const s=competitionSummary(u),m=STATUS_META[s.status]||STATUS_META.unknown;return L.divIcon({className:'',html:`<div class="uni-marker" style="background:${m.bg};border-color:${m.border}"></div>`,iconSize:[17,17],iconAnchor:[8,8]})}
 function popupHtml(u){
   const c=state.climate.get(u.id),s=competitionSummary(u),avg=climateValue(c,'AVG'),fy=foundedYear(u),ci=costIndex(u);
-  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(city(u)||'City loading…')} · ${esc(u.country)} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
+  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
 }
 
 function sortValue(u,key){
@@ -239,7 +231,7 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td><strong>${esc(city(u)||'—')}</strong><br><span class="muted">${esc(u.country)}</span></td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Loading…</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td><strong>${esc(u.country)}</strong><br><span class="muted">${esc(city(u)||'—')}</span></td><td>${demandChip(s.status)}</td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Pending snapshot</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
   body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(body);
 }
 function renderMarkers(){
@@ -273,7 +265,7 @@ function renderCompare(){
     age:Number.isFinite(foundedYear(u))?`~${yearsOld(foundedYear(u))} years<br><span class="muted">Founded ${foundedYear(u)}</span>`:'—'
   });
   const rows=[
-    ['Location',u=>`${city(u)?`<strong>${esc(city(u))}</strong><br>`:''}${esc(u.country)}<br><span class="muted">${esc(continent(u))}</span>`],
+    ['Location',u=>`<strong>${esc(u.country)}</strong>${city(u)?`<br><span class="muted">${esc(city(u))}</span>`:''}<br><span class="muted">${esc(continent(u))}</span>`],
     [`Competitiveness · ${windowLabel()}`,u=>cell(u).demand],
     ['CBS places 2026–27',u=>cell(u).places],
     [`Years with places available · ${windowLabel()}`,u=>cell(u).avail],
@@ -287,14 +279,23 @@ function renderCompare(){
   box.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(box);
 }
 
-function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate is loading for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
+function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate snapshot pending for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
 function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><span class="muted">This country is not in the comparable Numbeo 2026 Mid-Year country table used here.</span>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><span class="muted">${esc(costLevel(u))}. Based on Numbeo's 2026 Mid-Year country Cost of Living + Rent Index: ${ci.toFixed(1)} for ${esc(u.country)} versus 54.8 for Denmark.</span><small>Country averages are a rough comparison, not a city-specific student budget.</small>`}
-function historyProfileHtml(u){const p=profile(u),fy=foundedYear(u);if(!p)return `<div class="history-profile loading-profile"><strong>Loading university history…</strong><span class="muted">Founded year and a short background note are being looked up from Wikidata/Wikipedia.</span></div>`;const badge=heritageLabel(fy);const source=p.wikiUrl?`<a href="${esc(p.wikiUrl)}" target="_blank" rel="noopener">Wikipedia</a>`:'Wikipedia';const wd=p.qid?` · <a href="https://www.wikidata.org/wiki/${esc(p.qid)}" target="_blank" rel="noopener">Wikidata</a>`:'';return `<div class="history-profile"><div class="history-profile-head"><div><span class="mini-label">Founded / institution age</span><strong>${esc(ageText(fy))}</strong>${badge?`<span class="heritage-badge">${esc(badge)}</span>`:''}</div></div><p>${p.extract?esc(p.extract):'No short English-language history summary was found automatically.'}</p><small>Sources: ${source}${wd}. Institution age does not guarantee that the exchange campus itself has old buildings.</small></div>`}
+function historyProfileHtml(u){
+  const p=profile(u),fy=foundedYear(u);
+  if(!p)return `<div class="history-profile loading-profile"><strong>Profile snapshot pending</strong><span class="muted">The local university profile CSV has not been populated for this institution yet. The automatic data refresh can fill it.</span></div>`;
+  const badge=heritageLabel(fy),links=[];
+  if(p.officialWebsite)links.push(`<a class="secondary-button small" href="${esc(p.officialWebsite)}" target="_blank" rel="noopener">Official website ↗</a>`);
+  if(p.officialHistoryUrl)links.push(`<a class="secondary-button small" href="${esc(p.officialHistoryUrl)}" target="_blank" rel="noopener">Official history / about ↗</a>`);
+  const note=p.historyNote||`${u.name} is based in ${city(u)||u.country}. Additional official history information has not yet been added to the local snapshot.`;
+  const src=p.historySource||p.metadataSource||'Local profile snapshot';
+  return `<div class="history-profile"><div class="history-profile-head"><div><span class="mini-label">Founded / institution age</span><strong>${esc(ageText(fy))}</strong>${badge?`<span class="heritage-badge">${esc(badge)}</span>`:''}</div></div><p>${esc(note)}</p>${links.length?`<div class="profile-links" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">${links.join('')}</div>`:''}<small>Profile source: ${esc(src)}. Institution age does not guarantee that the exchange campus itself has old buildings.</small></div>`
+}
 function openDetail(id){
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
-  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||u.country)}${u.school?` · ${esc(city(u)||'City loading…')}, ${esc(u.country)}`:` · ${esc(city(u)||'City loading…')}, ${esc(u.country)}`} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
+  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||'Regular')} · ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
     <div class="detail-metrics">
       <div class="metric-card"><span>Competitiveness · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
       <div class="metric-card"><span>ARWU 2026</span>${rankMeta}<a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">Source</a></div>
@@ -309,7 +310,6 @@ function openDetail(id){
   wireSelectionControls($('#detailContent'));
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
   if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
-  if(!profile(u))loadProfileSearchOne(u).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
 }
 
 // Coordinates from Wikipedia, with a few city-level fallbacks for partner/campus names.
@@ -339,70 +339,27 @@ async function fetchGridClimate(c){
   let lastErr=null;for(let attempt=0;attempt<3;attempt++){try{const ctl=new AbortController();const timer=setTimeout(()=>ctl.abort(),15000);const r=await fetch(url,{signal:ctl.signal,cache:'no-store'});clearTimeout(timer);if(!r.ok)throw new Error(`NASA POWER ${r.status}`);const j=await r.json();const p=j?.properties?.parameter?.T2M;if(!p)throw new Error('No T2M climate data');const v={SEP:Number(p.SEP),OCT:Number(p.OCT),NOV:Number(p.NOV),DEC:Number(p.DEC)};if(!Object.values(v).every(Number.isFinite))throw new Error('Incomplete climate data');state.gridClimate.set(key,v);return v}catch(e){lastErr=e;await wait(350*(attempt+1))}}throw lastErr||new Error('Climate request failed');
 }
 function refreshDataStatus(){
-  const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} matched · ${state.arwuPendingCount} no confident match`:'ARWU: loading';
-  const climate=state.climateLoading?`Climate: ${state.climateDone}/${state.climateTotal} locations`:`Climate: ${state.climate.size}/${state.all.length} loaded`;
-  const hist=state.profileLoading?`History: ${state.profileDone}/${state.profileTotal}`:`History: ${state.profiles.size}/${state.all.length}`;
+  const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} local matches · ${state.arwuPendingCount} no confident match`:'ARWU: loading local snapshot';
+  const climate=state.climateLoading?`Climate: ${state.climate.size}/${state.all.length} local/loaded · filling missing values`:`Climate: ${state.climate.size}/${state.all.length} local/loaded`;
+  const hist=`Profiles: ${state.profiles.size}/${state.all.length} local`;
   $('#dataStatus').textContent=`${arwu} · ${climate} · ${hist}`;
 }
 async function loadClimateForIds(ids){const groups=new Map();for(const id of ids){if(state.climate.has(id))continue;const c=state.coords.get(id);if(!c)continue;const k=gridKey(c);if(!groups.has(k))groups.set(k,{c,ids:[]});groups.get(k).ids.push(id)}for(const g of groups.values()){try{const v=await fetchGridClimate(g.c);for(const id of g.ids)state.climate.set(id,v)}catch(e){console.warn('Climate unavailable for',g.ids,e)}}saveClimateCache();renderTable();renderMarkers();refreshDataStatus()}
 async function loadClimateAll(){
-  if(state.climateLoading)return;loadClimateCache();const groups=new Map();for(const u of state.all){const c=state.coords.get(u.id);if(!c)continue;const k=gridKey(c);if(!groups.has(k))groups.set(k,{c,ids:[]});groups.get(k).ids.push(u.id)}
+  if(state.climateLoading)return;loadClimateCache();const groups=new Map();for(const u of state.all){if(state.climate.has(u.id))continue;const c=state.coords.get(u.id);if(!c)continue;const k=gridKey(c);if(!groups.has(k))groups.set(k,{c,ids:[]});groups.get(k).ids.push(u.id)}
   for(const g of groups.values()){const cached=state.gridClimate.get(gridKey(g.c));if(cached)for(const id of g.ids)state.climate.set(id,cached)}
   const pending=[...groups.values()].filter(g=>!state.gridClimate.has(gridKey(g.c)));state.climateLoading=true;state.climateDone=groups.size-pending.length;state.climateTotal=groups.size;refreshDataStatus();renderTable();let next=0;
   async function worker(){while(next<pending.length){const i=next++,g=pending[i];try{const v=await fetchGridClimate(g.c);for(const id of g.ids)state.climate.set(id,v)}catch(e){console.warn('Climate unavailable for',g.ids,e)}state.climateDone++;if(state.climateDone%5===0||state.climateDone===state.climateTotal){saveClimateCache();refreshDataStatus();applyFilters()}await wait(120)}}
   await Promise.all(Array.from({length:Math.min(3,pending.length||1)},worker));state.climateLoading=false;saveClimateCache();refreshDataStatus();applyFilters();
 }
 
-// University age and short background: Wikipedia intro + Wikidata inception (P571).
-const profileKey='cbs-exchange-profiles-v3-city';
-function loadProfileCache(){try{const p=JSON.parse(localStorage.getItem(profileKey)||'{}');for(const [id,v] of Object.entries(p))state.profiles.set(Number(id),v)}catch{}}
-function saveProfileCache(){try{localStorage.setItem(profileKey,JSON.stringify(Object.fromEntries(state.profiles)))}catch{}}
-function titleAliases(query){const m=new Map();for(const x of query?.normalized||[])m.set(x.from,x.to);for(const x of query?.redirects||[])m.set(x.from,x.to);return m}
-function resolveAlias(title,aliases){let t=title;for(let i=0;i<4&&aliases.has(t);i++)t=aliases.get(t);return t}
-function pageToProfile(p,method='title'){return {wikiTitle:p.title||null,wikiUrl:p.fullurl||null,extract:(p.extract||'').trim(),qid:p.pageprops?.wikibase_item||null,foundedYear:null,city:null,matchMethod:method}}
-async function fetchProfileMeta(items){
-  const byQ=new Map(items.filter(x=>x.p?.qid).map(x=>[x.p.qid,x]));if(!byQ.size)return;
-  const ids=[...byQ.keys()],locationRefs=new Map();
-  for(let i=0;i<ids.length;i+=50){const batch=ids.slice(i,i+50);try{
-    const url='https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&origin=*&props=claims&ids='+encodeURIComponent(batch.join('|'));
-    const r=await fetch(url);if(!r.ok)continue;const j=await r.json();
-    for(const qid of batch){const ent=j.entities?.[qid],item=byQ.get(qid);const claims=ent?.claims?.P571||[];
-      const years=claims.map(c=>c?.mainsnak?.datavalue?.value?.time).filter(Boolean).map(t=>{const m=String(t).match(/^\+?(\d{1,4})-/);return m?Number(m[1]):null}).filter(y=>Number.isFinite(y)&&y>0&&y<=new Date().getFullYear());if(years.length)item.p.foundedYear=Math.min(...years);
-      if(!item.u.city){
-        // P159 = headquarters location, P131 = administrative location, P276 = location.
-        const locClaim=['P159','P131','P276'].flatMap(prop=>ent?.claims?.[prop]||[]).map(c=>c?.mainsnak?.datavalue?.value?.id).find(Boolean);
-        if(locClaim)locationRefs.set(item.u.id,{qid:locClaim,p:item.p});
-      }
-    }
-  }catch(e){console.warn('Wikidata university metadata lookup failed',e)}}
-  const locIds=[...new Set([...locationRefs.values()].map(x=>x.qid))];
-  const labels=new Map();for(let i=0;i<locIds.length;i+=50){const batch=locIds.slice(i,i+50);try{
-    const url='https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&origin=*&props=labels&languages=en&ids='+encodeURIComponent(batch.join('|'));
-    const r=await fetch(url);if(!r.ok)continue;const j=await r.json();for(const qid of batch){const label=j.entities?.[qid]?.labels?.en?.value;if(label)labels.set(qid,label)}
-  }catch(e){console.warn('Wikidata city-label lookup failed',e)}}
-  for(const {qid,p} of locationRefs.values()){const label=labels.get(qid);if(label)p.city=label}
-}
-async function loadProfileBatch(batch){
-  const titles=batch.map(u=>u.lookupName).join('|');const url='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageprops%7Cextracts%7Cinfo&exintro=1&explaintext=1&exsentences=3&inprop=url&titles='+encodeURIComponent(titles);
-  const r=await fetch(url);if(!r.ok)throw new Error('Wikipedia profile lookup failed');const j=await r.json(),pages=Object.values(j.query?.pages||{}).filter(p=>!p.missing),aliases=titleAliases(j.query),byTitle=new Map(pages.map(p=>[(p.title||'').toLowerCase(),p])),items=[];
-  for(const u of batch){const resolved=resolveAlias(u.lookupName,aliases),p=byTitle.get(resolved.toLowerCase());if(p){const prof=pageToProfile(p,'title');items.push({u,p:prof});state.profiles.set(u.id,prof)}}
-  await fetchProfileMeta(items);for(const {u,p} of items)state.profiles.set(u.id,p);return new Set(items.map(x=>x.u.id));
-}
-async function loadProfileSearchOne(u){
-  if(state.profiles.has(u.id))return state.profiles.get(u.id);const query=`${u.lookupName} ${u.country} university`;const url='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=0&gsrlimit=1&gsrsearch='+encodeURIComponent(query)+'&prop=pageprops%7Cextracts%7Cinfo%7Ccoordinates&exintro=1&explaintext=1&exsentences=3&inprop=url';
-  try{const r=await fetch(url);if(!r.ok)throw new Error('Wikipedia search failed');const j=await r.json(),p=Object.values(j.query?.pages||{})[0];if(!p)return null;const prof=pageToProfile(p,'search');await fetchProfileMeta([{u,p:prof}]);state.profiles.set(u.id,prof);if(p.coordinates?.[0]&&!state.coords.has(u.id)&&!COORD_OVERRIDES[u.id]){state.coords.set(u.id,{lat:p.coordinates[0].lat,lon:p.coordinates[0].lon,source:'Wikipedia profile search'});saveCached()}saveProfileCache();applyFilters();refreshDataStatus();return prof}catch(e){console.warn('Profile search failed for',u.name,e);return null}
-}
-async function loadProfilesBackground(){
-  loadProfileCache();state.profileTotal=state.all.length;const missing=state.all.filter(u=>!state.profiles.has(u.id));if(!missing.length){$('#foundedBefore').disabled=false;refreshDataStatus();return}state.profileLoading=true;state.profileDone=state.profiles.size;refreshDataStatus();const unresolved=[];
-  for(let i=0;i<missing.length;i+=20){const batch=missing.slice(i,i+20);let hit=new Set();try{hit=await loadProfileBatch(batch)}catch(e){console.warn('Profile batch failed',e)}for(const u of batch)if(!hit.has(u.id))unresolved.push(u);state.profileDone=state.profiles.size;saveProfileCache();refreshDataStatus();if(i%40===0)applyFilters();await wait(80)}
-  let next=0;async function worker(){while(next<unresolved.length){const u=unresolved[next++];await loadProfileSearchOne(u);state.profileDone=state.profiles.size;refreshDataStatus();await wait(130)}}await Promise.all(Array.from({length:Math.min(3,unresolved.length||1)},worker));state.profileLoading=false;$('#foundedBefore').disabled=false;saveProfileCache();refreshDataStatus();applyFilters();
-}
-
+// University profiles are loaded from data/university_profiles.csv.
 function rankLower(rank){if(!rank)return null;const m=String(rank).match(/\d+/);return m?Number(m[0]):null}
 async function loadArwu(){
-  let entries={},fileComplete=false;try{const r=await fetch('data/arwu2026.json',{cache:'no-store'});if(r.ok){const j=await r.json();entries=j.universities||j;fileComplete=(j.status==='complete')}}catch(e){console.warn('Optional ARWU file unavailable; using built-in verified matches',e)}
-  let ranked=0,unmatched=0;for(const u of state.all){const id=String(u.id),x=fileComplete&&entries[id]!==undefined?entries[id]:BUILTIN_ARWU[id];if(!x){u.arwuRank=null;u.arwuSort=null;u.arwuMatchedInstitution=null;u.arwuPending=false;u.arwuUnmatched=true;unmatched++;continue}const rank=typeof x==='object'&&x!==null?x.rank:x;u.arwuRank=rank||null;u.arwuSort=rankLower(rank);u.arwuMatchedInstitution=(typeof x==='object'&&x)?x.matchedInstitution:null;u.arwuPending=false;u.arwuUnmatched=!u.arwuRank;if(u.arwuRank)ranked++;else unmatched++}
-  state.arwuRankedCount=ranked;state.arwuPendingCount=unmatched;state.arwuReady=true;refreshDataStatus();applyFilters();
+  let rows=[];try{rows=await csvObjects('data/arwu_2026.csv')}catch(e){console.warn('ARWU CSV unavailable',e)}
+  const byId=new Map(rows.map(r=>[Number(r.university_id),r]));let ranked=0,unmatched=0;
+  for(const u of state.all){const x=byId.get(u.id);const rank=(x?.rank||'').trim();u.arwuRank=rank||null;u.arwuSort=rankLower(rank);u.arwuMatchedInstitution=(x?.matched_institution||'').trim()||null;u.arwuPending=false;u.arwuUnmatched=!u.arwuRank;if(u.arwuRank)ranked++;else unmatched++}
+  state.arwuRankedCount=ranked;state.arwuPendingCount=unmatched;state.arwuReady=true;refreshDataStatus();
 }
 
 function parseCsvRows(text){
@@ -423,39 +380,53 @@ function parseCsvRows(text){
   if(cell.length||row.length){row.push(cell);rows.push(row)}
   return rows;
 }
+function csvObjectsFromText(text){
+  const rows=parseCsvRows(String(text||'').replace(/^\uFEFF/,''));if(rows.length<1)return [];
+  const headers=rows[0].map(x=>x.trim());return rows.slice(1).filter(r=>r.some(x=>String(x).trim()!=='')).map(row=>Object.fromEntries(headers.map((h,i)=>[h,row[i]??''])));
+}
+async function csvObjects(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw new Error(`${path}: HTTP ${r.status}`);return csvObjectsFromText(await r.text())}
+function boolCsv(v){return String(v).trim().toLowerCase()==='true'}
+function numCsv(v){const n=Number(v);return String(v).trim()!==''&&Number.isFinite(n)?n:null}
+
+async function loadCoreUniversities(){
+  const [urows,hrows]=await Promise.all([csvObjects('data/universities.csv'),csvObjects('data/cbs_history.csv')]);
+  const hist=new Map();for(const r of hrows){const id=Number(r.university_id);if(!hist.has(id))hist.set(id,{});const places=numCsv(r.places);hist.get(id)[r.year]={places,available:boolCsv(r.available),noPlaces:boolCsv(r.no_places),noData:boolCsv(r.no_data),status:r.status||'unknown',statusLabel:r.status_label||'',excelColor:r.excel_color||null}}
+  return urows.map(r=>{const id=Number(r.id),history=hist.get(id)||{},availabilityYears=Object.values(history).filter(h=>h.available).length;return {id,country:r.country,name:r.university,lookupName:r.lookup_name||r.university,school:r.school||'Regular',rawName:r.university,level:r.level||'UG',availabilityYears,availableLast2:boolCsv(r.available_last2),latestPlaces:numCsv(r.latest_places),history,latestStatus:history['2026-2027']?.status||'unknown'}});
+}
+
 async function loadUniversityLocations(){
   try{
-    const r=await fetch('data/university_locations.csv',{cache:'no-store'});
-    if(!r.ok)throw new Error(`HTTP ${r.status}`);
-    const rows=parseCsvRows((await r.text()).replace(/^\uFEFF/,''));
-    if(rows.length<2)return;
-    const headers=rows[0].map(x=>x.trim()),idx=Object.fromEntries(headers.map((h,i)=>[h,i]));
-    const byId=new Map();
-    for(const row of rows.slice(1)){
-      const id=Number(row[idx.id]);if(!Number.isFinite(id))continue;
-      byId.set(id,{city:(row[idx.city]||'').trim(),continent:(row[idx.continent]||'').trim()});
-    }
-    for(const u of state.all){const x=byId.get(u.id);if(!x)continue;if(x.city)u.city=x.city;if(x.continent)u.continent=x.continent}
-  }catch(e){console.warn('University location CSV unavailable; falling back to Wikidata/country mapping',e)}
+    const rows=await csvObjects('data/university_locations.csv'),byId=new Map(rows.map(r=>[Number(r.id),r]));
+    for(const u of state.all){const x=byId.get(u.id);if(!x)continue;if((x.city||'').trim())u.city=x.city.trim();if((x.continent||'').trim())u.continent=x.continent.trim();const lat=numCsv(x.latitude),lon=numCsv(x.longitude);if(Number.isFinite(lat)&&Number.isFinite(lon))state.coords.set(u.id,{lat,lon,source:x.location_source||'local CSV'})}
+  }catch(e){console.warn('University location CSV unavailable',e)}
+}
+async function loadStaticClimate(){
+  try{const rows=await csvObjects('data/climate.csv');for(const r of rows){const id=Number(r.university_id),v={SEP:numCsv(r.sep_c),OCT:numCsv(r.oct_c),NOV:numCsv(r.nov_c),DEC:numCsv(r.dec_c)};if(Number.isFinite(id)&&Object.values(v).every(Number.isFinite))state.climate.set(id,v)}}catch(e){console.warn('Climate CSV unavailable',e)}
+}
+async function loadStaticProfiles(){
+  try{const rows=await csvObjects('data/university_profiles.csv');for(const r of rows){const id=Number(r.university_id),fy=numCsv(r.founded_year),p={foundedYear:fy,officialWebsite:(r.official_website||'').trim()||null,officialHistoryUrl:(r.official_history_url||'').trim()||null,historyNote:(r.history_note||'').trim()||null,metadataSource:(r.metadata_source||'').trim()||null,historySource:(r.history_source||'').trim()||null,qid:(r.wikidata_qid||'').trim()||null};if(Number.isFinite(id)&&(Number.isFinite(fy)||p.officialWebsite||p.historyNote))state.profiles.set(id,p)}}catch(e){console.warn('University profile CSV unavailable',e)}
+}
+async function loadStaticCost(){
+  try{const rows=await csvObjects('data/cost_of_living.csv');for(const r of rows){const index=numCsv(r.cost_rent_index),denmark=numCsv(r.denmark_index),pct=numCsv(r.percent_vs_denmark);state.costByCountry.set(r.country,{index,denmark,pct,source:r.source_url||NUMBEO_URL,snapshot:r.snapshot||''})}}catch(e){console.warn('Cost CSV unavailable',e)}
 }
 
 async function init(){
-  const r=await fetch('data/universities.json');state.all=await r.json();await loadUniversityLocations();state.filtered=[...state.all];loadProfileCache();loadSavedSelections();
+  state.all=await loadCoreUniversities();
+  await Promise.all([loadUniversityLocations(),loadStaticClimate(),loadStaticProfiles(),loadStaticCost()]);
+  await loadArwu();state.filtered=[...state.all];loadSavedSelections();
   const validIds=new Set(state.all.map(u=>u.id));state.favorites=new Set([...state.favorites].filter(id=>validIds.has(id)));state.compare=new Set([...state.compare].filter(id=>validIds.has(id)).slice(0,6));saveSelections();
   const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
   const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
-  // Continent options are deliberately present in the HTML as well as validated here, so they work even before async data finishes loading.
-  const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));
-  for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
+  const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
   for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','favoritesOnly','last2'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
-  $('#reset').addEventListener('click',resetAllFilters);
-  $('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});
-  $('#shareCompare').addEventListener('click',shareComparison);
-  $('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
+  $('#reset').addEventListener('click',resetAllFilters);$('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='foundedYear')?1:-1}renderTable()}));
   $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#compareBtn').addEventListener('click',()=>switchView('compare'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
-  updateSavedCounts();loadClimateCache();applyFilters();loadArwu();resolveCoordinates();loadProfilesBackground();refreshDataStatus();
-  if(new URLSearchParams(location.search).has('compare')&&state.compare.size) switchView('compare');
+  $('#foundedBefore').disabled=state.profiles.size===0;updateSavedCounts();applyFilters();refreshDataStatus();
+  const unresolved=state.all.length-state.coords.size;$('#geoStatus').textContent=`· ${state.coords.size} mapped${unresolved?` · ${unresolved} unresolved`:''}`;
+  // Static CSVs are primary. These fallbacks only fill gaps until the repository refresh workflow has populated all snapshots.
+  if(unresolved)resolveCoordinates();else if(state.climate.size<state.all.length)loadClimateAll();
+  if(new URLSearchParams(location.search).has('compare')&&state.compare.size)switchView('compare');
 }
 function switchView(v){const isMap=v==='map',isList=v==='list',isCompare=v==='compare';$('#mapView').classList.toggle('active',isMap);$('#listView').classList.toggle('active',isList);$('#compareView').classList.toggle('active',isCompare);$('#mapBtn').classList.toggle('active',isMap);$('#listBtn').classList.toggle('active',isList);$('#compareBtn').classList.toggle('active',isCompare);if(isMap)setTimeout(()=>map.invalidateSize(),50);if(isCompare)renderCompare()}
 init().catch(e=>{$('#geoStatus').textContent='· could not load dataset';console.error(e)});

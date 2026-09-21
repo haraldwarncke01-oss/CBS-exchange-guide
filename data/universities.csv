@@ -1,0 +1,259 @@
+id,university,lookup_name,school,country,level,latest_places,available_last2
+1,Universidad Argentina de la Empresa (UADE),Universidad Argentina de la Empresa (UADE),Regular,Argentina,UG,1,false
+2,"Universidad Austral, Campus Pilar and Campus Buenos Aires","Universidad Austral, Campus Pilar and Campus Buenos Aires",Regular,Argentina,UG,4,true
+3,"Universidad Austral, Campus Rosario","Universidad Austral, Campus Rosario",Regular,Argentina,UG,2,true
+4,Universidad Torcuato di Tella (UTDT),Universidad Torcuato di Tella (UTDT),Regular,Argentina,UG,2,false
+5,Australian National University,Australian National University,College of Business and Economics,Australia,UG,6,true
+6,Bond University,Bond University,Regular,Australia,UG,4,false
+7,Curtin University,Curtin University,Curtin Business School,Australia,UG,0,false
+8,Deakin University,Deakin University,Regular,Australia,UG,2,false
+9,Griffith University,Griffith University,Regular,Australia,UG,1,false
+10,La Trobe University,La Trobe University,Regular,Australia,UG,4,false
+11,Macquarie University,Macquarie University,Regular,Australia,UG,4,false
+12,Monash University,Monash University,Faculty of Business and Economics,Australia,UG,7,false
+13,Queensland University of Technology,Queensland University of Technology,QUT Business School,Australia,UG,4,false
+14,Swinburne University of Technology,Swinburne University of Technology,Regular,Australia,UG,3,false
+15,University of Melbourne,University of Melbourne,Faculty of Business and Economics,Australia,UG,6,false
+16,University of New South Wales,University of New South Wales,Regular,Australia,UG,4,false
+17,University of Newcastle,University of Newcastle,Faculty of Business and Law and Faculty of Education and Arts,Australia,UG,4,false
+18,University of Queensland,University of Queensland,Regular,Australia,UG,6,false
+19,University of Sydney,University of Sydney,USYD Business School and Faculty of Arts and Social Sciences,Australia,UG,10,false
+20,"University of Technology, Sydney","University of Technology, Sydney",Regular,Australia,UG,3,false
+21,University of Western Australia,University of Western Australia,Regular,Australia,UG,2,false
+22,Leopold-Franzens-Universität Innsbruck,Leopold-Franzens-Universität Innsbruck,Faculty of Business and Management,Austria,UG,4,false
+23,Universität Wien,Universität Wien,Fakultät für Wirtschaftswissenschaften,Austria,UG,1,true
+24,Wirtschaftsuniversität Wien,Wirtschaftsuniversität Wien,Regular,Austria,UG,8,false
+25,ICHEC - Brussels Management School,ICHEC - Brussels Management School,Regular,Belgium,UG,3,false
+26,KU Leuven,KU Leuven,Faculty of Economics and Business,Belgium,UG,2,false
+27,Fundação Getulio Vargas (FGV-EAESP),Fundação Getulio Vargas (FGV-EAESP),Escola de Administração de Empresas de São Paulo,Brazil,UG,4,false
+28,INSPER,INSPER,Instituto de Ensino e Pesquisa / Faculty of Business Administration,Brazil,UG,3,false
+29,Concordia University,Concordia University,Molson School of Business,Canada,UG,6,true
+30,Dalhousie University,Dalhousie University,School of Business Administration,Canada,UG,1,false
+31,HEC Montréal,HEC Montréal,Regular,Canada,UG,8,false
+32,McGill University,McGill University,Desautels Faculty of Management,Canada,UG,8,false
+33,Queen's University,Queen's University,Smith School of Business,Canada,UG,3,true
+34,Toronto Metropolitan University,Toronto Metropolitan University,Ted Rogers School of Management,Canada,UG,3,true
+35,Simon Fraser University,Simon Fraser University,Beedie School of Business,Canada,UG,6,false
+36,Université Laval,Université Laval,Faculty of Business Administration,Canada,UG,2,true
+37,University of Alberta,University of Alberta,Alberta School of Business,Canada,UG,5,true
+38,University of British Columbia,University of British Columbia,Sauder School of Business,Canada,UG,10,false
+39,University of Calgary,University of Calgary,Haskayne School of Business,Canada,UG,3,true
+40,University of Ottawa,University of Ottawa,Telfer School of Management,Canada,UG,2,true
+41,University of Toronto,University of Toronto,Rotman Commerce,Canada,UG,8,false
+42,University of Victoria,University of Victoria,Gustavson School of Business,Canada,UG,4,false
+43,Western University,Western University,Richard Ivey School of Business,Canada,UG,2,true
+44,Pontificia Universidad Católica de Chile,Pontificia Universidad Católica de Chile,Regular,Chile,UG,4,true
+45,Universidad de Chile,Universidad de Chile,School of Economics and Business (FEN),Chile,UG,2,false
+46,"Universidad del Desarrollo (UDD), Campus Santiago","Universidad del Desarrollo (UDD), Campus Santiago",Concepción,Chile,UG,5,false
+47,Fudan University,Fudan University,School of Management,China,UG,3,false
+48,Peking University,Peking University,Guanghua School of Management,China,UG,2,false
+49,Shanghai Jiao Tong University,Shanghai Jiao Tong University,Antai College of Economics and Management,China,UG,0,false
+50,Shanghai University of Finance and Economics,Shanghai University of Finance and Economics,Regular,China,UG,0,false
+51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)","The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",Regular,China,UG,6,true
+52,Tongji University,Tongji University,Tongji School of Economics and Management,China,UG,3,false
+53,Tsinghua University,Tsinghua University,School of Economics and Management,China,UG,4,false
+54,University of International Business and Economics (UIBE),University of International Business and Economics (UIBE),Regular,China,UG,0,false
+55,"University of Nottingham Ningbo, China","University of Nottingham Ningbo, China",Nottingham University Business School China,China,UG,8,true
+56,Universidad De Los Andes,Universidad De Los Andes,School of Management,Colombia,UG,4,false
+57,Universidad EAFIT,Universidad EAFIT,Regular,Colombia,UG,5,false
+58,American University in Cairo,American University in Cairo,Regular,Egypt,UG,2,false
+59,Estonian Business School,Estonian Business School,Regular,Estonia,UG,2,true
+60,University of the Faroe Islands,University of the Faroe Islands,Regular,Faroe Islands,UG,1,false
+61,Hanken School of Economics,Hanken School of Economics,Regular,Finland,UG,0,false
+62,Aalto University,Aalto University,School of Business,Finland,UG,2,true
+63,Audencia Business School,Audencia Business School,Regular,France,UG,3,true
+64,Ecole de Management de Lyon,Ecole de Management de Lyon,Regular,France,UG,3,false
+65,EDHEC Business School,EDHEC Business School,Lille Campus,France,UG,2,true
+66,EDHEC Business School,EDHEC Business School,Nice Campus,France,UG,1,false
+67,ESSEC Business School,ESSEC Business School,Regular,France,UG,8,false
+68,Grenoble Ecole de Management,Grenoble Ecole de Management,Regular,France,UG,1,false
+69,HEC Paris,HEC Paris,Regular,France,UG,4,false
+70,IÉSEG School of Management,IÉSEG School of Management,Lille or Paris campus,France,UG,7,false
+71,INSEEC Grande Ecole,INSEEC Grande Ecole,Regular,France,UG,2,false
+72,ISC Paris School of Management,ISC Paris School of Management,Regular,France,UG,4,false
+73,Kedge Business School,Kedge Business School,Bordeaux Campus,France,UG,5,false
+74,Kedge Business School,Kedge Business School,Marseille Campus,France,UG,4,false
+75,Paris School of Business,Paris School of Business,Regular,France,UG,6,false
+76,Rennes School of Business,Rennes School of Business,Regular,France,UG,2,true
+77,Sciences Po (Institut d'Etudes Politiques de Paris),Sciences Po (Institut d'Etudes Politiques de Paris),Paris Campus,France,UG,3,false
+78,Sciences Po (Institut d'Etudes Politiques de Paris),Sciences Po (Institut d'Etudes Politiques de Paris),Regional Campuses,France,UG,3,false
+79,Toulouse Business School,Toulouse Business School,Regular,France,UG,2,false
+80,Université Catholique de Lyon,Université Catholique de Lyon,ESDES Business School,France,UG,4,false
+81,Université de Strasbourg,Université de Strasbourg,EM Strasbourg Business School,France,UG,2,false
+82,Université Paris Dauphine,Université Paris Dauphine,Regular,France,UG,12,false
+83,Université Toulouse Capitole,Université Toulouse Capitole,Toulouse School of Management - TSM,France,UG,1,true
+84,Frankfurt School of Finance and Management,Frankfurt School of Finance and Management,Regular,Germany,UG,3,false
+85,Freie Universität Berlin,Freie Universität Berlin,School of Business and Economics,Germany,UG,2,true
+86,Humboldt-Universität zu Berlin,Humboldt-Universität zu Berlin,School of Business and Economics,Germany,UG,1,false
+87,Johann Wolfgang Goethe Universität,Johann Wolfgang Goethe Universität,Faculty of Economics and Business Administration,Germany,UG,1,true
+88,Ludwig-Maximilians-Universität München,Ludwig-Maximilians-Universität München,Munich School of Management,Germany,UG,2,false
+89,Technische Universität München,Technische Universität München,TUM School of Management,Germany,UG,1,true
+90,Universität Hamburg,Universität Hamburg,"Faculty of Business, Economics and Social Science & Hamburg Business School",Germany,UG,2,true
+91,Universität Mannheim,Universität Mannheim,Mannheim Business School,Germany,UG,3,true
+92,Universität zu Köln,Universität zu Köln,"Faculty of Management, Economics and Social Sciences",Germany,UG,1,false
+93,Universität Münster,Universität Münster,School of Business and Economics,Germany,UG,1,false
+94,WHU,WHU,Otto Beisheim School of Management,Germany,UG,3,false
+95,Zeppelin University,Zeppelin University,Regular,Germany,UG,0,false
+96,Athens University of Economics & Business - AUEB,Athens University of Economics & Business - AUEB,Regular,Greece,UG,2,false
+97,Greenland University,Greenland University,Outgoing,Greenland,UG,1,false
+98,City University of Hong Kong (CityU),City University of Hong Kong (CityU),College of Business,Hong Kong,UG,8,false
+99,Hong Kong Baptist University,Hong Kong Baptist University,Regular,Hong Kong,UG,4,false
+100,The Chinese University of Hong Kong (CUHK),The Chinese University of Hong Kong (CUHK),Regular,Hong Kong,UG,6,true
+101,The Hong Kong Polytechnic University,The Hong Kong Polytechnic University,Regular,Hong Kong,UG,8,false
+102,The Hong Kong University of Science and Technology (HKUST),The Hong Kong University of Science and Technology (HKUST),HKUST Business School,Hong Kong,UG,14,false
+103,The University of Hong Kong (HKU),The University of Hong Kong (HKU),The Faculty of Business and Economics,Hong Kong,UG,15,false
+104,Reykjavik University,Reykjavik University,School of Business,Iceland,UG,2,false
+105,University of Iceland,University of Iceland,Faculty of Business Administration,Iceland,UG,0,false
+106,Universitas Gadjah Mada,Universitas Gadjah Mada,Faculty of Economics and Business,Indonesia,UG,2,false
+107,University College Cork,University College Cork,Regular,Ireland,UG,4,false
+108,University College Dublin,University College Dublin,Quinn School of Business,Ireland,UG,5,false
+109,University of Limerick,University of Limerick,Kemmy Business School,Ireland,UG,4,true
+110,Reichman University (IDC Herzliya),Reichman University (IDC Herzliya),Regular,Israel,UG,0,false
+111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',Business and Administration,Italy,UG,7,false
+112,Università Ca' Foscari Venezia,Università Ca' Foscari Venezia,Regular,Italy,UG,2,false
+113,Università Commerciale Luigi Bocconi,Università Commerciale Luigi Bocconi,Regular,Italy,UG,6,false
+114,Università degli Studi di Bologna 'Alma Mater Studiorum',Università degli Studi di Bologna 'Alma Mater Studiorum',Faculty of Law,Italy,UG,2,false
+115,Università degli Studi di Bologna 'Alma Mater Studiorum',Università degli Studi di Bologna 'Alma Mater Studiorum',"School of Economics, Management and Statistics",Italy,UG,4,false
+116,Università degli Studi di Torino,Università degli Studi di Torino,Dipartimento di Management,Italy,UG,3,false
+117,Hitotsubashi University,Hitotsubashi University,Regular,Japan,UG,8,false
+118,Keio University,Keio University,Faculty of Economics,Japan,UG,4,false
+119,NUCB Undergraduate School,NUCB Undergraduate School,Regular,Japan,UG,2,false
+120,Rikkyo University,Rikkyo University,College of Business,Japan,UG,10,false
+121,Ritsumeikan Asia Pacific University,Ritsumeikan Asia Pacific University,Regular,Japan,UG,4,false
+122,Ritsumeikan University,Ritsumeikan University,Regular,Japan,UG,2,false
+123,Waseda University,Waseda University,Regular,Japan,UG,4,false
+124,Vilnius University,Vilnius University,Faculty of Economics & Business Administration,Lithuania,UG,2,true
+125,Monash University Malaysia,Monash University Malaysia,School of Business / Faculty of Business and Economics,Malaysia,UG,7,false
+126,University of Malaya,University of Malaya,The Faculty of Business and Accountancy,Malaysia,UG,1,false
+127,Instituto Tecnológico Autónomo de México (ITAM),Instituto Tecnológico Autónomo de México (ITAM),Regular,Mexico,UG,3,false
+128,"Tec de Monterrey, Campus Guadalajara","Tec de Monterrey, Campus Guadalajara",Regular,Mexico,UG,4,false
+129,"Tec de Monterrey, Campus Mexico City","Tec de Monterrey, Campus Mexico City",Regular,Mexico,UG,4,false
+130,"Tec de Monterrey, Campus Monterrey","Tec de Monterrey, Campus Monterrey",Regular,Mexico,UG,8,true
+131,"Tec de Monterrey, Campus Querétaro","Tec de Monterrey, Campus Querétaro",Regular,Mexico,UG,8,true
+132,"Tec de Monterrey, Campus Santa Fe","Tec de Monterrey, Campus Santa Fe",Regular,Mexico,UG,4,false
+133,Al Akhawayn University,Al Akhawayn University,Regular,Morocco,UG,2,true
+134,Rabat Business School,Rabat Business School,Regular,Morocco,UG,1,false
+135,Erasmus Universiteit Rotterdam,Erasmus Universiteit Rotterdam,Rotterdam School of Management,Netherlands,UG,7,false
+136,Maastricht University,Maastricht University,School of Business and Economics,Netherlands,UG,2,true
+137,Radboud Universiteit Nijmegen,Radboud Universiteit Nijmegen,Nijmegen School of Management,Netherlands,UG,3,true
+138,Tilburg University,Tilburg University,School of Economics and Management,Netherlands,UG,1,true
+139,Universiteit Utrecht,Universiteit Utrecht,Utrecht University School of Economics,Netherlands,UG,2,false
+140,Universiteit van Amsterdam,Universiteit van Amsterdam,Faculty of Economics and Business,Netherlands,UG,4,false
+141,University of Groningen,University of Groningen,Faculty of Economics and Business,Netherlands,UG,2,true
+142,Vrije Universiteit Amsterdam,Vrije Universiteit Amsterdam,Faculty of Economics and Business Administration,Netherlands,UG,6,false
+143,Auckland University of Technology,Auckland University of Technology,"Faculty of Business, Economics and Law",New Zealand,UG,2,false
+144,Lincoln University,Lincoln University,Regular,New Zealand,UG,3,false
+145,University of Canterbury,University of Canterbury,Regular,New Zealand,UG,6,false
+146,University of Otago,University of Otago,Regular,New Zealand,UG,3,false
+147,Victoria University of Wellington,Victoria University of Wellington,Regular,New Zealand,UG,4,false
+148,BI Norwegian Business School,BI Norwegian Business School,Regular,Norway,UG,2,false
+149,Norwegian School of Economics,Norwegian School of Economics,Regular,Norway,UG,3,false
+150,Universidad ESAN,Universidad ESAN,Regular,Peru,UG,3,false
+151,Universidad San Ignacio de Loyola (USIL),Universidad San Ignacio de Loyola (USIL),Regular,Peru,UG,3,false
+152,Kozminski University,Kozminski University,Regular,Poland,UG,2,true
+153,ISCTE - Instituto Universitário de Lisboa,ISCTE - Instituto Universitário de Lisboa,Iscte Business School,Portugal,UG,2,false
+154,Universidade Católica Portuguesa,Universidade Católica Portuguesa,Católica Lisbon School of Business & Economics,Portugal,UG,5,false
+155,Universidade Católica Portuguesa,Universidade Católica Portuguesa,CPBS - Católica Porto Business School,Portugal,UG,3,false
+156,Universidade de Lisboa,Universidade de Lisboa,ISEG - Lisbon School of Economics & Management,Portugal,UG,2,false
+157,Universidade Nova de Lisboa,Universidade Nova de Lisboa,Nova School of Business and Economics,Portugal,UG,6,false
+158,Nanyang Technological University,Nanyang Technological University,"Nanyang Business School / College of Humanities, Arts and Social Sciences",Singapore,UG,18,true
+159,National University of Singapore,National University of Singapore,NUS Business School,Singapore,UG,12,false
+160,Singapore Management University,Singapore Management University,Regular,Singapore,UG,20,false
+161,University of Ljubljana,University of Ljubljana,School of Economics and Business,Slovenia,UG,1,false
+162,Chung-Ang University,Chung-Ang University,Regular,South Korea,UG,4,false
+163,Ewha Womans University,Ewha Womans University,EWHA School of Business,South Korea,UG,4,false
+164,Korea University,Korea University,Business School,South Korea,UG,1,false
+165,Korea University,Korea University,Regular,South Korea,UG,4,false
+166,Yonsei University,Yonsei University,School of Business,South Korea,UG,1,false
+167,IE University,IE University,IE Business School,Spain,UG,12,false
+168,Universidad Carlos III de Madrid,Universidad Carlos III de Madrid,Regular,Spain,UG,8,false
+169,Universidad CEU San Pablo,Universidad CEU San Pablo,School of Economics and Business Studies,Spain,UG,4,false
+170,"Universidad de Deusto, Campus Bilbao","Universidad de Deusto, Campus Bilbao",Regular,Spain,UG,2,false
+171,"Universidad de Deusto, Campus San Sebastian","Universidad de Deusto, Campus San Sebastian",Regular,Spain,UG,6,false
+172,Universidad de Navarra,Universidad de Navarra,Faculty of Economics and Business,Spain,UG,6,false
+173,Universidad Pontificia Comillas de Madrid (ICADE),Universidad Pontificia Comillas de Madrid (ICADE),Regular,Spain,UG,12,false
+174,Universidad Rey Juan Carlos,Universidad Rey Juan Carlos,Regular,Spain,UG,4,false
+175,Universitat Autònoma de Barcelona (UAB),Universitat Autònoma de Barcelona (UAB),Faculty of Economics and Business,Spain,UG,2,false
+176,Universitat de Barcelona,Universitat de Barcelona,Faculty of Economics and Business,Spain,UG,4,false
+177,Universitat de València,Universitat de València,Facultat d'Economia,Spain,UG,8,false
+178,Universitat Pompeu Fabra,Universitat Pompeu Fabra,Escola Superior de Comerc International (ESCI),Spain,UG,4,false
+179,Universitat Pompeu Fabra,Universitat Pompeu Fabra,International Business Economics,Spain,UG,4,false
+180,Universitat Ramon Llull,Universitat Ramon Llull,ESADE Business School / Regular,Spain,UG,3,false
+181,Universitat Ramon Llull,Universitat Ramon Llull,ESADE Business School,Spain,UG,10,false
+182,Lund University,Lund University,School of Economics and Management,Sweden,UG,2,true
+183,Stockholm School of Economics,Stockholm School of Economics,Regular,Sweden,UG,2,false
+184,Stockholm University,Stockholm University,Stockholm Business School / Regular,Sweden,UG,2,true
+185,University of Gothenburg,University of Gothenburg,"School of Business, Economics and Law",Sweden,UG,2,true
+186,Uppsala universitet,Uppsala universitet,Regular,Sweden,UG,0,false
+187,Université de Genève,Université de Genève,Geneva School of Economics and Management,Switzerland,UG,2,false
+188,Université de Lausanne,Université de Lausanne,HEC Lausanne,Switzerland,UG,2,false
+189,Universität Bern,Universität Bern,Wirtschafts- und Sozialwissenschaftliche Fakultät,Switzerland,UG,2,false
+190,Universität St. Gallen,Universität St. Gallen,Regular,Switzerland,UG,4,false
+191,Universität Zürich,Universität Zürich,"Faculty of Economics, Business Administration and IT",Switzerland,UG,2,false
+192,National Chengchi University (NCCU),National Chengchi University (NCCU),College of Commerce,Taiwan,UG,3,false
+193,National Taiwan University (NTU),National Taiwan University (NTU),College of Management,Taiwan,UG,2,false
+194,Soochow University,Soochow University,Regular,Taiwan,UG,4,false
+195,Chulalongkorn University,Chulalongkorn University,Faculty of Commerce and Accountancy,Thailand,UG,2,false
+196,Chulalongkorn University,Chulalongkorn University,The Faculty of Economics,Thailand,UG,4,false
+197,Thammasat University,Thammasat University,Thammasat Business School / Faculty of Commerce and Accountancy,Thailand,UG,4,false
+198,Istanbul Bilgi University,Istanbul Bilgi University,Faculty of Economics and Administrative Sciences,Turkey,UG,3,true
+199,Koc University,Koc University,Regular,Turkey,UG,1,false
+200,Sabanci University,Sabanci University,Sabanci Business School,Turkey,UG,2,true
+201,Aston University,Aston University,Aston Business School,United Kingdom,UG,2,true
+202,Cardiff University,Cardiff University,Cardiff Business School,United Kingdom,UG,4,true
+203,"City St. George's, University of London","City St. George's, University of London",Bayes School of Business,United Kingdom,UG,4,false
+204,"European Business School (EBS) London, Regent's University London","European Business School (EBS) London, Regent's University London",Regular,United Kingdom,UG,1,false
+205,King's College London,King's College London,King's Business School,United Kingdom,UG,4,false
+206,London Metropolitan University,London Metropolitan University,Business & Management,United Kingdom,UG,2,false
+207,Oxford Brookes University,Oxford Brookes University,Regular,United Kingdom,UG,2,true
+208,Regent's University London,Regent's University London,Tuition based,United Kingdom,UG,0,false
+209,The University of Manchester,The University of Manchester,Alliance Manchester Business School,United Kingdom,UG,2,false
+210,University of Aberdeen,University of Aberdeen,Regular,United Kingdom,UG,3,true
+211,University of Bath,University of Bath,School of Management,United Kingdom,UG,5,true
+212,University of Bristol,University of Bristol,"School of Economics, Finance and Management",United Kingdom,UG,3,true
+213,University of Edinburgh,University of Edinburgh,Business School,United Kingdom,UG,6,false
+214,University of Essex,University of Essex,"Accountancy, Finance & Management",United Kingdom,UG,2,true
+215,University of Exeter,University of Exeter,Business School,United Kingdom,UG,2,true
+216,University of Glasgow,University of Glasgow,Business School,United Kingdom,UG,2,false
+217,University of Leeds,University of Leeds,Leeds University Business School,United Kingdom,UG,4,true
+218,University of Leicester,University of Leicester,School of Management,United Kingdom,UG,2,false
+219,University of Liverpool,University of Liverpool,Management School,United Kingdom,UG,3,true
+220,University of Sheffield,University of Sheffield,Department of Economics,United Kingdom,UG,0,false
+221,University of Sheffield,University of Sheffield,University of Sheffield Management School,United Kingdom,UG,6,true
+222,University of Strathclyde Glasgow,University of Strathclyde Glasgow,Strathclyde Business School,United Kingdom,UG,5,true
+223,University of Warwick,University of Warwick,Warwick Business School,United Kingdom,UG,2,true
+224,University of Westminster,University of Westminster,Tuition based,United Kingdom,UG,0,false
+225,University of Westminster,University of Westminster,Westminster Business School,United Kingdom,UG,6,false
+226,Arizona State University,Arizona State University,W.P. Carey School of Business,United States,UG,1,false
+227,Babson College,Babson College,Regular,United States,UG,2,false
+228,Bentley University,Bentley University,Regular,United States,UG,7,true
+229,Boston College,Boston College,Wallace E. Carroll School of Management,United States,UG,10,false
+230,Boston University,Boston University,Questrom School of Business,United States,UG,4,false
+231,City University of New York,City University of New York,Baruch College / FALL,United States,UG,4,false
+232,Cornell University,Cornell University,Dyson School of Applied Economics & Management,United States,UG,8,false
+233,Cornell University,Cornell University,School of Industrial and Labor Relations (ILR),United States,UG,4,false
+234,Emory University,Emory University,Goizueta Business School,United States,UG,5,true
+235,George Washington University,George Washington University,School of Business,United States,UG,5,false
+236,Indiana University,Indiana University,Kelley School of Business,United States,UG,5,true
+237,New York University,New York University,Leonard N. Stern School of Business,United States,UG,2,false
+238,North Carolina State University,North Carolina State University,College of Management,United States,UG,2,true
+239,Ohio State University,Ohio State University,Fisher College of Business,United States,UG,5,true
+240,Purdue University,Purdue University,Krannert School of Management,United States,UG,2,true
+241,"State University of New York, Stony Brook","State University of New York, Stony Brook",Regular,United States,UG,6,true
+242,Texas A&M University,Texas A&M University,Mays Business School,United States,UG,4,false
+243,Tulane University,Tulane University,Freeman School of Business,United States,UG,10,false
+244,University of Hawaii at Manoa,University of Hawaii at Manoa,Shidler College of Business,United States,UG,4,false
+245,University of Maryland,University of Maryland,Smith School of Business,United States,UG,2,false
+246,University of Michigan,University of Michigan,Ross School of Business,United States,UG,8,false
+247,"University of Minnesota, Twin Cities","University of Minnesota, Twin Cities",Carlson School of Management,United States,UG,4,true
+248,University of North Carolina at Chapel Hill,University of North Carolina at Chapel Hill,Kenan Flagler School of Business,United States,UG,8,false
+249,University of Pennsylvania,University of Pennsylvania,Wharton School,United States,UG,11,false
+250,University of Richmond,University of Richmond,Robins School of Business,United States,UG,10,true
+251,University of South Carolina,University of South Carolina,Darla Moore School of Management,United States,UG,4,false
+252,University of Southern California,University of Southern California,USC Marshall School of Business,United States,UG,11,false
+253,University of Texas at Austin,University of Texas at Austin,McCombs School of Business,United States,UG,6,false
+254,University of Washington,University of Washington,Foster School of Business,United States,UG,1,false
+255,University of Wisconsin - La Crosse,University of Wisconsin - La Crosse,Regular,United States,UG,0,false
+256,University of Wisconsin - Madison,University of Wisconsin - Madison,Wisconsin School of Business,United States,UG,6,true
+257,Universidad Católica del Uruguay,Universidad Católica del Uruguay,Regular,Uruguay,UG,2,false
+258,Universidad de Montevideo,Universidad de Montevideo,Regular,Uruguay,UG,0,false

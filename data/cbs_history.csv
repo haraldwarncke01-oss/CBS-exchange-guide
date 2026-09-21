@@ -1,0 +1,1291 @@
+university_id,year,places,status,status_label,excel_color,available,no_places,no_data
+1,2026-2027,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+1,2025-2026,1,filled,All places filled,#50D691,false,false,false
+1,2024-2025,1,available,Places available,,true,false,false
+1,2023-2024,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+1,2022-2023,1,available,Places available,,true,false,false
+2,2026-2027,4,available,Places available,,true,false,false
+2,2025-2026,4,available,Places available,,true,false,false
+2,2024-2025,,no_places,No places offered,,false,true,false
+2,2023-2024,4,available,Places available,,true,false,false
+2,2022-2023,4,available,Places available,,true,false,false
+3,2026-2027,2,available,Places available,,true,false,false
+3,2025-2026,2,available,Places available,,true,false,false
+3,2024-2025,,no_places,No places offered,,false,true,false
+3,2023-2024,2,available,Places available,,true,false,false
+3,2022-2023,2,available,Places available,,true,false,false
+4,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+4,2025-2026,2,filled,All places filled,#50D691,false,false,false
+4,2024-2025,2,available,Places available,,true,false,false
+4,2023-2024,2,available,Places available,,true,false,false
+4,2022-2023,2,available,Places available,,true,false,false
+5,2026-2027,6,available,Places available,,true,false,false
+5,2025-2026,8,available,Places available,,true,false,false
+5,2024-2025,8,available,Places available,,true,false,false
+5,2023-2024,8,available,Places available,,true,false,false
+5,2022-2023,2,available,Places available,,true,false,false
+6,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+6,2025-2026,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+6,2024-2025,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+6,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+6,2022-2023,2,filled,All places filled,#50D691,false,false,false
+7,2026-2027,,no_places,No places offered,,false,true,false
+7,2025-2026,,no_places,No places offered,,false,true,false
+7,2024-2025,2,filled,All places filled,#50D691,false,false,false
+7,2023-2024,2,available,Places available,,true,false,false
+7,2022-2023,1,available,Places available,,true,false,false
+8,2026-2027,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+8,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+8,2024-2025,2,filled,All places filled,#50D691,false,false,false
+8,2023-2024,1,available,Places available,,true,false,false
+8,2022-2023,1,available,Places available,,true,false,false
+9,2026-2027,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+9,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+9,2024-2025,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+9,2023-2024,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+9,2022-2023,2,available,Places available,,true,false,false
+10,2026-2027,4,filled,All places filled,#50D691,false,false,false
+10,2025-2026,4,available,Places available,,true,false,false
+10,2024-2025,4,available,Places available,,true,false,false
+10,2023-2024,2,filled,All places filled,#50D691,false,false,false
+10,2022-2023,2,available,Places available,,true,false,false
+11,2026-2027,4,filled,All places filled,#50D691,false,false,false
+11,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+11,2024-2025,4,filled,All places filled,#50D691,false,false,false
+11,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+11,2022-2023,3,available,Places available,,true,false,false
+12,2026-2027,7,competitive,All places filled — competitive,#FDDB71,false,false,false
+12,2025-2026,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+12,2024-2025,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+12,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+12,2022-2023,2,available,Places available,,true,false,false
+13,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+13,2025-2026,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+13,2024-2025,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+13,2023-2024,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+13,2022-2023,3,available,Places available,,true,false,false
+14,2026-2027,3,filled,All places filled,#50D691,false,false,false
+14,2025-2026,2,available,Places available,,true,false,false
+14,2024-2025,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+14,2023-2024,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+14,2022-2023,1,available,Places available,,true,false,false
+15,2026-2027,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+15,2025-2026,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+15,2024-2025,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+15,2023-2024,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+15,2022-2023,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+16,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+16,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+16,2024-2025,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+16,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+16,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+17,2026-2027,4,filled,All places filled,#50D691,false,false,false
+17,2025-2026,4,filled,All places filled,#50D691,false,false,false
+17,2024-2025,4,filled,All places filled,#50D691,false,false,false
+17,2023-2024,5,filled,All places filled,#50D691,false,false,false
+17,2022-2023,2,filled,All places filled,#50D691,false,false,false
+18,2026-2027,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+18,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+18,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+18,2023-2024,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+18,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+19,2026-2027,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+19,2025-2026,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+19,2024-2025,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+19,2023-2024,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+19,2022-2023,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+20,2026-2027,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+20,2025-2026,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+20,2024-2025,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+20,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+20,2022-2023,2,filled,All places filled,#50D691,false,false,false
+21,2026-2027,2,filled,All places filled,#50D691,false,false,false
+21,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+21,2024-2025,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+21,2023-2024,3,available,Places available,,true,false,false
+21,2022-2023,2,available,Places available,,true,false,false
+22,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+22,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+22,2024-2025,4,filled,All places filled,#50D691,false,false,false
+22,2023-2024,4,filled,All places filled,#50D691,false,false,false
+22,2022-2023,7,filled,All places filled,#50D691,false,false,false
+23,2026-2027,1,available,Places available,,true,false,false
+23,2025-2026,1,available,Places available,,true,false,false
+23,2024-2025,1,available,Places available,,true,false,false
+23,2023-2024,1,available,Places available,,true,false,false
+23,2022-2023,1,available,Places available,,true,false,false
+24,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+24,2025-2026,8,filled,All places filled,#50D691,false,false,false
+24,2024-2025,8,filled,All places filled,#50D691,false,false,false
+24,2023-2024,8,filled,All places filled,#50D691,false,false,false
+24,2022-2023,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+25,2026-2027,3,filled,All places filled,#50D691,false,false,false
+25,2025-2026,3,available,Places available,,true,false,false
+25,2024-2025,3,filled,All places filled,#50D691,false,false,false
+25,2023-2024,2,filled,All places filled,#50D691,false,false,false
+25,2022-2023,2,filled,All places filled,#50D691,false,false,false
+26,2026-2027,2,filled,All places filled,#50D691,false,false,false
+26,2025-2026,2,available,Places available,,true,false,false
+26,2024-2025,2,available,Places available,,true,false,false
+26,2023-2024,2,filled,All places filled,#50D691,false,false,false
+26,2022-2023,2,filled,All places filled,#50D691,false,false,false
+27,2026-2027,4,filled,All places filled,#50D691,false,false,false
+27,2025-2026,4,filled,All places filled,#50D691,false,false,false
+27,2024-2025,6,available,Places available,,true,false,false
+27,2023-2024,4,available,Places available,,true,false,false
+27,2022-2023,4,filled,All places filled,#50D691,false,false,false
+28,2026-2027,3,filled,All places filled,#50D691,false,false,false
+28,2025-2026,,no_places,No places offered,,false,true,false
+28,2024-2025,4,filled,All places filled,#50D691,false,false,false
+28,2023-2024,3,filled,All places filled,#50D691,false,false,false
+28,2022-2023,,no_places,No places offered,,false,true,false
+29,2026-2027,6,available,Places available,,true,false,false
+29,2025-2026,6,available,Places available,,true,false,false
+29,2024-2025,6,available,Places available,,true,false,false
+29,2023-2024,6,available,Places available,,true,false,false
+29,2022-2023,6,available,Places available,,true,false,false
+30,2026-2027,1,available,Places available,,true,false,false
+30,2025-2026,,no_places,No places offered,,false,true,false
+30,2024-2025,2,available,Places available,,true,false,false
+30,2023-2024,2,available,Places available,,true,false,false
+30,2022-2023,2,available,Places available,,true,false,false
+31,2026-2027,8,filled,All places filled,#50D691,false,false,false
+31,2025-2026,8,filled,All places filled,#50D691,false,false,false
+31,2024-2025,8,filled,All places filled,#50D691,false,false,false
+31,2023-2024,8,filled,All places filled,#50D691,false,false,false
+31,2022-2023,8,filled,All places filled,#50D691,false,false,false
+32,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+32,2025-2026,8,filled,All places filled,#50D691,false,false,false
+32,2024-2025,8,available,Places available,,true,false,false
+32,2023-2024,8,filled,All places filled,#50D691,false,false,false
+32,2022-2023,8,filled,All places filled,#50D691,false,false,false
+33,2026-2027,3,available,Places available,,true,false,false
+33,2025-2026,2,available,Places available,,true,false,false
+33,2024-2025,4,available,Places available,,true,false,false
+33,2023-2024,6,available,Places available,,true,false,false
+33,2022-2023,6,available,Places available,,true,false,false
+34,2026-2027,3,available,Places available,,true,false,false
+34,2025-2026,2,available,Places available,,true,false,false
+34,2024-2025,3,available,Places available,,true,false,false
+34,2023-2024,3,filled,All places filled,#50D691,false,false,false
+34,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+35,2026-2027,6,available,Places available,,true,false,false
+35,2025-2026,6,filled,All places filled,#50D691,false,false,false
+35,2024-2025,6,available,Places available,,true,false,false
+35,2023-2024,6,available,Places available,,true,false,false
+35,2022-2023,6,filled,All places filled,#50D691,false,false,false
+36,2026-2027,2,available,Places available,,true,false,false
+36,2025-2026,1,available,Places available,,true,false,false
+36,2024-2025,2,available,Places available,,true,false,false
+36,2023-2024,2,available,Places available,,true,false,false
+36,2022-2023,1,available,Places available,,true,false,false
+37,2026-2027,5,available,Places available,,true,false,false
+37,2025-2026,2,available,Places available,,true,false,false
+37,2024-2025,2,available,Places available,,true,false,false
+37,2023-2024,3,available,Places available,,true,false,false
+37,2022-2023,2,filled,All places filled,#50D691,false,false,false
+38,2026-2027,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+38,2025-2026,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+38,2024-2025,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+38,2023-2024,10,filled,All places filled,#50D691,false,false,false
+38,2022-2023,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+39,2026-2027,3,available,Places available,,true,false,false
+39,2025-2026,2,available,Places available,,true,false,false
+39,2024-2025,4,available,Places available,,true,false,false
+39,2023-2024,4,available,Places available,,true,false,false
+39,2022-2023,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+40,2026-2027,2,available,Places available,,true,false,false
+40,2025-2026,2,available,Places available,,true,false,false
+40,2024-2025,4,available,Places available,,true,false,false
+40,2023-2024,4,available,Places available,,true,false,false
+40,2022-2023,4,filled,All places filled,#50D691,false,false,false
+41,2026-2027,8,filled,All places filled,#50D691,false,false,false
+41,2025-2026,8,filled,All places filled,#50D691,false,false,false
+41,2024-2025,6,filled,All places filled,#50D691,false,false,false
+41,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+41,2022-2023,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+42,2026-2027,4,filled,All places filled,#50D691,false,false,false
+42,2025-2026,4,available,Places available,,true,false,false
+42,2024-2025,4,available,Places available,,true,false,false
+42,2023-2024,4,available,Places available,,true,false,false
+42,2022-2023,4,filled,All places filled,#50D691,false,false,false
+43,2026-2027,2,available,Places available,,true,false,false
+43,2025-2026,2,available,Places available,,true,false,false
+43,2024-2025,4,available,Places available,,true,false,false
+43,2023-2024,2,available,Places available,,true,false,false
+43,2022-2023,3,available,Places available,,true,false,false
+44,2026-2027,4,available,Places available,,true,false,false
+44,2025-2026,4,available,Places available,,true,false,false
+44,2024-2025,2,available,Places available,,true,false,false
+44,2023-2024,,no_places,No places offered,,false,true,false
+44,2022-2023,4,available,Places available,,true,false,false
+45,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+45,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+45,2024-2025,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+45,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+45,2022-2023,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+46,2026-2027,5,filled,All places filled,#50D691,false,false,false
+46,2025-2026,5,filled,All places filled,#50D691,false,false,false
+46,2024-2025,5,available,Places available,,true,false,false
+46,2023-2024,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+46,2022-2023,5,filled,All places filled,#50D691,false,false,false
+47,2026-2027,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+47,2025-2026,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+47,2024-2025,3,filled,All places filled,#50D691,false,false,false
+47,2023-2024,3,available,Places available,,true,false,false
+47,2022-2023,3,available,Places available,,true,false,false
+48,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+48,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+48,2024-2025,2,filled,All places filled,#50D691,false,false,false
+48,2023-2024,2,available,Places available,,true,false,false
+48,2022-2023,3,available,Places available,,true,false,false
+49,2026-2027,,no_places,No places offered,,false,true,false
+49,2025-2026,2,available,Places available,,true,false,false
+49,2024-2025,,no_places,No places offered,,false,true,false
+49,2023-2024,,no_places,No places offered,,false,true,false
+49,2022-2023,,no_places,No places offered,,false,true,false
+50,2026-2027,,no_places,No places offered,,false,true,false
+50,2025-2026,,no_places,No places offered,,false,true,false
+50,2024-2025,,no_places,No places offered,,false,true,false
+50,2023-2024,,no_places,No places offered,,false,true,false
+50,2022-2023,2,available,Places available,,true,false,false
+51,2026-2027,6,available,Places available,,true,false,false
+51,2025-2026,6,available,Places available,,true,false,false
+51,2024-2025,6,available,Places available,,true,false,false
+51,2023-2024,6,available,Places available,,true,false,false
+51,2022-2023,6,available,Places available,,true,false,false
+52,2026-2027,3,available,Places available,,true,false,false
+52,2025-2026,,no_places,No places offered,,false,true,false
+52,2024-2025,,no_places,No places offered,,false,true,false
+52,2023-2024,3,available,Places available,,true,false,false
+52,2022-2023,3,available,Places available,,true,false,false
+53,2026-2027,4,filled,All places filled,#50D691,false,false,false
+53,2025-2026,4,filled,All places filled,#50D691,false,false,false
+53,2024-2025,4,available,Places available,,true,false,false
+53,2023-2024,,no_places,No places offered,,false,true,false
+53,2022-2023,4,available,Places available,,true,false,false
+54,2026-2027,,no_places,No places offered,,false,true,false
+54,2025-2026,,no_places,No places offered,,false,true,false
+54,2024-2025,2,filled,All places filled,#50D691,false,false,false
+54,2023-2024,,no_places,No places offered,,false,true,false
+54,2022-2023,2,available,Places available,,true,false,false
+55,2026-2027,8,available,Places available,,true,false,false
+55,2025-2026,6,available,Places available,,true,false,false
+55,2024-2025,8,available,Places available,,true,false,false
+55,2023-2024,8,available,Places available,,true,false,false
+55,2022-2023,8,available,Places available,,true,false,false
+56,2026-2027,4,filled,All places filled,#50D691,false,false,false
+56,2025-2026,4,available,Places available,,true,false,false
+56,2024-2025,4,available,Places available,,true,false,false
+56,2023-2024,4,available,Places available,,true,false,false
+56,2022-2023,4,filled,All places filled,#50D691,false,false,false
+57,2026-2027,5,filled,All places filled,#50D691,false,false,false
+57,2025-2026,5,filled,All places filled,#50D691,false,false,false
+57,2024-2025,5,filled,All places filled,#50D691,false,false,false
+57,2023-2024,5,filled,All places filled,#50D691,false,false,false
+57,2022-2023,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+58,2026-2027,2,filled,All places filled,#50D691,false,false,false
+58,2025-2026,2,filled,All places filled,#50D691,false,false,false
+58,2024-2025,2,available,Places available,,true,false,false
+58,2023-2024,2,available,Places available,,true,false,false
+58,2022-2023,2,available,Places available,,true,false,false
+59,2026-2027,2,available,Places available,,true,false,false
+59,2025-2026,1,available,Places available,,true,false,false
+59,2024-2025,1,filled,All places filled,#50D691,false,false,false
+59,2023-2024,2,available,Places available,,true,false,false
+59,2022-2023,2,available,Places available,,true,false,false
+60,2026-2027,1,filled,All places filled,#50D691,false,false,false
+60,2025-2026,,no_data,No data,,false,false,true
+60,2024-2025,,no_data,No data,,false,false,true
+60,2023-2024,,no_data,No data,,false,false,true
+60,2022-2023,,no_data,No data,,false,false,true
+61,2026-2027,,no_places,No places offered,,false,true,false
+61,2025-2026,2,filled,All places filled,#50D691,false,false,false
+61,2024-2025,2,available,Places available,,true,false,false
+61,2023-2024,2,filled,All places filled,#50D691,false,false,false
+61,2022-2023,4,filled,All places filled,#50D691,false,false,false
+62,2026-2027,2,available,Places available,,true,false,false
+62,2025-2026,2,available,Places available,,true,false,false
+62,2024-2025,2,filled,All places filled,#50D691,false,false,false
+62,2023-2024,1,filled,All places filled,#50D691,false,false,false
+62,2022-2023,,no_places,No places offered,,false,true,false
+63,2026-2027,3,available,Places available,,true,false,false
+63,2025-2026,3,available,Places available,,true,false,false
+63,2024-2025,3,available,Places available,,true,false,false
+63,2023-2024,2,available,Places available,,true,false,false
+63,2022-2023,,no_data,No data,,false,false,true
+64,2026-2027,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+64,2025-2026,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+64,2024-2025,2,available,Places available,,true,false,false
+64,2023-2024,2,filled,All places filled,#50D691,false,false,false
+64,2022-2023,3,filled,All places filled,#50D691,false,false,false
+65,2026-2027,2,available,Places available,,true,false,false
+65,2025-2026,2,available,Places available,,true,false,false
+65,2024-2025,2,available,Places available,,true,false,false
+65,2023-2024,2,available,Places available,,true,false,false
+65,2022-2023,2,available,Places available,,true,false,false
+66,2026-2027,1,filled,All places filled,#50D691,false,false,false
+66,2025-2026,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+66,2024-2025,1,filled,All places filled,#50D691,false,false,false
+66,2023-2024,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+66,2022-2023,1,filled,All places filled,#50D691,false,false,false
+67,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+67,2025-2026,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+67,2024-2025,6,available,Places available,,true,false,false
+67,2023-2024,6,filled,All places filled,#50D691,false,false,false
+67,2022-2023,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+68,2026-2027,1,filled,All places filled,#50D691,false,false,false
+68,2025-2026,2,filled,All places filled,#50D691,false,false,false
+68,2024-2025,2,available,Places available,,true,false,false
+68,2023-2024,2,filled,All places filled,#50D691,false,false,false
+68,2022-2023,1,filled,All places filled,#50D691,false,false,false
+69,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+69,2025-2026,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+69,2024-2025,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+69,2023-2024,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+69,2022-2023,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+70,2026-2027,7,available,Places available,,true,false,false
+70,2025-2026,5,filled,All places filled,#50D691,false,false,false
+70,2024-2025,5,filled,All places filled,#50D691,false,false,false
+70,2023-2024,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+70,2022-2023,10,filled,All places filled,#50D691,false,false,false
+71,2026-2027,2,filled,All places filled,#50D691,false,false,false
+71,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+71,2024-2025,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+71,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+71,2022-2023,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+72,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+72,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+72,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+72,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+72,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+73,2026-2027,5,filled,All places filled,#50D691,false,false,false
+73,2025-2026,5,filled,All places filled,#50D691,false,false,false
+73,2024-2025,5,filled,All places filled,#50D691,false,false,false
+73,2023-2024,6,filled,All places filled,#50D691,false,false,false
+73,2022-2023,5,filled,All places filled,#50D691,false,false,false
+74,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+74,2025-2026,4,filled,All places filled,#50D691,false,false,false
+74,2024-2025,4,filled,All places filled,#50D691,false,false,false
+74,2023-2024,5,filled,All places filled,#50D691,false,false,false
+74,2022-2023,4,filled,All places filled,#50D691,false,false,false
+75,2026-2027,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+75,2025-2026,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+75,2024-2025,6,filled,All places filled,#50D691,false,false,false
+75,2023-2024,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+75,2022-2023,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+76,2026-2027,2,available,Places available,,true,false,false
+76,2025-2026,2,available,Places available,,true,false,false
+76,2024-2025,2,available,Places available,,true,false,false
+76,2023-2024,1,filled,All places filled,#50D691,false,false,false
+76,2022-2023,2,available,Places available,,true,false,false
+77,2026-2027,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+77,2025-2026,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+77,2024-2025,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+77,2023-2024,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+77,2022-2023,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+78,2026-2027,3,filled,All places filled,#50D691,false,false,false
+78,2025-2026,3,filled,All places filled,#50D691,false,false,false
+78,2024-2025,5,available,Places available,,true,false,false
+78,2023-2024,,no_data,No data,,false,false,true
+78,2022-2023,,no_data,No data,,false,false,true
+79,2026-2027,2,filled,All places filled,#50D691,false,false,false
+79,2025-2026,2,filled,All places filled,#50D691,false,false,false
+79,2024-2025,2,filled,All places filled,#50D691,false,false,false
+79,2023-2024,2,filled,All places filled,#50D691,false,false,false
+79,2022-2023,2,filled,All places filled,#50D691,false,false,false
+80,2026-2027,4,filled,All places filled,#50D691,false,false,false
+80,2025-2026,3,filled,All places filled,#50D691,false,false,false
+80,2024-2025,3,available,Places available,,true,false,false
+80,2023-2024,3,filled,All places filled,#50D691,false,false,false
+80,2022-2023,3,filled,All places filled,#50D691,false,false,false
+81,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+81,2025-2026,4,filled,All places filled,#50D691,false,false,false
+81,2024-2025,6,available,Places available,,true,false,false
+81,2023-2024,6,filled,All places filled,#50D691,false,false,false
+81,2022-2023,4,filled,All places filled,#50D691,false,false,false
+82,2026-2027,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+82,2025-2026,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+82,2024-2025,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+82,2023-2024,12,filled,All places filled,#50D691,false,false,false
+82,2022-2023,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+83,2026-2027,1,available,Places available,,true,false,false
+83,2025-2026,1,available,Places available,,true,false,false
+83,2024-2025,2,available,Places available,,true,false,false
+83,2023-2024,2,available,Places available,,true,false,false
+83,2022-2023,1,available,Places available,,true,false,false
+84,2026-2027,3,available,Places available,,true,false,false
+84,2025-2026,4,filled,All places filled,#50D691,false,false,false
+84,2024-2025,4,available,Places available,,true,false,false
+84,2023-2024,4,available,Places available,,true,false,false
+84,2022-2023,4,filled,All places filled,#50D691,false,false,false
+85,2026-2027,2,available,Places available,,true,false,false
+85,2025-2026,2,available,Places available,,true,false,false
+85,2024-2025,2,available,Places available,,true,false,false
+85,2023-2024,2,available,Places available,,true,false,false
+85,2022-2023,2,filled,All places filled,#50D691,false,false,false
+86,2026-2027,1,filled,All places filled,#50D691,false,false,false
+86,2025-2026,1,filled,All places filled,#50D691,false,false,false
+86,2024-2025,1,available,Places available,,true,false,false
+86,2023-2024,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+86,2022-2023,1,available,Places available,,true,false,false
+87,2026-2027,1,available,Places available,,true,false,false
+87,2025-2026,1,available,Places available,,true,false,false
+87,2024-2025,1,available,Places available,,true,false,false
+87,2023-2024,2,available,Places available,,true,false,false
+87,2022-2023,1,filled,All places filled,#50D691,false,false,false
+88,2026-2027,2,filled,All places filled,#50D691,false,false,false
+88,2025-2026,2,filled,All places filled,#50D691,false,false,false
+88,2024-2025,2,filled,All places filled,#50D691,false,false,false
+88,2023-2024,3,available,Places available,,true,false,false
+88,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+89,2026-2027,1,available,Places available,,true,false,false
+89,2025-2026,3,available,Places available,,true,false,false
+89,2024-2025,3,filled,All places filled,#50D691,false,false,false
+89,2023-2024,3,available,Places available,,true,false,false
+89,2022-2023,3,filled,All places filled,#50D691,false,false,false
+90,2026-2027,2,available,Places available,,true,false,false
+90,2025-2026,2,available,Places available,,true,false,false
+90,2024-2025,2,available,Places available,,true,false,false
+90,2023-2024,3,available,Places available,,true,false,false
+90,2022-2023,2,available,Places available,,true,false,false
+91,2026-2027,3,available,Places available,,true,false,false
+91,2025-2026,3,available,Places available,,true,false,false
+91,2024-2025,3,available,Places available,,true,false,false
+91,2023-2024,3,available,Places available,,true,false,false
+91,2022-2023,3,filled,All places filled,#50D691,false,false,false
+92,2026-2027,1,filled,All places filled,#50D691,false,false,false
+92,2025-2026,1,available,Places available,,true,false,false
+92,2024-2025,1,available,Places available,,true,false,false
+92,2023-2024,1,available,Places available,,true,false,false
+92,2022-2023,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+93,2026-2027,1,filled,All places filled,#50D691,false,false,false
+93,2025-2026,1,available,Places available,,true,false,false
+93,2024-2025,1,filled,All places filled,#50D691,false,false,false
+93,2023-2024,1,filled,All places filled,#50D691,false,false,false
+93,2022-2023,1,filled,All places filled,#50D691,false,false,false
+94,2026-2027,3,available,Places available,,true,false,false
+94,2025-2026,2,filled,All places filled,#50D691,false,false,false
+94,2024-2025,3,available,Places available,,true,false,false
+94,2023-2024,4,available,Places available,,true,false,false
+94,2022-2023,3,available,Places available,,true,false,false
+95,2026-2027,,no_places,No places offered,,false,true,false
+95,2025-2026,,no_places,No places offered,,false,true,false
+95,2024-2025,1,available,Places available,,true,false,false
+95,2023-2024,2,filled,All places filled,#50D691,false,false,false
+95,2022-2023,2,filled,All places filled,#50D691,false,false,false
+96,2026-2027,2,filled,All places filled,#50D691,false,false,false
+96,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+96,2024-2025,2,filled,All places filled,#50D691,false,false,false
+96,2023-2024,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+96,2022-2023,2,filled,All places filled,#50D691,false,false,false
+97,2026-2027,1,filled,All places filled,#50D691,false,false,false
+97,2025-2026,,no_data,No data,,false,false,true
+97,2024-2025,,no_data,No data,,false,false,true
+97,2023-2024,,no_data,No data,,false,false,true
+97,2022-2023,,no_data,No data,,false,false,true
+98,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+98,2025-2026,8,filled,All places filled,#50D691,false,false,false
+98,2024-2025,8,filled,All places filled,#50D691,false,false,false
+98,2023-2024,8,available,Places available,,true,false,false
+98,2022-2023,7,filled,All places filled,#50D691,false,false,false
+99,2026-2027,4,filled,All places filled,#50D691,false,false,false
+99,2025-2026,4,available,Places available,,true,false,false
+99,2024-2025,4,filled,All places filled,#50D691,false,false,false
+99,2023-2024,4,available,Places available,,true,false,false
+99,2022-2023,4,available,Places available,,true,false,false
+100,2026-2027,6,available,Places available,,true,false,false
+100,2025-2026,6,available,Places available,,true,false,false
+100,2024-2025,8,available,Places available,,true,false,false
+100,2023-2024,6,available,Places available,,true,false,false
+100,2022-2023,6,available,Places available,,true,false,false
+101,2026-2027,8,filled,All places filled,#50D691,false,false,false
+101,2025-2026,4,filled,All places filled,#50D691,false,false,false
+101,2024-2025,,no_places,No places offered,,false,true,false
+101,2023-2024,10,available,Places available,,true,false,false
+101,2022-2023,8,filled,All places filled,#50D691,false,false,false
+102,2026-2027,14,filled,All places filled,#50D691,false,false,false
+102,2025-2026,14,filled,All places filled,#50D691,false,false,false
+102,2024-2025,14,filled,All places filled,#50D691,false,false,false
+102,2023-2024,14,available,Places available,,true,false,false
+102,2022-2023,14,available,Places available,,true,false,false
+103,2026-2027,15,competitive,All places filled — competitive,#FDDB71,false,false,false
+103,2025-2026,15,filled,All places filled,#50D691,false,false,false
+103,2024-2025,10,filled,All places filled,#50D691,false,false,false
+103,2023-2024,10,available,Places available,,true,false,false
+103,2022-2023,10,filled,All places filled,#50D691,false,false,false
+104,2026-2027,2,filled,All places filled,#50D691,false,false,false
+104,2025-2026,2,filled,All places filled,#50D691,false,false,false
+104,2024-2025,2,filled,All places filled,#50D691,false,false,false
+104,2023-2024,2,filled,All places filled,#50D691,false,false,false
+104,2022-2023,2,filled,All places filled,#50D691,false,false,false
+105,2026-2027,,no_places,No places offered,,false,true,false
+105,2025-2026,,no_places,No places offered,,false,true,false
+105,2024-2025,2,available,Places available,,true,false,false
+105,2023-2024,1,filled,All places filled,#50D691,false,false,false
+105,2022-2023,1,filled,All places filled,#50D691,false,false,false
+106,2026-2027,2,filled,All places filled,#50D691,false,false,false
+106,2025-2026,2,available,Places available,,true,false,false
+106,2024-2025,2,available,Places available,,true,false,false
+106,2023-2024,,no_places,No places offered,,false,true,false
+106,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+107,2026-2027,4,filled,All places filled,#50D691,false,false,false
+107,2025-2026,2,available,Places available,,true,false,false
+107,2024-2025,2,filled,All places filled,#50D691,false,false,false
+107,2023-2024,2,available,Places available,,true,false,false
+107,2022-2023,2,filled,All places filled,#50D691,false,false,false
+108,2026-2027,5,filled,All places filled,#50D691,false,false,false
+108,2025-2026,5,filled,All places filled,#50D691,false,false,false
+108,2024-2025,5,filled,All places filled,#50D691,false,false,false
+108,2023-2024,5,filled,All places filled,#50D691,false,false,false
+108,2022-2023,5,filled,All places filled,#50D691,false,false,false
+109,2026-2027,4,available,Places available,,true,false,false
+109,2025-2026,4,available,Places available,,true,false,false
+109,2024-2025,4,available,Places available,,true,false,false
+109,2023-2024,4,available,Places available,,true,false,false
+109,2022-2023,4,available,Places available,,true,false,false
+110,2026-2027,,no_places,No places offered,,false,true,false
+110,2025-2026,,no_places,No places offered,,false,true,false
+110,2024-2025,,no_places,No places offered,,false,true,false
+110,2023-2024,3,available,Places available,,true,false,false
+110,2022-2023,3,filled,All places filled,#50D691,false,false,false
+111,2026-2027,7,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+111,2025-2026,7,competitive,All places filled — competitive,#FDDB71,false,false,false
+111,2024-2025,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+111,2023-2024,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+111,2022-2023,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+112,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+112,2025-2026,2,filled,All places filled,#50D691,false,false,false
+112,2024-2025,,no_data,No data,,false,false,true
+112,2023-2024,,no_data,No data,,false,false,true
+112,2022-2023,,no_data,No data,,false,false,true
+113,2026-2027,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+113,2025-2026,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+113,2024-2025,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+113,2023-2024,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+113,2022-2023,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+114,2026-2027,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+114,2025-2026,2,filled,All places filled,#50D691,false,false,false
+114,2024-2025,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+114,2023-2024,2,filled,All places filled,#50D691,false,false,false
+114,2022-2023,2,filled,All places filled,#50D691,false,false,false
+115,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+115,2025-2026,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+115,2024-2025,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+115,2023-2024,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+115,2022-2023,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+116,2026-2027,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+116,2025-2026,2,filled,All places filled,#50D691,false,false,false
+116,2024-2025,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+116,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+116,2022-2023,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+117,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+117,2025-2026,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+117,2024-2025,8,available,Places available,,true,false,false
+117,2023-2024,6,filled,All places filled,#50D691,false,false,false
+117,2022-2023,8,available,Places available,,true,false,false
+118,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+118,2025-2026,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+118,2024-2025,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+118,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+118,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+119,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+119,2025-2026,2,filled,All places filled,#50D691,false,false,false
+119,2024-2025,2,available,Places available,,true,false,false
+119,2023-2024,,no_data,No data,,false,false,true
+119,2022-2023,,no_data,No data,,false,false,true
+120,2026-2027,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+120,2025-2026,9,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+120,2024-2025,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+120,2023-2024,10,filled,All places filled,#50D691,false,false,false
+120,2022-2023,8,filled,All places filled,#50D691,false,false,false
+121,2026-2027,4,available,Places available,,true,false,false
+121,2025-2026,2,filled,All places filled,#50D691,false,false,false
+121,2024-2025,6,available,Places available,,true,false,false
+121,2023-2024,4,available,Places available,,true,false,false
+121,2022-2023,4,available,Places available,,true,false,false
+122,2026-2027,2,filled,All places filled,#50D691,false,false,false
+122,2025-2026,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+122,2024-2025,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+122,2023-2024,4,filled,All places filled,#50D691,false,false,false
+122,2022-2023,4,available,Places available,,true,false,false
+123,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+123,2025-2026,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+123,2024-2025,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+123,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+123,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+124,2026-2027,2,available,Places available,,true,false,false
+124,2025-2026,2,available,Places available,,true,false,false
+124,2024-2025,2,available,Places available,,true,false,false
+124,2023-2024,2,available,Places available,,true,false,false
+124,2022-2023,,no_places,No places offered,,false,true,false
+125,2026-2027,7,filled,All places filled,#50D691,false,false,false
+125,2025-2026,5,available,Places available,,true,false,false
+125,2024-2025,2,available,Places available,,true,false,false
+125,2023-2024,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+125,2022-2023,2,available,Places available,,true,false,false
+126,2026-2027,1,available,Places available,,true,false,false
+126,2025-2026,1,filled,All places filled,#50D691,false,false,false
+126,2024-2025,1,available,Places available,,true,false,false
+126,2023-2024,2,filled,All places filled,#50D691,false,false,false
+126,2022-2023,1,filled,All places filled,#50D691,false,false,false
+127,2026-2027,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+127,2025-2026,3,available,Places available,,true,false,false
+127,2024-2025,,no_places,No places offered,,false,true,false
+127,2023-2024,3,filled,All places filled,#50D691,false,false,false
+127,2022-2023,3,filled,All places filled,#50D691,false,false,false
+128,2026-2027,4,filled,All places filled,#50D691,false,false,false
+128,2025-2026,4,available,Places available,,true,false,false
+128,2024-2025,2,available,Places available,,true,false,false
+128,2023-2024,6,available,Places available,,true,false,false
+128,2022-2023,,no_places,No places offered,,false,true,false
+129,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+129,2025-2026,4,filled,All places filled,#50D691,false,false,false
+129,2024-2025,4,filled,All places filled,#50D691,false,false,false
+129,2023-2024,4,filled,All places filled,#50D691,false,false,false
+129,2022-2023,,no_data,No data,,false,false,true
+130,2026-2027,8,available,Places available,,true,false,false
+130,2025-2026,8,available,Places available,,true,false,false
+130,2024-2025,8,available,Places available,,true,false,false
+130,2023-2024,6,available,Places available,,true,false,false
+130,2022-2023,,no_places,No places offered,,false,true,false
+131,2026-2027,8,available,Places available,,true,false,false
+131,2025-2026,8,available,Places available,,true,false,false
+131,2024-2025,8,available,Places available,,true,false,false
+131,2023-2024,,no_places,No places offered,,false,true,false
+131,2022-2023,,no_data,No data,,false,false,true
+132,2026-2027,4,available,Places available,,true,false,false
+132,2025-2026,4,filled,All places filled,#50D691,false,false,false
+132,2024-2025,6,available,Places available,,true,false,false
+132,2023-2024,6,available,Places available,,true,false,false
+132,2022-2023,,no_places,No places offered,,false,true,false
+133,2026-2027,2,available,Places available,,true,false,false
+133,2025-2026,3,available,Places available,,true,false,false
+133,2024-2025,3,available,Places available,,true,false,false
+133,2023-2024,2,available,Places available,,true,false,false
+133,2022-2023,3,available,Places available,,true,false,false
+134,2026-2027,1,filled,All places filled,#50D691,false,false,false
+134,2025-2026,,no_data,No data,,false,false,true
+134,2024-2025,,no_data,No data,,false,false,true
+134,2023-2024,,no_data,No data,,false,false,true
+134,2022-2023,,no_data,No data,,false,false,true
+135,2026-2027,7,filled,All places filled,#50D691,false,false,false
+135,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+135,2024-2025,2,available,Places available,,true,false,false
+135,2023-2024,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+135,2022-2023,2,filled,All places filled,#50D691,false,false,false
+136,2026-2027,2,available,Places available,,true,false,false
+136,2025-2026,2,available,Places available,,true,false,false
+136,2024-2025,2,available,Places available,,true,false,false
+136,2023-2024,3,available,Places available,,true,false,false
+136,2022-2023,2,filled,All places filled,#50D691,false,false,false
+137,2026-2027,3,available,Places available,,true,false,false
+137,2025-2026,2,available,Places available,,true,false,false
+137,2024-2025,2,available,Places available,,true,false,false
+137,2023-2024,2,available,Places available,,true,false,false
+137,2022-2023,2,available,Places available,,true,false,false
+138,2026-2027,1,available,Places available,,true,false,false
+138,2025-2026,2,available,Places available,,true,false,false
+138,2024-2025,2,available,Places available,,true,false,false
+138,2023-2024,2,available,Places available,,true,false,false
+138,2022-2023,1,available,Places available,,true,false,false
+139,2026-2027,2,available,Places available,,true,false,false
+139,2025-2026,2,filled,All places filled,#50D691,false,false,false
+139,2024-2025,2,available,Places available,,true,false,false
+139,2023-2024,2,filled,All places filled,#50D691,false,false,false
+139,2022-2023,2,filled,All places filled,#50D691,false,false,false
+140,2026-2027,4,available,Places available,,true,false,false
+140,2025-2026,4,filled,All places filled,#50D691,false,false,false
+140,2024-2025,4,available,Places available,,true,false,false
+140,2023-2024,4,filled,All places filled,#50D691,false,false,false
+140,2022-2023,4,filled,All places filled,#50D691,false,false,false
+141,2026-2027,2,available,Places available,,true,false,false
+141,2025-2026,2,available,Places available,,true,false,false
+141,2024-2025,2,available,Places available,,true,false,false
+141,2023-2024,2,available,Places available,,true,false,false
+141,2022-2023,1,available,Places available,,true,false,false
+142,2026-2027,6,filled,All places filled,#50D691,false,false,false
+142,2025-2026,6,filled,All places filled,#50D691,false,false,false
+142,2024-2025,7,filled,All places filled,#50D691,false,false,false
+142,2023-2024,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+142,2022-2023,6,filled,All places filled,#50D691,false,false,false
+143,2026-2027,2,available,Places available,,true,false,false
+143,2025-2026,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+143,2024-2025,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+143,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+143,2022-2023,2,available,Places available,,true,false,false
+144,2026-2027,3,available,Places available,,true,false,false
+144,2025-2026,3,filled,All places filled,#50D691,false,false,false
+144,2024-2025,3,available,Places available,,true,false,false
+144,2023-2024,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+144,2022-2023,1,available,Places available,,true,false,false
+145,2026-2027,6,filled,All places filled,#50D691,false,false,false
+145,2025-2026,3,filled,All places filled,#50D691,false,false,false
+145,2024-2025,3,filled,All places filled,#50D691,false,false,false
+145,2023-2024,,no_data,No data,,false,false,true
+145,2022-2023,,no_data,No data,,false,false,true
+146,2026-2027,3,filled,All places filled,#50D691,false,false,false
+146,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+146,2024-2025,3,available,Places available,,true,false,false
+146,2023-2024,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+146,2022-2023,2,available,Places available,,true,false,false
+147,2026-2027,4,filled,All places filled,#50D691,false,false,false
+147,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+147,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+147,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+147,2022-2023,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+148,2026-2027,2,filled,All places filled,#50D691,false,false,false
+148,2025-2026,2,available,Places available,,true,false,false
+148,2024-2025,3,filled,All places filled,#50D691,false,false,false
+148,2023-2024,3,filled,All places filled,#50D691,false,false,false
+148,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+149,2026-2027,3,filled,All places filled,#50D691,false,false,false
+149,2025-2026,2,filled,All places filled,#50D691,false,false,false
+149,2024-2025,2,filled,All places filled,#50D691,false,false,false
+149,2023-2024,2,filled,All places filled,#50D691,false,false,false
+149,2022-2023,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+150,2026-2027,3,filled,All places filled,#50D691,false,false,false
+150,2025-2026,3,filled,All places filled,#50D691,false,false,false
+150,2024-2025,3,filled,All places filled,#50D691,false,false,false
+150,2023-2024,3,available,Places available,,true,false,false
+150,2022-2023,,no_places,No places offered,,false,true,false
+151,2026-2027,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+151,2025-2026,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+151,2024-2025,5,available,Places available,,true,false,false
+151,2023-2024,5,available,Places available,,true,false,false
+151,2022-2023,,no_places,No places offered,,false,true,false
+152,2026-2027,2,available,Places available,,true,false,false
+152,2025-2026,2,available,Places available,,true,false,false
+152,2024-2025,2,available,Places available,,true,false,false
+152,2023-2024,2,available,Places available,,true,false,false
+152,2022-2023,2,available,Places available,,true,false,false
+153,2026-2027,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+153,2025-2026,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+153,2024-2025,,no_data,No data,,false,false,true
+153,2023-2024,,no_data,No data,,false,false,true
+153,2022-2023,,no_data,No data,,false,false,true
+154,2026-2027,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+154,2025-2026,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+154,2024-2025,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+154,2023-2024,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+154,2022-2023,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+155,2026-2027,3,filled,All places filled,#50D691,false,false,false
+155,2025-2026,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+155,2024-2025,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+155,2023-2024,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+155,2022-2023,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+156,2026-2027,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+156,2025-2026,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+156,2024-2025,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+156,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+156,2022-2023,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+157,2026-2027,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+157,2025-2026,6,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+157,2024-2025,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+157,2023-2024,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+157,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+158,2026-2027,18,available,Places available,,true,false,false
+158,2025-2026,15,available,Places available,,true,false,false
+158,2024-2025,15,available,Places available,,true,false,false
+158,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+158,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+159,2026-2027,12,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+159,2025-2026,12,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+159,2024-2025,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+159,2023-2024,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+159,2022-2023,16,competitive,All places filled — competitive,#FDDB71,false,false,false
+160,2026-2027,20,filled,All places filled,#50D691,false,false,false
+160,2025-2026,20,filled,All places filled,#50D691,false,false,false
+160,2024-2025,18,available,Places available,,true,false,false
+160,2023-2024,18,filled,All places filled,#50D691,false,false,false
+160,2022-2023,16,filled,All places filled,#50D691,false,false,false
+161,2026-2027,1,filled,All places filled,#50D691,false,false,false
+161,2025-2026,2,available,Places available,,true,false,false
+161,2024-2025,,no_data,No data,,false,false,true
+161,2023-2024,,no_data,No data,,false,false,true
+161,2022-2023,,no_data,No data,,false,false,true
+162,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+162,2025-2026,6,filled,All places filled,#50D691,false,false,false
+162,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+162,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+162,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+163,2026-2027,4,filled,All places filled,#50D691,false,false,false
+163,2025-2026,3,filled,All places filled,#50D691,false,false,false
+163,2024-2025,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+163,2023-2024,2,filled,All places filled,#50D691,false,false,false
+163,2022-2023,,no_places,No places offered,,false,true,false
+164,2026-2027,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+164,2025-2026,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+164,2024-2025,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+164,2023-2024,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+164,2022-2023,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+165,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+165,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+165,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+165,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+165,2022-2023,4,filled,All places filled,#50D691,false,false,false
+166,2026-2027,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+166,2025-2026,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+166,2024-2025,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+166,2023-2024,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+166,2022-2023,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+167,2026-2027,12,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+167,2025-2026,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+167,2024-2025,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+167,2023-2024,7,competitive,All places filled — competitive,#FDDB71,false,false,false
+167,2022-2023,5,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+168,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+168,2025-2026,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+168,2024-2025,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+168,2023-2024,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+168,2022-2023,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+169,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+169,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+169,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+169,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+169,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+170,2026-2027,2,filled,All places filled,#50D691,false,false,false
+170,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+170,2024-2025,2,available,Places available,,true,false,false
+170,2023-2024,2,filled,All places filled,#50D691,false,false,false
+170,2022-2023,2,available,Places available,,true,false,false
+171,2026-2027,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+171,2025-2026,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+171,2024-2025,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+171,2023-2024,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+171,2022-2023,6,filled,All places filled,#50D691,false,false,false
+172,2026-2027,6,filled,All places filled,#50D691,false,false,false
+172,2025-2026,6,filled,All places filled,#50D691,false,false,false
+172,2024-2025,6,available,Places available,,true,false,false
+172,2023-2024,6,available,Places available,,true,false,false
+172,2022-2023,4,available,Places available,,true,false,false
+173,2026-2027,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+173,2025-2026,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+173,2024-2025,12,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+173,2023-2024,12,competitive,All places filled — competitive,#FDDB71,false,false,false
+173,2022-2023,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+174,2026-2027,4,filled,All places filled,#50D691,false,false,false
+174,2025-2026,4,filled,All places filled,#50D691,false,false,false
+174,2024-2025,4,filled,All places filled,#50D691,false,false,false
+174,2023-2024,4,filled,All places filled,#50D691,false,false,false
+174,2022-2023,4,filled,All places filled,#50D691,false,false,false
+175,2026-2027,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+175,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+175,2024-2025,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+175,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+175,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+176,2026-2027,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+176,2025-2026,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+176,2024-2025,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+176,2023-2024,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+176,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+177,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+177,2025-2026,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+177,2024-2025,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+177,2023-2024,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+177,2022-2023,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+178,2026-2027,4,filled,All places filled,#50D691,false,false,false
+178,2025-2026,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+178,2024-2025,4,filled,All places filled,#50D691,false,false,false
+178,2023-2024,4,available,Places available,,true,false,false
+178,2022-2023,4,filled,All places filled,#50D691,false,false,false
+179,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+179,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+179,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+179,2023-2024,4,filled,All places filled,#50D691,false,false,false
+179,2022-2023,4,filled,All places filled,#50D691,false,false,false
+180,2026-2027,3,filled,All places filled,#50D691,false,false,false
+180,2025-2026,,no_data,No data,,false,false,true
+180,2024-2025,,no_data,No data,,false,false,true
+180,2023-2024,,no_data,No data,,false,false,true
+180,2022-2023,,no_data,No data,,false,false,true
+181,2026-2027,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+181,2025-2026,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+181,2024-2025,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+181,2023-2024,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+181,2022-2023,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+182,2026-2027,2,available,Places available,,true,false,false
+182,2025-2026,2,available,Places available,,true,false,false
+182,2024-2025,2,available,Places available,,true,false,false
+182,2023-2024,2,filled,All places filled,#50D691,false,false,false
+182,2022-2023,2,filled,All places filled,#50D691,false,false,false
+183,2026-2027,2,available,Places available,,true,false,false
+183,2025-2026,,no_data,No data,,false,false,true
+183,2024-2025,,no_data,No data,,false,false,true
+183,2023-2024,,no_data,No data,,false,false,true
+183,2022-2023,,no_data,No data,,false,false,true
+184,2026-2027,2,available,Places available,,true,false,false
+184,2025-2026,2,available,Places available,,true,false,false
+184,2024-2025,2,available,Places available,,true,false,false
+184,2023-2024,2,filled,All places filled,#50D691,false,false,false
+184,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+185,2026-2027,2,available,Places available,,true,false,false
+185,2025-2026,2,available,Places available,,true,false,false
+185,2024-2025,1,filled,All places filled,#50D691,false,false,false
+185,2023-2024,2,filled,All places filled,#50D691,false,false,false
+185,2022-2023,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+186,2026-2027,,no_places,No places offered,,false,true,false
+186,2025-2026,,no_places,No places offered,,false,true,false
+186,2024-2025,,no_places,No places offered,,false,true,false
+186,2023-2024,1,available,Places available,,true,false,false
+186,2022-2023,,no_places,No places offered,,false,true,false
+187,2026-2027,2,filled,All places filled,#50D691,false,false,false
+187,2025-2026,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+187,2024-2025,2,filled,All places filled,#50D691,false,false,false
+187,2023-2024,1,filled,All places filled,#50D691,false,false,false
+187,2022-2023,,no_data,No data,,false,false,true
+188,2026-2027,2,filled,All places filled,#50D691,false,false,false
+188,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+188,2024-2025,2,available,Places available,,true,false,false
+188,2023-2024,,no_places,No places offered,,false,true,false
+188,2022-2023,1,available,Places available,,true,false,false
+189,2026-2027,2,filled,All places filled,#50D691,false,false,false
+189,2025-2026,2,filled,All places filled,#50D691,false,false,false
+189,2024-2025,2,filled,All places filled,#50D691,false,false,false
+189,2023-2024,2,filled,All places filled,#50D691,false,false,false
+189,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+190,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+190,2025-2026,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+190,2024-2025,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+190,2023-2024,2,filled,All places filled,#50D691,false,false,false
+190,2022-2023,2,filled,All places filled,#50D691,false,false,false
+191,2026-2027,2,filled,All places filled,#50D691,false,false,false
+191,2025-2026,2,filled,All places filled,#50D691,false,false,false
+191,2024-2025,2,available,Places available,,true,false,false
+191,2023-2024,1,available,Places available,,true,false,false
+191,2022-2023,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+192,2026-2027,3,available,Places available,,true,false,false
+192,2025-2026,3,filled,All places filled,#50D691,false,false,false
+192,2024-2025,3,available,Places available,,true,false,false
+192,2023-2024,3,available,Places available,,true,false,false
+192,2022-2023,3,filled,All places filled,#50D691,false,false,false
+193,2026-2027,2,filled,All places filled,#50D691,false,false,false
+193,2025-2026,2,filled,All places filled,#50D691,false,false,false
+193,2024-2025,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+193,2023-2024,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+193,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+194,2026-2027,4,filled,All places filled,#50D691,false,false,false
+194,2025-2026,4,available,Places available,,true,false,false
+194,2024-2025,4,available,Places available,,true,false,false
+194,2023-2024,,no_places,No places offered,,false,true,false
+194,2022-2023,4,available,Places available,,true,false,false
+195,2026-2027,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+195,2025-2026,4,filled,All places filled,#50D691,false,false,false
+195,2024-2025,4,filled,All places filled,#50D691,false,false,false
+195,2023-2024,2,filled,All places filled,#50D691,false,false,false
+195,2022-2023,2,filled,All places filled,#50D691,false,false,false
+196,2026-2027,4,filled,All places filled,#50D691,false,false,false
+196,2025-2026,2,filled,All places filled,#50D691,false,false,false
+196,2024-2025,4,available,Places available,,true,false,false
+196,2023-2024,4,available,Places available,,true,false,false
+196,2022-2023,3,available,Places available,,true,false,false
+197,2026-2027,4,filled,All places filled,#50D691,false,false,false
+197,2025-2026,4,filled,All places filled,#50D691,false,false,false
+197,2024-2025,4,filled,All places filled,#50D691,false,false,false
+197,2023-2024,6,available,Places available,,true,false,false
+197,2022-2023,6,available,Places available,,true,false,false
+198,2026-2027,3,available,Places available,,true,false,false
+198,2025-2026,3,available,Places available,,true,false,false
+198,2024-2025,,no_places,No places offered,,false,true,false
+198,2023-2024,3,available,Places available,,true,false,false
+198,2022-2023,3,available,Places available,,true,false,false
+199,2026-2027,1,available,Places available,,true,false,false
+199,2025-2026,2,filled,All places filled,#50D691,false,false,false
+199,2024-2025,2,available,Places available,,true,false,false
+199,2023-2024,2,available,Places available,,true,false,false
+199,2022-2023,2,available,Places available,,true,false,false
+200,2026-2027,2,available,Places available,,true,false,false
+200,2025-2026,2,available,Places available,,true,false,false
+200,2024-2025,2,available,Places available,,true,false,false
+200,2023-2024,,no_places,No places offered,,false,true,false
+200,2022-2023,1,available,Places available,,true,false,false
+201,2026-2027,2,available,Places available,,true,false,false
+201,2025-2026,2,available,Places available,,true,false,false
+201,2024-2025,3,available,Places available,,true,false,false
+201,2023-2024,2,available,Places available,,true,false,false
+201,2022-2023,2,available,Places available,,true,false,false
+202,2026-2027,4,available,Places available,,true,false,false
+202,2025-2026,3,available,Places available,,true,false,false
+202,2024-2025,3,available,Places available,,true,false,false
+202,2023-2024,2,available,Places available,,true,false,false
+202,2022-2023,2,available,Places available,,true,false,false
+203,2026-2027,4,filled,All places filled,#50D691,false,false,false
+203,2025-2026,6,available,Places available,,true,false,false
+203,2024-2025,4,available,Places available,,true,false,false
+203,2023-2024,4,filled,All places filled,#50D691,false,false,false
+203,2022-2023,,no_data,No data,,false,false,true
+204,2026-2027,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+204,2025-2026,2,filled,All places filled,#50D691,false,false,false
+204,2024-2025,,no_places,No places offered,,false,true,false
+204,2023-2024,,no_places,No places offered,,false,true,false
+204,2022-2023,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+205,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+205,2025-2026,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+205,2024-2025,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+205,2023-2024,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+205,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+206,2026-2027,2,filled,All places filled,#50D691,false,false,false
+206,2025-2026,2,filled,All places filled,#50D691,false,false,false
+206,2024-2025,2,filled,All places filled,#50D691,false,false,false
+206,2023-2024,2,available,Places available,,true,false,false
+206,2022-2023,2,available,Places available,,true,false,false
+207,2026-2027,2,available,Places available,,true,false,false
+207,2025-2026,2,available,Places available,,true,false,false
+207,2024-2025,4,available,Places available,,true,false,false
+207,2023-2024,,no_places,No places offered,,false,true,false
+207,2022-2023,4,available,Places available,,true,false,false
+208,2026-2027,,no_places,No places offered,,false,true,false
+208,2025-2026,,no_places,No places offered,,false,true,false
+208,2024-2025,8,filled,All places filled,#50D691,false,false,false
+208,2023-2024,5,available,Places available,,true,false,false
+208,2022-2023,10,available,Places available,,true,false,false
+209,2026-2027,2,filled,All places filled,#50D691,false,false,false
+209,2025-2026,2,available,Places available,,true,false,false
+209,2024-2025,2,available,Places available,,true,false,false
+209,2023-2024,2,available,Places available,,true,false,false
+209,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+210,2026-2027,3,available,Places available,,true,false,false
+210,2025-2026,3,available,Places available,,true,false,false
+210,2024-2025,4,available,Places available,,true,false,false
+210,2023-2024,4,available,Places available,,true,false,false
+210,2022-2023,4,available,Places available,,true,false,false
+211,2026-2027,5,available,Places available,,true,false,false
+211,2025-2026,5,available,Places available,,true,false,false
+211,2024-2025,5,available,Places available,,true,false,false
+211,2023-2024,5,available,Places available,,true,false,false
+211,2022-2023,5,available,Places available,,true,false,false
+212,2026-2027,3,available,Places available,,true,false,false
+212,2025-2026,3,available,Places available,,true,false,false
+212,2024-2025,,no_places,No places offered,,false,true,false
+212,2023-2024,6,available,Places available,,true,false,false
+212,2022-2023,6,available,Places available,,true,false,false
+213,2026-2027,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+213,2025-2026,6,filled,All places filled,#50D691,false,false,false
+213,2024-2025,6,filled,All places filled,#50D691,false,false,false
+213,2023-2024,6,filled,All places filled,#50D691,false,false,false
+213,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+214,2026-2027,2,available,Places available,,true,false,false
+214,2025-2026,2,available,Places available,,true,false,false
+214,2024-2025,2,available,Places available,,true,false,false
+214,2023-2024,2,available,Places available,,true,false,false
+214,2022-2023,2,available,Places available,,true,false,false
+215,2026-2027,2,available,Places available,,true,false,false
+215,2025-2026,2,available,Places available,,true,false,false
+215,2024-2025,2,available,Places available,,true,false,false
+215,2023-2024,2,available,Places available,,true,false,false
+215,2022-2023,4,available,Places available,,true,false,false
+216,2026-2027,2,available,Places available,,true,false,false
+216,2025-2026,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+216,2024-2025,3,available,Places available,,true,false,false
+216,2023-2024,4,filled,All places filled,#50D691,false,false,false
+216,2022-2023,6,available,Places available,,true,false,false
+217,2026-2027,4,available,Places available,,true,false,false
+217,2025-2026,5,available,Places available,,true,false,false
+217,2024-2025,5,available,Places available,,true,false,false
+217,2023-2024,6,available,Places available,,true,false,false
+217,2022-2023,6,available,Places available,,true,false,false
+218,2026-2027,2,available,Places available,,true,false,false
+218,2025-2026,2,filled,All places filled,#50D691,false,false,false
+218,2024-2025,2,available,Places available,,true,false,false
+218,2023-2024,,no_places,No places offered,,false,true,false
+218,2022-2023,2,available,Places available,,true,false,false
+219,2026-2027,3,available,Places available,,true,false,false
+219,2025-2026,4,available,Places available,,true,false,false
+219,2024-2025,4,available,Places available,,true,false,false
+219,2023-2024,4,available,Places available,,true,false,false
+219,2022-2023,4,available,Places available,,true,false,false
+220,2026-2027,,no_places,No places offered,,false,true,false
+220,2025-2026,1,available,Places available,,true,false,false
+220,2024-2025,,no_places,No places offered,,false,true,false
+220,2023-2024,2,available,Places available,,true,false,false
+220,2022-2023,2,available,Places available,,true,false,false
+221,2026-2027,6,available,Places available,,true,false,false
+221,2025-2026,3,available,Places available,,true,false,false
+221,2024-2025,6,available,Places available,,true,false,false
+221,2023-2024,4,available,Places available,,true,false,false
+221,2022-2023,4,available,Places available,,true,false,false
+222,2026-2027,5,available,Places available,,true,false,false
+222,2025-2026,5,available,Places available,,true,false,false
+222,2024-2025,5,available,Places available,,true,false,false
+222,2023-2024,4,available,Places available,,true,false,false
+222,2022-2023,4,available,Places available,,true,false,false
+223,2026-2027,2,available,Places available,,true,false,false
+223,2025-2026,2,available,Places available,,true,false,false
+223,2024-2025,2,available,Places available,,true,false,false
+223,2023-2024,3,available,Places available,,true,false,false
+223,2022-2023,2,available,Places available,,true,false,false
+224,2026-2027,,no_places,No places offered,,false,true,false
+224,2025-2026,,no_places,No places offered,,false,true,false
+224,2024-2025,,no_places,No places offered,,false,true,false
+224,2023-2024,5,available,Places available,,true,false,false
+224,2022-2023,5,available,Places available,,true,false,false
+225,2026-2027,6,filled,All places filled,#50D691,false,false,false
+225,2025-2026,6,available,Places available,,true,false,false
+225,2024-2025,6,available,Places available,,true,false,false
+225,2023-2024,10,available,Places available,,true,false,false
+225,2022-2023,10,filled,All places filled,#50D691,false,false,false
+226,2026-2027,1,competitive,All places filled — competitive,#FDDB71,false,false,false
+226,2025-2026,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+226,2024-2025,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+226,2023-2024,7,competitive,All places filled — competitive,#FDDB71,false,false,false
+226,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+227,2026-2027,2,available,Places available,,true,false,false
+227,2025-2026,,no_places,No places offered,,false,true,false
+227,2024-2025,2,available,Places available,,true,false,false
+227,2023-2024,2,available,Places available,,true,false,false
+227,2022-2023,,no_data,No data,,false,false,true
+228,2026-2027,7,available,Places available,,true,false,false
+228,2025-2026,7,available,Places available,,true,false,false
+228,2024-2025,7,available,Places available,,true,false,false
+228,2023-2024,8,available,Places available,,true,false,false
+228,2022-2023,8,available,Places available,,true,false,false
+229,2026-2027,10,filled,All places filled,#50D691,false,false,false
+229,2025-2026,10,filled,All places filled,#50D691,false,false,false
+229,2024-2025,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+229,2023-2024,10,filled,All places filled,#50D691,false,false,false
+229,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+230,2026-2027,4,filled,All places filled,#50D691,false,false,false
+230,2025-2026,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+230,2024-2025,8,available,Places available,,true,false,false
+230,2023-2024,6,filled,All places filled,#50D691,false,false,false
+230,2022-2023,10,filled,All places filled,#50D691,false,false,false
+231,2026-2027,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+231,2025-2026,5,filled,All places filled,#50D691,false,false,false
+231,2024-2025,4,filled,All places filled,#50D691,false,false,false
+231,2023-2024,4,filled,All places filled,#50D691,false,false,false
+231,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+232,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+232,2025-2026,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+232,2024-2025,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+232,2023-2024,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+232,2022-2023,,no_places,No places offered,,false,true,false
+233,2026-2027,4,available,Places available,,true,false,false
+233,2025-2026,,no_data,No data,,false,false,true
+233,2024-2025,,no_data,No data,,false,false,true
+233,2023-2024,,no_data,No data,,false,false,true
+233,2022-2023,,no_data,No data,,false,false,true
+234,2026-2027,5,available,Places available,,true,false,false
+234,2025-2026,5,available,Places available,,true,false,false
+234,2024-2025,4,available,Places available,,true,false,false
+234,2023-2024,4,available,Places available,,true,false,false
+234,2022-2023,4,filled,All places filled,#50D691,false,false,false
+235,2026-2027,5,available,Places available,,true,false,false
+235,2025-2026,2,filled,All places filled,#50D691,false,false,false
+235,2024-2025,5,available,Places available,,true,false,false
+235,2023-2024,,no_places,No places offered,,false,true,false
+235,2022-2023,4,filled,All places filled,#50D691,false,false,false
+236,2026-2027,5,available,Places available,,true,false,false
+236,2025-2026,5,available,Places available,,true,false,false
+236,2024-2025,8,available,Places available,,true,false,false
+236,2023-2024,8,available,Places available,,true,false,false
+236,2022-2023,8,filled,All places filled,#50D691,false,false,false
+237,2026-2027,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+237,2025-2026,2,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+237,2024-2025,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+237,2023-2024,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+237,2022-2023,1,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+238,2026-2027,2,available,Places available,,true,false,false
+238,2025-2026,2,available,Places available,,true,false,false
+238,2024-2025,3,available,Places available,,true,false,false
+238,2023-2024,3,available,Places available,,true,false,false
+238,2022-2023,2,competitive,All places filled — competitive,#FDDB71,false,false,false
+239,2026-2027,5,available,Places available,,true,false,false
+239,2025-2026,5,available,Places available,,true,false,false
+239,2024-2025,3,available,Places available,,true,false,false
+239,2023-2024,4,available,Places available,,true,false,false
+239,2022-2023,3,competitive,All places filled — competitive,#FDDB71,false,false,false
+240,2026-2027,2,available,Places available,,true,false,false
+240,2025-2026,3,available,Places available,,true,false,false
+240,2024-2025,3,available,Places available,,true,false,false
+240,2023-2024,3,available,Places available,,true,false,false
+240,2022-2023,2,available,Places available,,true,false,false
+241,2026-2027,6,available,Places available,,true,false,false
+241,2025-2026,10,available,Places available,,true,false,false
+241,2024-2025,6,available,Places available,,true,false,false
+241,2023-2024,6,available,Places available,,true,false,false
+241,2022-2023,6,available,Places available,,true,false,false
+242,2026-2027,4,filled,All places filled,#50D691,false,false,false
+242,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+242,2024-2025,2,filled,All places filled,#50D691,false,false,false
+242,2023-2024,4,filled,All places filled,#50D691,false,false,false
+242,2022-2023,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+243,2026-2027,10,available,Places available,,true,false,false
+243,2025-2026,8,filled,All places filled,#50D691,false,false,false
+243,2024-2025,9,filled,All places filled,#50D691,false,false,false
+243,2023-2024,9,filled,All places filled,#50D691,false,false,false
+243,2022-2023,7,competitive,All places filled — competitive,#FDDB71,false,false,false
+244,2026-2027,4,filled,All places filled,#50D691,false,false,false
+244,2025-2026,4,competitive,All places filled — competitive,#FDDB71,false,false,false
+244,2024-2025,3,filled,All places filled,#50D691,false,false,false
+244,2023-2024,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+244,2022-2023,3,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+245,2026-2027,2,available,Places available,,true,false,false
+245,2025-2026,2,filled,All places filled,#50D691,false,false,false
+245,2024-2025,4,available,Places available,,true,false,false
+245,2023-2024,4,available,Places available,,true,false,false
+245,2022-2023,2,available,Places available,,true,false,false
+246,2026-2027,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+246,2025-2026,5,competitive,All places filled — competitive,#FDDB71,false,false,false
+246,2024-2025,6,filled,All places filled,#50D691,false,false,false
+246,2023-2024,8,filled,All places filled,#50D691,false,false,false
+246,2022-2023,7,competitive,All places filled — competitive,#FDDB71,false,false,false
+247,2026-2027,4,available,Places available,,true,false,false
+247,2025-2026,3,available,Places available,,true,false,false
+247,2024-2025,4,available,Places available,,true,false,false
+247,2023-2024,4,available,Places available,,true,false,false
+247,2022-2023,3,available,Places available,,true,false,false
+248,2026-2027,8,available,Places available,,true,false,false
+248,2025-2026,8,filled,All places filled,#50D691,false,false,false
+248,2024-2025,10,available,Places available,,true,false,false
+248,2023-2024,8,available,Places available,,true,false,false
+248,2022-2023,8,filled,All places filled,#50D691,false,false,false
+249,2026-2027,11,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+249,2025-2026,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+249,2024-2025,8,filled,All places filled,#50D691,false,false,false
+249,2023-2024,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+249,2022-2023,4,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+250,2026-2027,10,available,Places available,,true,false,false
+250,2025-2026,10,available,Places available,,true,false,false
+250,2024-2025,12,available,Places available,,true,false,false
+250,2023-2024,12,available,Places available,,true,false,false
+250,2022-2023,10,filled,All places filled,#50D691,false,false,false
+251,2026-2027,4,available,Places available,,true,false,false
+251,2025-2026,4,filled,All places filled,#50D691,false,false,false
+251,2024-2025,4,available,Places available,,true,false,false
+251,2023-2024,5,filled,All places filled,#50D691,false,false,false
+251,2022-2023,4,filled,All places filled,#50D691,false,false,false
+252,2026-2027,11,competitive,All places filled — competitive,#FDDB71,false,false,false
+252,2025-2026,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+252,2024-2025,10,competitive,All places filled — competitive,#FDDB71,false,false,false
+252,2023-2024,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+252,2022-2023,10,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+253,2026-2027,6,competitive,All places filled — competitive,#FDDB71,false,false,false
+253,2025-2026,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+253,2024-2025,8,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+253,2023-2024,8,competitive,All places filled — competitive,#FDDB71,false,false,false
+253,2022-2023,7,very_competitive,All places filled — very competitive,#8586C6,false,false,false
+254,2026-2027,1,filled,All places filled,#50D691,false,false,false
+254,2025-2026,2,available,Places available,,true,false,false
+254,2024-2025,,no_places,No places offered,,false,true,false
+254,2023-2024,,no_places,No places offered,,false,true,false
+254,2022-2023,,no_places,No places offered,,false,true,false
+255,2026-2027,,no_places,No places offered,,false,true,false
+255,2025-2026,,no_places,No places offered,,false,true,false
+255,2024-2025,2,available,Places available,,true,false,false
+255,2023-2024,1,available,Places available,,true,false,false
+255,2022-2023,4,available,Places available,,true,false,false
+256,2026-2027,6,available,Places available,,true,false,false
+256,2025-2026,8,available,Places available,,true,false,false
+256,2024-2025,8,available,Places available,,true,false,false
+256,2023-2024,7,available,Places available,,true,false,false
+256,2022-2023,7,filled,All places filled,#50D691,false,false,false
+257,2026-2027,2,available,Places available,,true,false,false
+257,2025-2026,2,filled,All places filled,#50D691,false,false,false
+257,2024-2025,2,available,Places available,,true,false,false
+257,2023-2024,2,available,Places available,,true,false,false
+257,2022-2023,,no_places,No places offered,,false,true,false
+258,2026-2027,,no_places,No places offered,,false,true,false
+258,2025-2026,2,available,Places available,,true,false,false
+258,2024-2025,,no_places,No places offered,,false,true,false
+258,2023-2024,2,available,Places available,,true,false,false
+258,2022-2023,,no_places,No places offered,,false,true,false
