@@ -22,6 +22,9 @@ const COUNTRY_CODE={
 };
 function countryFlag(country){const code=COUNTRY_CODE[country];return code?[...code].map(c=>String.fromCodePoint(127397+c.charCodeAt(0))).join(''):'🌐'}
 function countryLineHtml(country){return `<span class="country-line"><span class="country-flag" aria-hidden="true">${countryFlag(country)}</span><strong>${esc(country)}</strong></span>`}
+function universityNameKey(u){return `${u.country}||${u.name}`.toLowerCase()}
+function isMultiAgreement(u){return (state.nameCounts.get(universityNameKey(u))||0)>1}
+function listUniversityTitle(u){return isMultiAgreement(u)&&u.school&&u.school!=='Regular'?`${u.name} — ${u.school}`:u.name}
 
 const CONTINENT_BY_COUNTRY={
   'Argentina':'South America','Australia':'Oceania','Austria':'Europe','Belgium':'Europe','Brazil':'South America',
@@ -72,7 +75,7 @@ const COORD_OVERRIDES={
 const state={
   all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),profiles:new Map(),costByCountry:new Map(),requirements:new Map(),
   favorites:new Set(),compare:new Set(),
-  arwuReady:false,arwuRankedCount:0,arwuPendingCount:0,sortKey:'demandScore',sortDir:1,
+  arwuReady:false,arwuRankedCount:0,arwuPendingCount:0,nameCounts:new Map(),sortKey:'demandScore',sortDir:1,
   climateLoading:false,climateDone:0,climateTotal:0,profileLoading:false,profileDone:0,profileTotal:0,currentDetailId:null
 };
 const $=s=>document.querySelector(s);
@@ -87,7 +90,7 @@ function places(u,y){const h=u.history[y],v=h?.places;return v==null?(h?.noPlace
 function tempText(v){return Number.isFinite(v)?`${v.toFixed(1)}°C`:'…'}
 function climateValue(c,key){if(!c)return null;if(key==='AVG'){const vals=['SEP','OCT','NOV','DEC'].map(k=>c[k]).filter(Number.isFinite);return vals.length===4?vals.reduce((a,b)=>a+b,0)/4:null}return Number.isFinite(c[key])?c[key]:null}
 function formatRank(rank){const s=String(rank||'');return /^\d+$/.test(s)?`#${s}`:s.replace('-', '–')}
-function rankText(u){if(!state.arwuReady)return '…';if(u.arwuRank)return formatRank(u.arwuRank);return 'No ARWU match'}
+function rankText(u){if(!state.arwuReady)return '…';if(u.arwuRank)return formatRank(u.arwuRank);if(u.arwuStatus==='not_top_1000')return 'Not in top 1000';return 'No verified ARWU match'}
 const INFO_CONTENT={
   competitiveness:{
     title:'CBS competitiveness',
@@ -316,7 +319,7 @@ function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNul
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
   body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u),r=requirement(u);return `<tr>
-    <td class="university-cell"><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted university-school">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td>
+    <td class="university-cell"><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(listUniversityTitle(u))}</button></div><span class="muted university-school">${isMultiAgreement(u)?'Separate CBS agreement':esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td>
     <td class="location-cell">${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td>
     <td class="places-cell"><strong>${u.latestPlaces??'—'}</strong><span class="cell-caption">current places</span></td>
     <td class="availability-cell"><strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years available</span></td>
@@ -467,7 +470,7 @@ async function fetchGridClimate(c){
   let lastErr=null;for(let attempt=0;attempt<3;attempt++){try{const ctl=new AbortController();const timer=setTimeout(()=>ctl.abort(),15000);const r=await fetch(url,{signal:ctl.signal,cache:'no-store'});clearTimeout(timer);if(!r.ok)throw new Error(`NASA POWER ${r.status}`);const j=await r.json();const p=j?.properties?.parameter?.T2M;if(!p)throw new Error('No T2M climate data');const v={SEP:Number(p.SEP),OCT:Number(p.OCT),NOV:Number(p.NOV),DEC:Number(p.DEC)};if(!Object.values(v).every(Number.isFinite))throw new Error('Incomplete climate data');state.gridClimate.set(key,v);return v}catch(e){lastErr=e;await wait(350*(attempt+1))}}throw lastErr||new Error('Climate request failed');
 }
 function refreshDataStatus(){
-  const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} local matches · ${state.arwuPendingCount} no confident match`:'ARWU: loading local snapshot';
+  const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} ranked · ${state.arwuPendingCount} not yet verified`:'ARWU: loading local snapshot';
   const climate=state.climateLoading?`Climate: ${state.climate.size}/${state.all.length} local/loaded · filling missing values`:`Climate: ${state.climate.size}/${state.all.length} local/loaded`;
   const hist=`Profiles: ${state.profiles.size}/${state.all.length} local`;
   const req=`MoveON: ${[...state.requirements.values()].filter(x=>x.matchStatus==='matched').length}/${state.all.length} current matches`;
@@ -487,7 +490,7 @@ function rankLower(rank){if(!rank)return null;const m=String(rank).match(/\d+/);
 async function loadArwu(){
   let rows=[];try{rows=await csvObjects('data/arwu_2026.csv')}catch(e){console.warn('ARWU CSV unavailable',e)}
   const byId=new Map(rows.map(r=>[Number(r.university_id),r]));let ranked=0,unmatched=0;
-  for(const u of state.all){const x=byId.get(u.id);const rank=(x?.rank||'').trim();u.arwuRank=rank||null;u.arwuSort=rankLower(rank);u.arwuMatchedInstitution=(x?.matched_institution||'').trim()||null;u.arwuPending=false;u.arwuUnmatched=!u.arwuRank;if(u.arwuRank)ranked++;else unmatched++}
+  for(const u of state.all){const x=byId.get(u.id);const rank=(x?.rank||'').trim();u.arwuRank=rank||null;u.arwuSort=rankLower(rank);u.arwuMatchedInstitution=(x?.matched_institution||'').trim()||null;u.arwuStatus=(x?.status||'').trim()||null;u.arwuPending=false;u.arwuUnmatched=!u.arwuRank;if(u.arwuRank)ranked++;else unmatched++}
   state.arwuRankedCount=ranked;state.arwuPendingCount=unmatched;state.arwuReady=true;refreshDataStatus();
 }
 
@@ -544,6 +547,7 @@ async function loadStaticCost(){
 
 async function init(){
   state.all=await loadCoreUniversities();
+  state.nameCounts=new Map();for(const u of state.all){const k=universityNameKey(u);state.nameCounts.set(k,(state.nameCounts.get(k)||0)+1)}
   await Promise.all([loadUniversityLocations(),loadStaticClimate(),loadStaticProfiles(),loadStaticCost(),loadStaticRequirements()]);
   await loadArwu();state.filtered=[...state.all];loadSavedSelections();
   const validIds=new Set(state.all.map(u=>u.id));state.favorites=new Set([...state.favorites].filter(id=>validIds.has(id)));state.compare=new Set([...state.compare].filter(id=>validIds.has(id)).slice(0,6));saveSelections();

@@ -37,12 +37,12 @@ CURRENT_YEAR = datetime.now(timezone.utc).year
 
 WIKI_API = "https://en.wikipedia.org/w/api.php"
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
-NASA_API = "https://power.larc.nasa.gov/api/temporal/monthly/climatology/point"
+NASA_API = "https://power.larc.nasa.gov/api/temporal/climatology/point"
 
 # Curated campus/city fallbacks take precedence over a parent university's coordinates.
 COORD_OVERRIDES = {
     2: (-34.6037, -58.3816), 3: (-32.9442, -60.6505), 26: (50.8798, 4.7005),
-    28: (-23.5505, -46.6333), 46: (-33.4489, -70.6693), 51: (22.5431, 114.0579),
+    28: (-23.5505, -46.6333), 46: (-33.4489, -70.6693), 50: (31.2304, 121.4737), 51: (22.5431, 114.0579),
     55: (29.8683, 121.5440), 113: (45.4642, 9.1900), 125: (3.0646, 101.6031),
     127: (19.4326, -99.1332), 128: (20.6597, -103.3496), 129: (19.4326, -99.1332),
     130: (25.6866, -100.3161), 131: (20.5888, -100.3899), 132: (19.3574, -99.2760),

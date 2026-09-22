@@ -48,7 +48,7 @@ university_id,university,rank,matched_institution,match_method,status,source_url
 47,Fudan University,41,Fudan University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
 48,Peking University,22,Peking University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
 49,Shanghai Jiao Tong University,27,Shanghai Jiao Tong University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-50,Shanghai University of Finance and Economics,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
+50,Shanghai University of Finance and Economics,901-1000,Shanghai University of Finance and Economics,verified,matched,https://www.shanghairanking.com/universities/shanghai-university-of-finance-and-economics,2026
 51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
 52,Tongji University,101-150,Tongji University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
 53,Tsinghua University,18,Tsinghua University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026

@@ -48,7 +48,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 47,Fudan University,China,Shanghai,Asia,31.224353,121.475916,CBS MoveON snapshot 2026-09-21
 48,Peking University,China,Beijing,Asia,39.908173,116.397947,CBS MoveON snapshot 2026-09-21
 49,Shanghai Jiao Tong University,China,Shanghai,Asia,31.224353,121.475916,CBS MoveON snapshot 2026-09-21
-50,Shanghai University of Finance and Economics,China,Shanghai,Asia,,,
+50,Shanghai University of Finance and Economics,China,Shanghai,Asia,31.2304,121.4737,manual city fallback — Shanghai
 51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",China,Shenzhen,Asia,22.5431,114.0579,manual campus/city fallback
 52,Tongji University,China,Shanghai,Asia,31.224353,121.475916,CBS MoveON snapshot 2026-09-21
 53,Tsinghua University,China,Beijing,Asia,39.908173,116.397947,CBS MoveON snapshot 2026-09-21
