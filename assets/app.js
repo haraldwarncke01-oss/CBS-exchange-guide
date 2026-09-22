@@ -88,6 +88,62 @@ function tempText(v){return Number.isFinite(v)?`${v.toFixed(1)}°C`:'…'}
 function climateValue(c,key){if(!c)return null;if(key==='AVG'){const vals=['SEP','OCT','NOV','DEC'].map(k=>c[k]).filter(Number.isFinite);return vals.length===4?vals.reduce((a,b)=>a+b,0)/4:null}return Number.isFinite(c[key])?c[key]:null}
 function formatRank(rank){const s=String(rank||'');return /^\d+$/.test(s)?`#${s}`:s.replace('-', '–')}
 function rankText(u){if(!state.arwuReady)return '…';if(u.arwuRank)return formatRank(u.arwuRank);return 'No ARWU match'}
+const INFO_CONTENT={
+  competitiveness:{
+    title:'CBS competitiveness',
+    body:`This is based on the colors in CBS's historical placement workbook. The selected history window is recency-weighted, so newer years count more than older years. “Places available” means places remained after allocation; “All places filled”, “Competitive” and “Very competitive” follow CBS's original categories.`
+  },
+  arwu:{
+    title:'ARWU 2026',
+    body:`ARWU is ShanghaiRanking's Academic Ranking of World Universities. More than 2,500 universities are evaluated and the best 1,000 are published. It is mainly a research ranking, using Nobel/Fields alumni and staff, highly cited researchers, Nature/Science papers, indexed research papers and per-capita academic performance. When ShanghaiRanking publishes an exact number, this site shows it. When ShanghaiRanking publishes a band such as 101–150 or 401–500, there is no official exact position inside that band, so we keep the official band rather than inventing a number.`,
+    link:'https://www.shanghairanking.com/methodology/arwu/2026',
+    linkLabel:'ARWU methodology'
+  },
+  climate:{
+    title:'Exchange-period temperature',
+    body:`The headline temperature is the average of September, October, November and December. The values are 1991–2020 climate normals for 2-metre air temperature from NASA POWER, using the university or city coordinates. They are useful for comparing typical climate, not for predicting the weather in a specific exchange year.`,
+    link:'https://power.larc.nasa.gov/',
+    linkLabel:'NASA POWER'
+  },
+  cost:{
+    title:'Cost of living + rent',
+    body:`This compares Numbeo's 2026 Mid-Year country-level Cost of Living + Rent Index with Denmark. “30% cheaper than Denmark” means the country's index is about 30% lower than Denmark's index. It is a broad country comparison — not a city-specific student budget — so rent and daily costs in the actual university city can differ substantially.`,
+    link:'https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp',
+    linkLabel:'Numbeo source'
+  }
+};
+function infoButton(key,label='More information'){return `<button class="info-button" type="button" data-info="${esc(key)}" aria-label="${esc(label)}" aria-expanded="false">i</button>`}
+function arwuRankNote(rank){const s=String(rank||'');if(!s)return '';return /^\d+$/.test(s)?'Official world rank':'Official ARWU rank band'}
+function metricLabel(text,key){return `<div class="metric-label-row"><span>${esc(text)}</span>${infoButton(key,`About ${text}`)}</div>`}
+let activeInfoButton=null;
+function closeInfoPopover(){
+  const pop=$('#infoPopover');if(!pop)return;
+  pop.hidden=true;pop.innerHTML='';
+  if(activeInfoButton){activeInfoButton.setAttribute('aria-expanded','false');activeInfoButton=null}
+}
+function positionInfoPopover(button){
+  const pop=$('#infoPopover');if(!pop||pop.hidden)return;
+  const rect=button.getBoundingClientRect(),margin=12;
+  const width=Math.min(350,window.innerWidth-margin*2);
+  pop.style.width=`${width}px`;
+  const left=Math.max(margin,Math.min(window.innerWidth-width-margin,rect.left+rect.width/2-width/2));
+  pop.style.left=`${left}px`;
+  let top=rect.bottom+9;
+  const h=pop.offsetHeight;
+  if(top+h>window.innerHeight-margin)top=Math.max(margin,rect.top-h-9);
+  pop.style.top=`${top}px`;
+}
+function openInfoPopover(button,key){
+  const data=INFO_CONTENT[key];if(!data)return;
+  if(activeInfoButton===button&&!$('#infoPopover').hidden){closeInfoPopover();return}
+  closeInfoPopover();
+  activeInfoButton=button;button.setAttribute('aria-expanded','true');
+  const pop=$('#infoPopover');
+  pop.innerHTML=`<div class="info-popover-head"><strong>${esc(data.title)}</strong><button type="button" class="info-popover-close" aria-label="Close information">×</button></div><p>${esc(data.body)}</p>${data.link?`<a href="${esc(data.link)}" target="_blank" rel="noopener">${esc(data.linkLabel)} ↗</a>`:''}`;
+  pop.hidden=false;positionInfoPopover(button);
+  pop.querySelector('.info-popover-close')?.addEventListener('click',closeInfoPopover);
+}
+
 function continent(u){return u.continent||CONTINENT_BY_COUNTRY[u.country]||'Other'}
 function costIndex(u){const row=state.costByCountry.get(u.country);const v=row?.index;return Number.isFinite(v)?v:null}
 function costVsDenmark(u){const row=state.costByCountry.get(u.country);if(Number.isFinite(row?.pct))return row.pct;const v=costIndex(u),dk=Number.isFinite(row?.denmark)?row.denmark:DENMARK_COST_RENT_2026;return Number.isFinite(v)&&Number.isFinite(dk)?((v/dk)-1)*100:null}
@@ -313,7 +369,7 @@ function renderCompare(){
 }
 
 function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate snapshot pending for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
-function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><span class="muted">This country is not in the comparable Numbeo 2026 Mid-Year country table used here.</span>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><span class="muted">${esc(costLevel(u))}. Based on Numbeo's 2026 Mid-Year country Cost of Living + Rent Index: ${ci.toFixed(1)} for ${esc(u.country)} versus 54.8 for Denmark.</span><small>Country averages are a rough comparison, not a city-specific student budget.</small>`}
+function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><span class="muted">No comparable country-level snapshot is available.</span>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><span class="muted">${esc(costLevel(u))} · ${esc(u.country)} index ${ci.toFixed(1)} vs Denmark 54.8</span><small>Country-level comparison</small>`}
 function historyProfileHtml(u){
   const p=profile(u),fy=foundedYear(u);
   if(!p)return `<div class="history-profile loading-profile"><strong>Profile snapshot pending</strong><span class="muted">The local university profile CSV has not been populated for this institution yet. The automatic data refresh can fill it.</span></div>`;
@@ -352,14 +408,14 @@ function requirementsHtml(u){
 }
 function openDetail(id){
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
-  const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
+  const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><span class="rank-band-note">${esc(arwuRankNote(u.arwuRank))}</span>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
   $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
     <div class="detail-metrics">
-      <div class="metric-card"><span>Competitiveness · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
-      <div class="metric-card"><span>ARWU 2026</span>${rankMeta}<a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">Source</a></div>
-      <div class="metric-card climate-metric"><span>Exchange-period temperature</span>${climateDetails(c)}<small>NASA POWER 1991–2020 T2M climatology</small></div>
-      <div class="metric-card"><span>Cost of living + rent</span>${costDetails(u)}<a href="${NUMBEO_URL}" target="_blank" rel="noopener">Numbeo source</a></div>
+      <div class="metric-card">${metricLabel(`Competitiveness · ${windowLabel()}`,'competitiveness')}<div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
+      <div class="metric-card">${metricLabel('ARWU 2026','arwu')}${rankMeta}</div>
+      <div class="metric-card climate-metric">${metricLabel('Exchange-period temperature','climate')}${climateDetails(c)}<small>1991–2020 climate normal</small></div>
+      <div class="metric-card">${metricLabel('Cost of living + rent','cost')}${costDetails(u)}</div>
     </div>
     ${requirementsHtml(u)}
     <div class="section-head"><h3 class="section-title">History & character</h3><span class="window-note">Useful for finding older institutions; campus architecture can differ</span></div>
@@ -484,11 +540,17 @@ async function init(){
   const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
   for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','myGpa','languageProof','englishOnly','housingFilter','academicStructure','favoritesOnly'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
   $('#reset').addEventListener('click',resetAllFilters);$('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
-  document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='foundedYear'||k==='minGpa'||k==='languageProof')?1:-1}renderTable()}));
+  document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',e=>{if(e.target.closest('[data-info]'))return;const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='foundedYear'||k==='minGpa'||k==='languageProof')?1:-1}renderTable()}));
   $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#compareBtn').addEventListener('click',()=>switchView('compare'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
   const filterMenu=$('#filterMenu');
-  document.addEventListener('pointerdown',e=>{if(filterMenu?.open&&!filterMenu.contains(e.target))filterMenu.open=false});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&filterMenu?.open){filterMenu.open=false;e.stopPropagation()}});
+  document.addEventListener('click',e=>{const b=e.target.closest?.('[data-info]');if(!b)return;e.preventDefault();e.stopPropagation();openInfoPopover(b,b.dataset.info)});
+  document.addEventListener('pointerdown',e=>{
+    if(filterMenu?.open&&!filterMenu.contains(e.target))filterMenu.open=false;
+    if(activeInfoButton&&!$('#infoPopover')?.contains(e.target)&&!e.target.closest?.('[data-info]'))closeInfoPopover();
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(activeInfoButton){closeInfoPopover();e.stopPropagation();return}if(filterMenu?.open){filterMenu.open=false;e.stopPropagation()}}});
+  window.addEventListener('resize',()=>{if(activeInfoButton)positionInfoPopover(activeInfoButton)});
+  window.addEventListener('scroll',()=>{if(activeInfoButton)positionInfoPopover(activeInfoButton)},true);
   $('#foundedBefore').disabled=state.profiles.size===0;updateSavedCounts();applyFilters();refreshDataStatus();
   const unresolved=state.all.length-state.coords.size;$('#geoStatus').textContent=`· ${state.coords.size} mapped${unresolved?` · ${unresolved} unresolved`:''}`;
   // Static CSVs are primary. These fallbacks only fill gaps until the repository refresh workflow has populated all snapshots.

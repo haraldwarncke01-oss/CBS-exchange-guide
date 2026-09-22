@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=10-polish" />
+  <link rel="stylesheet" href="assets/styles.css?v=11-info" />
 </head>
 <body>
   <header class="topbar">
@@ -114,12 +114,12 @@
           <thead><tr>
             <th data-sort="name">University ↕</th>
             <th data-sort="country">Country · City ↕</th>
-            <th data-sort="demandScore">Competitiveness ↕</th>
+            <th data-sort="demandScore"><span class="th-title">Competitiveness <button class="info-button info-button-table" type="button" data-info="competitiveness" aria-label="About competitiveness">i</button></span> ↕</th>
             <th data-sort="minGpa">GPA min. ↕</th>
             <th data-sort="languageProof">Language proof ↕</th>
-            <th data-sort="arwuSort">ARWU 2026 ↕</th>
-            <th data-sort="tempAVG">Sep–Dec avg. ↕</th>
-            <th data-sort="costIndex">Cost vs Denmark ↕</th>
+            <th data-sort="arwuSort"><span class="th-title">ARWU 2026 <button class="info-button info-button-table" type="button" data-info="arwu" aria-label="About ARWU ranking">i</button></span> ↕</th>
+            <th data-sort="tempAVG"><span class="th-title">Sep–Dec avg. <button class="info-button info-button-table" type="button" data-info="climate" aria-label="About temperature data">i</button></span> ↕</th>
+            <th data-sort="costIndex"><span class="th-title">Cost vs Denmark <button class="info-button info-button-table" type="button" data-info="cost" aria-label="About cost data">i</button></span> ↕</th>
             <th data-sort="foundedYear">University age ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
             <th data-sort="availabilityWindow">Places available ↕</th>
@@ -149,12 +149,14 @@
     </section>
   </main>
 
+  <div id="infoPopover" class="info-popover" role="dialog" aria-modal="false" aria-live="polite" hidden></div>
+
   <dialog id="detailDialog">
     <button id="closeDialog" class="dialog-close" aria-label="Close">×</button>
     <div id="detailContent"></div>
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=10-polish"></script>
+  <script src="assets/app.js?v=11-info"></script>
 </body>
 </html>
