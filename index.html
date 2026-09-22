@@ -8,6 +8,27 @@
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <link rel="stylesheet" href="assets/styles.css?v=24-history-delta" />
+  <!-- Private product analytics: explicit anonymous events only; no autocapture/replay/heatmaps. -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config startSessionRecording stopSessionRecording isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_uvSZJgcexaTozGcEGNH48BgwsgMQvRi49cRfmkMYRb8b', {
+      api_host: 'https://eu.i.posthog.com',
+      defaults: '2026-05-30',
+      person_profiles: 'identified_only',
+      autocapture: false,
+      capture_pageview: false,
+      capture_pageleave: false,
+      capture_dead_clicks: false,
+      capture_heatmaps: false,
+      capture_performance: false,
+      capture_exceptions: false,
+      disable_session_recording: true,
+      disable_surveys: true,
+      rageclick: false,
+      persistence: 'localStorage',
+      respect_dnt: true
+    });
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -174,6 +195,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=24-history-delta"></script>
+  <script src="assets/app.js?v=25-posthog-analytics"></script>
 </body>
 </html>

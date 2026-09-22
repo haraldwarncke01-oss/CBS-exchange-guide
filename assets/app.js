@@ -76,6 +76,37 @@ const state={
   climateLoading:false,climateDone:0,climateTotal:0,currentDetailId:null
 };
 const $=s=>document.querySelector(s);
+
+const ANALYTICS_APP='cbs_exchange_explorer';
+function analyticsCapture(event,properties={}){
+  try{
+    if(window.posthog?.capture)window.posthog.capture(event,{app:ANALYTICS_APP,...properties});
+  }catch(e){console.warn('Analytics capture failed',e)}
+}
+function analyticsUniversityProps(u,extra={}){
+  if(!u)return extra;
+  const r=requirement(u);
+  return {
+    university_id:u.id,
+    university_name:u.name,
+    country:u.country,
+    city:city(u)||'',
+    school:u.school||'Regular',
+    continent:continent(u),
+    places_2026_27:Number.isFinite(u.latestPlaces)?u.latestPlaces:null,
+    fall_2027_places:Number.isFinite(r?.fall2027Places)?r.fall2027Places:null,
+    ...extra
+  };
+}
+function interactionSource(el){
+  if(!el?.closest)return 'unknown';
+  if(el.closest('#detailContent'))return 'detail';
+  if(el.closest('#compareContent'))return 'compare';
+  if(el.closest('.leaflet-popup'))return 'map';
+  if(el.closest('.university-table'))return 'list';
+  return 'unknown';
+}
+
 const map=L.map('map',{worldCopyJump:true,minZoom:2}).setView([20,8],2);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
 const layer=L.layerGroup().addTo(map);
@@ -189,21 +220,38 @@ function updateSavedCounts(){
 }
 function refreshSelectionUI(){
   updateSavedCounts();renderTable();renderMarkers();renderCompare();
-  if($('#detailDialog')?.open&&state.currentDetailId!=null)openDetail(state.currentDetailId);
+  if($('#detailDialog')?.open&&state.currentDetailId!=null)openDetail(state.currentDetailId,'internal',false);
 }
-function toggleFavorite(id){id=Number(id);if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);saveSelections();if($('#favoritesOnly')?.checked)applyFilters();else refreshSelectionUI()}
-function toggleCompare(id){
-  id=Number(id);if(state.compare.has(id))state.compare.delete(id);else{if(state.compare.size>=6){alert('You can compare up to 6 universities at a time. Remove one before adding another.');return}state.compare.add(id)}
-  saveSelections();refreshSelectionUI();
+function toggleFavorite(id,source='unknown'){
+  id=Number(id);
+  const u=state.all.find(x=>x.id===id),adding=!state.favorites.has(id);
+  if(adding)state.favorites.add(id);else state.favorites.delete(id);
+  saveSelections();
+  analyticsCapture(adding?'favorite_added':'favorite_removed',analyticsUniversityProps(u,{source,favorite_count:state.favorites.size}));
+  if($('#favoritesOnly')?.checked)applyFilters();else refreshSelectionUI();
+}
+function toggleCompare(id,source='unknown'){
+  id=Number(id);
+  const u=state.all.find(x=>x.id===id),adding=!state.compare.has(id);
+  if(!adding)state.compare.delete(id);
+  else{
+    if(state.compare.size>=6){alert('You can compare up to 6 universities at a time. Remove one before adding another.');return}
+    state.compare.add(id);
+  }
+  saveSelections();
+  analyticsCapture(adding?'compare_added':'compare_removed',analyticsUniversityProps(u,{source,compare_count:state.compare.size}));
+  refreshSelectionUI();
 }
 function wireSelectionControls(root=document){
-  root.querySelectorAll?.('[data-favorite]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFavorite(b.dataset.favorite)}));
-  root.querySelectorAll?.('[data-compare]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleCompare(b.dataset.compare)}));
+  root.querySelectorAll?.('[data-favorite]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFavorite(b.dataset.favorite,interactionSource(b))}));
+  root.querySelectorAll?.('[data-compare]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleCompare(b.dataset.compare,interactionSource(b))}));
 }
 function comparisonUrl(){const url=new URL(location.href);url.searchParams.delete('compare');if(state.compare.size)url.searchParams.set('compare',[...state.compare].join(','));url.hash='';return url.toString()}
 async function shareComparison(){
   if(state.compare.size<2){const el=$('#compareShareStatus');if(el)el.textContent='Add at least two universities before sharing a comparison.';return}
   const url=comparisonUrl(),status=$('#compareShareStatus');try{await navigator.clipboard.writeText(url);if(status)status.textContent='Comparison link copied.'}catch{if(status)status.innerHTML=`Share this link: <a href="${esc(url)}">${esc(url)}</a>`}
+  const chosen=[...state.compare].map(id=>state.all.find(u=>u.id===id)).filter(Boolean);
+  analyticsCapture('compare_shared',{compare_count:chosen.length,university_ids:chosen.map(u=>u.id),university_names:chosen.map(u=>u.name)});
 }
 function activeFilterDescriptors(){
   const out=[];
@@ -213,7 +261,7 @@ function activeFilterDescriptors(){
   if($('#continent')?.value)out.push({key:'continent',label:`Continent: ${selectedText('continent')}`});
   if($('#minPlaces')?.value&&$('#minPlaces').value!=='0')out.push({key:'minPlaces',label:`Places 2026–27: ${selectedText('minPlaces')}`});
   if($('#minPlaces2027')?.value&&$('#minPlaces2027').value!=='0')out.push({key:'minPlaces2027',label:`Fall 2027 places: ${selectedText('minPlaces2027')}`});
-  if($('#placesChange')?.value)out.push({key:'placesChange',label:`2027 vs 2026–27: ${selectedText('placesChange')}`});
+  if($('#placesChange')?.value)out.push({key:'placesChange',label:`2027 vs 2026: ${selectedText('placesChange')}`});
   if($('#historyWindow')?.value&&$('#historyWindow').value!=='5')out.push({key:'historyWindow',label:`History: ${selectedText('historyWindow')}`});
   if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`Competitiveness: ${selectedText('demandLevel')}`});
   if($('#arwuMax')?.value&&$('#arwuMax').value!=='0')out.push({key:'arwuMax',label:`ARWU: ${selectedText('arwuMax')}`});
@@ -329,20 +377,20 @@ function sortValue(u,key){
   if(key==='minGpa')return requirement(u)?.minGpa??null;
   if(key==='languageProof')return requirement(u)?.proofCategory||'';
   if(key==='fall2027Places')return requirement(u)?.fall2027Places??null;
-  if(key==='placesDelta'){const p27=requirement(u)?.fall2027Places;return Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null;}
+  if(key==='placesDelta')return requirement(u)?.placesDelta??null;
   if(key.startsWith('temp')){const metric=key.slice(4);return climateValue(state.climate.get(u.id),metric)}
   return u[key];
 }
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),ci=costIndex(u),r=requirement(u),p27=r?.fall2027Places,delta=Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null;return `<tr>
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),ci=costIndex(u),r=requirement(u),p27=r?.fall2027Places,delta=r?.placesDelta;return `<tr>
     <td class="university-cell"><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(listUniversityTitle(u))}</button></div><span class="muted university-school">${isMultiAgreement(u)?'Separate CBS agreement':esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td>
     <td class="location-cell">${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td>
-    <td class="places-cell places-2027-cell"><strong>${Number.isFinite(p27)?p27:'—'}</strong><span class="cell-caption">${Number.isFinite(p27)?'MoveON published':'not published'}</span></td>
     <td class="places-cell"><strong>${u.latestPlaces??'—'}</strong><span class="cell-caption">CBS history</span></td>
+    <td class="places-cell places-2027-cell"><strong>${Number.isFinite(p27)?p27:'—'}</strong><span class="cell-caption">${Number.isFinite(p27)?'MoveON published':'not published'}</span></td>
     <td class="places-change-cell"><strong class="${Number.isFinite(delta)?(delta>0?'delta-up':delta<0?'delta-down':'delta-same'):''}">${Number.isFinite(delta)?`${delta>0?'+':''}${delta}`:'—'}</strong><span class="cell-caption">${Number.isFinite(delta)?(delta>0?'more':delta<0?'fewer':'same'):'no comparison'}</span></td>
-    <td class="availability-cell"><strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years with leftovers</span></td>
+    <td class="availability-cell"><strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years available</span></td>
     <td class="competition-cell">${demandChip(s.status)}</td>
     <td class="gpa-cell">${Number.isFinite(r?.minGpa)?`<strong>${r.minGpa.toFixed(1)}</strong>`:'—'}</td>
     <td class="language-cell"><span class="muted">${esc(r?.matchStatus==='matched'?proofLabel(r.proofCategory):'No current MoveON match')}</span></td>
@@ -350,16 +398,16 @@ function renderTable(){
     <td class="temp-cell"><strong>${tempText(climateValue(c,'AVG'))}</strong></td>
     <td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td>
   </tr>`}).join('');
-  body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(body);
+  body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail),'list')));wireSelectionControls(body);
 }
 function renderMarkers(){
-  layer.clearLayers();state.markers.clear();for(const u of state.filtered){const c=state.coords.get(u.id);if(!c)continue;const m=L.marker([c.lat,c.lon],{icon:markerIcon(u)}).bindPopup(popupHtml(u));m.on('popupopen',e=>{const root=e.popup.getElement();const btn=root?.querySelector('[data-detail]');if(btn)btn.onclick=()=>openDetail(Number(btn.dataset.detail));if(root)wireSelectionControls(root)});m.addTo(layer);state.markers.set(u.id,m)}
+  layer.clearLayers();state.markers.clear();for(const u of state.filtered){const c=state.coords.get(u.id);if(!c)continue;const m=L.marker([c.lat,c.lon],{icon:markerIcon(u)}).bindPopup(popupHtml(u));m.on('popupopen',e=>{const root=e.popup.getElement();const btn=root?.querySelector('[data-detail]');if(btn)btn.onclick=()=>openDetail(Number(btn.dataset.detail),'map');if(root)wireSelectionControls(root)});m.addTo(layer);state.markers.set(u.id,m)}
 }
 function updateLegend(){const el=$('#legendWindow');if(el)el.textContent=`Map colors · ${windowLabel()}`}
 function applyFilters(){
   const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),minP27=Number($('#minPlaces2027').value||0),placesChange=$('#placesChange').value,demand=$('#demandLevel').value,favoritesOnly=$('#favoritesOnly')?.checked;
   const arwuMax=Number($('#arwuMax').value||0),foundedBefore=$('#foundedBefore').value===''?null:Number($('#foundedBefore').value),tempMetric=$('#tempMetric').value,minTemp=$('#minTemp').value===''?null:Number($('#minTemp').value),maxCost=$('#maxCost').value===''?null:Number($('#maxCost').value),myGpa=$('#myGpa').value===''?null:Number($('#myGpa').value),languageProof=$('#languageProof').value,englishOnly=$('#englishOnly').checked,housingFilter=$('#housingFilter').value,academicStructure=$('#academicStructure').value;
-  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),r=requirement(u),p27=r?.fall2027Places,delta=Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null,changeOk=!placesChange||(placesChange==='published'&&Number.isFinite(p27))||(placesChange==='unpublished'&&!Number.isFinite(p27))||(placesChange==='increase'&&Number.isFinite(delta)&&delta>0)||(placesChange==='same'&&Number.isFinite(delta)&&delta===0)||(placesChange==='decrease'&&Number.isFinite(delta)&&delta<0);return (!q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!minP27||(Number.isFinite(p27)&&p27>=minP27))&&changeOk&&(!demand||s.status===demand)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<foundedBefore))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(myGpa==null||(Number.isFinite(r?.minGpa)&&r.minGpa<=myGpa))&&(!languageProof||r?.proofCategory===languageProof)&&(!englishOnly||r?.englishOnlyPossible==='yes')&&(!housingFilter||r?.onCampusHousing===housingFilter)&&(!academicStructure||r?.academicStructure===academicStructure)});
+  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),r=requirement(u),p27=r?.fall2027Places,delta=r?.placesDelta,changeOk=!placesChange||(placesChange==='published'&&Number.isFinite(p27))||(placesChange==='unpublished'&&!Number.isFinite(p27))||(placesChange==='increase'&&Number.isFinite(delta)&&delta>0)||(placesChange==='same'&&Number.isFinite(delta)&&delta===0)||(placesChange==='decrease'&&Number.isFinite(delta)&&delta<0);return (!q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!minP27||(Number.isFinite(p27)&&p27>=minP27))&&changeOk&&(!demand||s.status===demand)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<foundedBefore))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(myGpa==null||(Number.isFinite(r?.minGpa)&&r.minGpa<=myGpa))&&(!languageProof||r?.proofCategory===languageProof)&&(!englishOnly||r?.englishOnlyPossible==='yes')&&(!housingFilter||r?.onCampusHousing===housingFilter)&&(!academicStructure||r?.academicStructure===academicStructure)});
   $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
 }
 
@@ -367,12 +415,12 @@ function renderCompare(){
   const box=$('#compareContent');if(!box)return;const chosen=[...state.compare].map(id=>state.all.find(u=>u.id===id)).filter(Boolean);
   updateSavedCounts();
   if(!chosen.length){box.innerHTML=`<div class="compare-empty"><div class="compare-empty-icon">⇄</div><h3>No universities selected yet</h3><p>Use the <strong>Compare</strong> button next to a university on the map, list or detail view. You can compare up to six.</p></div>`;return}
-  if(chosen.length===1){const u=chosen[0];box.innerHTML=`<div class="compare-empty"><div class="compare-one">${favoriteButton(u,true)}<strong>${esc(u.name)}</strong><span>${esc(u.country)}</span></div><h3>Add one more university</h3><p>A comparison becomes most useful with two or more universities.</p><button type="button" class="secondary-button" data-detail="${u.id}">View selected university</button></div>`;box.querySelector('[data-detail]')?.addEventListener('click',()=>openDetail(u.id));wireSelectionControls(box);return}
+  if(chosen.length===1){const u=chosen[0];box.innerHTML=`<div class="compare-empty"><div class="compare-one">${favoriteButton(u,true)}<strong>${esc(u.name)}</strong><span>${esc(u.country)}</span></div><h3>Add one more university</h3><p>A comparison becomes most useful with two or more universities.</p><button type="button" class="secondary-button" data-detail="${u.id}">View selected university</button></div>`;box.querySelector('[data-detail]')?.addEventListener('click',()=>openDetail(u.id,'compare'));wireSelectionControls(box);return}
   const cell=u=>({
     demand:demandChip(competitionSummary(u).status),
     places:String(u.latestPlaces??'—'),
     places27:Number.isFinite(requirement(u)?.fall2027Places)?String(requirement(u).fall2027Places):'—',
-    delta:(()=>{const p27=requirement(u)?.fall2027Places;const d=Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null;return Number.isFinite(d)?`${d>0?'+':''}${d}`:'—'})(),
+    delta:Number.isFinite(requirement(u)?.placesDelta)?`${requirement(u).placesDelta>0?'+':''}${requirement(u).placesDelta}`:'—',
     avail:`${availabilityInWindow(u)}/${selectedYears().length}`,
     arwu:esc(rankText(u)),
     avg:tempText(climateValue(state.climate.get(u.id),'AVG')),
@@ -392,10 +440,10 @@ function renderCompare(){
   const rows=[
     ['Location',u=>`${countryLineHtml(u.country)}${city(u)?`<span class="city-line">${esc(city(u))}</span>`:''}<span class="muted location-continent">${esc(continent(u))}</span>`],
     [`Competitiveness · ${windowLabel()}`,u=>cell(u).demand],
+    ['CBS places 2026–27',u=>cell(u).places],
     ['Fall 2027 places · MoveON',u=>cell(u).places27],
-    ['CBS places 2026–27 · historical Excel',u=>cell(u).places],
-    ['Change · Fall 2027 vs 2026–27',u=>cell(u).delta],
-    [`Years with leftover places · ${windowLabel()}`,u=>cell(u).avail],
+    ['Change · Fall 2027 vs Fall 2026',u=>cell(u).delta],
+    [`Years with places available · ${windowLabel()}`,u=>cell(u).avail],
     ['ARWU 2026',u=>cell(u).arwu],
     ['Sep–Dec average',u=>cell(u).avg],
     ['September',u=>cell(u).sep],['October',u=>cell(u).oct],['November',u=>cell(u).nov],['December',u=>cell(u).dec],
@@ -404,7 +452,7 @@ function renderCompare(){
     ['Minimum CBS GPA',u=>cell(u).gpa],['Language proof',u=>cell(u).proof],['Courses in English',u=>cell(u).english],['Non-English language',u=>cell(u).otherLang],['Academic structure',u=>cell(u).academic],['On-campus housing',u=>cell(u).housing]
   ];
   box.innerHTML=`<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Criteria</th>${chosen.map(u=>`<th><div class="compare-university-head"><div class="compare-head-buttons">${favoriteButton(u,true)}<button type="button" class="remove-compare" data-compare="${u.id}" title="Remove from comparison">×</button></div><button class="compare-name" data-detail="${u.id}">${esc(u.name)}</button><span>${esc(u.school||u.country)}</span></div></th>`).join('')}</tr></thead><tbody>${rows.map(([label,fn])=>`<tr><th>${esc(label)}</th>${chosen.map(u=>`<td>${fn(u)}</td>`).join('')}</tr>`).join('')}<tr><th>Details</th>${chosen.map(u=>`<td><button type="button" class="secondary-button small" data-detail="${u.id}">View details</button></td>`).join('')}</tr></tbody></table></div>`;
-  box.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(box);
+  box.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail),'compare')));wireSelectionControls(box);
 }
 
 function universityHistory(u){return state.universityHistory.get(u.id)||null}
@@ -462,13 +510,13 @@ function requirementsHtml(u){
     </details>`:''}
   </section>`;
 }
-function openDetail(id){
+function openDetail(id,source='unknown',trackOpen=true){
   closeInfoPopover();
-  const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
+  const u=state.all.find(x=>x.id===id);if(!u)return;if(trackOpen)analyticsCapture('university_opened',analyticsUniversityProps(u,{source}));state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><small class="metric-support">${esc(arwuRankNote(u.arwuRank))}</small>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<small class="metric-support">ARWU institution: ${esc(u.arwuMatchedInstitution)}</small>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><small class="metric-support">Not present in the published ARWU 2026 top 1000.</small>`:`<strong>No verified ARWU match</strong><small class="metric-support">The local match could not be verified.</small>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
   const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('');
-  const moveonReq=requirement(u),moveon27=moveonReq?.fall2027Places,moveonDelta=Number.isFinite(moveon27)&&Number.isFinite(u.latestPlaces)?moveon27-u.latestPlaces:null;
+  const moveonReq=requirement(u),moveon26=moveonReq?.fall2026Places,moveon27=moveonReq?.fall2027Places,moveonDelta=moveonReq?.placesDelta;
   const deltaLabel=Number.isFinite(moveonDelta)?`${moveonDelta>0?'+':''}${moveonDelta}`:'—';
   $('#detailContent').innerHTML=`<div class="detail-header"><div><div class="detail-title-row"><h2 class="detail-title">${esc(u.name)}</h2>${universityBackgroundInline(u)}</div><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
     <section class="detail-section overview-section">
@@ -482,14 +530,14 @@ function openDetail(id){
     </section>
     <section class="detail-section placement-section">
       <div class="detail-section-head placement-head"><div><h3 class="detail-section-title">CBS placement history ${infoButton('competitiveness','How CBS competitiveness is calculated')}</h3><p>See how many places remained after allocation in each of the last five years.</p></div><span class="section-meta">Highlighted years drive the current map color</span></div>
-      <div class="upcoming-capacity"><div><span>Fall 2027 places</span><strong>${Number.isFinite(moveon27)?moveon27:'Not yet published'}</strong><small>CBS MoveON current capacity</small></div><div><span>Change vs 2026–27</span><strong class="${Number.isFinite(moveonDelta)?(moveonDelta>0?'delta-up':moveonDelta<0?'delta-down':'delta-same'):''}">${deltaLabel}</strong><small>${Number.isFinite(u.latestPlaces)?`CBS historical 2026–27: ${u.latestPlaces}`:'Historical baseline unavailable'}</small></div><p>The change compares the new Fall 2027 MoveON capacity with the untouched CBS 2026–27 historical Excel figure. It does not affect competitiveness or the map color.</p></div>
+      <div class="upcoming-capacity"><div><span>Fall 2027 places</span><strong>${Number.isFinite(moveon27)?moveon27:'Not yet published'}</strong><small>CBS MoveON current capacity</small></div><div><span>Change vs Fall 2026</span><strong class="${Number.isFinite(moveonDelta)?(moveonDelta>0?'delta-up':moveonDelta<0?'delta-down':'delta-same'):''}">${deltaLabel}</strong><small>${Number.isFinite(moveon26)?`MoveON Fall 2026: ${moveon26}`:'Needs both MoveON years'}</small></div><p>Fall 2027 capacity is separate from the historical competitiveness result and does not affect the map color.</p></div>
       <div class="history">${yearsHtml}</div>
       <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
     </section>
     ${requirementsHtml(u)}`;
   wireSelectionControls($('#detailContent'));
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
-  if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
+  if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id,'internal',false)}).catch(()=>{});
 }
 
 // Coordinates from Wikipedia, with a few city-level fallbacks for partner/campus names.
@@ -583,7 +631,7 @@ async function loadStaticClimate(){
   try{const rows=await csvObjects('data/climate.csv');for(const r of rows){const id=Number(r.university_id),v={SEP:numCsv(r.sep_c),OCT:numCsv(r.oct_c),NOV:numCsv(r.nov_c),DEC:numCsv(r.dec_c)};if(Number.isFinite(id)&&Object.values(v).every(Number.isFinite))state.climate.set(id,v)}}catch(e){console.warn('Climate CSV unavailable',e)}
 }
 async function loadStaticRequirements(){
-  try{const rows=await csvObjects('data/partner_requirements.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.requirements.set(id,{matchStatus:r.match_status||'unclear',moveonUniversity:r.moveon_university||'',coreId:r.core_id||'',relationId:r.relation_id||'',detailUrl:r.moveon_detail_url||'',fall2026Places:numCsv(r.fall_2026_places),fall2027Places:numCsv(r.fall_2027_places),moveonPlacesDelta:numCsv(r.places_change_2027_vs_2026),placesDeltaHistory:numCsv(r.places_change_2027_vs_2026_27_history),numberOfPlacesRaw:r.number_of_places_raw||'',minGpa:numCsv(r.minimum_gpa_danish7),minimumGpaRaw:r.minimum_gpa_raw||'',academicStructure:r.academic_structure||'unclear',academicCalendarRaw:r.academic_calendar_raw||'',workExperience:r.work_experience_required||'unclear',languageInstructionRaw:r.language_of_instruction_raw||'',englishCoursesCategory:r.courses_in_english_category||'unclear',coursesInEnglishRaw:r.courses_in_english_raw||'',proofCategory:r.language_proof_category||'unclear',proofRaw:r.proof_of_language_raw||'',languageRequirementsRaw:r.language_requirements_raw||'',englishOnlyPossible:r.english_only_possible||'unclear',nonEnglishRequirement:r.non_english_requirement||'unclear',nonEnglishLanguages:r.non_english_languages||'',languageLevels:r.language_levels||'',cbsLetterAccepted:boolCsv(r.cbs_letter_accepted),ielts:numCsv(r.ielts_overall_min),toefl:numCsv(r.toefl_ibt_overall_min),cambridge:numCsv(r.cambridge_overall_min),onCampusHousing:r.on_campus_housing||'unclear',housingRaw:r.housing_raw||'',erasmusPlus:r.erasmus_plus||'unclear',pim:r.pim||'unclear',limitationsRaw:r.limitations_raw||'',courseAvailabilityRaw:r.course_availability_raw||'',programInformationRaw:r.program_information_raw||'',additionalInformationRaw:r.additional_information_raw||'',infoAboutUniversityRaw:r.info_about_university_raw||'',visaRaw:r.visa_raw||'',sourceCheckedDate:r.source_checked_date||''})}}catch(e){console.warn('MoveON requirements CSV unavailable',e)}
+  try{const rows=await csvObjects('data/partner_requirements.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.requirements.set(id,{matchStatus:r.match_status||'unclear',moveonUniversity:r.moveon_university||'',coreId:r.core_id||'',relationId:r.relation_id||'',detailUrl:r.moveon_detail_url||'',fall2026Places:numCsv(r.fall_2026_places),fall2027Places:numCsv(r.fall_2027_places),placesDelta:numCsv(r.places_change_2027_vs_2026),numberOfPlacesRaw:r.number_of_places_raw||'',minGpa:numCsv(r.minimum_gpa_danish7),minimumGpaRaw:r.minimum_gpa_raw||'',academicStructure:r.academic_structure||'unclear',academicCalendarRaw:r.academic_calendar_raw||'',workExperience:r.work_experience_required||'unclear',languageInstructionRaw:r.language_of_instruction_raw||'',englishCoursesCategory:r.courses_in_english_category||'unclear',coursesInEnglishRaw:r.courses_in_english_raw||'',proofCategory:r.language_proof_category||'unclear',proofRaw:r.proof_of_language_raw||'',languageRequirementsRaw:r.language_requirements_raw||'',englishOnlyPossible:r.english_only_possible||'unclear',nonEnglishRequirement:r.non_english_requirement||'unclear',nonEnglishLanguages:r.non_english_languages||'',languageLevels:r.language_levels||'',cbsLetterAccepted:boolCsv(r.cbs_letter_accepted),ielts:numCsv(r.ielts_overall_min),toefl:numCsv(r.toefl_ibt_overall_min),cambridge:numCsv(r.cambridge_overall_min),onCampusHousing:r.on_campus_housing||'unclear',housingRaw:r.housing_raw||'',erasmusPlus:r.erasmus_plus||'unclear',pim:r.pim||'unclear',limitationsRaw:r.limitations_raw||'',courseAvailabilityRaw:r.course_availability_raw||'',programInformationRaw:r.program_information_raw||'',additionalInformationRaw:r.additional_information_raw||'',infoAboutUniversityRaw:r.info_about_university_raw||'',visaRaw:r.visa_raw||'',sourceCheckedDate:r.source_checked_date||''})}}catch(e){console.warn('MoveON requirements CSV unavailable',e)}
 }
 async function loadUniversityHistory(){
   try{const rows=await csvObjects('data/university_history.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.universityHistory.set(id,{foundedYear:numCsv(r.founded_year),age2026:numCsv(r.age_2026),rootsYear:numCsv(r.roots_year),historyNote:r.history_note||'',officialWebsite:r.official_website||'',sourceUrl:r.source_url||'',sourceType:r.source_type||'',verificationStatus:r.verification_status||'candidate_unverified'})}}catch(e){console.warn('University history CSV unavailable',e)}
@@ -615,10 +663,21 @@ async function init(){
   window.addEventListener('resize',()=>{if(activeInfoButton)positionInfoPopover(activeInfoButton)});
   window.addEventListener('scroll',()=>{if(activeInfoButton)positionInfoPopover(activeInfoButton)},true);
   updateSavedCounts();applyFilters();refreshDataStatus();
+  analyticsCapture('site_visited',{total_universities:state.all.length,initial_compare_count:state.compare.size,shared_compare_link:new URLSearchParams(location.search).has('compare')});
   const unresolved=state.all.length-state.coords.size;$('#geoStatus').textContent=`· ${state.coords.size} mapped${unresolved?` · ${unresolved} unresolved`:''}`;
   // Static CSVs are primary. These fallbacks only fill gaps until the repository refresh workflow has populated all snapshots.
   if(unresolved)resolveCoordinates();else if(state.climate.size<state.all.length)loadClimateAll();
   if(new URLSearchParams(location.search).has('compare')&&state.compare.size)switchView('compare');
 }
-function switchView(v){const isMap=v==='map',isList=v==='list',isCompare=v==='compare';$('#mapView').classList.toggle('active',isMap);$('#listView').classList.toggle('active',isList);$('#compareView').classList.toggle('active',isCompare);$('#mapBtn').classList.toggle('active',isMap);$('#listBtn').classList.toggle('active',isList);$('#compareBtn').classList.toggle('active',isCompare);if(isMap)setTimeout(()=>map.invalidateSize(),50);if(isCompare)renderCompare()}
+function switchView(v){
+  const isMap=v==='map',isList=v==='list',isCompare=v==='compare';
+  $('#mapView').classList.toggle('active',isMap);$('#listView').classList.toggle('active',isList);$('#compareView').classList.toggle('active',isCompare);
+  $('#mapBtn').classList.toggle('active',isMap);$('#listBtn').classList.toggle('active',isList);$('#compareBtn').classList.toggle('active',isCompare);
+  if(isMap)setTimeout(()=>map.invalidateSize(),50);
+  if(isCompare){
+    renderCompare();
+    const chosen=[...state.compare].map(id=>state.all.find(u=>u.id===id)).filter(Boolean);
+    analyticsCapture('compare_viewed',{compare_count:chosen.length,university_ids:chosen.map(u=>u.id),university_names:chosen.map(u=>u.name)});
+  }
+}
 init().catch(e=>{$('#geoStatus').textContent='· could not load dataset';console.error(e)});
