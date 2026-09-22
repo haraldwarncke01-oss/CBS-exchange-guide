@@ -401,12 +401,12 @@ function historySourceLabel(h){if(!h)return '';if(h.verificationStatus==='verifi
 function foundingLine(u){const h=universityHistory(u);if(!h||!Number.isFinite(h.foundedYear))return 'Not yet researched';return `Founded ${h.foundedYear}${Number.isFinite(h.age2026)?` · ${h.age2026} years old`:''}`}
 function universityBackgroundInline(u){
   const h=universityHistory(u);if(!h||!Number.isFinite(h.foundedYear))return '';
-  const verified=historyIsVerified(h),age=Number.isFinite(h.age2026)?h.age2026:null;
-  const label=`Founded ${h.foundedYear}${age!=null?` · ${age} yrs`:''}`;
+  const verified=historyIsVerified(h);
+  const label=String(h.foundedYear);
   const roots=Number.isFinite(h.rootsYear)&&h.rootsYear!==h.foundedYear?`Earlier roots: ${h.rootsYear}`:'';
-  const title=[historySourceLabel(h),h.historyNote||'',roots].filter(Boolean).join(' — ');
-  if(verified&&h.sourceUrl)return `<a class="founding-badge verified" href="${esc(h.sourceUrl)}" target="_blank" rel="noopener" title="${esc(title)}">${esc(label)} <span aria-hidden="true">↗</span></a>`;
-  return `<span class="founding-badge provisional" title="${esc(title)}">${esc(label)}<small>verification pending</small></span>`;
+  const title=[`Founded ${h.foundedYear}`,historySourceLabel(h),h.historyNote||'',roots].filter(Boolean).join(' — ');
+  if(verified&&h.sourceUrl)return `<a class="founding-year verified" href="${esc(h.sourceUrl)}" target="_blank" rel="noopener" title="${esc(title)}">${esc(label)}</a>`;
+  return `<span class="founding-year provisional" title="${esc(title)}">${esc(label)}</span>`;
 }
 
 function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate snapshot pending for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}

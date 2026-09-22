@@ -336,11 +336,10 @@ dialog{width:min(1120px,calc(100vw - 28px));border-radius:22px;padding:28px 28px
 
 
 /* v20 — founding year as compact header metadata */
-.detail-title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+.detail-title-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-width:0}
 .detail-title-row .detail-title{min-width:0}
-.founding-badge{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;border:1px solid #d8e2ee;border-radius:999px;padding:5px 9px;font-size:10.5px;line-height:1;font-weight:750;white-space:nowrap;text-decoration:none;color:#40536c;background:#f7f9fc}
-.founding-badge.verified{border-color:#c9dbee;background:#f5f9ff;color:#315b8a}
-.founding-badge.verified:hover{background:#edf5ff;border-color:#a9c8e8}
-.founding-badge.provisional{border-color:#ead8a3;background:#fff9e9;color:#7a5c12}
-.founding-badge small{font-size:9px;font-weight:650;opacity:.82;margin-left:2px}
-@media(max-width:700px){.detail-title-row{align-items:flex-start}.founding-badge{padding:4px 8px;font-size:10px}.founding-badge small{display:none}}
+.founding-year{flex:0 0 auto;font-size:29px;line-height:1.08;font-weight:700;letter-spacing:-.032em;white-space:nowrap;text-decoration:none;color:inherit}
+.founding-year.verified:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.founding-year.provisional{color:inherit}
+@media(max-width:820px){.founding-year{font-size:26px}}
+@media(max-width:700px){.detail-title-row{align-items:baseline}}
