@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=20-history-header" />
+  <link rel="stylesheet" href="assets/styles.css?v=23-fall-2027" />
 </head>
 <body>
   <header class="topbar">
@@ -61,6 +61,8 @@
                 <label><span>Competitiveness</span><select id="demandLevel"><option value="">Any competitiveness</option><option value="available">Places available</option><option value="filled">All places filled</option><option value="competitive">Competitive</option><option value="very_competitive">Very competitive</option><option value="unknown">No comparable years</option></select></label>
                 <label><span>History window</span><select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select></label>
                 <label><span>Min. places 2026–27</span><select id="minPlaces"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option></select></label>
+                <label><span>Min. Fall 2027 places</span><select id="minPlaces2027"><option value="0">Any / not yet published</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option></select></label>
+                <label><span>2027 vs 2026 places</span><select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select></label>
                 <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
                 <label><span>Founded before</span><select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select></label>
               </div>
@@ -115,6 +117,8 @@
             <col class="col-university">
             <col class="col-location">
             <col class="col-places">
+            <col class="col-places27">
+            <col class="col-places-change">
             <col class="col-availability">
             <col class="col-competitiveness">
             <col class="col-gpa">
@@ -127,6 +131,8 @@
             <th data-sort="name">University ↕</th>
             <th data-sort="country">Country · City ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
+            <th data-sort="fall2027Places">Fall 2027 ↕</th>
+            <th data-sort="placesDelta">Δ 27 vs 26 ↕</th>
             <th data-sort="availabilityWindow">Available years ↕</th>
             <th data-sort="demandScore"><span class="th-title">Competitiveness <button class="info-button info-button-table" type="button" data-info="competitiveness" aria-label="About competitiveness">i</button></span> ↕</th>
             <th data-sort="minGpa">GPA min. ↕</th>
@@ -156,7 +162,7 @@
     </section>
 
     <section class="note source-note">
-      <strong>Sources & interpretation:</strong> The website reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Current GPA, language, calendar, housing and related exchange requirements are a local snapshot of CBS MoveON Regular / Undergraduate agreements checked on 21 September 2026; ten historical workbook entries are no longer present in that current MoveON list and are shown without current requirements rather than guessed. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU 2026 has been checked against the complete official published list of 1,000 institutions: matched CBS partners show the official exact rank or rank band, while confirmed absences show “Not in top 1000”. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
+      <strong>Sources & interpretation:</strong> The website reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Current GPA, language, calendar, housing and related exchange requirements are a local snapshot of CBS MoveON Regular / Undergraduate agreements checked on 22 September 2026; Fall 2027 place counts are shown where CBS has already published them. Eleven historical workbook entries are no longer present in that current MoveON list and are shown without current requirements rather than guessed. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU 2026 has been checked against the complete official published list of 1,000 institutions: matched CBS partners show the official exact rank or rank band, while confirmed absences show “Not in top 1000”. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
     </section>
   </main>
 
@@ -168,6 +174,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=22-history-verified"></script>
+  <script src="assets/app.js?v=23-fall-2027"></script>
 </body>
 </html>
