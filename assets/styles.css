@@ -104,3 +104,74 @@ dialog{width:min(1120px,calc(100vw - 28px));border-radius:22px;padding:28px 28px
 .metric-card>small{line-height:1.4}
 .table-wrap thead th{position:sticky;top:0;z-index:2;box-shadow:0 1px 0 #e5ebf2}
 @media(max-width:560px){.info-popover{font-size:12px}.metric-label-row>span{font-size:9.5px}}
+
+/* v12 — desktop list: all decision data visible without horizontal panning */
+.table-wrap{overflow-x:hidden}
+.university-table{width:100%;min-width:0!important;table-layout:fixed}
+.university-table .col-university{width:20%}
+.university-table .col-location{width:11%}
+.university-table .col-places{width:6%}
+.university-table .col-availability{width:7%}
+.university-table .col-competitiveness{width:10%}
+.university-table .col-gpa{width:5.5%}
+.university-table .col-language{width:10.5%}
+.university-table .col-arwu{width:7%}
+.university-table .col-temp{width:6.5%}
+.university-table .col-cost{width:10%}
+.university-table .col-age{width:6.5%}
+.university-table th,.university-table td{white-space:normal;min-width:0;padding-left:8px;padding-right:8px;vertical-align:middle;overflow-wrap:anywhere}
+.university-table th{line-height:1.2;font-size:9.5px}
+.university-table td:first-child{min-width:0}
+.university-table .uni-link{font-size:13px;line-height:1.28}
+.university-table .university-school{display:block;font-size:11px;line-height:1.25;margin-top:2px}
+.university-table .favorite-btn.compact{width:29px;height:29px;min-width:29px}
+.university-table .row-compare{margin-top:5px}
+.university-table .row-compare .compare-toggle{font-size:10px;padding:3px 6px}
+.university-table .country-line{font-size:12px;font-weight:800;gap:5px}
+.university-table .country-flag{font-size:15px}
+.university-table .city-line{font-size:10.5px;margin-top:3px}
+.university-table .places-cell,.university-table .availability-cell,.university-table .gpa-cell,.university-table .rank-cell,.university-table .temp-cell{text-align:center}
+.university-table .places-cell strong,.university-table .availability-cell strong,.university-table .gpa-cell strong,.university-table .temp-cell strong{display:block;font-size:14px;color:#15253d}
+.university-table .cell-caption{display:block;margin-top:2px;color:#8a97a8;font-size:8.5px;line-height:1.15}
+.university-table .status-chip{font-size:10.5px;padding:4px 7px;white-space:normal;text-align:center;justify-content:center}
+.university-table .language-cell{font-size:10.5px;line-height:1.25}
+.university-table .rank-cell{font-size:10.5px;line-height:1.2}
+.university-table .cost-cell{font-size:10.5px;line-height:1.18}
+.university-table .cost-cell strong{display:block;font-size:11px;line-height:1.18}
+.university-table .cost-cell span{display:block;font-size:9.5px;margin-top:3px}
+.university-table .age-cell{text-align:right;font-size:10px;line-height:1.2}
+.university-table .age-cell strong{display:block;font-size:10.5px}
+.university-table .age-cell span{display:block;font-size:9px;margin-top:3px}
+.university-table tbody tr{height:96px}
+.university-table .th-title{display:inline-flex;align-items:center;gap:2px;flex-wrap:wrap}
+.university-table .info-button-table{margin-left:1px}
+
+@media (max-width:1280px){
+  .university-table .col-university{width:19%}
+  .university-table .col-location{width:10%}
+  .university-table .col-places{width:6%}
+  .university-table .col-availability{width:7%}
+  .university-table .col-competitiveness{width:10%}
+  .university-table .col-gpa{width:5%}
+  .university-table .col-language{width:11%}
+  .university-table .col-arwu{width:7%}
+  .university-table .col-temp{width:7%}
+  .university-table .col-cost{width:11%}
+  .university-table .col-age{width:7%}
+  .university-table th,.university-table td{padding-left:6px;padding-right:6px}
+  .university-table .uni-link{font-size:12px}
+  .university-table .status-chip{font-size:9.5px;padding:4px 5px}
+}
+
+@media (max-width:980px){
+  .table-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+  .university-table,.university-table tbody{display:block;width:100%}
+  .university-table colgroup,.university-table thead{display:none}
+  .university-table tr{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:13px;height:auto!important;box-shadow:var(--shadow-sm)}
+  .university-table td{display:block;border:0;padding:0;text-align:left!important}
+  .university-table .university-cell{grid-column:1 / -1}
+  .university-table .location-cell{grid-column:1 / 2}
+  .university-table .competition-cell{grid-column:2 / 4}
+  .university-table .cell-caption{font-size:9px}
+  .university-table .age-cell{text-align:left!important}
+}

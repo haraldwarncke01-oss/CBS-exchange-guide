@@ -315,7 +315,19 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u),r=requirement(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td>${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td><td>${demandChip(s.status)}</td><td>${Number.isFinite(r?.minGpa)?r.minGpa.toFixed(1):'—'}</td><td><span class="muted">${esc(r?.matchStatus==='matched'?proofLabel(r.proofCategory):'No current MoveON match')}</span></td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Pending snapshot</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td></tr>`}).join('');
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u),r=requirement(u);return `<tr>
+    <td class="university-cell"><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted university-school">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td>
+    <td class="location-cell">${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td>
+    <td class="places-cell"><strong>${u.latestPlaces??'—'}</strong><span class="cell-caption">current places</span></td>
+    <td class="availability-cell"><strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years available</span></td>
+    <td class="competition-cell">${demandChip(s.status)}</td>
+    <td class="gpa-cell">${Number.isFinite(r?.minGpa)?`<strong>${r.minGpa.toFixed(1)}</strong>`:'—'}</td>
+    <td class="language-cell"><span class="muted">${esc(r?.matchStatus==='matched'?proofLabel(r.proofCategory):'No current MoveON match')}</span></td>
+    <td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td>
+    <td class="temp-cell"><strong>${tempText(climateValue(c,'AVG'))}</strong></td>
+    <td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td>
+    <td class="age-cell">${Number.isFinite(age)?`<strong>~${age} yrs</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Pending</span>')}</td>
+  </tr>`}).join('');
   body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(body);
 }
 function renderMarkers(){
