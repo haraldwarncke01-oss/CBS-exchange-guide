@@ -376,52 +376,67 @@ function renderCompare(){
 }
 
 function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate snapshot pending for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
-function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><span class="muted">No comparable country-level snapshot is available.</span>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><span class="muted">${esc(costLevel(u))} · ${esc(u.country)} index ${ci.toFixed(1)} vs Denmark 54.8</span><small>Country-level comparison</small>`}
+function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><small class="metric-support">No comparable country-level snapshot is available.</small>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><small class="metric-support">${esc(costLevel(u))} · ${esc(u.country)} index ${ci.toFixed(1)} vs Denmark 54.8</small><small>Country-level comparison</small>`}
+function detailSectionHead(title,subtitle,infoKey='',infoTitle=''){
+  return `<div class="detail-section-head"><div><h3 class="detail-section-title">${esc(title)}${infoKey?infoButton(infoKey,infoTitle||title):''}</h3>${subtitle?`<p>${esc(subtitle)}</p>`:''}</div></div>`;
+}
 function requirementsHtml(u){
   const r=requirement(u);
-  if(!r||r.matchStatus!=='matched')return `<div class="section-head"><h3 class="section-title">CBS MoveON requirements</h3></div><div class="history-profile loading-profile"><strong>No current MoveON match</strong><span class="muted">This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 21 September 2026. Requirements therefore cannot be shown reliably.</span></div>`;
+  if(!r||r.matchStatus!=='matched')return `<section class="detail-section eligibility-section">${detailSectionHead('Entry requirements','What you need to meet before applying.')}
+    <div class="detail-empty-state"><strong>No current MoveON match</strong><span>This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 21 September 2026. Requirements therefore cannot be shown reliably.</span></div></section>`;
   const gpa=Number.isFinite(r.minGpa)?r.minGpa.toFixed(1):'Not stated';
   const tests=[];if(Number.isFinite(r.ielts))tests.push(`IELTS ${r.ielts}`);if(Number.isFinite(r.toefl))tests.push(`TOEFL iBT ${r.toefl}`);if(Number.isFinite(r.cambridge))tests.push(`Cambridge ${r.cambridge}`);
   const langs=nonEnglishLabel(r);const sourceDate=r.sourceCheckedDate||'2026-09-21';
-  return `<div class="section-head"><h3 class="section-title">CBS MoveON requirements</h3><span class="window-note">Snapshot checked ${esc(sourceDate)}</span></div>
-  <div class="detail-metrics">
-    <div class="metric-card"><span>Minimum GPA</span><strong>${esc(gpa)}</strong><small>Danish 7-point scale${r.minimumGpaRaw&&r.minimumGpaRaw!==gpa?` · MoveON: ${esc(r.minimumGpaRaw)}`:''}</small></div>
-    <div class="metric-card"><span>Language proof</span><strong>${esc(proofLabel(r.proofCategory))}</strong>${tests.length?`<small>${esc(tests.join(' · '))}</small>`:''}${r.cbsLetterAccepted?'<small>CBS proficiency letter accepted</small>':''}</div>
-    <div class="metric-card"><span>English-taught courses</span><strong>${esc(englishCoursesLabel(r.englishCoursesCategory))}</strong><small>English-only exchange possible: ${esc(englishOnlyLabel(r.englishOnlyPossible))}</small></div>
-    <div class="metric-card"><span>Non-English language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}</div>
-  </div>
-  <div class="detail-metrics">
-    <div class="metric-card"><span>Academic structure</span><strong>${esc(academicLabel(r.academicStructure))}</strong><small>${esc(r.academicCalendarRaw||'No calendar note')}</small></div>
-    <div class="metric-card"><span>Housing</span><strong>${esc(housingLabel(r.onCampusHousing))}</strong><small>${esc(r.housingRaw||'No housing note')}</small></div>
-    <div class="metric-card"><span>Erasmus+</span><strong>${esc(r.erasmusPlus==='yes'?'Mentioned':'Not stated')}</strong><small>PIM: ${esc(r.pim==='yes'?'Yes':r.pim==='no'?'No':'Not stated')}</small></div>
-    <div class="metric-card"><span>Source</span><strong>CBS MoveON</strong><a href="${esc(r.detailUrl)}" target="_blank" rel="noopener">Open current agreement ↗</a></div>
-  </div>
-  <div class="history-profile">
-    ${r.languageRequirementsRaw?`<details class="month-breakdown"><summary>Full language requirements</summary><p>${esc(r.languageRequirementsRaw)}</p></details>`:''}
-    ${r.coursesInEnglishRaw?`<details class="month-breakdown"><summary>English-course availability</summary><p>${esc(r.coursesInEnglishRaw)}</p></details>`:''}
-    ${r.limitationsRaw?`<details class="month-breakdown"><summary>Limitations / restrictions</summary><p>${esc(r.limitationsRaw)}</p></details>`:''}
-    ${r.courseAvailabilityRaw?`<details class="month-breakdown"><summary>Course availability</summary><p>${esc(r.courseAvailabilityRaw)}</p></details>`:''}
-  </div>`;
+  return `<section class="detail-section eligibility-section">
+    <div class="detail-section-head"><div><h3 class="detail-section-title">Entry requirements</h3><p>Check these first to see whether this exchange is realistic for you.</p></div><span class="section-meta">MoveON checked ${esc(sourceDate)}</span></div>
+    <div class="detail-metrics requirement-metrics">
+      <div class="metric-card essential-card"><span>Minimum GPA</span><strong>${esc(gpa)}</strong><small>Danish 7-point scale${r.minimumGpaRaw&&r.minimumGpaRaw!==gpa?` · MoveON: ${esc(r.minimumGpaRaw)}`:''}</small></div>
+      <div class="metric-card essential-card"><span>Language proof</span><strong>${esc(proofLabel(r.proofCategory))}</strong>${tests.length?`<small>${esc(tests.join(' · '))}</small>`:''}${r.cbsLetterAccepted?'<small>CBS proficiency letter accepted</small>':''}</div>
+      <div class="metric-card essential-card"><span>English-taught courses</span><strong>${esc(englishCoursesLabel(r.englishCoursesCategory))}</strong><small>English-only exchange possible: ${esc(englishOnlyLabel(r.englishOnlyPossible))}</small></div>
+      <div class="metric-card essential-card"><span>Non-English language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}</div>
+    </div>
+    <details class="detail-disclosure practical-disclosure">
+      <summary><span><strong>Practical exchange details</strong><small>Calendar, housing, networks and official source</small></span><b aria-hidden="true">⌄</b></summary>
+      <div class="detail-metrics practical-metrics">
+        <div class="metric-card"><span>Academic structure</span><strong>${esc(academicLabel(r.academicStructure))}</strong><small>${esc(r.academicCalendarRaw||'No calendar note')}</small></div>
+        <div class="metric-card"><span>Housing</span><strong>${esc(housingLabel(r.onCampusHousing))}</strong><small>${esc(r.housingRaw||'No housing note')}</small></div>
+        <div class="metric-card"><span>Erasmus+</span><strong>${esc(r.erasmusPlus==='yes'?'Mentioned':'Not stated')}</strong><small>PIM: ${esc(r.pim==='yes'?'Yes':r.pim==='no'?'No':'Not stated')}</small></div>
+        <div class="metric-card"><span>Source</span><strong>CBS MoveON</strong><a href="${esc(r.detailUrl)}" target="_blank" rel="noopener">Open current agreement ↗</a></div>
+      </div>
+    </details>
+    ${(r.languageRequirementsRaw||r.coursesInEnglishRaw||r.limitationsRaw||r.courseAvailabilityRaw)?`<details class="detail-disclosure source-disclosure">
+      <summary><span><strong>Detailed CBS notes</strong><small>Language wording, course access and restrictions</small></span><b aria-hidden="true">⌄</b></summary>
+      <div class="detail-note-list">
+        ${r.languageRequirementsRaw?`<details class="month-breakdown"><summary>Full language requirements</summary><p>${esc(r.languageRequirementsRaw)}</p></details>`:''}
+        ${r.coursesInEnglishRaw?`<details class="month-breakdown"><summary>English-course availability</summary><p>${esc(r.coursesInEnglishRaw)}</p></details>`:''}
+        ${r.limitationsRaw?`<details class="month-breakdown"><summary>Limitations / restrictions</summary><p>${esc(r.limitationsRaw)}</p></details>`:''}
+        ${r.courseAvailabilityRaw?`<details class="month-breakdown"><summary>Course availability</summary><p>${esc(r.courseAvailabilityRaw)}</p></details>`:''}
+      </div>
+    </details>`:''}
+  </section>`;
 }
 function openDetail(id){
   closeInfoPopover();
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
-  const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><span class="rank-band-note">${esc(arwuRankNote(u.arwuRank))}</span>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><span class="muted">This institution is not present in the official published ARWU 2026 top 1000.</span>`:`<strong>No verified ARWU match</strong><span class="muted">The local match could not be verified.</span>`):'<strong>Rank data loading…</strong>';
+  const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><small class="metric-support">${esc(arwuRankNote(u.arwuRank))}</small>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<small class="metric-support">ARWU institution: ${esc(u.arwuMatchedInstitution)}</small>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><small class="metric-support">Not present in the published ARWU 2026 top 1000.</small>`:`<strong>No verified ARWU match</strong><small class="metric-support">The local match could not be verified.</small>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
   const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('');
   $('#detailContent').innerHTML=`<div class="detail-header"><div><h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
-    <div class="detail-metrics detail-overview">
-      <div class="metric-card">${metricLabel(`Competitiveness · ${windowLabel()}`,'competitiveness')}<div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
-      <div class="metric-card">${metricLabel('ARWU 2026','arwu')}${rankMeta}</div>
-      <div class="metric-card climate-metric">${metricLabel('Exchange-period temperature','climate')}${climateDetails(c)}<small>1991–2020 climate normal</small></div>
-      <div class="metric-card">${metricLabel('Cost of living + rent','cost')}${costDetails(u)}</div>
-    </div>
-    <div class="placement-block">
-      <div class="section-head placement-head"><div class="section-title-with-info"><h3 class="section-title">CBS placement history</h3>${infoButton('competitiveness','How CBS competitiveness is calculated')}</div><span class="window-note">Highlighted years are used for the current map color</span></div>
+    <section class="detail-section overview-section">
+      ${detailSectionHead('At a glance','The four headline factors for comparing destinations.')}
+      <div class="detail-metrics detail-overview">
+        <div class="metric-card">${metricLabel(`Competitiveness · ${windowLabel()}`,'competitiveness')}<div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
+        <div class="metric-card">${metricLabel('ARWU 2026','arwu')}${rankMeta}</div>
+        <div class="metric-card climate-metric">${metricLabel('Exchange-period temperature','climate')}${climateDetails(c)}<small>1991–2020 climate normal</small></div>
+        <div class="metric-card">${metricLabel('Cost of living + rent','cost')}${costDetails(u)}</div>
+      </div>
+    </section>
+    <section class="detail-section placement-section">
+      <div class="detail-section-head placement-head"><div><h3 class="detail-section-title">CBS placement history ${infoButton('competitiveness','How CBS competitiveness is calculated')}</h3><p>See how many places remained after allocation in each of the last five years.</p></div><span class="section-meta">Highlighted years drive the current map color</span></div>
       <div class="history">${yearsHtml}</div>
       <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
-    </div>
-    <div class="requirements-block">${requirementsHtml(u)}</div>`;
+    </section>
+    ${requirementsHtml(u)}`;
   wireSelectionControls($('#detailContent'));
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
   if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
