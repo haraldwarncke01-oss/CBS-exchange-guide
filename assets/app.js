@@ -399,13 +399,15 @@ function universityHistory(u){return state.universityHistory.get(u.id)||null}
 function historyIsVerified(h){return !!h&&h.verificationStatus!=='candidate_unverified'}
 function historySourceLabel(h){if(!h)return '';if(h.verificationStatus==='verified_official')return 'Official university source';if(h.verificationStatus==='verified_cbs')return 'CBS MoveON profile';return 'Source verification pending'}
 function foundingLine(u){const h=universityHistory(u);if(!h||!Number.isFinite(h.foundedYear))return 'Not yet researched';return `Founded ${h.foundedYear}${Number.isFinite(h.age2026)?` · ${h.age2026} years old`:''}`}
-function universityBackgroundHtml(u){const h=universityHistory(u);if(!h)return '';const verified=historyIsVerified(h);const founded=Number.isFinite(h.foundedYear)?h.foundedYear:null;const age=Number.isFinite(h.age2026)?h.age2026:null;const roots=Number.isFinite(h.rootsYear)&&h.rootsYear!==founded?h.rootsYear:null;const sourceLink=h.sourceUrl?`<a href="${esc(h.sourceUrl)}" target="_blank" rel="noopener">${verified?'Source':'Candidate source'} ↗</a>`:'';return `<section class="detail-section university-background-section">
-  ${detailSectionHead('University background','Age and institutional history.','history','About founding-year data')}
-  <div class="background-card ${verified?'verified':'provisional'}">
-    <div class="background-stat"><span>Founded</span><strong>${founded??'Unknown'}</strong>${age!=null?`<small>${age} years old in 2026</small>`:''}</div>
-    <div class="background-copy"><strong>${esc(historySourceLabel(h))}</strong><p>${esc(h.historyNote||'')}</p>${roots?`<p class="roots-note">Earlier institutional roots: ${roots}</p>`:''}<div class="background-links">${sourceLink}${verified&&h.officialWebsite?`<a href="${esc(h.officialWebsite)}" target="_blank" rel="noopener">University website ↗</a>`:''}</div></div>
-  </div>
-</section>`}
+function universityBackgroundInline(u){
+  const h=universityHistory(u);if(!h||!Number.isFinite(h.foundedYear))return '';
+  const verified=historyIsVerified(h),age=Number.isFinite(h.age2026)?h.age2026:null;
+  const label=`Founded ${h.foundedYear}${age!=null?` · ${age} yrs`:''}`;
+  const roots=Number.isFinite(h.rootsYear)&&h.rootsYear!==h.foundedYear?`Earlier roots: ${h.rootsYear}`:'';
+  const title=[historySourceLabel(h),h.historyNote||'',roots].filter(Boolean).join(' — ');
+  if(verified&&h.sourceUrl)return `<a class="founding-badge verified" href="${esc(h.sourceUrl)}" target="_blank" rel="noopener" title="${esc(title)}">${esc(label)} <span aria-hidden="true">↗</span></a>`;
+  return `<span class="founding-badge provisional" title="${esc(title)}">${esc(label)}<small>verification pending</small></span>`;
+}
 
 function climateDetails(c){if(!c)return `<p class="muted climate-wait">Climate snapshot pending for this location…</p>`;const avg=climateValue(c,'AVG');return `<div class="climate-summary"><strong>${tempText(avg)}</strong><span>Sep–Dec average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${[['SEP','Sep'],['OCT','Oct'],['NOV','Nov'],['DEC','Dec']].map(([k,l])=>`<div class="climate-card"><span>${l}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details>`}
 function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><small class="metric-support">No comparable country-level snapshot is available.</small>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><small class="metric-support">${esc(costLevel(u))} · ${esc(u.country)} index ${ci.toFixed(1)} vs Denmark 54.8</small><small>Country-level comparison</small>`}
@@ -454,7 +456,7 @@ function openDetail(id){
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><small class="metric-support">${esc(arwuRankNote(u.arwuRank))}</small>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<small class="metric-support">ARWU institution: ${esc(u.arwuMatchedInstitution)}</small>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><small class="metric-support">Not present in the published ARWU 2026 top 1000.</small>`:`<strong>No verified ARWU match</strong><small class="metric-support">The local match could not be verified.</small>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
   const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('');
-  $('#detailContent').innerHTML=`<div class="detail-header"><div><h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
+  $('#detailContent').innerHTML=`<div class="detail-header"><div><div class="detail-title-row"><h2 class="detail-title">${esc(u.name)}</h2>${universityBackgroundInline(u)}</div><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
     <section class="detail-section overview-section">
       ${detailSectionHead('At a glance','The four headline factors for comparing destinations.')}
       <div class="detail-metrics detail-overview">
@@ -469,7 +471,6 @@ function openDetail(id){
       <div class="history">${yearsHtml}</div>
       <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
     </section>
-    ${universityBackgroundHtml(u)}
     ${requirementsHtml(u)}`;
   wireSelectionControls($('#detailContent'));
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
