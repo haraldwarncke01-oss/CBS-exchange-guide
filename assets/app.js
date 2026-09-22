@@ -399,23 +399,24 @@ function requirementsHtml(u){
   const gpa=Number.isFinite(r.minGpa)?r.minGpa.toFixed(1):'Not stated';
   const tests=[];if(Number.isFinite(r.ielts))tests.push(`IELTS ${r.ielts}`);if(Number.isFinite(r.toefl))tests.push(`TOEFL iBT ${r.toefl}`);if(Number.isFinite(r.cambridge))tests.push(`Cambridge ${r.cambridge}`);
   const langs=nonEnglishLabel(r);const sourceDate=r.sourceCheckedDate||'2026-09-21';
+  const spanishRequired=r.nonEnglishRequirement==='required'&&/(^|\b)spanish(\b|$)/i.test(r.nonEnglishLanguages||'');
+  const spanishWarning=spanishRequired?'<small class="language-warning-text">Spanish is required for this exchange.</small>':'';
   return `<section class="detail-section eligibility-section">
-    <div class="detail-section-head"><div><h3 class="detail-section-title">Entry requirements</h3><p>Check these first to see whether this exchange is realistic for you.</p></div><span class="section-meta">MoveON checked ${esc(sourceDate)}</span></div>
+    <div class="detail-section-head"><div><h3 class="detail-section-title">Entry requirements</h3><p>Check these first to see whether this exchange is realistic for you.</p></div><span class="section-meta source-meta">CBS MoveON · checked ${esc(sourceDate)}${r.detailUrl?` · <a href="${esc(r.detailUrl)}" target="_blank" rel="noopener">Source ↗</a>`:''}</span></div>
     <div class="detail-metrics requirement-metrics">
       <div class="metric-card essential-card"><span>Minimum GPA</span><strong>${esc(gpa)}</strong><small>Danish 7-point scale${r.minimumGpaRaw&&r.minimumGpaRaw!==gpa?` · MoveON: ${esc(r.minimumGpaRaw)}`:''}</small></div>
-      <div class="metric-card essential-card"><span>Language proof</span><strong>${esc(proofLabel(r.proofCategory))}</strong>${tests.length?`<small>${esc(tests.join(' · '))}</small>`:''}${r.cbsLetterAccepted?'<small>CBS proficiency letter accepted</small>':''}</div>
+      <div class="metric-card essential-card ${spanishRequired?'language-warning-card':''}"><span>Language proof</span><strong>${esc(proofLabel(r.proofCategory))}</strong>${tests.length?`<small>${esc(tests.join(' · '))}</small>`:''}${r.cbsLetterAccepted?'<small>CBS proficiency letter accepted</small>':''}${spanishWarning}</div>
       <div class="metric-card essential-card"><span>English-taught courses</span><strong>${esc(englishCoursesLabel(r.englishCoursesCategory))}</strong><small>English-only exchange possible: ${esc(englishOnlyLabel(r.englishOnlyPossible))}</small></div>
-      <div class="metric-card essential-card"><span>Non-English language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}</div>
+      <div class="metric-card essential-card ${spanishRequired?'language-warning-card':''}"><span>Non-English language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}${spanishWarning}</div>
     </div>
-    <details class="detail-disclosure practical-disclosure">
-      <summary><span><strong>Practical exchange details</strong><small>Calendar, housing, networks and official source</small></span><b aria-hidden="true">⌄</b></summary>
+    <div class="practical-section">
+      <div class="practical-section-head"><div><h4>Practical exchange details</h4><p>Calendar, housing and exchange-network information.</p></div></div>
       <div class="detail-metrics practical-metrics">
         <div class="metric-card"><span>Academic structure</span><strong>${esc(academicLabel(r.academicStructure))}</strong><small>${esc(r.academicCalendarRaw||'No calendar note')}</small></div>
         <div class="metric-card"><span>Housing</span><strong>${esc(housingLabel(r.onCampusHousing))}</strong><small>${esc(r.housingRaw||'No housing note')}</small></div>
-        <div class="metric-card"><span>Erasmus+</span><strong>${esc(r.erasmusPlus==='yes'?'Mentioned':'Not stated')}</strong><small>PIM: ${esc(r.pim==='yes'?'Yes':r.pim==='no'?'No':'Not stated')}</small></div>
-        <div class="metric-card"><span>Source</span><strong>CBS MoveON</strong><a href="${esc(r.detailUrl)}" target="_blank" rel="noopener">Open current agreement ↗</a></div>
+        <div class="metric-card"><span>Erasmus+ / PIM</span><strong>${esc(r.erasmusPlus==='yes'?'Erasmus+ mentioned':'Erasmus+ not stated')}</strong><small>PIM: ${esc(r.pim==='yes'?'Yes':r.pim==='no'?'No':'Not stated')}</small></div>
       </div>
-    </details>
+    </div>
     ${(r.languageRequirementsRaw||r.coursesInEnglishRaw||r.limitationsRaw||r.courseAvailabilityRaw)?`<details class="detail-disclosure source-disclosure">
       <summary><span><strong>Detailed CBS notes</strong><small>Language wording, course access and restrictions</small></span><b aria-hidden="true">⌄</b></summary>
       <div class="detail-note-list">
