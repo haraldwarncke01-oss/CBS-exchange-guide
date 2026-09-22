@@ -108,16 +108,16 @@ dialog{width:min(1120px,calc(100vw - 28px));border-radius:22px;padding:28px 28px
 /* v12 — desktop list: all decision data visible without horizontal panning */
 .table-wrap{overflow-x:hidden}
 .university-table{width:100%;min-width:0!important;table-layout:fixed}
-.university-table .col-university{width:20%}
-.university-table .col-location{width:11%}
-.university-table .col-places{width:6%}
-.university-table .col-availability{width:7%}
-.university-table .col-competitiveness{width:10%}
-.university-table .col-gpa{width:5.5%}
-.university-table .col-language{width:10.5%}
-.university-table .col-arwu{width:7%}
-.university-table .col-temp{width:6.5%}
-.university-table .col-cost{width:10%}
+.university-table .col-university{width:22%}
+.university-table .col-location{width:12%}
+.university-table .col-places{width:6.5%}
+.university-table .col-availability{width:7.5%}
+.university-table .col-competitiveness{width:10.5%}
+.university-table .col-gpa{width:6%}
+.university-table .col-language{width:11%}
+.university-table .col-arwu{width:8.5%}
+.university-table .col-temp{width:7%}
+.university-table .col-cost{width:9%}
 .university-table .col-age{width:6.5%}
 .university-table th,.university-table td{white-space:normal;min-width:0;padding-left:8px;padding-right:8px;vertical-align:middle;overflow-wrap:anywhere}
 .university-table th{line-height:1.2;font-size:9.5px}
@@ -149,12 +149,12 @@ dialog{width:min(1120px,calc(100vw - 28px));border-radius:22px;padding:28px 28px
 @media (max-width:1280px){
   .university-table .col-university{width:19%}
   .university-table .col-location{width:10%}
-  .university-table .col-places{width:6%}
-  .university-table .col-availability{width:7%}
-  .university-table .col-competitiveness{width:10%}
+  .university-table .col-places{width:6.5%}
+  .university-table .col-availability{width:7.5%}
+  .university-table .col-competitiveness{width:10.5%}
   .university-table .col-gpa{width:5%}
   .university-table .col-language{width:11%}
-  .university-table .col-arwu{width:7%}
+  .university-table .col-arwu{width:8.5%}
   .university-table .col-temp{width:7%}
   .university-table .col-cost{width:11%}
   .university-table .col-age{width:7%}
@@ -175,3 +175,15 @@ dialog{width:min(1120px,calc(100vw - 28px));border-radius:22px;padding:28px 28px
   .university-table .cell-caption{font-size:9px}
   .university-table .age-cell{text-align:left!important}
 }
+
+/* v14: profile/age column removed; redistribute list width to decision data */
+.university-table .col-university{width:22%}
+.university-table .col-location{width:12%}
+.university-table .col-places{width:6.5%}
+.university-table .col-availability{width:7.5%}
+.university-table .col-competitiveness{width:10.5%}
+.university-table .col-gpa{width:6%}
+.university-table .col-language{width:11%}
+.university-table .col-arwu{width:8.5%}
+.university-table .col-temp{width:7%}
+.university-table .col-cost{width:9%}

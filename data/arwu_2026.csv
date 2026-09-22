@@ -1,259 +1,259 @@
-university_id,university,rank,matched_institution,match_method,status,source_url,ranking_year
-1,Universidad Argentina de la Empresa (UADE),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-2,"Universidad Austral, Campus Pilar and Campus Buenos Aires",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-3,"Universidad Austral, Campus Rosario",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-4,Universidad Torcuato di Tella (UTDT),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-5,Australian National University,101-150,The Australian National University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-6,Bond University,901-1000,Bond University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-7,Curtin University,201-300,Curtin University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-8,Deakin University,201-300,Deakin University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-9,Griffith University,301-400,Griffith University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-10,La Trobe University,401-500,La Trobe University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-11,Macquarie University,301-400,Macquarie University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-12,Monash University,76,Monash University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-13,Queensland University of Technology,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-14,Swinburne University of Technology,201-300,Swinburne University of Technology,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-15,University of Melbourne,37,The University of Melbourne,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-16,University of New South Wales,81,The University of New South Wales,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-17,University of Newcastle,401-500,"The University of Newcastle, Australia",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-18,University of Queensland,73,The University of Queensland,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-19,University of Sydney,79,University of Sydney,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-20,"University of Technology, Sydney",201-300,University of Technology Sydney,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-21,University of Western Australia,101-150,The University of Western Australia,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-22,Leopold-Franzens-Universität Innsbruck,201-300,University of Innsbruck,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-23,Universität Wien,101-150,University of Vienna,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-24,Wirtschaftsuniversität Wien,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-25,ICHEC - Brussels Management School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-26,KU Leuven,87,KU Leuven,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-27,Fundação Getulio Vargas (FGV-EAESP),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-28,INSPER,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-29,Concordia University,601-700,Concordia University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-30,Dalhousie University,301-400,Dalhousie University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-31,HEC Montréal,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-32,McGill University,73,McGill University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-33,Queen's University,201-300,Queen's University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-34,Toronto Metropolitan University,801-900,Toronto Metropolitan University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-35,Simon Fraser University,401-500,Simon Fraser University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-36,Université Laval,501-600,Laval University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-37,University of Alberta,101-150,University of Alberta,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-38,University of British Columbia,54,University of British Columbia,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-39,University of Calgary,201-300,University of Calgary,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-40,University of Ottawa,201-300,University of Ottawa,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-41,University of Toronto,24,University of Toronto,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-42,University of Victoria,301-400,University of Victoria,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-43,Western University,201-300,Western University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-44,Pontificia Universidad Católica de Chile,501-600,Pontifical Catholic University of Chile,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-45,Universidad de Chile,501-600,University of Chile,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-46,"Universidad del Desarrollo (UDD), Campus Santiago",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-47,Fudan University,41,Fudan University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-48,Peking University,22,Peking University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-49,Shanghai Jiao Tong University,27,Shanghai Jiao Tong University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-50,Shanghai University of Finance and Economics,901-1000,Shanghai University of Finance and Economics,verified,matched,https://www.shanghairanking.com/universities/shanghai-university-of-finance-and-economics,2026
-51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-52,Tongji University,101-150,Tongji University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-53,Tsinghua University,18,Tsinghua University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-54,University of International Business and Economics (UIBE),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-55,"University of Nottingham Ningbo, China",101-150,University of Nottingham (parent university),verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-56,Universidad De Los Andes,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-57,Universidad EAFIT,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-58,American University in Cairo,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-59,Estonian Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-60,University of the Faroe Islands,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-61,Hanken School of Economics,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-62,Aalto University,401-500,Aalto University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-63,Audencia Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-64,Ecole de Management de Lyon,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-65,EDHEC Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-66,EDHEC Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-67,ESSEC Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-68,Grenoble Ecole de Management,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-69,HEC Paris,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-70,IÉSEG School of Management,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-71,INSEEC Grande Ecole,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-72,ISC Paris School of Management,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-73,Kedge Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-74,Kedge Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-75,Paris School of Business,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-76,Rennes School of Business,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-77,Sciences Po (Institut d'Etudes Politiques de Paris),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-78,Sciences Po (Institut d'Etudes Politiques de Paris),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-79,Toulouse Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-80,Université Catholique de Lyon,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-81,Université de Strasbourg,101-150,University of Strasbourg,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-82,Université Paris Dauphine,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-83,Université Toulouse Capitole,401-500,Toulouse Capitole University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-84,Frankfurt School of Finance and Management,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-85,Freie Universität Berlin,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-86,Humboldt-Universität zu Berlin,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-87,Johann Wolfgang Goethe Universität,151-200,Goethe University Frankfurt,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-88,Ludwig-Maximilians-Universität München,49,LMU Munich,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-89,Technische Universität München,45,Technical University of Munich,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-90,Universität Hamburg,201-300,University of Hamburg,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-91,Universität Mannheim,701-800,University of Mannheim,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-92,Universität zu Köln,151-200,University of Cologne,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-93,Universität Münster,151-200,University of Muenster,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-94,WHU,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-95,Zeppelin University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-96,Athens University of Economics & Business - AUEB,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-97,Greenland University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-98,City University of Hong Kong (CityU),95,City University of Hong Kong,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-99,Hong Kong Baptist University,601-700,Hong Kong Baptist University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-100,The Chinese University of Hong Kong (CUHK),101-150,The Chinese University of Hong Kong,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-101,The Hong Kong Polytechnic University,101-150,The Hong Kong Polytechnic University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-102,The Hong Kong University of Science and Technology (HKUST),201-300,The Hong Kong University of Science and Technology,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-103,The University of Hong Kong (HKU),62,The University of Hong Kong,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-104,Reykjavik University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-105,University of Iceland,601-700,University of Iceland,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-106,Universitas Gadjah Mada,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-107,University College Cork,401-500,University College Cork,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-108,University College Dublin,301-400,University College Dublin,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-109,University of Limerick,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-110,Reichman University (IDC Herzliya),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-112,Università Ca' Foscari Venezia,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-113,Università Commerciale Luigi Bocconi,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-114,Università degli Studi di Bologna 'Alma Mater Studiorum',201-300,University of Bologna,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-115,Università degli Studi di Bologna 'Alma Mater Studiorum',201-300,University of Bologna,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-116,Università degli Studi di Torino,201-300,University of Turin,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-117,Hitotsubashi University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-118,Keio University,301-400,Keio University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-119,NUCB Undergraduate School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-120,Rikkyo University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-121,Ritsumeikan Asia Pacific University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-122,Ritsumeikan University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-123,Waseda University,601-700,Waseda University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-124,Vilnius University,401-500,Vilnius University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-125,Monash University Malaysia,76,Monash University (parent university),verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-126,University of Malaya,601-700,University of Malaya,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-127,Instituto Tecnológico Autónomo de México (ITAM),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-128,"Tec de Monterrey, Campus Guadalajara",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-129,"Tec de Monterrey, Campus Mexico City",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-130,"Tec de Monterrey, Campus Monterrey",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-131,"Tec de Monterrey, Campus Querétaro",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-132,"Tec de Monterrey, Campus Santa Fe",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-133,Al Akhawayn University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-134,Rabat Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-135,Erasmus Universiteit Rotterdam,101-150,Erasmus University Rotterdam,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-136,Maastricht University,301-400,Maastricht University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-137,Radboud Universiteit Nijmegen,151-200,Radboud University Nijmegen,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-138,Tilburg University,801-900,Tilburg University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-139,Universiteit Utrecht,60,Utrecht University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-140,Universiteit van Amsterdam,101-150,University of Amsterdam,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-141,University of Groningen,84,University of Groningen,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-142,Vrije Universiteit Amsterdam,151-200,Vrije Universiteit Amsterdam,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-143,Auckland University of Technology,801-900,Auckland University of Technology,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-144,Lincoln University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-145,University of Canterbury,501-600,University of Canterbury,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-146,University of Otago,401-500,University of Otago,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-147,Victoria University of Wellington,501-600,Victoria University of Wellington,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-148,BI Norwegian Business School,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-149,Norwegian School of Economics,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-150,Universidad ESAN,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-151,Universidad San Ignacio de Loyola (USIL),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-152,Kozminski University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-153,ISCTE - Instituto Universitário de Lisboa,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-154,Universidade Católica Portuguesa,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-155,Universidade Católica Portuguesa,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-156,Universidade de Lisboa,301-400,University of Lisbon,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-157,Universidade Nova de Lisboa,701-800,NOVA University Lisbon,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-158,Nanyang Technological University,84,Nanyang Technological University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-159,National University of Singapore,53,National University of Singapore,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-160,Singapore Management University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-161,University of Ljubljana,601-700,University of Ljubljana,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-162,Chung-Ang University,601-700,Chung-Ang University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-163,Ewha Womans University,701-800,Ewha Womans University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-164,Korea University,201-300,Korea University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-165,Korea University,201-300,Korea University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-166,Yonsei University,151-200,Yonsei University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-167,IE University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-168,Universidad Carlos III de Madrid,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-169,Universidad CEU San Pablo,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-170,"Universidad de Deusto, Campus Bilbao",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-171,"Universidad de Deusto, Campus San Sebastian",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-172,Universidad de Navarra,401-500,University of Navarra,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-173,Universidad Pontificia Comillas de Madrid (ICADE),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-174,Universidad Rey Juan Carlos,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-175,Universitat Autònoma de Barcelona (UAB),201-300,Autonomous University of Barcelona,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-176,Universitat de Barcelona,151-200,University of Barcelona,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-177,Universitat de València,301-400,University of Valencia,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-178,Universitat Pompeu Fabra,401-500,Pompeu Fabra University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-179,Universitat Pompeu Fabra,401-500,Pompeu Fabra University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-180,Universitat Ramon Llull,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-181,Universitat Ramon Llull,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-182,Lund University,101-150,Lund University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-183,Stockholm School of Economics,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-184,Stockholm University,101-150,Stockholm University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-185,University of Gothenburg,151-200,University of Gothenburg,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-186,Uppsala universitet,94,Uppsala University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-187,Université de Genève,55,University of Geneva,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-188,Université de Lausanne,151-200,University of Lausanne,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-189,Universität Bern,151-200,University of Bern,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-190,Universität St. Gallen,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-191,Universität Zürich,65,University of Zurich,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-192,National Chengchi University (NCCU),,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-193,National Taiwan University (NTU),201-300,National Taiwan University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-194,Soochow University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-195,Chulalongkorn University,601-700,Chulalongkorn University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-196,Chulalongkorn University,601-700,Chulalongkorn University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-197,Thammasat University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-198,Istanbul Bilgi University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-199,Koc University,701-800,Koc University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-200,Sabanci University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-201,Aston University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-202,Cardiff University,201-300,Cardiff University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-203,"City St. George's, University of London",601-700,"City St George's, University of London",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-204,"European Business School (EBS) London, Regent's University London",,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-205,King's College London,67,King's College London,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-206,London Metropolitan University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-207,Oxford Brookes University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-208,Regent's University London,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-209,The University of Manchester,51,The University of Manchester,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-210,University of Aberdeen,301-400,University of Aberdeen,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-211,University of Bath,501-600,University of Bath,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-212,University of Bristol,91,University of Bristol,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-213,University of Edinburgh,38,The University of Edinburgh,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-214,University of Essex,501-600,University of Essex,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-215,University of Exeter,151-200,University of Exeter,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-216,University of Glasgow,151-200,University of Glasgow,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-217,University of Leeds,151-200,University of Leeds,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-218,University of Leicester,301-400,University of Leicester,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-219,University of Liverpool,151-200,University of Liverpool,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-220,University of Sheffield,151-200,The University of Sheffield,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-221,University of Sheffield,151-200,The University of Sheffield,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-222,University of Strathclyde Glasgow,701-800,University of Strathclyde,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-223,University of Warwick,101-150,The University of Warwick,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-224,University of Westminster,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-225,University of Westminster,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-226,Arizona State University,101-150,Arizona State University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-227,Babson College,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-228,Bentley University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-229,Boston College,501-600,Boston College,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-230,Boston University,101-150,Boston University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-231,City University of New York,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-232,Cornell University,12,Cornell University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-233,Cornell University,12,Cornell University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-234,Emory University,101-150,Emory University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-235,George Washington University,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-236,Indiana University,151-200,"Indiana University, Bloomington",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-237,New York University,26,New York University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-238,North Carolina State University,201-300,North Carolina State University at Raleigh,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-239,Ohio State University,93,"Ohio State University, Columbus",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-240,Purdue University,100,"Purdue University, West Lafayette",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-241,"State University of New York, Stony Brook",151-200,Stony Brook University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-242,Texas A&M University,151-200,Texas A&M University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-243,Tulane University,501-600,Tulane University,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-244,University of Hawaii at Manoa,401-500,University of Hawaii at Manoa,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-245,University of Maryland,57,"University of Maryland, College Park",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-246,University of Michigan,35,"University of Michigan, Ann Arbor",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-247,"University of Minnesota, Twin Cities",52,"University of Minnesota, Twin Cities",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-248,University of North Carolina at Chapel Hill,40,University of North Carolina at Chapel Hill,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-249,University of Pennsylvania,14,University of Pennsylvania,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-250,University of Richmond,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-251,University of South Carolina,401-500,"University of South Carolina, Columbia",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-252,University of Southern California,68,University of Southern California,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-253,University of Texas at Austin,47,The University of Texas at Austin,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-254,University of Washington,16,University of Washington,verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-255,University of Wisconsin - La Crosse,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-256,University of Wisconsin - Madison,35,"University of Wisconsin, Madison",verified,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026
-257,Universidad Católica del Uruguay,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
-258,Universidad de Montevideo,,,,no_confident_match,https://www.shanghairanking.com/rankings/arwu/2026,2026
+university_id,university,rank,matched_institution,match_method,status,source_url,ranking_year,official_region,official_slug
+1,Universidad Argentina de la Empresa (UADE),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+2,"Universidad Austral, Campus Pilar and Campus Buenos Aires",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+3,"Universidad Austral, Campus Rosario",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+4,Universidad Torcuato di Tella (UTDT),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+5,Australian National University,101-150,The Australian National University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,the-australian-national-university
+6,Bond University,901-1000,Bond University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,bond-university
+7,Curtin University,201-300,Curtin University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,curtin-university
+8,Deakin University,201-300,Deakin University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,deakin-university
+9,Griffith University,301-400,Griffith University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,griffith-university
+10,La Trobe University,401-500,La Trobe University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,la-trobe-university
+11,Macquarie University,301-400,Macquarie University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,macquarie-university
+12,Monash University,76,Monash University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,monash-university
+13,Queensland University of Technology,301-400,Queensland University of Technology,official_name_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,queensland-university-of-technology
+14,Swinburne University of Technology,201-300,Swinburne University of Technology,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,swinburne-university-of-technology
+15,University of Melbourne,37,The University of Melbourne,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,the-university-of-melbourne
+16,University of New South Wales,81,The University of New South Wales,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,the-university-of-new-south-wales
+17,University of Newcastle,401-500,"The University of Newcastle, Australia",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,the-university-of-newcastle-australia
+18,University of Queensland,73,The University of Queensland,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,the-university-of-queensland
+19,University of Sydney,79,University of Sydney,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,university-of-sydney
+20,"University of Technology, Sydney",201-300,University of Technology Sydney,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,university-of-technology-sydney
+21,University of Western Australia,101-150,The University of Western Australia,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,the-university-of-western-australia
+22,Leopold-Franzens-Universität Innsbruck,201-300,University of Innsbruck,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Austria,university-of-innsbruck
+23,Universität Wien,101-150,University of Vienna,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Austria,university-of-vienna
+24,Wirtschaftsuniversität Wien,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+25,ICHEC - Brussels Management School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+26,KU Leuven,87,KU Leuven,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Belgium,ku-leuven
+27,Fundação Getulio Vargas (FGV-EAESP),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+28,INSPER,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+29,Concordia University,601-700,Concordia University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,concordia-university
+30,Dalhousie University,301-400,Dalhousie University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,dalhousie-university
+31,HEC Montréal,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+32,McGill University,73,McGill University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,mcgill-university
+33,Queen's University,201-300,Queen's University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,queens-university
+34,Toronto Metropolitan University,801-900,Toronto Metropolitan University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,toronto-metropolitan-university
+35,Simon Fraser University,401-500,Simon Fraser University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,simon-fraser-university
+36,Université Laval,501-600,Laval University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,laval-university
+37,University of Alberta,101-150,University of Alberta,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,university-of-alberta
+38,University of British Columbia,54,University of British Columbia,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,university-of-british-columbia
+39,University of Calgary,201-300,The University of Calgary,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,the-university-of-calgary
+40,University of Ottawa,201-300,University of Ottawa,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,university-of-ottawa
+41,University of Toronto,24,University of Toronto,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,university-of-toronto
+42,University of Victoria,301-400,University of Victoria,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,university-of-victoria
+43,Western University,201-300,Western University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Canada,western-university
+44,Pontificia Universidad Católica de Chile,501-600,Pontifical Catholic University of Chile,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Chile,pontifical-catholic-university-of-chile
+45,Universidad de Chile,501-600,University of Chile,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Chile,university-of-chile
+46,"Universidad del Desarrollo (UDD), Campus Santiago",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+47,Fudan University,41,Fudan University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,fudan-university
+48,Peking University,22,Peking University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,peking-university
+49,Shanghai Jiao Tong University,27,Shanghai Jiao Tong University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,shanghai-jiao-tong-university
+50,Shanghai University of Finance and Economics,901-1000,Shanghai University of Finance and Economics,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,shanghai-university-of-finance-and-economics
+51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",401-500,"The Chinese University of Hong Kong, Shenzhen",official_name_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,the-chinese-university-of-hong-kong-shenzhen
+52,Tongji University,101-150,Tongji University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,tongji-university
+53,Tsinghua University,18,Tsinghua University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China,tsinghua-university
+54,University of International Business and Economics (UIBE),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+55,"University of Nottingham Ningbo, China",101-150,University of Nottingham,verified_parent_campus_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-nottingham
+56,Universidad De Los Andes,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+57,Universidad EAFIT,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+58,American University in Cairo,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+59,Estonian Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+60,University of the Faroe Islands,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+61,Hanken School of Economics,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+62,Aalto University,401-500,Aalto University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Finland,aalto-university
+63,Audencia Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+64,Ecole de Management de Lyon,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+65,EDHEC Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+66,EDHEC Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+67,ESSEC Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+68,Grenoble Ecole de Management,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+69,HEC Paris,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+70,IÉSEG School of Management,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+71,INSEEC Grande Ecole,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+72,ISC Paris School of Management,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+73,Kedge Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+74,Kedge Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+75,Paris School of Business,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+76,Rennes School of Business,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+77,Sciences Po (Institut d'Etudes Politiques de Paris),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+78,Sciences Po (Institut d'Etudes Politiques de Paris),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+79,Toulouse Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+80,Université Catholique de Lyon,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+81,Université de Strasbourg,101-150,University of Strasbourg,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,France,university-of-strasbourg
+82,Université Paris Dauphine,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+83,Université Toulouse Capitole,401-500,Toulouse Capitole University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,France,university-of-toulouse-1
+84,Frankfurt School of Finance and Management,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+85,Freie Universität Berlin,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+86,Humboldt-Universität zu Berlin,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+87,Johann Wolfgang Goethe Universität,151-200,Goethe University Frankfurt,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,goethe-university-frankfurt
+88,Ludwig-Maximilians-Universität München,49,LMU Munich,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,university-of-munich
+89,Technische Universität München,45,Technical University of Munich,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,technical-university-of-munich
+90,Universität Hamburg,201-300,University of Hamburg,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,university-of-hamburg
+91,Universität Mannheim,701-800,University of Mannheim,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,university-of-mannheim
+92,Universität zu Köln,151-200,University of Cologne,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,university-of-cologne
+93,Universität Münster,151-200,University of Muenster,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Germany,university-of-muenster
+94,WHU,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+95,Zeppelin University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+96,Athens University of Economics & Business - AUEB,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+97,Greenland University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+98,City University of Hong Kong (CityU),95,City University of Hong Kong,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Hong Kong,city-university-of-hong-kong
+99,Hong Kong Baptist University,601-700,Hong Kong Baptist University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Hong Kong,hong-kong-baptist-university
+100,The Chinese University of Hong Kong (CUHK),101-150,The Chinese University of Hong Kong,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Hong Kong,the-chinese-university-of-hong-kong
+101,The Hong Kong Polytechnic University,101-150,The Hong Kong Polytechnic University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Hong Kong,the-hong-kong-polytechnic-university
+102,The Hong Kong University of Science and Technology (HKUST),201-300,The Hong Kong University of Science and Technology,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Hong Kong,the-hong-kong-university-of-science-and-technology
+103,The University of Hong Kong (HKU),62,The University of Hong Kong,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Hong Kong,the-university-of-hong-kong
+104,Reykjavik University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+105,University of Iceland,601-700,University of Iceland,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Iceland,university-of-iceland
+106,Universitas Gadjah Mada,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+107,University College Cork,401-500,University College Cork,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Ireland,university-college-cork
+108,University College Dublin,301-400,University College Dublin,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Ireland,university-college-dublin
+109,University of Limerick,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+110,Reichman University (IDC Herzliya),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+112,Università Ca' Foscari Venezia,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+113,Università Commerciale Luigi Bocconi,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+114,Università degli Studi di Bologna 'Alma Mater Studiorum',201-300,University of Bologna,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Italy,university-of-bologna
+115,Università degli Studi di Bologna 'Alma Mater Studiorum',201-300,University of Bologna,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Italy,university-of-bologna
+116,Università degli Studi di Torino,201-300,University of Turin,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Italy,university-of-turin
+117,Hitotsubashi University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+118,Keio University,301-400,Keio University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Japan,keio-university
+119,NUCB Undergraduate School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+120,Rikkyo University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+121,Ritsumeikan Asia Pacific University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+122,Ritsumeikan University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+123,Waseda University,601-700,Waseda University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Japan,waseda-university
+124,Vilnius University,401-500,Vilnius University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Lithuania,vilnius-university
+125,Monash University Malaysia,76,Monash University,verified_parent_campus_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Australia,monash-university
+126,University of Malaya,601-700,University of Malaya,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Malaysia,university-of-malaya
+127,Instituto Tecnológico Autónomo de México (ITAM),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+128,"Tec de Monterrey, Campus Guadalajara",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+129,"Tec de Monterrey, Campus Mexico City",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+130,"Tec de Monterrey, Campus Monterrey",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+131,"Tec de Monterrey, Campus Querétaro",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+132,"Tec de Monterrey, Campus Santa Fe",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+133,Al Akhawayn University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+134,Rabat Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+135,Erasmus Universiteit Rotterdam,101-150,Erasmus University Rotterdam,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,erasmus-university-rotterdam
+136,Maastricht University,301-400,Maastricht University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,maastricht-university
+137,Radboud Universiteit Nijmegen,151-200,Radboud University Nijmegen,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,radboud-university-nijmegen
+138,Tilburg University,801-900,Tilburg University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,tilburg-university
+139,Universiteit Utrecht,60,Utrecht University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,utrecht-university
+140,Universiteit van Amsterdam,101-150,University of Amsterdam,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,university-of-amsterdam
+141,University of Groningen,84,University of Groningen,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,university-of-groningen
+142,Vrije Universiteit Amsterdam,151-200,Vrije Universiteit Amsterdam,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Netherlands,vrije-universiteit-amsterdam
+143,Auckland University of Technology,801-900,Auckland University of Technology,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,New Zealand,aut-university
+144,Lincoln University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+145,University of Canterbury,501-600,University of Canterbury,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,New Zealand,university-of-canterbury
+146,University of Otago,401-500,University of Otago,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,New Zealand,university-of-otago
+147,Victoria University of Wellington,501-600,Victoria University of Wellington,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,New Zealand,victoria-university-of-wellington
+148,BI Norwegian Business School,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+149,Norwegian School of Economics,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+150,Universidad ESAN,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+151,Universidad San Ignacio de Loyola (USIL),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+152,Kozminski University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+153,ISCTE - Instituto Universitário de Lisboa,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+154,Universidade Católica Portuguesa,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+155,Universidade Católica Portuguesa,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+156,Universidade de Lisboa,301-400,University of Lisbon,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Portugal,university-of-lisbon
+157,Universidade Nova de Lisboa,701-800,NOVA University Lisbon,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Portugal,nova-university-lisbon
+158,Nanyang Technological University,84,Nanyang Technological University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Singapore,nanyang-technological-university
+159,National University of Singapore,53,National University of Singapore,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Singapore,national-university-of-singapore
+160,Singapore Management University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+161,University of Ljubljana,601-700,University of Ljubljana,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Slovenia,university-of-ljubljana
+162,Chung-Ang University,601-700,Chung-Ang University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,South Korea,chung-ang-university
+163,Ewha Womans University,701-800,Ewha Womans University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,South Korea,ewha-womans-university
+164,Korea University,201-300,Korea University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,South Korea,korea-university
+165,Korea University,201-300,Korea University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,South Korea,korea-university
+166,Yonsei University,151-200,Yonsei University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,South Korea,yonsei-university
+167,IE University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+168,Universidad Carlos III de Madrid,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+169,Universidad CEU San Pablo,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+170,"Universidad de Deusto, Campus Bilbao",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+171,"Universidad de Deusto, Campus San Sebastian",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+172,Universidad de Navarra,401-500,University of Navarra,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,university-of-navarra
+173,Universidad Pontificia Comillas de Madrid (ICADE),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+174,Universidad Rey Juan Carlos,901-1000,King Juan Carlos University,translated_name_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,king-juan-carlos-university
+175,Universitat Autònoma de Barcelona (UAB),201-300,Autonomous University of Barcelona,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,autonomous-university-of-barcelona
+176,Universitat de Barcelona,151-200,University of Barcelona,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,university-of-barcelona
+177,Universitat de València,301-400,University of Valencia,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,university-of-valencia
+178,Universitat Pompeu Fabra,401-500,Pompeu Fabra University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,pompeu-fabra-university
+179,Universitat Pompeu Fabra,401-500,Pompeu Fabra University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Spain,pompeu-fabra-university
+180,Universitat Ramon Llull,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+181,Universitat Ramon Llull,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+182,Lund University,101-150,Lund University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Sweden,lund-university
+183,Stockholm School of Economics,701-800,Stockholm School of Economics,official_name_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Sweden,stockholm-school-of-economics
+184,Stockholm University,101-150,Stockholm University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Sweden,stockholm-university
+185,University of Gothenburg,151-200,University of Gothenburg,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Sweden,university-of-gothenburg
+186,Uppsala universitet,94,Uppsala University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Sweden,uppsala-university
+187,Université de Genève,55,University of Geneva,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Switzerland,university-of-geneva
+188,Université de Lausanne,151-200,University of Lausanne,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Switzerland,university-of-lausanne
+189,Universität Bern,151-200,University of Bern,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Switzerland,university-of-bern
+190,Universität St. Gallen,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+191,Universität Zürich,65,University of Zurich,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Switzerland,university-of-zurich
+192,National Chengchi University (NCCU),,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+193,National Taiwan University (NTU),201-300,National Taiwan University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,China-Taiwan,national-taiwan-university
+194,Soochow University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+195,Chulalongkorn University,601-700,Chulalongkorn University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Thailand,chulalongkorn-university
+196,Chulalongkorn University,601-700,Chulalongkorn University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Thailand,chulalongkorn-university
+197,Thammasat University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+198,Istanbul Bilgi University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+199,Koc University,701-800,Koc University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,Türkiye,koc-university
+200,Sabanci University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+201,Aston University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+202,Cardiff University,201-300,Cardiff University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,cardiff-university
+203,"City St. George's, University of London",601-700,"City St George's, University of London",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,st-georges-university-of-london
+204,"European Business School (EBS) London, Regent's University London",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+205,King's College London,67,King's College London,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,kings-college-london
+206,London Metropolitan University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+207,Oxford Brookes University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+208,Regent's University London,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+209,The University of Manchester,51,The University of Manchester,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,the-university-of-manchester
+210,University of Aberdeen,301-400,University of Aberdeen,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-aberdeen
+211,University of Bath,501-600,University of Bath,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-bath
+212,University of Bristol,91,University of Bristol,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-bristol
+213,University of Edinburgh,38,The University of Edinburgh,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,the-university-of-edinburgh
+214,University of Essex,501-600,University of Essex,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-essex
+215,University of Exeter,151-200,University of Exeter,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-exeter
+216,University of Glasgow,151-200,University of Glasgow,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,the-university-of-glasgow
+217,University of Leeds,151-200,University of Leeds,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-leeds
+218,University of Leicester,301-400,University of Leicester,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-leicester
+219,University of Liverpool,151-200,University of Liverpool,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-liverpool
+220,University of Sheffield,151-200,The University of Sheffield,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,the-university-of-sheffield
+221,University of Sheffield,151-200,The University of Sheffield,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,the-university-of-sheffield
+222,University of Strathclyde Glasgow,701-800,University of Strathclyde,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-strathclyde
+223,University of Warwick,101-150,The University of Warwick,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United Kingdom,university-of-warwick
+224,University of Westminster,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+225,University of Westminster,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+226,Arizona State University,101-150,Arizona State University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,arizona-state-university
+227,Babson College,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+228,Bentley University,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+229,Boston College,501-600,Boston College,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,boston-college
+230,Boston University,101-150,Boston University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,boston-university
+231,City University of New York,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+232,Cornell University,12,Cornell University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,cornell-university
+233,Cornell University,12,Cornell University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,cornell-university
+234,Emory University,101-150,Emory University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,emory-university
+235,George Washington University,301-400,George Washington University,official_name_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,the-george-washington-university
+236,Indiana University,151-200,"Indiana University, Bloomington",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,indiana-university-bloomington
+237,New York University,26,New York University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,new-york-university
+238,North Carolina State University,201-300,North Carolina State University at Raleigh,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,north-carolina-state-university-raleigh
+239,Ohio State University,93,"Ohio State University, Columbus",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,the-ohio-state-university-columbus
+240,Purdue University,100,"Purdue University, West Lafayette",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,purdue-university-west-lafayette
+241,"State University of New York, Stony Brook",151-200,Stony Brook University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,stony-brook-university
+242,Texas A&M University,151-200,Texas A&M University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,texas-a-m-university
+243,Tulane University,501-600,Tulane University,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,tulane-university
+244,University of Hawaii at Manoa,401-500,University of Hawaii at Manoa,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-hawaii-at-manoa
+245,University of Maryland,57,"University of Maryland, College Park",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-maryland-college-park
+246,University of Michigan,35,"University of Michigan, Ann Arbor",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-michigan-ann-arbor
+247,"University of Minnesota, Twin Cities",52,"University of Minnesota, Twin Cities",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-minnesota-twin-cities
+248,University of North Carolina at Chapel Hill,40,University of North Carolina at Chapel Hill,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-north-carolina-at-chapel-hill
+249,University of Pennsylvania,14,University of Pennsylvania,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-pennsylvania
+250,University of Richmond,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+251,University of South Carolina,401-500,"University of South Carolina, Columbia",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-south-carolina-columbia-1
+252,University of Southern California,68,University of Southern California,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-southern-california
+253,University of Texas at Austin,47,The University of Texas at Austin,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,the-university-of-texas-at-austin
+254,University of Washington,16,University of Washington,verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-washington
+255,University of Wisconsin - La Crosse,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+256,University of Wisconsin - Madison,35,"University of Wisconsin, Madison",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-wisconsin-madison
+257,Universidad Católica del Uruguay,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+258,Universidad de Montevideo,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
