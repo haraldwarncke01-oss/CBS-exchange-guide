@@ -13,6 +13,16 @@ const STATUS_META={
 
 // Geographic continent used only for filtering. Turkey is grouped with Asia because the
 // CBS partner campuses in this file are primarily in Ankara/Istanbul and a single bucket is required.
+const COUNTRY_CODE={
+  'Argentina':'AR','Australia':'AU','Austria':'AT','Belgium':'BE','Brazil':'BR','Canada':'CA','Chile':'CL','China':'CN','Colombia':'CO','Egypt':'EG',
+  'Estonia':'EE','Faroe Islands':'FO','Finland':'FI','France':'FR','Germany':'DE','Greece':'GR','Greenland':'GL','Hong Kong':'HK','Iceland':'IS','Indonesia':'ID',
+  'Ireland':'IE','Israel':'IL','Italy':'IT','Japan':'JP','Lithuania':'LT','Malaysia':'MY','Mexico':'MX','Morocco':'MA','Netherlands':'NL','New Zealand':'NZ',
+  'Norway':'NO','Peru':'PE','Poland':'PL','Portugal':'PT','Singapore':'SG','Slovenia':'SI','South Korea':'KR','Spain':'ES','Sweden':'SE','Switzerland':'CH',
+  'Taiwan':'TW','Thailand':'TH','Turkey':'TR','United Kingdom':'GB','United States':'US','Uruguay':'UY'
+};
+function countryFlag(country){const code=COUNTRY_CODE[country];return code?[...code].map(c=>String.fromCodePoint(127397+c.charCodeAt(0))).join(''):'🌐'}
+function countryLineHtml(country){return `<span class="country-line"><span class="country-flag" aria-hidden="true">${countryFlag(country)}</span><strong>${esc(country)}</strong></span>`}
+
 const CONTINENT_BY_COUNTRY={
   'Argentina':'South America','Australia':'Oceania','Austria':'Europe','Belgium':'Europe','Brazil':'South America',
   'Canada':'North America','Chile':'South America','China':'Asia','Colombia':'South America','Egypt':'Africa',
@@ -154,7 +164,6 @@ function activeFilterDescriptors(){
   if($('#housingFilter')?.value)out.push({key:'housingFilter',label:`Housing: ${selectedText('housingFilter')}`});
   if($('#academicStructure')?.value)out.push({key:'academicStructure',label:`Academic structure: ${selectedText('academicStructure')}`});
   if($('#favoritesOnly')?.checked)out.push({key:'favoritesOnly',label:'Favorites only'});
-  if($('#last2')?.checked)out.push({key:'last2',label:'Places available in both latest years'});
   return out;
 }
 function resetFilter(key){
@@ -174,11 +183,10 @@ function resetFilter(key){
   else if(key==='housingFilter')$('#housingFilter').value='';
   else if(key==='academicStructure')$('#academicStructure').value='';
   else if(key==='favoritesOnly')$('#favoritesOnly').checked=false;
-  else if(key==='last2')$('#last2').checked=false;
   applyFilters();
 }
 function resetAllFilters(){
-  $('#search').value='';$('#country').value='';$('#continent').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#demandLevel').value='';$('#arwuMax').value='0';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#foundedBefore').value='';$('#myGpa').value='';$('#languageProof').value='';$('#englishOnly').checked=false;$('#housingFilter').value='';$('#academicStructure').value='';$('#favoritesOnly').checked=false;$('#last2').checked=false;applyFilters();
+  $('#search').value='';$('#country').value='';$('#continent').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#demandLevel').value='';$('#arwuMax').value='0';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#foundedBefore').value='';$('#myGpa').value='';$('#languageProof').value='';$('#englishOnly').checked=false;$('#housingFilter').value='';$('#academicStructure').value='';$('#favoritesOnly').checked=false;applyFilters();
 }
 function renderActiveFilters(){
   const box=$('#activeFilters'),items=activeFilterDescriptors(),count=$('#filterCount');
@@ -235,7 +243,7 @@ function summaryExplanation(s){
 function markerIcon(u){const s=competitionSummary(u),m=STATUS_META[s.status]||STATUS_META.unknown;return L.divIcon({className:'',html:`<div class="uni-marker" style="background:${m.bg};border-color:${m.border}"></div>`,iconSize:[17,17],iconAnchor:[8,8]})}
 function popupHtml(u){
   const c=state.climate.get(u.id),s=competitionSummary(u),avg=climateValue(c,'AVG'),fy=foundedYear(u),ci=costIndex(u);
-  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta">${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
+  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span> ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}${Number.isFinite(fy)?`<span>Founded: <strong>${fy}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
 }
 
 function sortValue(u,key){
@@ -251,7 +259,7 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u),r=requirement(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td><strong>${esc(u.country)}</strong><br><span class="muted">${esc(city(u)||'—')}</span></td><td>${demandChip(s.status)}</td><td>${Number.isFinite(r?.minGpa)?r.minGpa.toFixed(1):'—'}</td><td><span class="muted">${esc(r?.matchStatus==='matched'?proofLabel(r.proofCategory):'No current MoveON match')}</span></td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Pending snapshot</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td><td><span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span></td></tr>`}).join('');
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),fy=foundedYear(u),age=yearsOld(fy),ci=costIndex(u),r=requirement(u);return `<tr><td><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(u.name)}</button></div><span class="muted">${esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td><td>${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td><td>${demandChip(s.status)}</td><td>${Number.isFinite(r?.minGpa)?r.minGpa.toFixed(1):'—'}</td><td><span class="muted">${esc(r?.matchStatus==='matched'?proofLabel(r.proofCategory):'No current MoveON match')}</span></td><td class="rank-cell ${u.arwuRank?'ranked':''}">${esc(rankText(u))}</td><td>${tempText(climateValue(c,'AVG'))}</td><td class="cost-cell">${Number.isFinite(ci)?`<strong>${esc(costVsDenmarkText(u))}</strong><span>${esc(costLevel(u))}</span>`:'—'}</td><td class="age-cell">${Number.isFinite(age)?`<strong>~${age} years</strong><span>Founded ${fy}</span>`:(profile(u)?'<span class="muted">Unknown</span>':'<span class="muted">Pending snapshot</span>')}</td><td>${u.latestPlaces??'—'}</td><td>${availabilityInWindow(u)}/${selectedYears().length}</td></tr>`}).join('');
   body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail))));wireSelectionControls(body);
 }
 function renderMarkers(){
@@ -259,9 +267,9 @@ function renderMarkers(){
 }
 function updateLegend(){const el=$('#legendWindow');if(el)el.textContent=`Map colors · ${windowLabel()}`}
 function applyFilters(){
-  const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),demand=$('#demandLevel').value,last2=$('#last2').checked,favoritesOnly=$('#favoritesOnly')?.checked;
+  const q=$('#search').value.trim().toLowerCase(),country=$('#country').value,cont=$('#continent').value,minP=Number($('#minPlaces').value||0),demand=$('#demandLevel').value,favoritesOnly=$('#favoritesOnly')?.checked;
   const arwuMax=Number($('#arwuMax').value||0),tempMetric=$('#tempMetric').value,minTemp=$('#minTemp').value===''?null:Number($('#minTemp').value),maxCost=$('#maxCost').value===''?null:Number($('#maxCost').value),foundedBefore=$('#foundedBefore').value===''?null:Number($('#foundedBefore').value),myGpa=$('#myGpa').value===''?null:Number($('#myGpa').value),languageProof=$('#languageProof').value,englishOnly=$('#englishOnly').checked,housingFilter=$('#housingFilter').value,academicStructure=$('#academicStructure').value;
-  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),fy=foundedYear(u),r=requirement(u);return (!q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!last2||u.availableLast2)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))&&(myGpa==null||(Number.isFinite(r?.minGpa)&&r.minGpa<=myGpa))&&(!languageProof||r?.proofCategory===languageProof)&&(!englishOnly||r?.englishOnlyPossible==='yes')&&(!housingFilter||r?.onCampusHousing===housingFilter)&&(!academicStructure||r?.academicStructure===academicStructure)});
+  state.filtered=state.all.filter(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),tv=climateValue(c,tempMetric),ci=costVsDenmark(u),fy=foundedYear(u),r=requirement(u);return (!q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(q))&&(!country||u.country===country)&&(!cont||continent(u)===cont)&&(u.latestPlaces??0)>=minP&&(!demand||s.status===demand)&&(!favoritesOnly||state.favorites.has(u.id))&&(!arwuMax||(u.arwuSort&&u.arwuSort<=arwuMax))&&(minTemp==null||(Number.isFinite(tv)&&tv>=minTemp))&&(maxCost==null||(Number.isFinite(ci)&&ci<=maxCost))&&(foundedBefore==null||(Number.isFinite(fy)&&fy<foundedBefore))&&(myGpa==null||(Number.isFinite(r?.minGpa)&&r.minGpa<=myGpa))&&(!languageProof||r?.proofCategory===languageProof)&&(!englishOnly||r?.englishOnlyPossible==='yes')&&(!housingFilter||r?.onCampusHousing===housingFilter)&&(!academicStructure||r?.academicStructure===academicStructure)});
   $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
 }
 
@@ -274,7 +282,6 @@ function renderCompare(){
     demand:demandChip(competitionSummary(u).status),
     places:String(u.latestPlaces??'—'),
     avail:`${availabilityInWindow(u)}/${selectedYears().length}`,
-    last2:`<span class="badge ${u.availableLast2?'yes':'no'}">${u.availableLast2?'Yes':'No'}</span>`,
     arwu:esc(rankText(u)),
     avg:tempText(climateValue(state.climate.get(u.id),'AVG')),
     sep:tempText(climateValue(state.climate.get(u.id),'SEP')),
@@ -291,11 +298,10 @@ function renderCompare(){
     housing:esc(housingLabel(requirement(u)?.onCampusHousing||'unclear'))
   });
   const rows=[
-    ['Location',u=>`<strong>${esc(u.country)}</strong>${city(u)?`<br><span class="muted">${esc(city(u))}</span>`:''}<br><span class="muted">${esc(continent(u))}</span>`],
+    ['Location',u=>`${countryLineHtml(u.country)}${city(u)?`<span class="city-line">${esc(city(u))}</span>`:''}<span class="muted location-continent">${esc(continent(u))}</span>`],
     [`Competitiveness · ${windowLabel()}`,u=>cell(u).demand],
     ['CBS places 2026–27',u=>cell(u).places],
     [`Years with places available · ${windowLabel()}`,u=>cell(u).avail],
-    ['Places available in both latest years',u=>cell(u).last2],
     ['ARWU 2026',u=>cell(u).arwu],
     ['Sep–Dec average',u=>cell(u).avg],
     ['September',u=>cell(u).sep],['October',u=>cell(u).oct],['November',u=>cell(u).nov],['December',u=>cell(u).dec],
@@ -348,7 +354,7 @@ function openDetail(id){
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:`<strong>No confident ARWU match</strong><span class="muted">This avoids guessing when the CBS partner name cannot be matched confidently to the published ARWU list.</span>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
-  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub">${esc(u.school||'Regular')} · ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))}</p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
+  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
     <div class="detail-metrics">
       <div class="metric-card"><span>Competitiveness · ${esc(windowLabel())}</span><div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
       <div class="metric-card"><span>ARWU 2026</span>${rankMeta}<a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">Source</a></div>
@@ -474,12 +480,15 @@ async function init(){
   await loadArwu();state.filtered=[...state.all];loadSavedSelections();
   const validIds=new Set(state.all.map(u=>u.id));state.favorites=new Set([...state.favorites].filter(id=>validIds.has(id)));state.compare=new Set([...state.compare].filter(id=>validIds.has(id)).slice(0,6));saveSelections();
   const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
-  const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${countryFlag(c)} ${esc(c)}</option>`).join('');
   const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
-  for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','myGpa','languageProof','englishOnly','housingFilter','academicStructure','favoritesOnly','last2'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
+  for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','foundedBefore','myGpa','languageProof','englishOnly','housingFilter','academicStructure','favoritesOnly'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
   $('#reset').addEventListener('click',resetAllFilters);$('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='foundedYear'||k==='minGpa'||k==='languageProof')?1:-1}renderTable()}));
   $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#compareBtn').addEventListener('click',()=>switchView('compare'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
+  const filterMenu=$('#filterMenu');
+  document.addEventListener('pointerdown',e=>{if(filterMenu?.open&&!filterMenu.contains(e.target))filterMenu.open=false});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&filterMenu?.open){filterMenu.open=false;e.stopPropagation()}});
   $('#foundedBefore').disabled=state.profiles.size===0;updateSavedCounts();applyFilters();refreshDataStatus();
   const unresolved=state.all.length-state.coords.size;$('#geoStatus').textContent=`· ${state.coords.size} mapped${unresolved?` · ${unresolved} unresolved`:''}`;
   // Static CSVs are primary. These fallbacks only fill gaps until the repository refresh workflow has populated all snapshots.

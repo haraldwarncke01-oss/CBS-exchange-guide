@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=7" />
+  <link rel="stylesheet" href="assets/styles.css?v=10-polish" />
 </head>
 <body>
   <header class="topbar">
@@ -26,12 +26,12 @@
     <section class="browse-controls" aria-label="Search and filters">
       <label class="main-search">
         <span>Search universities</span>
-        <input id="search" type="search" placeholder="University or country…" autocomplete="off" />
+        <input id="search" type="search" placeholder="Search by university, city or country…" autocomplete="off" />
       </label>
 
       <details id="filterMenu" class="filter-menu">
         <summary>
-          <span class="filter-summary-label">Filters</span>
+          <span class="filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="filter-summary-label">Filters</span>
           <span id="filterCount" class="filter-count" aria-label="0 active filters">0</span>
           <span class="filter-chevron" aria-hidden="true">⌄</span>
         </summary>
@@ -43,125 +43,40 @@
             </div>
             <button id="reset" type="button" class="text-button">Clear all</button>
           </div>
-          <div class="filter-grid">
-            <label>
-              <span>Country</span>
-              <select id="country"><option value="">All countries</option></select>
-            </label>
-            <label>
-              <span>Continent</span>
-              <select id="continent">
-                <option value="">All continents</option>
-                <option value="Africa">Africa</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="North America">North America</option>
-                <option value="Oceania">Oceania</option>
-                <option value="South America">South America</option>
-              </select>
-            </label>
-            <label>
-              <span>Min. places 2026–27</span>
-              <select id="minPlaces">
-                <option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option>
-              </select>
-            </label>
-            <label>
-              <span>History window</span>
-              <select id="historyWindow">
-                <option value="1">2026–27 only</option>
-                <option value="2">Last 2 years</option>
-                <option value="3">Last 3 years</option>
-                <option value="4">Last 4 years</option>
-                <option value="5" selected>All 5 years</option>
-              </select>
-            </label>
-            <label>
-              <span>Competitiveness</span>
-              <select id="demandLevel">
-                <option value="">Any competitiveness</option>
-                <option value="available">Places available</option>
-                <option value="filled">All places filled</option>
-                <option value="competitive">Competitive</option>
-                <option value="very_competitive">Very competitive</option>
-                <option value="unknown">No comparable years</option>
-              </select>
-            </label>
-            <label>
-              <span>ARWU 2026</span>
-              <select id="arwuMax">
-                <option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option>
-              </select>
-            </label>
-            <label>
-              <span>Temperature basis</span>
-              <select id="tempMetric">
-                <option value="AVG">Sep–Dec average</option>
-                <option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option>
-              </select>
-            </label>
-            <label>
-              <span>Min. temperature</span>
-              <select id="minTemp">
-                <option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option>
-              </select>
-            </label>
-            <label>
-              <span>Cost vs Denmark</span>
-              <select id="maxCost">
-                <option value="">Any cost</option>
-                <option value="20">No more than 20% above Denmark</option>
-                <option value="0">Same as Denmark or cheaper</option>
-                <option value="-10">At least 10% cheaper than Denmark</option>
-                <option value="-25">At least 25% cheaper than Denmark</option>
-                <option value="-40">At least 40% cheaper than Denmark</option>
-              </select>
-            </label>
-            <label>
-              <span>University age</span>
-              <select id="foundedBefore" disabled>
-                <option value="">Any founding date</option><option value="1800">Founded before 1800</option><option value="1850">Founded before 1850</option><option value="1900">Founded before 1900</option><option value="1950">Founded before 1950</option><option value="2000">Founded before 2000</option>
-              </select>
-            </label>
-            <label>
-              <span>My CBS GPA</span>
-              <select id="myGpa">
-                <option value="">Don't filter by GPA</option>
-                <option value="2">2.0 or higher</option><option value="4">4.0 or higher</option><option value="5">5.0 or higher</option><option value="6">6.0 or higher</option><option value="7">7.0 or higher</option><option value="8">8.0 or higher</option><option value="10">10.0 or higher</option><option value="12">12.0</option>
-              </select>
-            </label>
-            <label>
-              <span>Language proof</span>
-              <select id="languageProof">
-                <option value="">Any requirement</option>
-                <option value="none">No documentation required</option>
-                <option value="documentation">Documentation required</option>
-                <option value="test">Language test required</option>
-              </select>
-            </label>
-            <label>
-              <span>On-campus housing</span>
-              <select id="housingFilter">
-                <option value="">Any housing</option>
-                <option value="available">Available</option>
-                <option value="unavailable">Not available</option>
-                <option value="unclear">Unclear</option>
-              </select>
-            </label>
-            <label>
-              <span>Academic structure</span>
-              <select id="academicStructure">
-                <option value="">Any structure</option>
-                <option value="semester">Semester</option>
-                <option value="trimester">Trimester</option>
-                <option value="quarter">Quarter</option>
-                <option value="term">Term</option>
-                <option value="unclear">Unclear</option>
-              </select>
-            </label>
-            <label class="check-row"><input id="englishOnly" type="checkbox" /> <span>English-only exchange possible</span></label>
-            <label class="check-row"><input id="favoritesOnly" type="checkbox" /> <span>Starred universities only</span></label>
-            <label class="check-row"><input id="last2" type="checkbox" /> <span>Places available in both 2026–27 and 2025–26</span></label>
+          <div class="filter-sections">
+            <section class="filter-group" aria-labelledby="filterDestinationTitle">
+              <div class="filter-group-head"><div><strong id="filterDestinationTitle">Destination</strong><span>Where you want to spend the semester.</span></div></div>
+              <div class="filter-group-grid">
+                <label><span>Country</span><select id="country"><option value="">All countries</option></select></label>
+                <label><span>Continent</span><select id="continent"><option value="">All continents</option><option value="Africa">Africa</option><option value="Asia">Asia</option><option value="Europe">Europe</option><option value="North America">North America</option><option value="Oceania">Oceania</option><option value="South America">South America</option></select></label>
+                <label><span>Temperature basis</span><select id="tempMetric"><option value="AVG">Sep–Dec average</option><option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option></select></label>
+                <label><span>Min. temperature</span><select id="minTemp"><option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option></select></label>
+                <label class="wide-filter"><span>Cost vs Denmark</span><select id="maxCost"><option value="">Any cost</option><option value="20">No more than 20% above Denmark</option><option value="0">Same as Denmark or cheaper</option><option value="-10">At least 10% cheaper than Denmark</option><option value="-25">At least 25% cheaper than Denmark</option><option value="-40">At least 40% cheaper than Denmark</option></select></label>
+              </div>
+            </section>
+
+            <section class="filter-group" aria-labelledby="filterAcademicTitle">
+              <div class="filter-group-head"><div><strong id="filterAcademicTitle">CBS & academic</strong><span>Historical competitiveness and academic profile.</span></div></div>
+              <div class="filter-group-grid">
+                <label><span>Competitiveness</span><select id="demandLevel"><option value="">Any competitiveness</option><option value="available">Places available</option><option value="filled">All places filled</option><option value="competitive">Competitive</option><option value="very_competitive">Very competitive</option><option value="unknown">No comparable years</option></select></label>
+                <label><span>History window</span><select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select></label>
+                <label><span>Min. places 2026–27</span><select id="minPlaces"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option></select></label>
+                <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
+                <label class="wide-filter"><span>University age</span><select id="foundedBefore" disabled><option value="">Any founding date</option><option value="1800">Founded before 1800</option><option value="1850">Founded before 1850</option><option value="1900">Founded before 1900</option><option value="1950">Founded before 1950</option><option value="2000">Founded before 2000</option></select></label>
+              </div>
+            </section>
+
+            <section class="filter-group" aria-labelledby="filterEligibilityTitle">
+              <div class="filter-group-head"><div><strong id="filterEligibilityTitle">Eligibility & practical</strong><span>Requirements and everyday exchange considerations.</span></div></div>
+              <div class="filter-group-grid">
+                <label><span>My CBS GPA</span><select id="myGpa"><option value="">Don't filter by GPA</option><option value="2">2.0 or higher</option><option value="4">4.0 or higher</option><option value="5">5.0 or higher</option><option value="6">6.0 or higher</option><option value="7">7.0 or higher</option><option value="8">8.0 or higher</option><option value="10">10.0 or higher</option><option value="12">12.0</option></select></label>
+                <label><span>Language proof</span><select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select></label>
+                <label><span>On-campus housing</span><select id="housingFilter"><option value="">Any housing</option><option value="available">Available</option><option value="unavailable">Not available</option><option value="unclear">Unclear</option></select></label>
+                <label><span>Academic structure</span><select id="academicStructure"><option value="">Any structure</option><option value="semester">Semester</option><option value="trimester">Trimester</option><option value="quarter">Quarter</option><option value="term">Term</option><option value="unclear">Unclear</option></select></label>
+                <label class="check-row"><input id="englishOnly" type="checkbox" /> <span>English-only exchange possible</span></label>
+                <label class="check-row"><input id="favoritesOnly" type="checkbox" /> <span>Starred universities only</span></label>
+              </div>
+            </section>
           </div>
         </div>
       </details>
@@ -208,7 +123,6 @@
             <th data-sort="foundedYear">University age ↕</th>
             <th data-sort="latestPlaces">Places 26/27 ↕</th>
             <th data-sort="availabilityWindow">Places available ↕</th>
-            <th data-sort="availableLast2">Last 2 avail. ↕</th>
           </tr></thead>
           <tbody id="tableBody"></tbody>
         </table>
@@ -241,6 +155,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=9-moveon-requirements"></script>
+  <script src="assets/app.js?v=10-polish"></script>
 </body>
 </html>
