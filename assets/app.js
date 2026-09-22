@@ -91,7 +91,7 @@ function rankText(u){if(!state.arwuReady)return '…';if(u.arwuRank)return forma
 const INFO_CONTENT={
   competitiveness:{
     title:'CBS competitiveness',
-    body:`This is based on the colors in CBS's historical placement workbook. The selected history window is recency-weighted, so newer years count more than older years. “Places available” means places remained after allocation; “All places filled”, “Competitive” and “Very competitive” follow CBS's original categories.`
+    body:`This is based on the colors in CBS's historical placement workbook. The categories are treated as an ordered scale: Places available → All places filled → Competitive → Very competitive. Newer years count more than older years, and the site uses a recency-weighted median. This means green, yellow and purple all reinforce the fact that places filled up instead of being treated as unrelated categories.`
   },
   arwu:{
     title:'ARWU 2026',
@@ -255,16 +255,20 @@ function renderActiveFilters(){
 
 function competitionSummary(u){
   const years=selectedYears();
-  // Recency-weighted categorical vote. In a five-year window the weights are
-  // 5, 4, 3, 2, 1 from newest to oldest. This lets a consistent recent shift
-  // outweigh older history, while one unusual year normally cannot dominate.
+  // Treat CBS's colors as an ORDERED competitiveness scale rather than four
+  // unrelated categories: available < filled < competitive < very competitive.
+  // Newer years still get more weight (5,4,3,2,1 in a five-year window).
+  // The overall category is the recency-weighted median on that scale. This is
+  // important because green/yellow/purple all mean that no places remained;
+  // they should reinforce each other instead of splitting the vote.
   const allObs=years.map((year,index)=>({
     year,
     status:u.history[year]?.status||'unknown',
+    order:STATUS_META[u.history[year]?.status||'unknown']?.order,
     weight:years.length-index
   }));
-  const obs=allObs.filter(x=>Number.isFinite(STATUS_META[x.status]?.order));
-  if(!obs.length)return{status:'unknown',order:null,observed:0,selected:years.length,excluded:years.length,override:null,base:'unknown',counts:{},scores:{}};
+  const obs=allObs.filter(x=>Number.isFinite(x.order));
+  if(!obs.length)return{status:'unknown',order:null,observed:0,selected:years.length,excluded:years.length,override:null,base:'unknown',counts:{},scores:{},weightedMedian:null};
 
   const counts={},scores={};
   for(const x of obs){
@@ -272,25 +276,33 @@ function competitionSummary(u){
     scores[x.status]=(scores[x.status]||0)+x.weight;
   }
 
-  // Plain majority is kept only so the UI can say when recency changed the result.
-  const maxCount=Math.max(...Object.values(counts));
-  const majorityCandidates=new Set(Object.keys(counts).filter(k=>counts[k]===maxCount));
-  const base=obs.find(x=>majorityCandidates.has(x.status)).status;
+  // Simple (unweighted) median is kept only to indicate when recency changes
+  // the classification shown to the user.
+  const plainOrders=obs.map(x=>x.order).sort((a,b)=>a-b);
+  const plainOrder=plainOrders[Math.floor(plainOrders.length/2)];
+  const base=Object.keys(STATUS_META).find(k=>STATUS_META[k].order===plainOrder)||'unknown';
 
-  const maxScore=Math.max(...Object.values(scores));
-  const weightedCandidates=new Set(Object.keys(scores).filter(k=>scores[k]===maxScore));
-  // obs is newest -> oldest, so this also makes ties favor the most recent category.
-  const status=obs.find(x=>weightedCandidates.has(x.status)).status;
+  const weightByOrder=new Map();
+  for(const x of obs)weightByOrder.set(x.order,(weightByOrder.get(x.order)||0)+x.weight);
+  const totalWeight=[...weightByOrder.values()].reduce((a,b)=>a+b,0);
+  let cumulative=0,weightedOrder=0;
+  for(const order of [0,1,2,3]){
+    cumulative+=weightByOrder.get(order)||0;
+    // Upper weighted median: if exactly half the evidence is at/below a level,
+    // move to the next level instead of making the result too optimistic.
+    if(cumulative>totalWeight/2){weightedOrder=order;break}
+  }
+  const status=Object.keys(STATUS_META).find(k=>STATUS_META[k].order===weightedOrder)||'unknown';
   const override=status!==base?'recency_weighted':null;
 
-  return{status,order:STATUS_META[status].order,observed:obs.length,selected:years.length,excluded:years.length-obs.length,override,base,counts,scores};
+  return{status,order:weightedOrder,observed:obs.length,selected:years.length,excluded:years.length-obs.length,override,base,counts,scores,weightedMedian:weightedOrder};
 }
 function availabilityInWindow(u){return selectedYears().filter(y=>u.history[y]?.status==='available').length}
 function demandChip(status,label=null){const meta=STATUS_META[status]||STATUS_META.unknown;return `<span class="status-chip status-${esc(status)}">${esc(label||meta.short)}</span>`}
 function summaryExplanation(s){
   if(s.status==='unknown')return 'No comparable CBS competitiveness observation in the selected period.';
-  let text=`Recency-weighted classification: the newest selected year gets ${s.selected} point${s.selected===1?'':'s'}, then ${Math.max(1,s.selected-1)}, down to 1 for the oldest. The category with the highest total wins; ties favor the most recent year.`;
-  if(s.override==='recency_weighted')text+=' Recent results changed the classification compared with a simple majority of years.';
+  let text=`Recency-weighted classification: CBS categories are treated as an ordered scale — Places available, All places filled, Competitive, Very competitive. The newest selected year gets ${s.selected} point${s.selected===1?'':'s'}, then ${Math.max(1,s.selected-1)}, down to 1 for the oldest. The weighted median on that scale is used, so different “all places filled” colors reinforce each other instead of splitting the vote.`;
+  if(s.override==='recency_weighted')text+=' Recent results changed the classification compared with the unweighted history.';
   if(s.excluded)text+=` ${s.excluded} selected year${s.excluded===1?' was':'s were'} excluded because CBS recorded “No places” or “No data”.`;
   return text;
 }
