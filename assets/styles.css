@@ -316,3 +316,20 @@ dialog{width:min(1120px,calc(100vw - 28px));border-radius:22px;padding:28px 28px
 .language-warning-card small{color:#8a3a3a}
 .language-warning-text{display:inline-flex!important;align-items:center;width:max-content;max-width:100%;margin-top:3px;padding:3px 7px;border-radius:999px;background:#fde8e8;color:#a61f1f!important;font-weight:750!important;line-height:1.2}
 @media(max-width:900px){.practical-section .practical-metrics{grid-template-columns:1fr}.source-meta{white-space:normal}}
+
+
+/* v19 university background */
+.university-background-section .detail-section-head{margin-bottom:12px}
+.background-card{display:grid;grid-template-columns:minmax(160px,220px) 1fr;gap:18px;align-items:stretch;border:1px solid #d7e1ec;border-radius:18px;background:#fff;padding:16px 18px}
+.background-card.verified{border-left:4px solid #7aa7d9}
+.background-card.provisional{border-left:4px solid #e1b955;background:#fffdf7}
+.background-stat{display:flex;flex-direction:column;justify-content:center;border-right:1px solid #e6edf4;padding-right:18px}
+.background-stat span{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#60728d}
+.background-stat strong{font-size:2rem;line-height:1.05;margin-top:4px}
+.background-stat small,.background-copy p,.roots-note{color:#60728d}
+.background-copy{display:flex;flex-direction:column;justify-content:center;gap:5px;min-width:0}
+.background-copy>strong{font-size:.9rem}
+.background-copy p{margin:0;line-height:1.45}
+.background-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.background-links a{font-weight:700;font-size:.88rem}
+@media (max-width:800px){.background-card{grid-template-columns:1fr}.background-stat{border-right:0;border-bottom:1px solid #e6edf4;padding-right:0;padding-bottom:12px}}
