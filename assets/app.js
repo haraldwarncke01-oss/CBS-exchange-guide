@@ -139,6 +139,12 @@ function openInfoPopover(button,key){
   closeInfoPopover();
   activeInfoButton=button;button.setAttribute('aria-expanded','true');
   const pop=$('#infoPopover');
+  // Native <dialog> elements live in the browser top layer. A fixed popover that remains
+  // outside an open modal can render behind the dialog/backdrop even with a huge z-index.
+  // Move the shared popover into the active dialog when the info button is inside it.
+  const dialog=button.closest('dialog');
+  const host=dialog||document.body;
+  if(pop.parentElement!==host)host.appendChild(pop);
   pop.innerHTML=`<div class="info-popover-head"><strong>${esc(data.title)}</strong><button type="button" class="info-popover-close" aria-label="Close information">×</button></div><p>${esc(data.body)}</p>${data.link?`<a href="${esc(data.link)}" target="_blank" rel="noopener">${esc(data.linkLabel)} ↗</a>`:''}`;
   pop.hidden=false;positionInfoPopover(button);
   pop.querySelector('.info-popover-close')?.addEventListener('click',closeInfoPopover);
@@ -398,20 +404,24 @@ function requirementsHtml(u){
   </div>`;
 }
 function openDetail(id){
+  closeInfoPopover();
   const u=state.all.find(x=>x.id===id);if(!u)return;state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><span class="rank-band-note">${esc(arwuRankNote(u.arwuRank))}</span>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<span class="muted">ARWU institution: ${esc(u.arwuMatchedInstitution)}</span>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><span class="muted">This institution is not present in the official published ARWU 2026 top 1000.</span>`:`<strong>No verified ARWU match</strong><span class="muted">The local match could not be verified.</span>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
-  $('#detailContent').innerHTML=`<h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div>
-    <div class="detail-metrics">
+  const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('');
+  $('#detailContent').innerHTML=`<div class="detail-header"><div><h2 class="detail-title">${esc(u.name)}</h2><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
+    <div class="detail-metrics detail-overview">
       <div class="metric-card">${metricLabel(`Competitiveness · ${windowLabel()}`,'competitiveness')}<div class="demand-summary">${demandChip(s.status)}${shift}</div><small>${s.observed}/${s.selected} selected years comparable</small></div>
       <div class="metric-card">${metricLabel('ARWU 2026','arwu')}${rankMeta}</div>
       <div class="metric-card climate-metric">${metricLabel('Exchange-period temperature','climate')}${climateDetails(c)}<small>1991–2020 climate normal</small></div>
       <div class="metric-card">${metricLabel('Cost of living + rent','cost')}${costDetails(u)}</div>
     </div>
-    ${requirementsHtml(u)}
-    <div class="section-head placement-head"><h3 class="section-title">CBS placement history</h3><span class="window-note">Highlighted years are used for the current map color</span></div>
-    <div class="history">${YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('')}</div>
-    <p class="summary-explain"><strong>Overall for ${esc(windowLabel())}:</strong> ${esc(STATUS_META[s.status]?.short||'No comparable years')}. ${esc(summaryExplanation(s))}</p>`;
+    <div class="placement-block">
+      <div class="section-head placement-head"><div class="section-title-with-info"><h3 class="section-title">CBS placement history</h3>${infoButton('competitiveness','How CBS competitiveness is calculated')}</div><span class="window-note">Highlighted years are used for the current map color</span></div>
+      <div class="history">${yearsHtml}</div>
+      <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
+    </div>
+    <div class="requirements-block">${requirementsHtml(u)}</div>`;
   wireSelectionControls($('#detailContent'));
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
   if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id)}).catch(()=>{});
@@ -526,7 +536,7 @@ async function init(){
   for(const el of ['search','country','continent','minPlaces','historyWindow','demandLevel','arwuMax','tempMetric','minTemp','maxCost','myGpa','languageProof','englishOnly','housingFilter','academicStructure','favoritesOnly'])$('#'+el).addEventListener(el==='search'?'input':'change',applyFilters);
   $('#reset').addEventListener('click',resetAllFilters);$('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',e=>{if(e.target.closest('[data-info]'))return;const k=th.dataset.sort;if(state.sortKey===k)state.sortDir*=-1;else{state.sortKey=k;state.sortDir=(k==='name'||k==='country'||k==='arwuSort'||k==='demandScore'||k==='costIndex'||k==='minGpa'||k==='languageProof')?1:-1}renderTable()}));
-  $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#compareBtn').addEventListener('click',()=>switchView('compare'));$('#closeDialog').addEventListener('click',()=>{$('#detailDialog').close();state.currentDetailId=null});
+  $('#mapBtn').addEventListener('click',()=>switchView('map'));$('#listBtn').addEventListener('click',()=>switchView('list'));$('#compareBtn').addEventListener('click',()=>switchView('compare'));$('#closeDialog').addEventListener('click',()=>{closeInfoPopover();$('#detailDialog').close();state.currentDetailId=null});
   const filterMenu=$('#filterMenu');
   document.addEventListener('click',e=>{const b=e.target.closest?.('[data-info]');if(!b)return;e.preventDefault();e.stopPropagation();openInfoPopover(b,b.dataset.info)});
   document.addEventListener('pointerdown',e=>{
