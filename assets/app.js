@@ -107,7 +107,7 @@ const INFO_CONTENT={
   },
   history:{
     title:'University founding year',
-    body:`Founding years are stored locally. Official university history/about pages are preferred. CBS MoveON university profiles are used when they explicitly state the date. Some entries are still marked as source verification pending and are not used by the founding-year filter until verified.`
+    body:`Founding years are stored locally and linked to a source. Official university history/about pages are preferred; CBS MoveON university profiles are used only when they explicitly state the date. The founding-year filter uses the sourced founding year shown in each university record.`
   },
   cost:{
     title:'Cost of living + rent',
