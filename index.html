@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=23-fall-2027" />
+  <link rel="stylesheet" href="assets/styles.css?v=24-history-delta" />
 </head>
 <body>
   <header class="topbar">
@@ -62,7 +62,7 @@
                 <label><span>History window</span><select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select></label>
                 <label><span>Min. places 2026–27</span><select id="minPlaces"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option></select></label>
                 <label><span>Min. Fall 2027 places</span><select id="minPlaces2027"><option value="0">Any / not yet published</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option></select></label>
-                <label><span>2027 vs 2026 places</span><select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select></label>
+                <label><span>2027 vs 2026–27 places</span><select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select></label>
                 <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
                 <label><span>Founded before</span><select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select></label>
               </div>
@@ -116,8 +116,8 @@
           <colgroup>
             <col class="col-university">
             <col class="col-location">
-            <col class="col-places">
             <col class="col-places27">
+            <col class="col-places">
             <col class="col-places-change">
             <col class="col-availability">
             <col class="col-competitiveness">
@@ -130,10 +130,10 @@
           <thead><tr>
             <th data-sort="name">University ↕</th>
             <th data-sort="country">Country · City ↕</th>
-            <th data-sort="latestPlaces">Places 26/27 ↕</th>
             <th data-sort="fall2027Places">Fall 2027 ↕</th>
-            <th data-sort="placesDelta">Δ 27 vs 26 ↕</th>
-            <th data-sort="availabilityWindow">Available years ↕</th>
+            <th data-sort="latestPlaces">Places 26/27 ↕</th>
+            <th data-sort="placesDelta">Δ 27 vs 26/27 ↕</th>
+            <th data-sort="availabilityWindow">Years with leftover places ↕</th>
             <th data-sort="demandScore"><span class="th-title">Competitiveness <button class="info-button info-button-table" type="button" data-info="competitiveness" aria-label="About competitiveness">i</button></span> ↕</th>
             <th data-sort="minGpa">GPA min. ↕</th>
             <th data-sort="languageProof">Language proof ↕</th>
@@ -174,6 +174,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=23-fall-2027"></script>
+  <script src="assets/app.js?v=24-history-delta"></script>
 </body>
 </html>
