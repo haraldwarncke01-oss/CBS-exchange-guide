@@ -582,3 +582,27 @@ dialog{border-radius:2px;border-top:6px solid var(--cbs-blue)}
   .filter-menu>summary:hover,.filter-menu[open]>summary{background:var(--accent-soft);color:var(--cbs-dark-blue)}
   .filter-count,.filter-count.has-filters{background:var(--cbs-light-blue);color:var(--cbs-dark-blue)}
 }
+
+
+/* v30 — clearer view switch + conditional language evidence controls */
+.view-switch{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.view-as-label{
+  font-size:11px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  color:#667085;
+  white-space:nowrap;
+}
+.conditional-filter[hidden]{display:none!important}
+
+@media(max-width:760px){
+  .view-switch{width:100%;justify-content:space-between}
+  .view-switch .segmented{flex:1}
+  .view-switch .segmented button{flex:1}
+}

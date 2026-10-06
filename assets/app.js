@@ -123,7 +123,10 @@ const FILTER_ANALYTICS_LABELS={
   minTemp:'Minimum temperature',
   maxCost:'Cost vs Denmark',
   myGpa:'My GPA',
-  languageProof:'Language proof',
+  languageProof:'Language requirement',
+  englishEvidence:'English proof I can use',
+  gymEnglishLevel:'Gymnasium English level',
+  gymEnglishGrade:'Gymnasium English grade',
   englishOnly:'English-only exchange',
   housingFilter:'Housing',
   academicStructure:'Academic structure',
@@ -138,7 +141,10 @@ const SORT_ANALYTICS_LABELS={
   availabilityWindow:'Years with leftover places',
   demandScore:'Competitiveness',
   minGpa:'Minimum GPA',
-  languageProof:'Language proof',
+  languageProof:'Language requirement',
+  englishEvidence:'English proof I can use',
+  gymEnglishLevel:'Gymnasium English level',
+  gymEnglishGrade:'Gymnasium English grade',
   arwuSort:'ARWU',
   temp:'Sep–Dec temperature',
   costIndex:'Cost vs Denmark'
@@ -420,7 +426,10 @@ function activeFilterDescriptors(){
   if($('#minPlaces')?.value&&$('#minPlaces').value!=='0')out.push({key:'minPlaces',label:`Places 2026/27: ${selectedText('minPlaces')}`});
   if($('#historyWindow')?.value&&$('#historyWindow').value!=='5')out.push({key:'historyWindow',label:`Display history: ${selectedText('historyWindow')}`});
   if($('#arwuMax')?.value&&$('#arwuMax').value!=='0')out.push({key:'arwuMax',label:`ARWU: ${selectedText('arwuMax')}`});
-  if($('#languageProof')?.value)out.push({key:'languageProof',label:`Language proof: ${selectedText('languageProof')}`});
+  if($('#languageProof')?.value)out.push({key:'languageProof',label:`Language requirement: ${selectedText('languageProof')}`});
+  if($('#englishEvidence')?.value)out.push({key:'englishEvidence',label:`English proof: ${selectedText('englishEvidence')}`});
+  if($('#englishEvidence')?.value==='gymnasium'&&$('#gymEnglishLevel')?.value)out.push({key:'gymEnglishLevel',label:`Gymnasium level: ${selectedText('gymEnglishLevel')}`});
+  if($('#englishEvidence')?.value==='gymnasium'&&$('#gymEnglishGrade')?.value)out.push({key:'gymEnglishGrade',label:`Gymnasium grade: ${selectedText('gymEnglishGrade')}`});
   if($('#foundedBefore')?.value)out.push({key:'foundedBefore',label:`Founded: ${selectedText('foundedBefore')}`});
   if($('#academicStructure')?.value)out.push({key:'academicStructure',label:`Academic structure: ${selectedText('academicStructure')}`});
   if($('#continent')?.value)out.push({key:'continent',label:`Continent: ${selectedText('continent')}`});
@@ -443,6 +452,9 @@ function resetFilter(key){
   else if(key==='historyWindow')$('#historyWindow').value='5';
   else if(key==='arwuMax')$('#arwuMax').value='0';
   else if(key==='languageProof')$('#languageProof').value='';
+  else if(key==='englishEvidence'){$('#englishEvidence').value='';$('#gymEnglishLevel').value='';$('#gymEnglishGrade').value='';syncLanguageEvidenceControls()}
+  else if(key==='gymEnglishLevel')$('#gymEnglishLevel').value='';
+  else if(key==='gymEnglishGrade')$('#gymEnglishGrade').value='';
   else if(key==='foundedBefore')$('#foundedBefore').value='';
   else if(key==='academicStructure')$('#academicStructure').value='';
   else if(key==='continent')$('#continent').value='';
@@ -453,7 +465,7 @@ function resetFilter(key){
   applyFilters();
 }
 function resetAllFilters(){
-  $('#search').value='';$('#country').value='';$('#demandLevel').value='';$('#minPlaces2027').value='0';$('#myGpa').value='';$('#englishOnly').checked=false;$('#availabilityMin').value='0';$('#placesChange').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#arwuMax').value='0';$('#languageProof').value='';$('#foundedBefore').value='';$('#academicStructure').value='';$('#continent').value='';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#housingFilter').value='';$('#favoritesOnly').checked=false;applyFilters();
+  $('#search').value='';$('#country').value='';$('#demandLevel').value='';$('#minPlaces2027').value='0';$('#myGpa').value='';$('#englishOnly').checked=false;$('#availabilityMin').value='0';$('#placesChange').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#arwuMax').value='0';$('#languageProof').value='';$('#englishEvidence').value='';$('#gymEnglishLevel').value='';$('#gymEnglishGrade').value='';syncLanguageEvidenceControls();$('#foundedBefore').value='';$('#academicStructure').value='';$('#continent').value='';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#housingFilter').value='';$('#favoritesOnly').checked=false;applyFilters();
 }
 function renderActiveFilters(){
   const box=$('#activeFilters'),items=activeFilterDescriptors(),count=$('#filterCount');
@@ -559,12 +571,50 @@ function renderMarkers(){
   layer.clearLayers();state.markers.clear();for(const u of state.filtered){const c=state.coords.get(u.id);if(!c)continue;const m=L.marker([c.lat,c.lon],{icon:markerIcon(u)}).bindPopup(popupHtml(u));m.on('popupopen',e=>{const root=e.popup.getElement();const btn=root?.querySelector('[data-detail]');if(btn)btn.onclick=()=>openDetail(Number(btn.dataset.detail),'map');if(root)wireSelectionControls(root)});m.addTo(layer);state.markers.set(u.id,m)}
 }
 function updateLegend(){const el=$('#legendWindow');if(el)el.textContent=`Map colors · ${windowLabel()}`}
+function syncLanguageEvidenceControls(){
+  const show=$('#englishEvidence')?.value==='gymnasium';
+  const levelWrap=$('#gymEnglishLevelWrap'),gradeWrap=$('#gymEnglishGradeWrap');
+  if(levelWrap)levelWrap.hidden=!show;
+  if(gradeWrap)gradeWrap.hidden=!show;
+  if(!show){
+    if($('#gymEnglishLevel'))$('#gymEnglishLevel').value='';
+    if($('#gymEnglishGrade'))$('#gymEnglishGrade').value='';
+  }
+}
+function gymnasiumProofPass(r,level,grade){
+  if(!r)return false;
+  const a=r.gymEnglishAMin,b=r.gymEnglishBMin,g=r.gymEnglishGenericMin;
+  const candidates=[];
+  if(Number.isFinite(g))candidates.push(g);
+  if(level==='A'&&Number.isFinite(a))candidates.push(a);
+  else if(level==='B'&&Number.isFinite(b))candidates.push(b);
+  else if(!level){
+    if(Number.isFinite(a))candidates.push(a);
+    if(Number.isFinite(b))candidates.push(b);
+  }
+  if(!candidates.length)return false;
+  if(grade==null)return true;
+  return candidates.some(req=>grade>=req);
+}
+function englishEvidencePass(r,evidence,level,grade){
+  if(!evidence)return true;
+  if(!r)return false;
+  // A university requiring no language documentation is always compatible
+  // with the student's selected evidence route.
+  if(r.proofCategory==='none')return true;
+  if(evidence==='cbs_program')return !!r.cbsEnglishProgrammeAccepted;
+  if(evidence==='cbs_course_one')return !!r.oneEnglishCourseAccepted;
+  if(evidence==='english_60ects')return !!r.english60EctsAccepted;
+  if(evidence==='cbs_proficiency')return !!r.cbsEnglishProficiencyLetterAccepted;
+  if(evidence==='gymnasium')return gymnasiumProofPass(r,level,grade);
+  return true;
+}
 function readFilterCriteria(){
   return {
     q:$('#search').value.trim().toLowerCase(),country:$('#country').value,demand:$('#demandLevel').value,
     minP27:Number($('#minPlaces2027').value||0),myGpa:$('#myGpa').value===''?null:Number($('#myGpa').value),englishOnly:$('#englishOnly').checked,
     availabilityMin:Number($('#availabilityMin').value||0),placesChange:$('#placesChange').value,minP:Number($('#minPlaces').value||0),
-    arwuMax:Number($('#arwuMax').value||0),languageProof:$('#languageProof').value,foundedBefore:$('#foundedBefore').value===''?null:Number($('#foundedBefore').value),
+    arwuMax:Number($('#arwuMax').value||0),languageProof:$('#languageProof').value,englishEvidence:$('#englishEvidence').value,gymEnglishLevel:$('#gymEnglishLevel').value,gymEnglishGrade:$('#gymEnglishGrade').value===''?null:Number($('#gymEnglishGrade').value),foundedBefore:$('#foundedBefore').value===''?null:Number($('#foundedBefore').value),
     academicStructure:$('#academicStructure').value,cont:$('#continent').value,tempMetric:$('#tempMetric').value,minTemp:$('#minTemp').value===''?null:Number($('#minTemp').value),
     maxCost:$('#maxCost').value===''?null:Number($('#maxCost').value),housingFilter:$('#housingFilter').value,favoritesOnly:$('#favoritesOnly')?.checked
   };
@@ -572,14 +622,14 @@ function readFilterCriteria(){
 function matchesFilters(u,c){
   const climate=state.climate.get(u.id),tv=climateValue(climate,c.tempMetric),ci=costVsDenmark(u),r=requirement(u),p27=r?.fall2027Places,delta=placesDeltaFromHistory(u);
   const changeOk=!c.placesChange||(c.placesChange==='published'&&Number.isFinite(p27))||(c.placesChange==='unpublished'&&!Number.isFinite(p27))||(c.placesChange==='not_reduced'&&Number.isFinite(delta)&&delta>=0)||(c.placesChange==='increase'&&Number.isFinite(delta)&&delta>0)||(c.placesChange==='same'&&Number.isFinite(delta)&&delta===0)||(c.placesChange==='decrease'&&Number.isFinite(delta)&&delta<0);
-  return (!c.q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(c.q))&&(!c.country||u.country===c.country)&&(!c.demand||u.latestStatus===c.demand)&&(!c.minP27||(Number.isFinite(p27)&&p27>=c.minP27))&&gpaPass(r,c.myGpa)&&(!c.englishOnly||r?.englishOnlyPossible==='yes')&&(historicalAvailability(u)>=c.availabilityMin)&&changeOk&&((u.latestPlaces??0)>=c.minP)&&(!c.arwuMax||(u.arwuSort&&u.arwuSort<=c.arwuMax))&&(!c.languageProof||r?.proofCategory===c.languageProof)&&(c.foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<c.foundedBefore))&&(!c.academicStructure||r?.academicStructure===c.academicStructure)&&(!c.cont||continent(u)===c.cont)&&(c.minTemp==null||(Number.isFinite(tv)&&tv>=c.minTemp))&&(c.maxCost==null||(Number.isFinite(ci)&&ci<=c.maxCost))&&(!c.housingFilter||r?.onCampusHousing===c.housingFilter)&&(!c.favoritesOnly||state.favorites.has(u.id));
+  return (!c.q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(c.q))&&(!c.country||u.country===c.country)&&(!c.demand||u.latestStatus===c.demand)&&(!c.minP27||(Number.isFinite(p27)&&p27>=c.minP27))&&gpaPass(r,c.myGpa)&&(!c.englishOnly||r?.englishOnlyPossible==='yes')&&(historicalAvailability(u)>=c.availabilityMin)&&changeOk&&((u.latestPlaces??0)>=c.minP)&&(!c.arwuMax||(u.arwuSort&&u.arwuSort<=c.arwuMax))&&(!c.languageProof||r?.proofCategory===c.languageProof)&&englishEvidencePass(r,c.englishEvidence,c.gymEnglishLevel,c.gymEnglishGrade)&&(c.foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<c.foundedBefore))&&(!c.academicStructure||r?.academicStructure===c.academicStructure)&&(!c.cont||continent(u)===c.cont)&&(c.minTemp==null||(Number.isFinite(tv)&&tv>=c.minTemp))&&(c.maxCost==null||(Number.isFinite(ci)&&ci<=c.maxCost))&&(!c.housingFilter||r?.onCampusHousing===c.housingFilter)&&(!c.favoritesOnly||state.favorites.has(u.id));
 }
-const COUNTABLE_SELECTS=['country','demandLevel','minPlaces2027','myGpa','availabilityMin','placesChange','minPlaces','arwuMax','languageProof','foundedBefore','academicStructure','continent','minTemp','maxCost','housingFilter'];
+const COUNTABLE_SELECTS=['country','demandLevel','minPlaces2027','myGpa','availabilityMin','placesChange','minPlaces','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','continent','minTemp','maxCost','housingFilter'];
 function criteriaForSelectValue(base,id,value){
   const c={...base};
   const numeric=new Set(['minPlaces2027','availabilityMin','minPlaces','arwuMax']);
-  const nullableNumeric=new Set(['myGpa','foundedBefore','minTemp','maxCost']);
-  const map={country:'country',demandLevel:'demand',minPlaces2027:'minP27',myGpa:'myGpa',availabilityMin:'availabilityMin',placesChange:'placesChange',minPlaces:'minP',arwuMax:'arwuMax',languageProof:'languageProof',foundedBefore:'foundedBefore',academicStructure:'academicStructure',continent:'cont',minTemp:'minTemp',maxCost:'maxCost',housingFilter:'housingFilter'};
+  const nullableNumeric=new Set(['myGpa','gymEnglishGrade','foundedBefore','minTemp','maxCost']);
+  const map={country:'country',demandLevel:'demand',minPlaces2027:'minP27',myGpa:'myGpa',availabilityMin:'availabilityMin',placesChange:'placesChange',minPlaces:'minP',arwuMax:'arwuMax',languageProof:'languageProof',englishEvidence:'englishEvidence',gymEnglishLevel:'gymEnglishLevel',gymEnglishGrade:'gymEnglishGrade',foundedBefore:'foundedBefore',academicStructure:'academicStructure',continent:'cont',minTemp:'minTemp',maxCost:'maxCost',housingFilter:'housingFilter'};
   const prop=map[id];if(!prop)return c;
   c[prop]=numeric.has(id)?Number(value||0):nullableNumeric.has(id)?(value===''?null:Number(value)):value;
   return c;
@@ -903,7 +953,7 @@ async function loadStaticClimate(){
   try{const rows=await csvObjects('data/climate.csv');for(const r of rows){const id=Number(r.university_id),v={SEP:numCsv(r.sep_c),OCT:numCsv(r.oct_c),NOV:numCsv(r.nov_c),DEC:numCsv(r.dec_c)};if(Number.isFinite(id)&&Object.values(v).every(Number.isFinite))state.climate.set(id,v)}}catch(e){console.warn('Climate CSV unavailable',e)}
 }
 async function loadStaticRequirements(){
-  try{const rows=await csvObjects('data/partner_requirements.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.requirements.set(id,{matchStatus:r.match_status||'unclear',moveonUniversity:r.moveon_university||'',coreId:r.core_id||'',relationId:r.relation_id||'',detailUrl:r.moveon_detail_url||'',fall2026Places:numCsv(r.fall_2026_places),fall2027Places:numCsv(r.fall_2027_places),placesDelta:numCsv(r.places_change_2027_vs_2026_27_history||r.places_change_2027_vs_2026),numberOfPlacesRaw:r.number_of_places_raw||'',minGpa:numCsv(r.minimum_gpa_danish7),minimumGpaRaw:r.minimum_gpa_raw||'',academicStructure:r.academic_structure||'unclear',academicCalendarRaw:r.academic_calendar_raw||'',workExperience:r.work_experience_required||'unclear',languageInstructionRaw:r.language_of_instruction_raw||'',englishCoursesCategory:r.courses_in_english_category||'unclear',coursesInEnglishRaw:r.courses_in_english_raw||'',proofCategory:r.language_proof_category||'unclear',proofRaw:r.proof_of_language_raw||'',languageRequirementsRaw:r.language_requirements_raw||'',englishOnlyPossible:r.english_only_possible||'unclear',nonEnglishRequirement:r.non_english_requirement||'unclear',nonEnglishLanguages:r.non_english_languages||'',languageLevels:r.language_levels||'',cbsLetterAccepted:boolCsv(r.cbs_letter_accepted),ielts:numCsv(r.ielts_overall_min),toefl:numCsv(r.toefl_ibt_overall_min),cambridge:numCsv(r.cambridge_overall_min),onCampusHousing:r.on_campus_housing||'unclear',housingRaw:r.housing_raw||'',erasmusPlus:r.erasmus_plus||'unclear',pim:r.pim||'unclear',limitationsRaw:r.limitations_raw||'',courseAvailabilityRaw:r.course_availability_raw||'',programInformationRaw:r.program_information_raw||'',additionalInformationRaw:r.additional_information_raw||'',infoAboutUniversityRaw:r.info_about_university_raw||'',visaRaw:r.visa_raw||'',sourceCheckedDate:r.source_checked_date||''})}}catch(e){console.warn('MoveON requirements CSV unavailable',e)}
+  try{const rows=await csvObjects('data/partner_requirements.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.requirements.set(id,{matchStatus:r.match_status||'unclear',moveonUniversity:r.moveon_university||'',coreId:r.core_id||'',relationId:r.relation_id||'',detailUrl:r.moveon_detail_url||'',fall2026Places:numCsv(r.fall_2026_places),fall2027Places:numCsv(r.fall_2027_places),placesDelta:numCsv(r.places_change_2027_vs_2026_27_history||r.places_change_2027_vs_2026),numberOfPlacesRaw:r.number_of_places_raw||'',minGpa:numCsv(r.minimum_gpa_danish7),minimumGpaRaw:r.minimum_gpa_raw||'',academicStructure:r.academic_structure||'unclear',academicCalendarRaw:r.academic_calendar_raw||'',workExperience:r.work_experience_required||'unclear',languageInstructionRaw:r.language_of_instruction_raw||'',englishCoursesCategory:r.courses_in_english_category||'unclear',coursesInEnglishRaw:r.courses_in_english_raw||'',proofCategory:r.language_proof_category||'unclear',proofRaw:r.proof_of_language_raw||'',languageRequirementsRaw:r.language_requirements_raw||'',englishOnlyPossible:r.english_only_possible||'unclear',nonEnglishRequirement:r.non_english_requirement||'unclear',nonEnglishLanguages:r.non_english_languages||'',languageLevels:r.language_levels||'',cbsLetterAccepted:boolCsv(r.cbs_letter_accepted),cbsEnglishProgrammeAccepted:boolCsv(r.cbs_english_programme_accepted),cbsEnglishProgrammeAnyWithConditions:boolCsv(r.cbs_english_programme_any_with_conditions),oneEnglishCourseAccepted:boolCsv(r.one_english_taught_cbs_course_accepted),english60EctsAccepted:boolCsv(r.english_60_ects_accepted),cbsEnglishProficiencyLetterAccepted:boolCsv(r.cbs_english_proficiency_letter_accepted),gymEnglishAMin:numCsv(r.danish_gymnasium_english_a_min_grade),gymEnglishBMin:numCsv(r.danish_gymnasium_english_b_min_grade),gymEnglishGenericMin:numCsv(r.danish_gymnasium_english_generic_min_grade),ielts:numCsv(r.ielts_overall_min),toefl:numCsv(r.toefl_ibt_overall_min),cambridge:numCsv(r.cambridge_overall_min),onCampusHousing:r.on_campus_housing||'unclear',housingRaw:r.housing_raw||'',erasmusPlus:r.erasmus_plus||'unclear',pim:r.pim||'unclear',limitationsRaw:r.limitations_raw||'',courseAvailabilityRaw:r.course_availability_raw||'',programInformationRaw:r.program_information_raw||'',additionalInformationRaw:r.additional_information_raw||'',infoAboutUniversityRaw:r.info_about_university_raw||'',visaRaw:r.visa_raw||'',sourceCheckedDate:r.source_checked_date||''})}}catch(e){console.warn('MoveON requirements CSV unavailable',e)}
 }
 async function loadUniversityHistory(){
   try{const rows=await csvObjects('data/university_history.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.universityHistory.set(id,{foundedYear:numCsv(r.founded_year),age2026:numCsv(r.age_2026),rootsYear:numCsv(r.roots_year),historyNote:r.history_note||'',officialWebsite:r.official_website||'',sourceUrl:r.source_url||'',sourceType:r.source_type||'',verificationStatus:r.verification_status||'candidate_unverified'})}}catch(e){console.warn('University history CSV unavailable',e)}
@@ -937,12 +987,16 @@ async function init(){
   const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
   const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${countryFlag(c)} ${esc(c)}</option>`).join('');
   const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
+  syncLanguageEvidenceControls();
   rememberOptionLabels();
   document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>applyQuickPreset(b.dataset.preset)));
   const latestSourceDate=[...state.requirements.values()].map(r=>r.sourceCheckedDate).filter(Boolean).sort().at(-1);if(latestSourceDate){const d=new Date(latestSourceDate+'T00:00:00');const label=d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});if($('#moveonUpdated'))$('#moveonUpdated').textContent=label}
-  for(const id of ['search','country','demandLevel','minPlaces2027','myGpa','englishOnly','availabilityMin','placesChange','minPlaces','historyWindow','arwuMax','languageProof','foundedBefore','academicStructure','continent','tempMetric','minTemp','maxCost','housingFilter','favoritesOnly']){
+  for(const id of ['search','country','demandLevel','minPlaces2027','myGpa','englishOnly','availabilityMin','placesChange','minPlaces','historyWindow','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','continent','tempMetric','minTemp','maxCost','housingFilter','favoritesOnly']){
     const el=$('#'+id),eventName=id==='search'?'input':'change';
-    el.addEventListener(eventName,applyFilters);
+    el.addEventListener(eventName,()=>{
+      if(id==='englishEvidence')syncLanguageEvidenceControls();
+      applyFilters();
+    });
     if(id==='search')el.addEventListener('input',scheduleSearchAnalytics);
     else el.addEventListener('change',()=>trackFilterChanged(el));
   }

@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=29-cbs-inspired" />
+  <link rel="stylesheet" href="assets/styles.css?v=30-view-language" />
   <!-- Private product analytics: explicit anonymous events only; no autocapture/replay/heatmaps. -->
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config startSessionRecording stopSessionRecording isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -94,7 +94,28 @@
                 <div class="filter-group-head"><div><strong id="filterAcademicTitle">Academic & eligibility</strong><span>Ranking, language and programme requirements.</span></div></div>
                 <div class="filter-group-grid">
                   <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
-                  <label><span>Language proof</span><select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select></label>
+                  <label><span>Language requirement</span><select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select></label>
+                  <label><span>English proof I can use</span><select id="englishEvidence">
+                    <option value="">Any evidence</option>
+                    <option value="cbs_program">CBS English-taught programme</option>
+                    <option value="cbs_course_one">1 English-taught CBS course</option>
+                    <option value="english_60ects">60 ECTS taught in English</option>
+                    <option value="cbs_proficiency">CBS B2/C1 proficiency letter</option>
+                    <option value="gymnasium">Danish gymnasium English</option>
+                  </select></label>
+                  <label id="gymEnglishLevelWrap" class="conditional-filter" hidden><span>Gymnasium English level</span><select id="gymEnglishLevel">
+                    <option value="">English A or B</option>
+                    <option value="B">English B</option>
+                    <option value="A">English A</option>
+                  </select></label>
+                  <label id="gymEnglishGradeWrap" class="conditional-filter" hidden><span>My gymnasium grade</span><select id="gymEnglishGrade">
+                    <option value="">Any accepted grade</option>
+                    <option value="2">02 or above</option>
+                    <option value="4">4 or above</option>
+                    <option value="7">7 or above</option>
+                    <option value="10">10 or above</option>
+                    <option value="12">12</option>
+                  </select></label>
                   <label><span>Founded before</span><select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select></label>
                   <label><span>Academic structure</span><select id="academicStructure"><option value="">Any structure</option><option value="semester">Semester</option><option value="trimester">Trimester</option><option value="quarter">Quarter</option><option value="term">Term</option><option value="unclear">Unclear</option></select></label>
                 </div>
@@ -127,10 +148,13 @@
     <section id="activeFilters" class="active-filters" aria-label="Active filters" aria-live="polite" hidden></section>
 
     <section class="toolbar">
-      <div class="segmented" role="group" aria-label="View">
-        <button id="mapBtn" class="active" type="button">World map</button>
-        <button id="listBtn" type="button">List</button>
-        <button id="compareBtn" type="button">Compare <span id="compareCount" class="view-count">0</span></button>
+      <div class="view-switch">
+        <span class="view-as-label">View as</span>
+        <div class="segmented" role="group" aria-label="View">
+          <button id="mapBtn" class="active" type="button">Map</button>
+          <button id="listBtn" type="button">List</button>
+          <button id="compareBtn" type="button">Compare <span id="compareCount" class="view-count">0</span></button>
+        </div>
       </div>
       <div class="status-stack">
         <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
@@ -214,6 +238,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=28-courses-credits"></script>
+  <script src="assets/app.js?v=30-view-language"></script>
 </body>
 </html>
