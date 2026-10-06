@@ -459,3 +459,126 @@ dialog{width:min(1080px,calc(100vw - 28px));border-radius:8px;border:1px solid #
 .program-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
 .program-summary{border:1px solid #dce2e9;background:#fff;text-align:left;padding:9px 10px;border-radius:5px;cursor:pointer;color:inherit}.program-summary:hover{border-color:#aebccc;background:#fafbfc}.program-summary strong,.program-summary span{display:block}.program-summary strong{font-size:12px}.program-summary span{font-size:10px;color:#748196;margin-top:2px}
 @media(max-width:850px){.course-credit-grid{grid-template-columns:1fr}.course-block-head{align-items:flex-start;flex-direction:column}.course-program-select{width:100%}.program-summary-grid{grid-template-columns:1fr}}
+
+/* v29 — CBS-inspired visual system
+   Uses CBS' public colour/grid/online typography guidance as inspiration,
+   while deliberately remaining an independent student project. */
+:root{
+  --cbs-blue:#4967AA;
+  --cbs-middle-blue:#6793D6;
+  --cbs-dark-blue:#242E70;
+  --cbs-light-blue:#C9E0F5;
+  --cbs-black:#000000;
+  --accent:var(--cbs-blue);
+  --accent-strong:var(--cbs-dark-blue);
+  --accent-soft:#eef3fb;
+  --accent2:#eef3fb;
+  --bg:#f6f6f4;
+  --text:#17191d;
+  --muted:#626a75;
+  --line:#d8dbe0;
+}
+body{background:var(--bg);color:var(--text)}
+a{color:var(--cbs-blue)}
+
+/* Header: CBS-blue signal, square geometry and generous white space. */
+.site-header{
+  position:relative;
+  border-top:7px solid var(--cbs-blue);
+  border-bottom:1px solid #d5d7dc;
+  padding-top:30px;
+  background:#fff;
+}
+.brand-block{position:relative;z-index:1}
+.eyebrow{color:var(--cbs-blue);font-weight:750;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";display:inline-block;width:10px;height:10px;background:var(--cbs-blue);flex:0 0 auto}
+.project-label{color:#747a83;border-left-color:#d7d9de}
+.site-header h1{color:#000;font-weight:760;letter-spacing:-.04em}
+.site-header .sub{color:#4f5660;max-width:900px}
+.header-meta{color:#666e78}
+.header-meta strong{color:#252a31}
+.saved-pill{border-radius:2px;border-color:#bfc4cc;color:#303947;background:#fff}
+.saved-pill:hover{border-color:var(--cbs-blue);background:#f7f9fd;color:var(--cbs-dark-blue)}
+
+/* Main search/filter surface: square grid rather than app-card styling. */
+.explorer-controls{border-radius:2px;border-color:#d2d5da;background:#fff;padding:15px 16px 12px}
+.primary-filter-row label>span,.main-search>span{color:#505a67;font-weight:750}
+.primary-filter-row input[type=search],.primary-filter-row select,
+.filter-group-grid select{border-radius:2px;border-color:#c7ccd3;background:#fff}
+.primary-filter-row input[type=search]:focus,.primary-filter-row select:focus,.filter-group-grid select:focus{
+  outline:3px solid rgba(201,224,245,.75);outline-offset:0;border-color:var(--cbs-blue);box-shadow:none
+}
+.primary-check{border-radius:2px;border-color:#c7ccd3}
+.primary-check input,.check-row input{accent-color:var(--cbs-blue)}
+.filter-menu>summary{border-radius:2px;border-color:var(--cbs-blue);background:var(--cbs-blue);color:#fff;font-weight:700}
+.filter-menu>summary:hover{background:var(--cbs-dark-blue);border-color:var(--cbs-dark-blue)}
+.filter-menu[open]>summary{background:var(--cbs-dark-blue);border-color:var(--cbs-dark-blue);box-shadow:none}
+.filter-count{background:rgba(255,255,255,.18);color:#fff;border-radius:2px}
+.filter-count.has-filters{background:#fff;color:var(--cbs-dark-blue)}
+.filter-panel{border-radius:2px;border-color:#c9cdd4;box-shadow:0 16px 34px rgba(36,46,112,.16)}
+.filter-group-grid .check-row{border-radius:2px}
+.text-button{color:var(--cbs-blue);border-radius:0}
+.text-button:hover{background:var(--accent-soft)}
+
+.quick-filter-row{border-top-color:#e1e3e7}
+.quick-filter{border-radius:2px;border-color:#cdd1d7;color:#414a56;background:#fff}
+.quick-filter:hover{background:#f5f7fb;border-color:#9ea9bf;color:var(--cbs-dark-blue)}
+.quick-filter.active{background:var(--cbs-light-blue);border-color:var(--cbs-blue);color:var(--cbs-dark-blue)}
+.quick-filter.active b{color:var(--cbs-dark-blue)}
+.filter-chip{border-radius:2px;border-color:#bdc9dc;background:#f5f8fd;color:#354b72}
+.filter-chip:hover{background:var(--cbs-light-blue);border-color:var(--cbs-blue)}
+.clear-filter-chips{color:var(--cbs-blue)}
+
+/* Navigation and data surfaces. */
+.toolbar{border-bottom-color:#d4d7dc}
+.segmented button{color:#626a75}
+.segmented button.active{color:var(--cbs-dark-blue)}
+.segmented button.active:after{background:var(--cbs-blue);height:3px}
+.segmented button.active .view-count,.segmented button.has-items .view-count{background:var(--cbs-light-blue);color:var(--cbs-dark-blue)}
+#map,.legend,.table-wrap,.compare-head,.compare-table-wrap,.compare-empty{border-radius:2px}
+#map{border-color:#c9cdd3}
+.legend{border-color:#d1d4da}
+.university-table thead th{background:#f2f4f8;color:#3c4660;border-bottom-color:#c8cdd5}
+.university-table tbody tr:hover{background:#f7f9fd}
+.uni-link,.compare-name,.source-meta a,.month-breakdown summary,.credit-note summary,.approved-course-more>summary{color:var(--cbs-blue)}
+.rank-cell.ranked{color:var(--cbs-dark-blue)}
+.favorite-btn,.compare-toggle,.secondary-button,.remove-compare,.popup-btn{border-radius:2px}
+.compare-toggle.active{background:#eef3fb;border-color:#9aabd0;color:var(--cbs-dark-blue)}
+.popup-btn{background:var(--cbs-light-blue);color:var(--cbs-dark-blue)}
+
+/* Keep CBS historical status colours semantically intact. */
+.status-chip{border-radius:2px}
+.status-chip.status-available{border-color:#727b87}
+.status-chip.status-filled{background:var(--excel-green)}
+.status-chip.status-competitive{background:var(--excel-yellow)}
+.status-chip.status-very_competitive{background:var(--excel-purple)}
+
+/* University profile: square rhythm, blue rules and clear editorial hierarchy. */
+dialog{border-radius:2px;border-top:6px solid var(--cbs-blue)}
+.dialog-close{border-radius:0;color:#4e5661}
+.detail-header,.detail-section,.background-card,.history-profile,.upcoming-capacity,.detail-disclosure,.program-summary{border-radius:2px!important}
+.detail-header{border-top:0!important}
+.detail-title{color:#000}
+.detail-section-title{color:var(--cbs-dark-blue);font-weight:760}
+.detail-section-title::before{content:"";width:8px;height:8px;background:var(--cbs-blue);display:inline-block;flex:0 0 auto}
+.detail-section-head{border-bottom:1px solid #e0e3e8;padding-bottom:9px}
+.section-meta{border-radius:2px;background:#f1f3f7;color:#4f5967}
+.metric-card>span,.mini-label,.course-program-select>span{color:#5c6680}
+.requirement-metrics .essential-card:first-child,
+.requirement-metrics .essential-card:nth-child(2){box-shadow:inset 0 3px 0 var(--cbs-middle-blue)!important}
+.background-card.verified{border-left-color:var(--cbs-blue)}
+.program-policy-note{border-left-color:var(--cbs-blue);background:#f4f7fc}
+.course-year.recent{border-color:#a9b9da;color:#324a7a;background:#f3f6fc}
+.program-summary:hover{border-color:var(--cbs-blue);background:#f6f8fc}
+
+/* Source block is reference material, not a promotional card. */
+.source-note{border-radius:0;background:#fff;border-color:#d5d8dd;border-left:4px solid var(--cbs-light-blue);color:#646c77}
+.source-note a{color:var(--cbs-blue)}
+
+@media(max-width:760px){
+  .site-header{border-top-width:5px;padding-top:24px}
+  .eyebrow::before{width:8px;height:8px}
+  .filter-menu>summary{background:#fff;color:var(--cbs-dark-blue)}
+  .filter-menu>summary:hover,.filter-menu[open]>summary{background:var(--accent-soft);color:var(--cbs-dark-blue)}
+  .filter-count,.filter-count.has-filters{background:var(--cbs-light-blue);color:var(--cbs-dark-blue)}
+}
