@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=24-history-delta" />
+  <link rel="stylesheet" href="assets/styles.css?v=27-editorial-filters" />
   <!-- Private product analytics: explicit anonymous events only; no autocapture/replay/heatmaps. -->
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config startSessionRecording stopSessionRecording isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -31,78 +31,97 @@
   </script>
 </head>
 <body>
-  <header class="topbar">
-    <div>
-      <p class="eyebrow">CBS bachelor exchange</p>
+  <header class="topbar site-header">
+    <div class="brand-block">
+      <div class="brand-kicker-row">
+        <p class="eyebrow">CBS bachelor exchange</p>
+        <span class="project-label">Independent student project</span>
+      </div>
       <h1>Exchange Explorer</h1>
-      <p class="sub">Compare destinations by CBS historical competitiveness, exchange-period temperature, ARWU ranking, relative living costs and university history.</p>
+      <p class="sub">Explore CBS exchange destinations with historical allocation data and current MoveON information in one place.</p>
+      <div class="header-meta" aria-label="Dataset summary">
+        <span><strong id="totalCount">258</strong> universities</span>
+        <span><strong id="countryCount">46</strong> countries</span>
+        <span>MoveON updated <strong id="moveonUpdated">5 Oct 2026</strong></span>
+      </div>
     </div>
     <div class="header-actions">
       <button id="favoritesQuick" class="saved-pill" type="button" title="Show starred universities"><span aria-hidden="true">☆</span> <strong id="favoriteCount">0</strong> favorites</button>
-      <div class="dataset-pill"><strong id="totalCount">258</strong> universities · <strong id="countryCount">46</strong> countries</div>
     </div>
   </header>
 
   <main>
-    <section class="browse-controls" aria-label="Search and filters">
-      <label class="main-search">
-        <span>Search universities</span>
-        <input id="search" type="search" placeholder="Search by university, city or country…" autocomplete="off" />
-      </label>
-
-      <details id="filterMenu" class="filter-menu">
-        <summary>
-          <span class="filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="filter-summary-label">Filters</span>
-          <span id="filterCount" class="filter-count" aria-label="0 active filters">0</span>
-          <span class="filter-chevron" aria-hidden="true">⌄</span>
-        </summary>
-        <div class="filter-panel">
-          <div class="filter-panel-head">
-            <div>
-              <strong>Filter universities</strong>
-              <span>Combine as many filters as you like.</span>
+    <section class="explorer-controls" aria-label="Search and filters">
+      <div class="primary-filter-row">
+        <label class="main-search">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="University, city or country…" autocomplete="off" />
+        </label>
+        <label class="primary-filter"><span>Country</span><select id="country"><option value="">All countries</option></select></label>
+        <label class="primary-filter"><span>2026/27 status</span><select id="demandLevel">
+          <option value="">Any status</option>
+          <option value="available">Places available</option>
+          <option value="filled">All places filled</option>
+          <option value="competitive">Competitive</option>
+          <option value="very_competitive">Very competitive</option>
+          <option value="unknown">No comparable result</option>
+        </select></label>
+        <label class="primary-filter"><span>Fall 2027 places</span><select id="minPlaces2027">
+          <option value="0">Any / not yet published</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option>
+        </select></label>
+        <label class="primary-filter"><span>My CBS GPA</span><select id="myGpa">
+          <option value="">Any GPA</option><option value="2">2.0</option><option value="4">4.0</option><option value="5">5.0</option><option value="6">6.0</option><option value="7">7.0</option><option value="8">8.0</option><option value="10">10.0</option><option value="12">12.0</option>
+        </select></label>
+        <label class="primary-check"><input id="englishOnly" type="checkbox" /><span>English-only possible</span></label>
+        <details id="filterMenu" class="filter-menu">
+          <summary><span class="filter-summary-label">More filters</span><span id="filterCount" class="filter-count" aria-label="0 active filters">0</span><span class="filter-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="filter-panel">
+            <div class="filter-panel-head">
+              <div><strong>More filters</strong><span>Refine by history, academic profile and practical considerations.</span></div>
+              <button id="reset" type="button" class="text-button">Clear all</button>
             </div>
-            <button id="reset" type="button" class="text-button">Clear all</button>
+            <div class="filter-sections">
+              <section class="filter-group" aria-labelledby="filterHistoryTitle">
+                <div class="filter-group-head"><div><strong id="filterHistoryTitle">CBS history & capacity</strong><span>Use the actual 2026/27 outcome and the five-year history.</span></div></div>
+                <div class="filter-group-grid">
+                  <label><span>Historical availability</span><select id="availabilityMin"><option value="0">Any history</option><option value="1">Available at least 1 of 5 years</option><option value="2">Available at least 2 of 5 years</option><option value="3">Available at least 3 of 5 years</option><option value="4">Available at least 4 of 5 years</option><option value="5">Available all 5 years</option></select></label>
+                  <label><span>2027 vs 2026/27 capacity</span><select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="not_reduced">Same or more places</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select></label>
+                  <label><span>Min. places 2026/27</span><select id="minPlaces"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option></select></label>
+                  <label><span>Map/list history window</span><select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select></label>
+                </div>
+              </section>
+              <section class="filter-group" aria-labelledby="filterAcademicTitle">
+                <div class="filter-group-head"><div><strong id="filterAcademicTitle">Academic & eligibility</strong><span>Ranking, language and programme requirements.</span></div></div>
+                <div class="filter-group-grid">
+                  <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
+                  <label><span>Language proof</span><select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select></label>
+                  <label><span>Founded before</span><select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select></label>
+                  <label><span>Academic structure</span><select id="academicStructure"><option value="">Any structure</option><option value="semester">Semester</option><option value="trimester">Trimester</option><option value="quarter">Quarter</option><option value="term">Term</option><option value="unclear">Unclear</option></select></label>
+                </div>
+              </section>
+              <section class="filter-group" aria-labelledby="filterPracticalTitle">
+                <div class="filter-group-head"><div><strong id="filterPracticalTitle">Destination & practical</strong><span>Location, climate, cost and housing.</span></div></div>
+                <div class="filter-group-grid">
+                  <label><span>Continent</span><select id="continent"><option value="">All continents</option><option value="Africa">Africa</option><option value="Asia">Asia</option><option value="Europe">Europe</option><option value="North America">North America</option><option value="Oceania">Oceania</option><option value="South America">South America</option></select></label>
+                  <label><span>Cost vs Denmark</span><select id="maxCost"><option value="">Any cost</option><option value="20">No more than 20% above Denmark</option><option value="0">Same as Denmark or cheaper</option><option value="-10">At least 10% cheaper than Denmark</option><option value="-25">At least 25% cheaper than Denmark</option><option value="-40">At least 40% cheaper than Denmark</option></select></label>
+                  <label><span>Temperature basis</span><select id="tempMetric"><option value="AVG">Sep–Dec average</option><option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option></select></label>
+                  <label><span>Min. temperature</span><select id="minTemp"><option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option></select></label>
+                  <label><span>On-campus housing</span><select id="housingFilter"><option value="">Any housing</option><option value="available">Available</option><option value="unavailable">Not available</option><option value="unclear">Unclear</option></select></label>
+                  <label class="check-row"><input id="favoritesOnly" type="checkbox" /><span>Starred universities only</span></label>
+                </div>
+              </section>
+            </div>
           </div>
-          <div class="filter-sections">
-            <section class="filter-group" aria-labelledby="filterDestinationTitle">
-              <div class="filter-group-head"><div><strong id="filterDestinationTitle">Destination</strong><span>Where you want to spend the semester.</span></div></div>
-              <div class="filter-group-grid">
-                <label><span>Country</span><select id="country"><option value="">All countries</option></select></label>
-                <label><span>Continent</span><select id="continent"><option value="">All continents</option><option value="Africa">Africa</option><option value="Asia">Asia</option><option value="Europe">Europe</option><option value="North America">North America</option><option value="Oceania">Oceania</option><option value="South America">South America</option></select></label>
-                <label><span>Temperature basis</span><select id="tempMetric"><option value="AVG">Sep–Dec average</option><option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option></select></label>
-                <label><span>Min. temperature</span><select id="minTemp"><option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option></select></label>
-                <label class="wide-filter"><span>Cost vs Denmark</span><select id="maxCost"><option value="">Any cost</option><option value="20">No more than 20% above Denmark</option><option value="0">Same as Denmark or cheaper</option><option value="-10">At least 10% cheaper than Denmark</option><option value="-25">At least 25% cheaper than Denmark</option><option value="-40">At least 40% cheaper than Denmark</option></select></label>
-              </div>
-            </section>
-
-            <section class="filter-group" aria-labelledby="filterAcademicTitle">
-              <div class="filter-group-head"><div><strong id="filterAcademicTitle">CBS & academic</strong><span>Historical competitiveness and academic profile.</span></div></div>
-              <div class="filter-group-grid">
-                <label><span>Competitiveness</span><select id="demandLevel"><option value="">Any competitiveness</option><option value="available">Places available</option><option value="filled">All places filled</option><option value="competitive">Competitive</option><option value="very_competitive">Very competitive</option><option value="unknown">No comparable years</option></select></label>
-                <label><span>History window</span><select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select></label>
-                <label><span>Min. places 2026–27</span><select id="minPlaces"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option></select></label>
-                <label><span>Min. Fall 2027 places</span><select id="minPlaces2027"><option value="0">Any / not yet published</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option></select></label>
-                <label><span>2027 vs 2026–27 places</span><select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select></label>
-                <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
-                <label><span>Founded before</span><select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select></label>
-              </div>
-            </section>
-
-            <section class="filter-group" aria-labelledby="filterEligibilityTitle">
-              <div class="filter-group-head"><div><strong id="filterEligibilityTitle">Eligibility & practical</strong><span>Requirements and everyday exchange considerations.</span></div></div>
-              <div class="filter-group-grid">
-                <label><span>My CBS GPA</span><select id="myGpa"><option value="">Don't filter by GPA</option><option value="2">2.0 or higher</option><option value="4">4.0 or higher</option><option value="5">5.0 or higher</option><option value="6">6.0 or higher</option><option value="7">7.0 or higher</option><option value="8">8.0 or higher</option><option value="10">10.0 or higher</option><option value="12">12.0</option></select></label>
-                <label><span>Language proof</span><select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select></label>
-                <label><span>On-campus housing</span><select id="housingFilter"><option value="">Any housing</option><option value="available">Available</option><option value="unavailable">Not available</option><option value="unclear">Unclear</option></select></label>
-                <label><span>Academic structure</span><select id="academicStructure"><option value="">Any structure</option><option value="semester">Semester</option><option value="trimester">Trimester</option><option value="quarter">Quarter</option><option value="term">Term</option><option value="unclear">Unclear</option></select></label>
-                <label class="check-row"><input id="englishOnly" type="checkbox" /> <span>English-only exchange possible</span></label>
-                <label class="check-row"><input id="favoritesOnly" type="checkbox" /> <span>Starred universities only</span></label>
-              </div>
-            </section>
-          </div>
-        </div>
-      </details>
+        </details>
+      </div>
+      <div class="quick-filter-row" aria-label="Quick filters">
+        <span class="quick-filter-label">Quick filters</span>
+        <button type="button" class="quick-filter" data-preset="available_stable">Available last year + capacity maintained <b data-preset-count="available_stable">—</b></button>
+        <button type="button" class="quick-filter" data-preset="available_history">Available 3+ of 5 years <b data-preset-count="available_history">—</b></button>
+        <button type="button" class="quick-filter" data-preset="published">Fall 2027 published <b data-preset-count="published">—</b></button>
+        <button type="button" class="quick-filter" data-preset="four_plus">4+ Fall 2027 places <b data-preset-count="four_plus">—</b></button>
+        <button type="button" class="quick-filter" data-preset="english">English-only <b data-preset-count="english">—</b></button>
+      </div>
     </section>
 
     <section id="activeFilters" class="active-filters" aria-label="Active filters" aria-live="polite" hidden></section>
@@ -183,7 +202,7 @@
     </section>
 
     <section class="note source-note">
-      <strong>Sources & interpretation:</strong> The website reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Current GPA, language, calendar, housing and related exchange requirements are a local snapshot of CBS MoveON Regular / Undergraduate agreements checked on 22 September 2026; Fall 2027 place counts are shown where CBS has already published them. Eleven historical workbook entries are no longer present in that current MoveON list and are shown without current requirements rather than guessed. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU 2026 has been checked against the complete official published list of 1,000 institutions: matched CBS partners show the official exact rank or rank band, while confirmed absences show “Not in top 1000”. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
+      <strong>Sources & interpretation:</strong> The website reads its comparison data from local CSV snapshots stored in this GitHub repository. CBS colors and labels come from the original Excel workbook. Current GPA, language, calendar, housing and related exchange requirements are a local snapshot of CBS MoveON Regular / Undergraduate agreements checked on 5 October 2026; Fall 2027 place counts are shown where CBS has already published them. Thirteen historical workbook entries are not present in that current MoveON list and are shown without current requirements rather than guessed. Climate is a local snapshot of NASA POWER 1991–2020 2 m air-temperature climatology. ARWU 2026 has been checked against the complete official published list of 1,000 institutions: matched CBS partners show the official exact rank or rank band, while confirmed absences show “Not in top 1000”. Living cost is a local snapshot of Numbeo's 2026 Mid-Year <em>country-level</em> Cost of Living + Rent Index, shown relative to Denmark. <a href="https://www.shanghairanking.com/rankings/arwu/2026" target="_blank" rel="noopener">ShanghaiRanking</a> · <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> · <a href="https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp" target="_blank" rel="noopener">Numbeo</a>
     </section>
   </main>
 
@@ -195,6 +214,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=25-posthog-analytics"></script>
+  <script src="assets/app.js?v=27-editorial-filters"></script>
 </body>
 </html>
