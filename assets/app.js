@@ -71,6 +71,7 @@ const COORD_OVERRIDES={
 
 const state={
   all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),costByCountry:new Map(),requirements:new Map(),universityHistory:new Map(),
+  courseApprovals:new Map(),creditWorkloads:new Map(),coursePrograms:[],courseApprovalSource:null,creditSource:null,
   favorites:new Set(),compare:new Set(),
   arwuReady:false,arwuRankedCount:0,arwuPendingCount:0,nameCounts:new Map(),sortKey:'demandScore',sortDir:1,
   climateLoading:false,climateDone:0,climateTotal:0,currentDetailId:null
@@ -325,6 +326,16 @@ function costVsDenmarkText(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct
 function costLevel(u){const pct=costVsDenmark(u);if(!Number.isFinite(pct))return '';if(pct<=-35)return 'Much cheaper';if(pct<=-15)return 'Cheaper';if(pct<15)return 'Similar';if(pct<35)return 'More expensive';return 'Much more expensive'}
 function city(u){return u.city||null}
 function requirement(u){return state.requirements.get(u.id)||null}
+function courseApprovalData(u){return state.courseApprovals.get(u.id)||null}
+function creditWorkloadData(u){return state.creditWorkloads.get(u.id)||null}
+const courseProgramKey='cbs-exchange-course-program-v1',DEFAULT_COURSE_PROGRAM='bsc-dm';
+function selectedCourseProgram(){
+  try{const v=localStorage.getItem(courseProgramKey);if(v==='all'||state.coursePrograms.some(p=>p.id===v))return v}catch{}
+  return DEFAULT_COURSE_PROGRAM;
+}
+function saveCourseProgram(v){try{localStorage.setItem(courseProgramKey,v)}catch{}}
+function courseProgramMeta(id){return state.coursePrograms.find(p=>p.id===id)||null}
+function nl2br(v){return esc(v||'').replace(/\n/g,'<br>')}
 function placesDeltaFromHistory(u){const p27=requirement(u)?.fall2027Places;return Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null}
 function historicalAvailability(u){return YEARS.filter(y=>u.history[y]?.status==='available').length}
 function gpaPass(r,myGpa){
@@ -668,7 +679,7 @@ function detailSectionHead(title,subtitle,infoKey='',infoTitle=''){
 function requirementsHtml(u){
   const r=requirement(u);
   if(!r||r.matchStatus!=='matched')return `<section class="detail-section eligibility-section">${detailSectionHead('Entry requirements','What you need to meet before applying.')}
-    <div class="detail-empty-state"><strong>No current MoveON match</strong><span>This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 22 September 2026. Requirements therefore cannot be shown reliably.</span></div></section>`;
+    <div class="detail-empty-state"><strong>No current MoveON match</strong><span>This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 5 October 2026. Requirements therefore cannot be shown reliably.</span></div></section>`;
   const gpa=Number.isFinite(r.minGpa)?r.minGpa.toFixed(1):'Not stated';
   const tests=[];if(Number.isFinite(r.ielts))tests.push(`IELTS ${r.ielts}`);if(Number.isFinite(r.toefl))tests.push(`TOEFL iBT ${r.toefl}`);if(Number.isFinite(r.cambridge))tests.push(`Cambridge ${r.cambridge}`);
   const langs=nonEnglishLabel(r);const sourceDate=r.sourceCheckedDate||'2026-10-05';
@@ -701,6 +712,75 @@ function requirementsHtml(u){
     </details>`:''}
   </section>`;
 }
+
+function courseYearTags(years=[]){
+  return years.map(y=>`<span class="course-year ${Number(y)>=2024?'recent':'older'}">${esc(String(y))}</span>`).join('');
+}
+function approvedCourseRows(items=[]){
+  return items.map(x=>`<div class="approved-course-row"><div><strong>${esc(x.title)}</strong>${x.code?`<span class="course-code">${esc(x.code)}</span>`:''}</div><div class="course-years">${courseYearTags(x.years||[])}</div></div>`).join('');
+}
+function creditEntryHtml(e){
+  const eq=[e.equivalent_30_ects,e.measurement].filter(Boolean).join(' ');
+  const meta=[e.study_program,e.term,e.weeks?`${e.weeks} weeks`:null].filter(Boolean).join(' · ');
+  return `<div class="credit-entry">
+    <div class="credit-entry-main"><span>30 ECTS equivalent</span><strong>${esc(eq||'See CBS note')}</strong>${e.course_guidance?`<b>${esc(e.course_guidance)}</b>`:''}</div>
+    ${meta?`<div class="credit-entry-meta">${esc(meta)}</div>`:''}
+    ${e.comments?`<details class="credit-note"><summary>Workload note</summary><p>${nl2br(e.comments)}</p></details>`:''}
+  </div>`;
+}
+function coursesCreditsHtml(u){
+  const approvals=courseApprovalData(u),credit=creditWorkloadData(u),selected=selectedCourseProgram();
+  const programs=state.coursePrograms||[],programMeta=courseProgramMeta(selected);
+  const selectedItems=selected==='all'?[]:(approvals?.programs?.[selected]||[]);
+  const approvalSource=state.courseApprovalSource?.label||'CBS approved-course list';
+  const creditSource=state.creditSource?.label||'CBS Credit Database';
+  const selector=`<label class="course-program-select"><span>Study programme</span><select id="courseProgramSelect"><option value="all" ${selected==='all'?'selected':''}>All bachelor programmes</option>${programs.map(p=>`<option value="${esc(p.id)}" ${selected===p.id?'selected':''}>${esc(p.label)}</option>`).join('')}</select></label>`;
+  let approvalsBody='';
+  if(selected==='all'){
+    const available=programs.map(p=>({p,n:approvals?.programs?.[p.id]?.length||0})).filter(x=>x.n>0).sort((a,b)=>b.n-a.n||a.p.label.localeCompare(b.p.label));
+    approvalsBody=available.length?`<div class="program-summary-grid">${available.map(({p,n})=>`<button type="button" class="program-summary" data-course-program-pick="${esc(p.id)}"><strong>${esc(p.label)}</strong><span>${n} previously approved course${n===1?'':'s'}</span></button>`).join('')}</div>`:`<div class="detail-empty-state"><strong>No previous bachelor approvals in this snapshot</strong><span>This does not mean courses at the university cannot be approved.</span></div>`;
+  }else if(selectedItems.length){
+    const visible=selectedItems.slice(0,12),rest=selectedItems.slice(12);
+    approvalsBody=`<div class="course-result-head"><div><strong>${selectedItems.length}</strong> distinct previously approved course${selectedItems.length===1?'':'s'} for <strong>${esc(programMeta?.label||selected)}</strong></div><span>2022–2025</span></div>
+      <div class="approved-course-list">${approvedCourseRows(visible)}</div>
+      ${rest.length?`<details class="approved-course-more"><summary>Show ${rest.length} more course${rest.length===1?'':'s'}</summary><div class="approved-course-list">${approvedCourseRows(rest)}</div></details>`:''}`;
+  }else{
+    approvalsBody=`<div class="detail-empty-state"><strong>No previous ${esc(programMeta?.label||'programme')} approvals in this 2022–2025 snapshot</strong><span>A missing course or university only means it has not previously been assessed for this programme in the published list. It is not a rejection or an eligibility rule.</span></div>`;
+  }
+  const creditEntries=credit?.entries||[];
+  const creditBody=creditEntries.length?`<div class="credit-entry-list">${creditEntries.map(creditEntryHtml).join('')}</div>`:`<div class="credit-empty"><strong>No separate undergraduate conversion entry listed</strong><span>The 2026–27 CBS Credit Database does not contain a matched undergraduate conversion row for this university.</span></div>`;
+  const dmPolicy=selected==='bsc-dm'?`<div class="program-policy-note"><strong>BSc DM course approval</strong><span>The SEMA Study Board policy says an elective should meet at least 2 of 3 criteria: business relevance, analytical competency development, and programme-specific alignment. Previous approval is useful precedent, not a guarantee.</span></div>`:'';
+  return `<section class="detail-section courses-credits-section">
+    <div class="detail-section-head"><div><h3 class="detail-section-title">Courses & credits</h3><p>Use earlier CBS approvals as a reference, and check the local workload needed for 30 ECTS.</p></div><span class="section-meta source-meta">CBS course data</span></div>
+    <div class="course-credit-grid">
+      <div class="course-credit-block credit-block">
+        <div class="course-block-head"><div><strong>Credit workload</strong><span>${esc(creditSource)}</span></div></div>
+        ${creditBody}
+        <p class="course-caveat">The credit database is indicative. Your Study Board makes the final decision on how many credits or courses you need.</p>
+      </div>
+      <div class="course-credit-block approvals-block">
+        <div class="course-block-head"><div><strong>Previously approved electives</strong><span>${esc(approvalSource)}</span></div>${selector}</div>
+        ${dmPolicy}
+        ${approvalsBody}
+        <p class="course-caveat">A course shown here has been approved before, but approval is not guaranteed if the course or programme has changed. A course not shown may simply never have been assessed.</p>
+      </div>
+    </div>
+  </section>`;
+}
+function wireCourseControls(u){
+  const select=$('#courseProgramSelect');
+  if(select)select.addEventListener('change',()=>{
+    saveCourseProgram(select.value);
+    analyticsCapture('course_program_changed',analyticsUniversityProps(u,{study_program:select.value}));
+    openDetail(u.id,'internal',false);
+  });
+  document.querySelectorAll('[data-course-program-pick]').forEach(b=>b.addEventListener('click',()=>{
+    saveCourseProgram(b.dataset.courseProgramPick);
+    analyticsCapture('course_program_changed',analyticsUniversityProps(u,{study_program:b.dataset.courseProgramPick}));
+    openDetail(u.id,'internal',false);
+  }));
+}
+
 function openDetail(id,source='unknown',trackOpen=true){
   closeInfoPopover();
   const u=state.all.find(x=>x.id===id);if(!u)return;if(trackOpen){analyticsCapture('university_opened',analyticsUniversityProps(u,{source}));startDetailEngagement(u,source)}state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
@@ -725,8 +805,9 @@ function openDetail(id,source='unknown',trackOpen=true){
       <div class="history">${yearsHtml}</div>
       <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
     </section>
-    ${requirementsHtml(u)}`;
-  wireSelectionControls($('#detailContent'));
+    ${requirementsHtml(u)}
+    ${coursesCreditsHtml(u)}`;
+  wireSelectionControls($('#detailContent'));wireCourseControls(u);
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
   if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id,'internal',false)}).catch(()=>{});
 }
@@ -827,6 +908,22 @@ async function loadStaticRequirements(){
 async function loadUniversityHistory(){
   try{const rows=await csvObjects('data/university_history.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.universityHistory.set(id,{foundedYear:numCsv(r.founded_year),age2026:numCsv(r.age_2026),rootsYear:numCsv(r.roots_year),historyNote:r.history_note||'',officialWebsite:r.official_website||'',sourceUrl:r.source_url||'',sourceType:r.source_type||'',verificationStatus:r.verification_status||'candidate_unverified'})}}catch(e){console.warn('University history CSV unavailable',e)}
 }
+
+async function loadCourseApprovals(){
+  try{
+    const r=await fetch('data/course_approvals.json',{cache:'no-store'});if(!r.ok)throw new Error(`course_approvals.json: HTTP ${r.status}`);
+    const j=await r.json();state.coursePrograms=j.programs||[];state.courseApprovalSource=j.source||null;
+    for(const [id,v] of Object.entries(j.universities||{}))state.courseApprovals.set(Number(id),v);
+  }catch(e){console.warn('Course approval data unavailable',e)}
+}
+async function loadCreditWorkloads(){
+  try{
+    const r=await fetch('data/credit_workload.json',{cache:'no-store'});if(!r.ok)throw new Error(`credit_workload.json: HTTP ${r.status}`);
+    const j=await r.json();state.creditSource=j.source||null;
+    for(const [id,v] of Object.entries(j.universities||{}))state.creditWorkloads.set(Number(id),v);
+  }catch(e){console.warn('Credit workload data unavailable',e)}
+}
+
 async function loadStaticCost(){
   try{const rows=await csvObjects('data/cost_of_living.csv');for(const r of rows){const index=numCsv(r.cost_rent_index),denmark=numCsv(r.denmark_index),pct=numCsv(r.percent_vs_denmark);state.costByCountry.set(r.country,{index,denmark,pct,source:r.source_url||NUMBEO_URL,snapshot:r.snapshot||''})}}catch(e){console.warn('Cost CSV unavailable',e)}
 }
@@ -834,7 +931,7 @@ async function loadStaticCost(){
 async function init(){
   state.all=await loadCoreUniversities();
   state.nameCounts=new Map();for(const u of state.all){const k=universityNameKey(u);state.nameCounts.set(k,(state.nameCounts.get(k)||0)+1)}
-  await Promise.all([loadUniversityLocations(),loadStaticClimate(),loadStaticCost(),loadStaticRequirements(),loadUniversityHistory()]);
+  await Promise.all([loadUniversityLocations(),loadStaticClimate(),loadStaticCost(),loadStaticRequirements(),loadUniversityHistory(),loadCourseApprovals(),loadCreditWorkloads()]);
   await loadArwu();state.filtered=[...state.all];loadSavedSelections();
   const validIds=new Set(state.all.map(u=>u.id));state.favorites=new Set([...state.favorites].filter(id=>validIds.has(id)));state.compare=new Set([...state.compare].filter(id=>validIds.has(id)).slice(0,6));saveSelections();
   const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
