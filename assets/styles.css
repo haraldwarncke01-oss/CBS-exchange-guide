@@ -606,3 +606,40 @@ dialog{border-radius:2px;border-top:6px solid var(--cbs-blue)}
   .view-switch .segmented{flex:1}
   .view-switch .segmented button{flex:1}
 }
+
+
+/* v31 — clearer view navigation + simpler first screen */
+.site-header h1{
+  color:var(--cbs-blue);
+}
+
+.view-switch{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px;
+}
+
+.view-as-label{
+  display:block;
+  margin:0 0 1px;
+  font-size:10px;
+  line-height:1.1;
+  font-weight:750;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  color:#67717d;
+}
+
+@media(max-width:760px){
+  .view-switch{
+    width:auto;
+    align-items:flex-start;
+  }
+  .view-switch .segmented{
+    width:auto;
+  }
+  .view-switch .segmented button{
+    flex:initial;
+  }
+}
