@@ -880,7 +880,12 @@ function updateQuickFilters(){
 }
 function applyFilters(){
   const criteria=readFilterCriteria();state.filtered=state.all.filter(u=>matchesFilters(u,criteria));
-  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();updateFilterOptionCounts();refreshSmartFilterUI();updateQuickFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
+  const resultCount=state.filtered.length;
+  $('#visibleCount').textContent=resultCount;
+  const resultLabel=$('#resultMatchLabel');
+  if(resultLabel)resultLabel.textContent=resultCount===1?'university matches':'universities match';
+  document.querySelectorAll('[data-empty-results]').forEach(el=>{el.hidden=resultCount!==0});
+  updateLegend();renderActiveFilters();updateFilterOptionCounts();refreshSmartFilterUI();updateQuickFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
 }
 
 function renderCompare(){
@@ -1187,7 +1192,7 @@ async function init(){
     else el.addEventListener('change',()=>trackFilterChanged(el));
   }
   initSmartFilters();
-  $('#reset').addEventListener('click',resetAllFilters);$('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
+  $('#reset').addEventListener('click',resetAllFilters);document.querySelectorAll('.no-results-reset').forEach(b=>b.addEventListener('click',resetAllFilters));$('#favoritesQuick').addEventListener('click',()=>{resetAllFilters();$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',e=>{
     if(e.target.closest('[data-info]'))return;
     const k=th.dataset.sort;
