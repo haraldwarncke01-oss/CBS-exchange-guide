@@ -129,19 +129,22 @@ const SORT_ANALYTICS_LABELS={
 function analyticsFilterValue(el){
   if(!el)return null;
   if(el.type==='checkbox')return !!el.checked;
+  if(el.multiple)return [...el.selectedOptions].map(o=>o.value);
   return el.value===''?'all':el.value;
 }
 function analyticsFilterDisplay(el){
   if(!el)return '';
   if(el.type==='checkbox')return el.checked?'On':'Off';
+  if(el.multiple)return [...el.selectedOptions].map(o=>o.dataset.baseLabel||o.textContent.trim()).join(', ')||'All';
   return el.selectedOptions?.[0]?.textContent?.trim()||String(el.value||'All');
 }
 function activeFilterCount(){
   let n=0;
   for(const id of Object.keys(FILTER_ANALYTICS_LABELS)){
     const el=$('#'+id);if(!el)continue;
-    if(id==='tempMetric')continue;
+    if(id==='tempMetric'||id==='continent')continue;
     if(el.type==='checkbox'){if(el.checked)n++;continue}
+    if(el.multiple){if(el.selectedOptions.length)n++;continue}
     if(id==='historyWindow'){if(el.value&&el.value!=='5')n++;continue}
     if(el.value&&el.value!=='0')n++;
   }
@@ -402,19 +405,32 @@ async function shareComparison(){
   const chosen=[...state.compare].map(id=>state.all.find(u=>u.id===id)).filter(Boolean);
   analyticsCapture('compare_shared',{compare_count:chosen.length,university_ids:chosen.map(u=>u.id),university_names:chosen.map(u=>u.name)});
 }
+function selectedCountryValues(){return [...($('#country')?.selectedOptions||[])].map(o=>o.value).filter(Boolean)}
+function countriesForContinent(name){return [...new Set(state.all.filter(u=>continent(u)===name).map(u=>u.country))].sort((a,b)=>a.localeCompare(b))}
+function activeCountryDescriptors(){
+  const selected=new Set(selectedCountryValues()),out=[];
+  const continents=[...new Set(state.all.map(continent))].sort((a,b)=>a.localeCompare(b));
+  for(const contName of continents){
+    const all=countriesForContinent(contName),chosen=all.filter(c=>selected.has(c));
+    if(!chosen.length)continue;
+    if(chosen.length===all.length)out.push({key:`countryContinent:${contName}`,label:contName});
+    else for(const country of chosen)out.push({key:`country:${country}`,label:country});
+  }
+  return out;
+}
 function activeFilterDescriptors(){
   const out=[];
   const q=$('#search')?.value.trim();
   if(q)out.push({key:'search',label:`Search: “${q}”`});
-  if($('#country')?.value)out.push({key:'country',label:`Country: ${selectedText('country')}`});
-  if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`2026/27 status: ${selectedText('demandLevel')}`});
-  if($('#minPlaces2027')?.value&&$('#minPlaces2027').value!=='0')out.push({key:'minPlaces2027',label:`Fall 2027 places: ${selectedText('minPlaces2027')}`});
+  out.push(...activeCountryDescriptors());
+  if($('#demandLevel')?.value)out.push({key:'demandLevel',label:`Last year's demand: ${selectedText('demandLevel')}`});
+  if($('#minPlaces2027')?.value&&$('#minPlaces2027').value!=='0')out.push({key:'minPlaces2027',label:`Fall 2027: ${selectedText('minPlaces2027')}`});
   if($('#myGpa')?.value!=='')out.push({key:'myGpa',label:`My GPA: ${selectedText('myGpa')}`});
-  if($('#englishOnly')?.checked)out.push({key:'englishOnly',label:'English-only exchange possible'});
-  if($('#availabilityMin')?.value&&$('#availabilityMin').value!=='0')out.push({key:'availabilityMin',label:`History: ${selectedText('availabilityMin')}`});
-  if($('#placesChange')?.value)out.push({key:'placesChange',label:`2027 capacity: ${selectedText('placesChange')}`});
-  if($('#minPlaces')?.value&&$('#minPlaces').value!=='0')out.push({key:'minPlaces',label:`Places 2026/27: ${selectedText('minPlaces')}`});
-  if($('#historyWindow')?.value&&$('#historyWindow').value!=='5')out.push({key:'historyWindow',label:`Display history: ${selectedText('historyWindow')}`});
+  if($('#englishOnly')?.checked)out.push({key:'englishOnly',label:'English-only possible'});
+  if($('#availabilityMin')?.value&&$('#availabilityMin').value!=='0')out.push({key:'availabilityMin',label:`Historical availability: ${selectedText('availabilityMin')}`});
+  if($('#placesChange')?.value)out.push({key:'placesChange',label:`Capacity change: ${selectedText('placesChange')}`});
+  if($('#minPlaces')?.value&&$('#minPlaces').value!=='0')out.push({key:'minPlaces',label:`2026/27 places: ${selectedText('minPlaces')}`});
+  if($('#historyWindow')?.value&&$('#historyWindow').value!=='5')out.push({key:'historyWindow',label:`History view: ${selectedText('historyWindow')}`});
   if($('#arwuMax')?.value&&$('#arwuMax').value!=='0')out.push({key:'arwuMax',label:`ARWU: ${selectedText('arwuMax')}`});
   if($('#languageProof')?.value)out.push({key:'languageProof',label:`Language requirement: ${selectedText('languageProof')}`});
   if($('#englishEvidence')?.value)out.push({key:'englishEvidence',label:`English proof: ${selectedText('englishEvidence')}`});
@@ -422,16 +438,19 @@ function activeFilterDescriptors(){
   if($('#englishEvidence')?.value==='gymnasium'&&$('#gymEnglishGrade')?.value)out.push({key:'gymEnglishGrade',label:`Gymnasium grade: ${selectedText('gymEnglishGrade')}`});
   if($('#foundedBefore')?.value)out.push({key:'foundedBefore',label:`Founded: ${selectedText('foundedBefore')}`});
   if($('#academicStructure')?.value)out.push({key:'academicStructure',label:`Academic structure: ${selectedText('academicStructure')}`});
-  if($('#continent')?.value)out.push({key:'continent',label:`Continent: ${selectedText('continent')}`});
-  if($('#minTemp')?.value!=='')out.push({key:'temperature',label:`Temperature · ${selectedText('tempMetric')}: ${selectedText('minTemp')}`});
+  if($('#minTemp')?.value!=='')out.push({key:'temperature',label:`Climate · ${selectedText('tempMetric')}: ${selectedText('minTemp')}`});
   if($('#maxCost')?.value!=='')out.push({key:'maxCost',label:`Cost: ${selectedText('maxCost')}`});
   if($('#housingFilter')?.value)out.push({key:'housingFilter',label:`Housing: ${selectedText('housingFilter')}`});
   if($('#favoritesOnly')?.checked)out.push({key:'favoritesOnly',label:'Favorites only'});
   return out;
 }
+function clearCountries(countries){
+  const remove=new Set(countries);for(const opt of $('#country')?.options||[])if(remove.has(opt.value))opt.selected=false;
+}
 function resetFilter(key){
   if(key==='search')$('#search').value='';
-  else if(key==='country')$('#country').value='';
+  else if(key.startsWith('country:'))clearCountries([key.slice(8)]);
+  else if(key.startsWith('countryContinent:'))clearCountries(countriesForContinent(key.slice(17)));
   else if(key==='demandLevel')$('#demandLevel').value='';
   else if(key==='minPlaces2027')$('#minPlaces2027').value='0';
   else if(key==='myGpa')$('#myGpa').value='';
@@ -447,7 +466,6 @@ function resetFilter(key){
   else if(key==='gymEnglishGrade')$('#gymEnglishGrade').value='';
   else if(key==='foundedBefore')$('#foundedBefore').value='';
   else if(key==='academicStructure')$('#academicStructure').value='';
-  else if(key==='continent')$('#continent').value='';
   else if(key==='temperature'){ $('#minTemp').value=''; $('#tempMetric').value='AVG'; }
   else if(key==='maxCost')$('#maxCost').value='';
   else if(key==='housingFilter')$('#housingFilter').value='';
@@ -455,7 +473,7 @@ function resetFilter(key){
   applyFilters();
 }
 function resetAllFilters(){
-  $('#search').value='';$('#country').value='';$('#demandLevel').value='';$('#minPlaces2027').value='0';$('#myGpa').value='';$('#englishOnly').checked=false;$('#availabilityMin').value='0';$('#placesChange').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#arwuMax').value='0';$('#languageProof').value='';$('#englishEvidence').value='';$('#gymEnglishLevel').value='';$('#gymEnglishGrade').value='';syncLanguageEvidenceControls();$('#foundedBefore').value='';$('#academicStructure').value='';$('#continent').value='';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#housingFilter').value='';$('#favoritesOnly').checked=false;applyFilters();
+  $('#search').value='';for(const opt of $('#country')?.options||[])opt.selected=false;$('#demandLevel').value='';$('#minPlaces2027').value='0';$('#myGpa').value='';$('#englishOnly').checked=false;$('#availabilityMin').value='0';$('#placesChange').value='';$('#minPlaces').value='0';$('#historyWindow').value='5';$('#arwuMax').value='0';$('#languageProof').value='';$('#englishEvidence').value='';$('#gymEnglishLevel').value='';$('#gymEnglishGrade').value='';syncLanguageEvidenceControls();$('#foundedBefore').value='';$('#academicStructure').value='';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#maxCost').value='';$('#housingFilter').value='';$('#favoritesOnly').checked=false;applyFilters();
 }
 function renderActiveFilters(){
   const box=$('#activeFilters'),items=activeFilterDescriptors(),count=$('#filterCount');
@@ -601,25 +619,25 @@ function englishEvidencePass(r,evidence,level,grade){
 }
 function readFilterCriteria(){
   return {
-    q:$('#search').value.trim().toLowerCase(),country:$('#country').value,demand:$('#demandLevel').value,
+    q:$('#search').value.trim().toLowerCase(),countries:selectedCountryValues(),demand:$('#demandLevel').value,
     minP27:Number($('#minPlaces2027').value||0),myGpa:$('#myGpa').value===''?null:Number($('#myGpa').value),englishOnly:$('#englishOnly').checked,
     availabilityMin:Number($('#availabilityMin').value||0),placesChange:$('#placesChange').value,minP:Number($('#minPlaces').value||0),
     arwuMax:Number($('#arwuMax').value||0),languageProof:$('#languageProof').value,englishEvidence:$('#englishEvidence').value,gymEnglishLevel:$('#gymEnglishLevel').value,gymEnglishGrade:$('#gymEnglishGrade').value===''?null:Number($('#gymEnglishGrade').value),foundedBefore:$('#foundedBefore').value===''?null:Number($('#foundedBefore').value),
-    academicStructure:$('#academicStructure').value,cont:$('#continent').value,tempMetric:$('#tempMetric').value,minTemp:$('#minTemp').value===''?null:Number($('#minTemp').value),
+    academicStructure:$('#academicStructure').value,tempMetric:$('#tempMetric').value,minTemp:$('#minTemp').value===''?null:Number($('#minTemp').value),
     maxCost:$('#maxCost').value===''?null:Number($('#maxCost').value),housingFilter:$('#housingFilter').value,favoritesOnly:$('#favoritesOnly')?.checked
   };
 }
 function matchesFilters(u,c){
   const climate=state.climate.get(u.id),tv=climateValue(climate,c.tempMetric),ci=costVsDenmark(u),r=requirement(u),p27=r?.fall2027Places,delta=placesDeltaFromHistory(u);
   const changeOk=!c.placesChange||(c.placesChange==='published'&&Number.isFinite(p27))||(c.placesChange==='unpublished'&&!Number.isFinite(p27))||(c.placesChange==='not_reduced'&&Number.isFinite(delta)&&delta>=0)||(c.placesChange==='increase'&&Number.isFinite(delta)&&delta>0)||(c.placesChange==='same'&&Number.isFinite(delta)&&delta===0)||(c.placesChange==='decrease'&&Number.isFinite(delta)&&delta<0);
-  return (!c.q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(c.q))&&(!c.country||u.country===c.country)&&(!c.demand||u.latestStatus===c.demand)&&(!c.minP27||(Number.isFinite(p27)&&p27>=c.minP27))&&gpaPass(r,c.myGpa)&&(!c.englishOnly||r?.englishOnlyPossible==='yes')&&(historicalAvailability(u)>=c.availabilityMin)&&changeOk&&((u.latestPlaces??0)>=c.minP)&&(!c.arwuMax||(u.arwuSort&&u.arwuSort<=c.arwuMax))&&(!c.languageProof||r?.proofCategory===c.languageProof)&&englishEvidencePass(r,c.englishEvidence,c.gymEnglishLevel,c.gymEnglishGrade)&&(c.foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<c.foundedBefore))&&(!c.academicStructure||r?.academicStructure===c.academicStructure)&&(!c.cont||continent(u)===c.cont)&&(c.minTemp==null||(Number.isFinite(tv)&&tv>=c.minTemp))&&(c.maxCost==null||(Number.isFinite(ci)&&ci<=c.maxCost))&&(!c.housingFilter||r?.onCampusHousing===c.housingFilter)&&(!c.favoritesOnly||state.favorites.has(u.id));
+  return (!c.q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(c.q))&&(!c.countries?.length||c.countries.includes(u.country))&&(!c.demand||u.latestStatus===c.demand)&&(!c.minP27||(Number.isFinite(p27)&&p27>=c.minP27))&&gpaPass(r,c.myGpa)&&(!c.englishOnly||r?.englishOnlyPossible==='yes')&&(historicalAvailability(u)>=c.availabilityMin)&&changeOk&&((u.latestPlaces??0)>=c.minP)&&(!c.arwuMax||(u.arwuSort&&u.arwuSort<=c.arwuMax))&&(!c.languageProof||r?.proofCategory===c.languageProof)&&englishEvidencePass(r,c.englishEvidence,c.gymEnglishLevel,c.gymEnglishGrade)&&(c.foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<c.foundedBefore))&&(!c.academicStructure||r?.academicStructure===c.academicStructure)&&(c.minTemp==null||(Number.isFinite(tv)&&tv>=c.minTemp))&&(c.maxCost==null||(Number.isFinite(ci)&&ci<=c.maxCost))&&(!c.housingFilter||r?.onCampusHousing===c.housingFilter)&&(!c.favoritesOnly||state.favorites.has(u.id));
 }
-const COUNTABLE_SELECTS=['country','demandLevel','minPlaces2027','myGpa','availabilityMin','placesChange','minPlaces','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','continent','minTemp','maxCost','housingFilter'];
+const COUNTABLE_SELECTS=['demandLevel','minPlaces2027','myGpa','availabilityMin','placesChange','minPlaces','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','minTemp','maxCost','housingFilter'];
 function criteriaForSelectValue(base,id,value){
   const c={...base};
   const numeric=new Set(['minPlaces2027','availabilityMin','minPlaces','arwuMax']);
   const nullableNumeric=new Set(['myGpa','gymEnglishGrade','foundedBefore','minTemp','maxCost']);
-  const map={country:'country',demandLevel:'demand',minPlaces2027:'minP27',myGpa:'myGpa',availabilityMin:'availabilityMin',placesChange:'placesChange',minPlaces:'minP',arwuMax:'arwuMax',languageProof:'languageProof',englishEvidence:'englishEvidence',gymEnglishLevel:'gymEnglishLevel',gymEnglishGrade:'gymEnglishGrade',foundedBefore:'foundedBefore',academicStructure:'academicStructure',continent:'cont',minTemp:'minTemp',maxCost:'maxCost',housingFilter:'housingFilter'};
+  const map={demandLevel:'demand',minPlaces2027:'minP27',myGpa:'myGpa',availabilityMin:'availabilityMin',placesChange:'placesChange',minPlaces:'minP',arwuMax:'arwuMax',languageProof:'languageProof',englishEvidence:'englishEvidence',gymEnglishLevel:'gymEnglishLevel',gymEnglishGrade:'gymEnglishGrade',foundedBefore:'foundedBefore',academicStructure:'academicStructure',minTemp:'minTemp',maxCost:'maxCost',housingFilter:'housingFilter'};
   const prop=map[id];if(!prop)return c;
   c[prop]=numeric.has(id)?Number(value||0):nullableNumeric.has(id)?(value===''?null:Number(value)):value;
   return c;
@@ -629,6 +647,216 @@ function updateFilterOptionCounts(){
   const base=readFilterCriteria();
   for(const id of COUNTABLE_SELECTS){const el=$('#'+id);if(!el)continue;for(const opt of el.options){const c=criteriaForSelectValue(base,id,opt.value),n=state.all.filter(u=>matchesFilters(u,c)).length,label=opt.dataset.baseLabel||opt.textContent.replace(/\s+\(\d+\)$/,'');opt.dataset.baseLabel=label;opt.textContent=`${label} (${n})`;opt.disabled=n===0&&!opt.selected}}
 }
+
+// -----------------------------------------------------------------------------
+// Hierarchical filter navigation (v33)
+// -----------------------------------------------------------------------------
+const SMART_FILTER_SECTIONS={
+  availability:[
+    {key:'minPlaces2027',label:'Fall 2027 places',kind:'select'},
+    {key:'demandLevel',label:"Last year's demand",kind:'select'},
+    {key:'availabilityMin',label:'Historical availability',kind:'select'},
+    {key:'placesChange',label:'Capacity change',kind:'select'},
+    {key:'minPlaces',label:'2026/27 places',kind:'select'}
+  ],
+  eligibility:[
+    {key:'myGpa',label:'My GPA',kind:'select'},
+    {key:'englishOnly',label:'Teaching language',kind:'toggle',onLabel:'English-only exchange possible',offLabel:'Any teaching language'},
+    {key:'languageProof',label:'Language requirement',kind:'select'},
+    {key:'englishEvidence',label:'English proof',kind:'select'},
+    {key:'academicStructure',label:'Academic structure',kind:'select'}
+  ],
+  more:[
+    {key:'arwuMax',label:'Ranking',kind:'select'},
+    {key:'maxCost',label:'Cost of living',kind:'select'},
+    {key:'climate',label:'Climate',kind:'climate'},
+    {key:'housingFilter',label:'Housing',kind:'select'},
+    {key:'foundedBefore',label:'Founded before',kind:'select'},
+    {key:'historyWindow',label:'History view',kind:'select'},
+    {key:'favoritesOnly',label:'Favorites',kind:'toggle',onLabel:'Favorites only',offLabel:'All universities'}
+  ]
+};
+const smartFilterUI={open:null,activeSection:{country:'Europe',availability:'minPlaces2027',eligibility:'myGpa',more:'arwuMax'},hoverTimer:null,ready:false};
+function isSmartFilterMobile(){return window.matchMedia('(max-width: 720px)').matches}
+function nativeDefaultValue(id){return ({minPlaces2027:'0',availabilityMin:'0',minPlaces:'0',arwuMax:'0',historyWindow:'5',tempMetric:'AVG'}[id]??'')}
+function nativeControlIsActive(id){
+  const el=$('#'+id);if(!el)return false;
+  if(el.type==='checkbox')return !!el.checked;
+  if(id==='tempMetric')return false;
+  return el.value!==nativeDefaultValue(id);
+}
+function smartSections(category){
+  const base=[...(SMART_FILTER_SECTIONS[category]||[])];
+  if(category==='eligibility'&&$('#englishEvidence')?.value==='gymnasium'){
+    const insertAt=base.findIndex(x=>x.key==='academicStructure');
+    const extras=[{key:'gymEnglishLevel',label:'Gymnasium English level',kind:'select'},{key:'gymEnglishGrade',label:'Gymnasium grade',kind:'select'}];
+    if(insertAt<0)base.push(...extras);else base.splice(insertAt,0,...extras);
+  }
+  return base;
+}
+function smartSectionActive(section){
+  if(section.kind==='climate')return $('#minTemp')?.value!=='';
+  return nativeControlIsActive(section.key);
+}
+function smartSectionSummary(section){
+  if(!smartSectionActive(section))return '';
+  if(section.kind==='toggle')return $('#'+section.key)?.checked?(section.onLabel||'On'):'';
+  if(section.kind==='climate')return `${selectedText('tempMetric')} · ${selectedText('minTemp')}`;
+  return selectedText(section.key);
+}
+function smartCategoryCount(category){
+  if(category==='country')return activeCountryDescriptors().length;
+  return smartSections(category).filter(s=>smartSectionActive(s)).length;
+}
+function smartBaseCriteriaWithoutCountries(){const c=readFilterCriteria();c.countries=[];return c}
+function countWithCriteria(criteria){return state.all.filter(u=>matchesFilters(u,criteria)).length}
+function countryMatchCount(country){const c=smartBaseCriteriaWithoutCountries();c.countries=[country];return countWithCriteria(c)}
+function continentMatchCount(contName){const c=smartBaseCriteriaWithoutCountries();return state.all.filter(u=>continent(u)===contName&&matchesFilters(u,c)).length}
+function preferredContinents(){
+  const order=['Africa','Asia','Europe','North America','South America','Oceania'];
+  const present=[...new Set(state.all.map(continent))];
+  return [...order.filter(x=>present.includes(x)),...present.filter(x=>!order.includes(x)).sort()];
+}
+function countrySelectionState(contName){
+  const all=countriesForContinent(contName),selected=new Set(selectedCountryValues()),n=all.filter(c=>selected.has(c)).length;
+  return {all,n,checked:all.length>0&&n===all.length,partial:n>0&&n<all.length};
+}
+function smartChoiceCount(id,value){
+  if(id==='historyWindow'||id==='tempMetric')return null;
+  const base=readFilterCriteria(),criteria=criteriaForSelectValue(base,id,value);
+  return countWithCriteria(criteria);
+}
+function smartToggleCount(id,on){
+  const c=readFilterCriteria();
+  if(id==='englishOnly')c.englishOnly=on;
+  else if(id==='favoritesOnly')c.favoritesOnly=on;
+  return countWithCriteria(c);
+}
+function choiceIndicator(selected,type='radio'){return `<span class="smart-choice-indicator ${selected?'selected':''} ${type==='check'?'check':''}" aria-hidden="true">${selected?(type==='check'?'✓':'') : ''}</span>`}
+function renderSelectChoices(id){
+  const el=$('#'+id);if(!el)return '';
+  return [...el.options].map(opt=>{
+    const selected=opt.selected,label=opt.dataset.baseLabel||opt.textContent.trim().replace(/\s+\(\d+\)$/,''),count=smartChoiceCount(id,opt.value),disabled=!!opt.disabled&&!selected;
+    return `<button type="button" class="smart-choice ${selected?'selected':''}" data-smart-select="${esc(id)}" data-smart-value="${esc(opt.value)}" role="radio" aria-checked="${selected}" ${disabled?'disabled':''}>${choiceIndicator(selected)}<span class="smart-choice-label">${esc(label)}</span>${count==null?'':`<span class="smart-choice-count">${count}</span>`}</button>`;
+  }).join('');
+}
+function renderToggleChoices(section){
+  const el=$('#'+section.key),on=!!el?.checked;
+  const offCount=smartToggleCount(section.key,false),onCount=smartToggleCount(section.key,true);
+  return `<button type="button" class="smart-choice ${!on?'selected':''}" data-smart-toggle="${esc(section.key)}" data-smart-bool="false" role="radio" aria-checked="${!on}">${choiceIndicator(!on)}<span class="smart-choice-label">${esc(section.offLabel||'Any')}</span><span class="smart-choice-count">${offCount}</span></button>
+  <button type="button" class="smart-choice ${on?'selected':''}" data-smart-toggle="${esc(section.key)}" data-smart-bool="true" role="radio" aria-checked="${on}">${choiceIndicator(on)}<span class="smart-choice-label">${esc(section.onLabel||'On')}</span><span class="smart-choice-count">${onCount}</span></button>`;
+}
+function renderClimateChoices(){
+  return `<div class="smart-choice-group"><span class="smart-choice-group-label">Temperature basis</span>${renderSelectChoices('tempMetric')}</div><div class="smart-choice-group"><span class="smart-choice-group-label">Minimum temperature</span>${renderSelectChoices('minTemp')}</div>`;
+}
+function renderCountryPrimary(){
+  const pane=$('[data-smart-primary="country"]');if(!pane)return;
+  pane.innerHTML=preferredContinents().map(contName=>{
+    const st=countrySelectionState(contName),count=continentMatchCount(contName),active=smartFilterUI.activeSection.country===contName;
+    const mark=st.checked?'✓':st.partial?'−':'';
+    return `<div class="smart-country-primary ${active?'active':''}" data-smart-section="${esc(contName)}"><button type="button" class="smart-continent-toggle ${st.checked||st.partial?'selected':''}" data-country-continent-toggle="${esc(contName)}" aria-pressed="${st.checked}" aria-label="${st.checked?'Deselect':'Select'} all countries in ${esc(contName)}"><span aria-hidden="true">${mark}</span></button><button type="button" class="smart-primary-nav" data-smart-section="${esc(contName)}"><span><strong>${esc(contName)}</strong><small>${st.n?`${st.n} selected`:''}</small></span><span class="smart-primary-tail"><b>${count}</b><i aria-hidden="true">›</i></span></button></div>`;
+  }).join('');
+}
+function renderCountrySecondary(){
+  const pane=$('[data-smart-secondary="country"]');if(!pane)return;
+  let contName=smartFilterUI.activeSection.country;if(!countriesForContinent(contName).length)contName=preferredContinents()[0]||'';
+  smartFilterUI.activeSection.country=contName;
+  const st=countrySelectionState(contName),selected=new Set(selectedCountryValues());
+  pane.innerHTML=`<div class="smart-secondary-title"><div><strong>${esc(contName)}</strong><span>${st.all.length} countr${st.all.length===1?'y':'ies'}</span></div><button type="button" class="smart-secondary-select-all" data-country-continent-toggle="${esc(contName)}">${st.checked?'Deselect all':'Select all'}</button></div><div class="smart-choice-list country-choice-list">${st.all.map(country=>{const on=selected.has(country),count=countryMatchCount(country);return `<button type="button" class="smart-choice ${on?'selected':''}" data-country-toggle="${esc(country)}" role="checkbox" aria-checked="${on}">${choiceIndicator(on,'check')}<span class="smart-choice-label"><span class="country-flag" aria-hidden="true">${countryFlag(country)}</span>${esc(country)}</span><span class="smart-choice-count">${count}</span></button>`}).join('')}</div>`;
+}
+function renderGenericPrimary(category){
+  const pane=$(`[data-smart-primary="${category}"]`);if(!pane)return;
+  const sections=smartSections(category);if(!sections.some(s=>s.key===smartFilterUI.activeSection[category]))smartFilterUI.activeSection[category]=sections[0]?.key||'';
+  pane.innerHTML=sections.map(section=>{const active=smartFilterUI.activeSection[category]===section.key,summary=smartSectionSummary(section);return `<button type="button" class="smart-primary-item ${active?'active':''} ${smartSectionActive(section)?'has-value':''}" data-smart-section="${esc(section.key)}"><span class="smart-primary-copy"><strong>${esc(section.label)}</strong>${summary?`<small>${esc(summary)}</small>`:''}</span><span class="smart-primary-tail">${smartSectionActive(section)?'<b class="smart-active-dot" aria-hidden="true"></b>':''}<i aria-hidden="true">›</i></span></button>`}).join('');
+}
+function renderGenericSecondary(category){
+  const pane=$(`[data-smart-secondary="${category}"]`);if(!pane)return;
+  const section=smartSections(category).find(s=>s.key===smartFilterUI.activeSection[category])||smartSections(category)[0];if(!section){pane.innerHTML='';return}
+  smartFilterUI.activeSection[category]=section.key;
+  let content='';
+  if(section.kind==='select')content=renderSelectChoices(section.key);
+  else if(section.kind==='toggle')content=renderToggleChoices(section);
+  else if(section.kind==='climate')content=renderClimateChoices();
+  pane.innerHTML=`<div class="smart-secondary-title"><div><strong>${esc(section.label)}</strong><span>${section.key==='demandLevel'?'CBS 2026/27 allocation result':section.key==='minPlaces2027'?'Current Fall 2027 capacity published in MoveON':''}</span></div></div><div class="smart-choice-list">${content}</div>`;
+}
+function renderSmartFilter(category){
+  if(category==='country'){renderCountryPrimary();renderCountrySecondary()}
+  else{renderGenericPrimary(category);renderGenericSecondary(category)}
+}
+function updateSmartFilterButtons(){
+  for(const category of ['country','availability','eligibility','more']){
+    const count=smartCategoryCount(category),badge=$(`[data-smart-badge="${category}"]`),trigger=$(`[data-smart-trigger="${category}"]`);
+    if(badge){badge.textContent=count;badge.hidden=count===0}
+    trigger?.classList.toggle('has-active',count>0);
+    if(trigger)trigger.setAttribute('aria-label',`${trigger.querySelector('span')?.textContent||category}${count?` · ${count} active`:''}`);
+  }
+  $('#reset')?.classList.toggle('has-active',activeFilterDescriptors().length>0);
+}
+function refreshSmartFilterUI(){
+  if(!smartFilterUI.ready)return;
+  updateSmartFilterButtons();
+  if(smartFilterUI.open)renderSmartFilter(smartFilterUI.open);
+}
+function closeSmartFilters(){
+  smartFilterUI.open=null;clearTimeout(smartFilterUI.hoverTimer);
+  document.querySelectorAll('[data-smart-popover]').forEach(p=>{p.hidden=true;p.classList.remove('mobile-secondary-open')});
+  document.querySelectorAll('[data-smart-trigger]').forEach(b=>b.setAttribute('aria-expanded','false'));
+  document.body.classList.remove('smart-filter-mobile-open');
+}
+function openSmartFilter(category){
+  if(smartFilterUI.open===category){closeSmartFilters();return}
+  closeSmartFilters();smartFilterUI.open=category;
+  const pop=$(`[data-smart-popover="${category}"]`),trigger=$(`[data-smart-trigger="${category}"]`);if(!pop)return;
+  pop.hidden=false;trigger?.setAttribute('aria-expanded','true');renderSmartFilter(category);
+  if(isSmartFilterMobile())document.body.classList.add('smart-filter-mobile-open');
+}
+function activateSmartSection(category,key,viaClick=false){
+  smartFilterUI.activeSection[category]=key;renderSmartFilter(category);
+  const pop=$(`[data-smart-popover="${category}"]`);if(viaClick&&isSmartFilterMobile())pop?.classList.add('mobile-secondary-open');
+}
+function dispatchControlChange(el){if(el)el.dispatchEvent(new Event('change',{bubbles:true}))}
+function setSmartSelect(id,value){const el=$('#'+id);if(!el)return;el.value=value;dispatchControlChange(el)}
+function setSmartToggle(id,value){const el=$('#'+id);if(!el)return;el.checked=value;dispatchControlChange(el)}
+function toggleCountry(country){
+  const el=$('#country');if(!el)return;const opt=[...el.options].find(o=>o.value===country);if(!opt)return;opt.selected=!opt.selected;dispatchControlChange(el);
+}
+function toggleContinentCountries(contName){
+  const el=$('#country');if(!el)return;const st=countrySelectionState(contName),targets=new Set(st.all);for(const opt of el.options)if(targets.has(opt.value))opt.selected=!st.checked;dispatchControlChange(el);
+}
+function clearSmartCategory(category){
+  if(category==='country'){for(const opt of $('#country')?.options||[])opt.selected=false;dispatchControlChange($('#country'));return}
+  if(category==='availability'){$('#minPlaces2027').value='0';$('#demandLevel').value='';$('#availabilityMin').value='0';$('#placesChange').value='';$('#minPlaces').value='0'}
+  if(category==='eligibility'){$('#myGpa').value='';$('#englishOnly').checked=false;$('#languageProof').value='';$('#englishEvidence').value='';$('#gymEnglishLevel').value='';$('#gymEnglishGrade').value='';$('#academicStructure').value='';syncLanguageEvidenceControls()}
+  if(category==='more'){$('#arwuMax').value='0';$('#maxCost').value='';$('#tempMetric').value='AVG';$('#minTemp').value='';$('#housingFilter').value='';$('#foundedBefore').value='';$('#historyWindow').value='5';$('#favoritesOnly').checked=false}
+  applyFilters();
+  analyticsCapture('filter_changed',{filter_id:`${category}_group`,filter_name:`${category} filters`,filter_value:'cleared',active_filter_count:activeFilterCount(),result_count:state.filtered.length});
+}
+function initSmartFilters(){
+  if(smartFilterUI.ready)return;smartFilterUI.ready=true;
+  document.querySelectorAll('[data-smart-trigger]').forEach(trigger=>trigger.addEventListener('click',e=>{e.stopPropagation();openSmartFilter(trigger.dataset.smartTrigger)}));
+  document.addEventListener('pointerover',e=>{
+    if(isSmartFilterMobile()||!smartFilterUI.open)return;
+    const item=e.target.closest?.('[data-smart-section]');if(!item||!item.closest?.(`[data-smart-popover="${smartFilterUI.open}"]`))return;
+    if(item.contains(e.relatedTarget))return;
+    const key=item.dataset.smartSection;if(!key)return;
+    clearTimeout(smartFilterUI.hoverTimer);smartFilterUI.hoverTimer=setTimeout(()=>activateSmartSection(smartFilterUI.open,key,false),140);
+  });
+  document.addEventListener('click',e=>{
+    const close=e.target.closest?.('[data-smart-close]');if(close){closeSmartFilters();return}
+    const back=e.target.closest?.('[data-smart-back]');if(back){back.closest('[data-smart-popover]')?.classList.remove('mobile-secondary-open');return}
+    const clear=e.target.closest?.('[data-smart-clear]');if(clear){clearSmartCategory(clear.dataset.smartClear);return}
+    const contToggle=e.target.closest?.('[data-country-continent-toggle]');if(contToggle){e.preventDefault();e.stopPropagation();toggleContinentCountries(contToggle.dataset.countryContinentToggle);return}
+    const country=e.target.closest?.('[data-country-toggle]');if(country){toggleCountry(country.dataset.countryToggle);return}
+    const select=e.target.closest?.('[data-smart-select]');if(select){setSmartSelect(select.dataset.smartSelect,select.dataset.smartValue);return}
+    const toggle=e.target.closest?.('[data-smart-toggle]');if(toggle){setSmartToggle(toggle.dataset.smartToggle,toggle.dataset.smartBool==='true');return}
+    const section=e.target.closest?.('[data-smart-section]');if(section&&smartFilterUI.open&&section.closest?.(`[data-smart-popover="${smartFilterUI.open}"]`)){activateSmartSection(smartFilterUI.open,section.dataset.smartSection,true);return}
+    if(smartFilterUI.open&&!e.target.closest?.('[data-smart-popover]')&&!e.target.closest?.('[data-smart-trigger]'))closeSmartFilters();
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&smartFilterUI.open){closeSmartFilters();e.stopPropagation()}});
+  window.addEventListener('resize',()=>{if(smartFilterUI.open){const pop=$(`[data-smart-popover="${smartFilterUI.open}"]`);if(!isSmartFilterMobile())pop?.classList.remove('mobile-secondary-open')}});
+  updateSmartFilterButtons();
+}
+
 const PRESETS={
   available_stable:{demand:'available',placesChange:'not_reduced'},
   available_history:{availabilityMin:3},published:{placesChange:'published'},four_plus:{minP27:4},english:{englishOnly:true}
@@ -650,7 +878,7 @@ function updateQuickFilters(){
 }
 function applyFilters(){
   const criteria=readFilterCriteria();state.filtered=state.all.filter(u=>matchesFilters(u,criteria));
-  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();updateFilterOptionCounts();updateQuickFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
+  $('#visibleCount').textContent=state.filtered.length;updateLegend();renderActiveFilters();updateFilterOptionCounts();refreshSmartFilterUI();updateQuickFilters();renderMarkers();renderTable();renderCompare();updateSavedCounts();
 }
 
 function renderCompare(){
@@ -942,13 +1170,12 @@ async function init(){
   await loadArwu();state.filtered=[...state.all];loadSavedSelections();
   const validIds=new Set(state.all.map(u=>u.id));state.favorites=new Set([...state.favorites].filter(id=>validIds.has(id)));state.compare=new Set([...state.compare].filter(id=>validIds.has(id)).slice(0,6));saveSelections();
   const countries=[...new Set(state.all.map(u=>u.country))].sort();$('#totalCount').textContent=state.all.length;$('#countryCount').textContent=countries.length;
-  const countrySelect=$('#country');countrySelect.innerHTML='<option value="">All countries</option>'+countries.map(c=>`<option value="${esc(c)}">${countryFlag(c)} ${esc(c)}</option>`).join('');
-  const continentSelect=$('#continent'),validContinents=new Set(state.all.map(continent));for(const opt of [...continentSelect.options])if(opt.value&&!validContinents.has(opt.value))opt.remove();
+  const countrySelect=$('#country');countrySelect.innerHTML=countries.map(c=>`<option value="${esc(c)}">${countryFlag(c)} ${esc(c)}</option>`).join('');
   syncLanguageEvidenceControls();
   rememberOptionLabels();
   document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>applyQuickPreset(b.dataset.preset)));
   const latestSourceDate=[...state.requirements.values()].map(r=>r.sourceCheckedDate).filter(Boolean).sort().at(-1);if(latestSourceDate){const d=new Date(latestSourceDate+'T00:00:00');const label=d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});if($('#moveonUpdated'))$('#moveonUpdated').textContent=label}
-  for(const id of ['search','country','demandLevel','minPlaces2027','myGpa','englishOnly','availabilityMin','placesChange','minPlaces','historyWindow','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','continent','tempMetric','minTemp','maxCost','housingFilter','favoritesOnly']){
+  for(const id of ['search','country','demandLevel','minPlaces2027','myGpa','englishOnly','availabilityMin','placesChange','minPlaces','historyWindow','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','tempMetric','minTemp','maxCost','housingFilter','favoritesOnly']){
     const el=$('#'+id),eventName=id==='search'?'input':'change';
     el.addEventListener(eventName,()=>{
       if(id==='englishEvidence')syncLanguageEvidenceControls();
@@ -957,6 +1184,7 @@ async function init(){
     if(id==='search')el.addEventListener('input',scheduleSearchAnalytics);
     else el.addEventListener('change',()=>trackFilterChanged(el));
   }
+  initSmartFilters();
   $('#reset').addEventListener('click',resetAllFilters);$('#favoritesQuick').addEventListener('click',()=>{$('#favoritesOnly').checked=true;applyFilters();switchView('list')});$('#shareCompare').addEventListener('click',shareComparison);$('#clearCompare').addEventListener('click',()=>{state.compare.clear();saveSelections();renderCompare();updateSavedCounts()});
   document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',e=>{
     if(e.target.closest('[data-info]'))return;
