@@ -1,259 +1,259 @@
-university_id,university,city,country,sep_c,oct_c,nov_c,dec_c,sep_dec_avg_c,period,source_url,refreshed_at
-1,Universidad Argentina de la Empresa (UADE),Buenos Aires,Argentina,14.13,17.12,20.13,22.79,18.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-2,"Universidad Austral, Campus Pilar and Campus Buenos Aires",Buenos Aires / Pilar,Argentina,14.13,17.12,20.13,22.79,18.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-3,"Universidad Austral, Campus Rosario",Rosario,Argentina,14.90,18.47,21.64,24.33,19.84,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-4,Universidad Torcuato di Tella (UTDT),Buenos Aires,Argentina,14.13,17.12,20.13,22.79,18.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-5,Australian National University,Canberra,Australia,8.87,12.15,15.22,17.82,13.52,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-6,Bond University,Gold Coast,Australia,18.37,20.62,22.53,23.88,21.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-7,Curtin University,Perth,Australia,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-8,Deakin University,Melbourne,Australia,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-9,Griffith University,Brisbane / Gold Coast,Australia,19.15,21.14,22.93,24.28,21.88,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-10,La Trobe University,Melbourne,Australia,9.86,12.56,15.40,17.78,13.90,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-11,Macquarie University,Sydney,Australia,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-12,Monash University,Melbourne,Australia,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-13,Queensland University of Technology,Brisbane,Australia,19.15,21.14,22.93,24.28,21.88,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-14,Swinburne University of Technology,Melbourne,Australia,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-15,University of Melbourne,Melbourne,Australia,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-16,University of New South Wales,Sydney,Australia,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-17,University of Newcastle,Newcastle,Australia,16.92,18.77,20.35,22.00,19.51,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-18,University of Queensland,Brisbane,Australia,19.15,21.14,22.93,24.28,21.88,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-19,University of Sydney,Sydney,Australia,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-20,"University of Technology, Sydney",Sydney,Australia,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-21,University of Western Australia,Perth,Australia,15.84,17.13,19.17,21.30,18.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-22,Leopold-Franzens-Universität Innsbruck,Innsbruck,Austria,10.64,6.51,0.98,-3.05,3.77,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-23,Universität Wien,Vienna,Austria,14.97,9.44,3.90,-0.74,6.89,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-24,Wirtschaftsuniversität Wien,Vienna,Austria,14.97,9.44,3.90,-0.74,6.89,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-25,ICHEC - Brussels Management School,Brussels,Belgium,14.94,10.75,6.38,3.20,8.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-26,KU Leuven,Leuven,Belgium,14.88,10.60,6.14,2.94,8.64,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-27,Fundação Getulio Vargas (FGV-EAESP),São Paulo,Brazil,18.66,20.34,20.73,21.94,20.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-28,INSPER,São Paulo,Brazil,18.66,20.34,20.73,21.94,20.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-29,Concordia University,Montreal,Canada,16.37,8.57,1.24,-6.78,4.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-30,Dalhousie University,Halifax,Canada,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-31,HEC Montréal,Montreal,Canada,16.37,8.57,1.24,-6.78,4.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-32,McGill University,Montreal,Canada,16.37,8.57,1.24,-6.78,4.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-33,Queen's University,Kingston,Canada,17.00,10.61,4.58,-0.91,7.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-34,Toronto Metropolitan University,Toronto,Canada,17.20,10.75,4.81,0.12,8.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-35,Simon Fraser University,Burnaby,Canada,12.98,7.46,2.25,-1.16,5.38,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-36,Université Laval,Québec City,Canada,12.57,5.50,-1.75,-9.61,1.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-37,University of Alberta,Edmonton,Canada,10.94,3.50,-4.32,-10.03,0.02,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-38,University of British Columbia,Vancouver,Canada,12.98,7.46,2.25,-1.16,5.38,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-39,University of Calgary,Calgary,Canada,10.36,3.45,-3.14,-7.73,0.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-40,University of Ottawa,Ottawa,Canada,15.16,7.88,0.79,-6.99,4.21,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-41,University of Toronto,Toronto,Canada,16.74,9.39,2.74,-2.84,6.51,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-42,University of Victoria,Victoria,Canada,15.11,10.91,7.47,5.19,9.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-43,Western University,London,Canada,17.39,10.31,3.69,-1.74,7.41,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-44,Pontificia Universidad Católica de Chile,Santiago,Chile,11.71,14.44,17.87,20.43,16.11,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-45,Universidad de Chile,Santiago,Chile,11.71,14.44,17.87,20.43,16.11,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-46,"Universidad del Desarrollo (UDD), Campus Santiago",Santiago,Chile,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-47,Fudan University,Shanghai,China,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-48,Peking University,Beijing,China,19.58,11.68,2.71,-3.81,7.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-49,Shanghai Jiao Tong University,Shanghai,China,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-50,Shanghai University of Finance and Economics,Shanghai,China,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",Shenzhen,China,27.64,25.14,21.64,17.35,22.94,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-52,Tongji University,Shanghai,China,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-53,Tsinghua University,Beijing,China,19.58,11.68,2.71,-3.81,7.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-54,University of International Business and Economics (UIBE),Beijing,China,19.58,11.68,2.71,-3.81,7.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-55,"University of Nottingham Ningbo, China",Ningbo,China,24.16,18.99,13.62,7.37,16.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-56,Universidad De Los Andes,Bogotá,Colombia,18.59,18.44,18.17,18.46,18.41,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-57,Universidad EAFIT,Medellín,Colombia,16.21,15.95,15.89,16.01,16.02,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-58,American University in Cairo,Cairo,Egypt,27.33,23.69,18.57,13.84,20.86,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-59,Estonian Business School,Tallinn,Estonia,12.73,6.79,1.99,-1.47,5.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-60,University of the Faroe Islands,Tórshavn,Faroe Islands,10.13,8.28,6.55,5.41,7.59,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-61,Hanken School of Economics,Helsinki,Finland,12.88,7.29,2.99,-0.47,5.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-62,Aalto University,Espoo,Finland,12.64,6.99,2.65,-0.84,5.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-63,Audencia Business School,Nantes,France,16.19,12.63,8.44,5.65,10.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-64,Ecole de Management de Lyon,Lyon,France,16.69,11.82,6.06,2.66,9.31,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.437Z
-65,EDHEC Business School,Lille,France,14.79,10.86,6.57,3.46,8.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-66,EDHEC Business School,Nice,France,14.79,10.86,6.57,3.46,8.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-67,ESSEC Business School,Cergy,France,15.26,11.20,6.67,3.61,9.19,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-68,Grenoble Ecole de Management,Grenoble,France,12.78,8.81,3.39,0.04,6.25,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-69,HEC Paris,Jouy-en-Josas,France,15.26,11.20,6.67,3.61,9.19,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-70,IÉSEG School of Management,Lille / Paris,France,14.79,10.86,6.57,3.46,8.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-71,INSEEC Grande Ecole,Paris,France,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-72,ISC Paris School of Management,Paris,France,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-73,Kedge Business School,Bordeaux,France,20.39,17.34,13.63,11.06,15.61,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-74,Kedge Business School,Marseille,France,20.39,17.34,13.63,11.06,15.61,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-75,Paris School of Business,Paris,France,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-76,Rennes School of Business,Rennes,France,15.94,12.30,8.37,5.60,10.55,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-77,Sciences Po (Institut d'Etudes Politiques de Paris),Paris,France,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-78,Sciences Po (Institut d'Etudes Politiques de Paris),Regional campuses,France,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-79,Toulouse Business School,Toulouse,France,19.02,14.61,8.98,6.09,12.18,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-80,Université Catholique de Lyon,Lyon,France,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-81,Université de Strasbourg,Strasbourg,France,15.20,10.25,4.80,1.34,7.90,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-82,Université Paris Dauphine,Paris,France,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-83,Université Toulouse Capitole,Toulouse,France,19.02,14.61,8.98,6.09,12.18,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-84,Frankfurt School of Finance and Management,Frankfurt,Germany,15.44,9.91,4.58,1.06,7.75,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-85,Freie Universität Berlin,Berlin,Germany,15.04,9.39,4.00,0.45,7.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-86,Humboldt-Universität zu Berlin,Berlin,Germany,15.04,9.39,4.00,0.45,7.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-87,Johann Wolfgang Goethe Universität,Frankfurt,Germany,15.44,9.91,4.58,1.06,7.75,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-88,Ludwig-Maximilians-Universität München,Munich,Germany,13.26,8.71,3.23,-0.51,6.17,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-89,Technische Universität München,Munich,Germany,13.26,8.71,3.23,-0.51,6.17,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-90,Universität Hamburg,Hamburg,Germany,14.08,9.35,4.64,1.49,7.39,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-91,Universität Mannheim,Mannheim,Germany,15.17,9.82,4.49,1.00,7.62,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-92,Universität zu Köln,Cologne,Germany,14.91,10.09,5.40,2.12,8.13,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-93,Universität Münster,Münster,Germany,14.64,9.96,5.42,2.15,8.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-94,WHU,Vallendar,Germany,14.09,8.99,4.25,0.92,7.06,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-95,Zeppelin University,Friedrichshafen,Germany,13.40,9.09,3.41,-0.46,6.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-96,Athens University of Economics & Business - AUEB,Athens,Greece,23.54,19.03,14.61,10.71,16.97,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-97,Greenland University,Nuuk,Greenland,3.18,-0.43,-3.86,-5.92,-1.76,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-98,City University of Hong Kong (CityU),Hong Kong,Hong Kong,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-99,Hong Kong Baptist University,Hong Kong,Hong Kong,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-100,The Chinese University of Hong Kong (CUHK),Hong Kong,Hong Kong,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-101,The Hong Kong Polytechnic University,Hong Kong,Hong Kong,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-102,The Hong Kong University of Science and Technology (HKUST),Hong Kong,Hong Kong,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-103,The University of Hong Kong (HKU),Hong Kong,Hong Kong,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-104,Reykjavik University,Reykjavík,Iceland,7.74,4.08,1.54,0.09,3.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-105,University of Iceland,Reykjavík,Iceland,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-106,Universitas Gadjah Mada,Yogyakarta,Indonesia,25.64,26.40,26.40,26.01,26.11,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-107,University College Cork,Cork,Ireland,12.97,10.31,7.65,6.05,9.24,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-108,University College Dublin,Dublin,Ireland,13.42,10.94,8.27,6.43,9.76,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-109,University of Limerick,Limerick,Ireland,13.01,10.17,7.48,5.72,9.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-110,Reichman University (IDC Herzliya),Herzliya,Israel,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',Rome,Italy,21.35,16.94,12.09,8.08,14.62,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-112,Università Ca' Foscari Venezia,Venice,Italy,20.72,15.85,10.81,6.53,13.48,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-113,Università Commerciale Luigi Bocconi,Milan,Italy,18.80,13.55,7.89,3.46,10.93,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-114,Università degli Studi di Bologna 'Alma Mater Studiorum',Bologna,Italy,19.80,14.38,8.66,4.33,11.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-115,Università degli Studi di Bologna 'Alma Mater Studiorum',Bologna,Italy,19.80,14.38,8.66,4.33,11.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-116,Università degli Studi di Torino,Turin,Italy,16.60,11.28,5.69,1.78,8.84,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-117,Hitotsubashi University,Kunitachi (Tokyo),Japan,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-118,Keio University,Tokyo,Japan,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-119,NUCB Undergraduate School,Nagoya,Japan,23.60,18.01,12.34,6.82,15.19,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-120,Rikkyo University,Tokyo,Japan,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-121,Ritsumeikan Asia Pacific University,Beppu,Japan,22.92,17.76,12.49,7.08,15.06,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-122,Ritsumeikan University,Kyoto,Japan,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-123,Waseda University,Tokyo,Japan,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-124,Vilnius University,Vilnius,Lithuania,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-125,Monash University Malaysia,Bandar Sunway,Malaysia,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-126,University of Malaya,Kuala Lumpur,Malaysia,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-127,Instituto Tecnológico Autónomo de México (ITAM),Mexico City,Mexico,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-128,"Tec de Monterrey, Campus Guadalajara",Guadalajara,Mexico,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-129,"Tec de Monterrey, Campus Mexico City",Mexico City,Mexico,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-130,"Tec de Monterrey, Campus Monterrey",Monterrey,Mexico,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-131,"Tec de Monterrey, Campus Querétaro",Querétaro,Mexico,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-132,"Tec de Monterrey, Campus Santa Fe",Mexico City,Mexico,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-133,Al Akhawayn University,Ifrane,Morocco,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-134,Rabat Business School,Rabat,Morocco,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-135,Erasmus Universiteit Rotterdam,Rotterdam,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-136,Maastricht University,Maastricht,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-137,Radboud Universiteit Nijmegen,Nijmegen,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-138,Tilburg University,Tilburg,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-139,Universiteit Utrecht,Utrecht,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-140,Universiteit van Amsterdam,Amsterdam,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-141,University of Groningen,Groningen,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-142,Vrije Universiteit Amsterdam,Amsterdam,Netherlands,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-143,Auckland University of Technology,Auckland,New Zealand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-144,Lincoln University,Lincoln,New Zealand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-145,University of Canterbury,Christchurch,New Zealand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-146,University of Otago,Dunedin,New Zealand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-147,Victoria University of Wellington,Wellington,New Zealand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-148,BI Norwegian Business School,Oslo,Norway,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-149,Norwegian School of Economics,Bergen,Norway,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-150,Universidad ESAN,Lima,Peru,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-151,Universidad San Ignacio de Loyola (USIL),Lima,Peru,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-152,Kozminski University,Warsaw,Poland,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-153,ISCTE - Instituto Universitário de Lisboa,Lisbon,Portugal,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-154,Universidade Católica Portuguesa,Lisbon,Portugal,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-155,Universidade Católica Portuguesa,Porto,Portugal,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-156,Universidade de Lisboa,Lisbon,Portugal,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-157,Universidade Nova de Lisboa,Lisbon,Portugal,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-158,Nanyang Technological University,Singapore,Singapore,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-159,National University of Singapore,Singapore,Singapore,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-160,Singapore Management University,Singapore,Singapore,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-161,University of Ljubljana,Ljubljana,Slovenia,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-162,Chung-Ang University,Seoul,South Korea,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-163,Ewha Womans University,Seoul,South Korea,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-164,Korea University,Seoul,South Korea,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-165,Korea University,Seoul,South Korea,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-166,Yonsei University,Seoul,South Korea,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-167,IE University,Madrid,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-168,Universidad Carlos III de Madrid,Madrid,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-169,Universidad CEU San Pablo,Madrid,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-170,"Universidad de Deusto, Campus Bilbao",Bilbao,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-171,"Universidad de Deusto, Campus San Sebastian",San Sebastián,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-172,Universidad de Navarra,Pamplona,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-173,Universidad Pontificia Comillas de Madrid (ICADE),Madrid,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-174,Universidad Rey Juan Carlos,Madrid,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-175,Universitat Autònoma de Barcelona (UAB),Bellaterra / Barcelona,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-176,Universitat de Barcelona,Barcelona,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-177,Universitat de València,Valencia,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-178,Universitat Pompeu Fabra,Barcelona,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-179,Universitat Pompeu Fabra,Barcelona,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-180,Universitat Ramon Llull,Sant Cugat del Vallès,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-181,Universitat Ramon Llull,Sant Cugat del Vallès,Spain,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-182,Lund University,Lund,Sweden,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-183,Stockholm School of Economics,Stockholm,Sweden,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-184,Stockholm University,Stockholm,Sweden,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-185,University of Gothenburg,Gothenburg,Sweden,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-186,Uppsala universitet,Uppsala,Sweden,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-187,Université de Genève,Geneva,Switzerland,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-188,Université de Lausanne,Lausanne,Switzerland,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-189,Universität Bern,Bern,Switzerland,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-190,Universität St. Gallen,St. Gallen,Switzerland,13.40,9.09,3.41,-0.46,6.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-191,Universität Zürich,Zurich,Switzerland,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-192,National Chengchi University (NCCU),Taipei,Taiwan,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-193,National Taiwan University (NTU),Taipei,Taiwan,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-194,Soochow University,Taipei,Taiwan,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-195,Chulalongkorn University,Bangkok,Thailand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-196,Chulalongkorn University,Bangkok,Thailand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.438Z
-197,Thammasat University,Bangkok,Thailand,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-198,Istanbul Bilgi University,Istanbul,Turkey,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-199,Koc University,Istanbul,Turkey,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-200,Sabanci University,Istanbul,Turkey,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-201,Aston University,Birmingham,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-202,Cardiff University,Cardiff,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-203,"City St. George's, University of London",London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-204,"European Business School (EBS) London, Regent's University London",London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-205,King's College London,London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-206,London Metropolitan University,London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-207,Oxford Brookes University,Oxford,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-208,Regent's University London,London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-209,The University of Manchester,Manchester,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-210,University of Aberdeen,Aberdeen,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-211,University of Bath,Bath,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-212,University of Bristol,Bristol,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-213,University of Edinburgh,Edinburgh,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-214,University of Essex,Colchester,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-215,University of Exeter,Exeter,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-216,University of Glasgow,Glasgow,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-217,University of Leeds,Leeds,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-218,University of Leicester,Leicester,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-219,University of Liverpool,Liverpool,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-220,University of Sheffield,Sheffield,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-221,University of Sheffield,Sheffield,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-222,University of Strathclyde Glasgow,Glasgow,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-223,University of Warwick,Coventry,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-224,University of Westminster,London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-225,University of Westminster,London,United Kingdom,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-226,Arizona State University,Tempe,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-227,Babson College,Wellesley,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-228,Bentley University,Waltham,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-229,Boston College,Chestnut Hill / Boston,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-230,Boston University,Boston,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-231,City University of New York,New York City,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-232,Cornell University,Ithaca,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-233,Cornell University,Ithaca,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-234,Emory University,Atlanta,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-235,George Washington University,"Washington, D.C.",United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-236,Indiana University,Bloomington,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-237,New York University,New York City,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-238,North Carolina State University,Raleigh,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-239,Ohio State University,Columbus,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-240,Purdue University,West Lafayette,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-241,"State University of New York, Stony Brook",Stony Brook,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-242,Texas A&M University,College Station,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-243,Tulane University,New Orleans,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-244,University of Hawaii at Manoa,Honolulu,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-245,University of Maryland,College Park,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-246,University of Michigan,Ann Arbor,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-247,"University of Minnesota, Twin Cities",Minneapolis,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-248,University of North Carolina at Chapel Hill,Chapel Hill,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-249,University of Pennsylvania,Philadelphia,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-250,University of Richmond,Richmond,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-251,University of South Carolina,Columbia,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-252,University of Southern California,Los Angeles,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-253,University of Texas at Austin,Austin,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-254,University of Washington,Seattle,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-255,University of Wisconsin - La Crosse,La Crosse,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-256,University of Wisconsin - Madison,Madison,United States,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-257,Universidad Católica del Uruguay,Montevideo,Uruguay,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
-258,Universidad de Montevideo,Montevideo,Uruguay,0.00,0.00,0.00,0.00,0.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T09:14:03.439Z
+university_id,university,city,country,jan_c,feb_c,mar_c,apr_c,may_c,jun_c,jul_c,aug_c,sep_c,oct_c,nov_c,dec_c,sep_dec_avg_c,period,source_url,refreshed_at
+1,Universidad Argentina de la Empresa (UADE),Buenos Aires,Argentina,24.39,23.74,22.13,18.66,15.30,12.15,10.89,12.40,14.13,17.12,20.13,22.79,18.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+2,"Universidad Austral, Campus Pilar and Campus Buenos Aires",Buenos Aires / Pilar,Argentina,24.39,23.74,22.13,18.66,15.30,12.15,10.89,12.40,14.13,17.12,20.13,22.79,18.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+3,"Universidad Austral, Campus Rosario",Rosario,Argentina,25.83,24.32,22.07,17.80,14.04,10.83,9.86,12.14,14.90,18.47,21.64,24.33,19.84,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+4,Universidad Torcuato di Tella (UTDT),Buenos Aires,Argentina,24.39,23.74,22.13,18.66,15.30,12.15,10.89,12.40,14.13,17.12,20.13,22.79,18.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+5,Australian National University,Canberra,Australia,20.09,19.01,16.39,12.59,8.78,6.05,5.01,5.83,8.87,12.15,15.22,17.82,13.52,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+6,Bond University,Gold Coast,Australia,24.88,24.39,23.07,20.67,17.72,15.26,14.41,15.47,18.37,20.62,22.53,23.88,21.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+7,Curtin University,Perth,Australia,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+8,Deakin University,Melbourne,Australia,19.74,19.87,18.25,15.25,12.51,10.22,9.34,9.78,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+9,Griffith University,Brisbane / Gold Coast,Australia,25.27,24.99,23.85,21.72,19.01,16.70,15.86,16.71,19.15,21.14,22.93,24.28,21.88,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+10,La Trobe University,Melbourne,Australia,19.98,19.77,17.42,13.64,10.37,7.96,7.12,7.79,9.86,12.56,15.40,17.78,13.90,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+11,Macquarie University,Sydney,Australia,22.69,22.65,21.60,19.55,17.05,14.86,13.83,14.36,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+12,Monash University,Melbourne,Australia,19.74,19.87,18.25,15.25,12.51,10.22,9.34,9.78,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+13,Queensland University of Technology,Brisbane,Australia,25.27,24.99,23.85,21.72,19.01,16.70,15.86,16.71,19.15,21.14,22.93,24.28,21.88,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+14,Swinburne University of Technology,Melbourne,Australia,19.74,19.87,18.25,15.25,12.51,10.22,9.34,9.78,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+15,University of Melbourne,Melbourne,Australia,19.74,19.87,18.25,15.25,12.51,10.22,9.34,9.78,11.42,13.60,15.87,17.82,14.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+16,University of New South Wales,Sydney,Australia,22.69,22.65,21.60,19.55,17.05,14.86,13.83,14.36,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+17,University of Newcastle,Newcastle,Australia,23.45,23.32,22.09,20.01,17.43,15.21,14.23,14.87,16.92,18.77,20.35,22.00,19.51,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+18,University of Queensland,Brisbane,Australia,25.27,24.99,23.85,21.72,19.01,16.70,15.86,16.71,19.15,21.14,22.93,24.28,21.88,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+19,University of Sydney,Sydney,Australia,22.69,22.65,21.60,19.55,17.05,14.86,13.83,14.36,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+20,"University of Technology, Sydney",Sydney,Australia,22.69,22.65,21.60,19.55,17.05,14.86,13.83,14.36,16.26,18.10,19.57,21.22,18.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+21,University of Western Australia,Perth,Australia,22.86,23.32,22.41,20.53,18.53,16.77,15.71,15.55,15.84,17.13,19.17,21.30,18.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+22,Leopold-Franzens-Universität Innsbruck,Innsbruck,Austria,-4.06,-3.32,0.56,4.97,9.59,13.29,15.09,14.95,10.64,6.51,0.98,-3.05,3.77,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+23,Universität Wien,Vienna,Austria,-1.78,-0.11,4.01,9.36,14.37,18.51,20.60,20.32,14.97,9.44,3.90,-0.74,6.89,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+24,Wirtschaftsuniversität Wien,Vienna,Austria,-1.78,-0.11,4.01,9.36,14.37,18.51,20.60,20.32,14.97,9.44,3.90,-0.74,6.89,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+25,ICHEC - Brussels Management School,Brussels,Belgium,2.51,3.10,6.05,9.43,13.36,16.34,18.44,18.18,14.94,10.75,6.38,3.20,8.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+26,KU Leuven,Leuven,Belgium,2.22,2.85,5.95,9.50,13.53,16.53,18.61,18.26,14.88,10.60,6.14,2.94,8.64,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+27,Fundação Getulio Vargas (FGV-EAESP),São Paulo,Brazil,22.25,22.29,21.37,19.74,17.00,15.99,15.64,16.90,18.66,20.34,20.73,21.94,20.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+28,INSPER,São Paulo,Brazil,22.25,22.29,21.37,19.74,17.00,15.99,15.64,16.90,18.66,20.34,20.73,21.94,20.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+29,Concordia University,Montreal,Canada,-11.66,-9.84,-3.30,5.32,13.11,18.59,21.50,20.90,16.37,8.57,1.24,-6.78,4.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+30,Dalhousie University,Halifax,Canada,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+31,HEC Montréal,Montreal,Canada,-11.66,-9.84,-3.30,5.32,13.11,18.59,21.50,20.90,16.37,8.57,1.24,-6.78,4.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+32,McGill University,Montreal,Canada,-11.66,-9.84,-3.30,5.32,13.11,18.59,21.50,20.90,16.37,8.57,1.24,-6.78,4.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+33,Queen's University,Kingston,Canada,-4.78,-4.42,-0.60,5.06,11.11,16.72,20.42,20.58,17.00,10.61,4.58,-0.91,7.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+34,Toronto Metropolitan University,Toronto,Canada,-3.09,-2.90,0.49,5.33,11.12,17.18,20.75,20.63,17.20,10.75,4.81,0.12,8.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+35,Simon Fraser University,Burnaby,Canada,-0.91,-0.29,1.76,5.02,10.09,13.06,16.24,16.20,12.98,7.46,2.25,-1.16,5.38,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+36,Université Laval,Québec City,Canada,-14.43,-12.72,-7.04,1.35,9.68,15.22,17.87,16.97,12.57,5.50,-1.75,-9.61,1.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+37,University of Alberta,Edmonton,Canada,-11.59,-8.96,-3.38,4.06,10.46,14.71,17.47,16.43,10.94,3.50,-4.32,-10.03,0.02,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+38,University of British Columbia,Vancouver,Canada,-0.91,-0.29,1.76,5.02,10.09,13.06,16.24,16.20,12.98,7.46,2.25,-1.16,5.38,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+39,University of Calgary,Calgary,Canada,-7.96,-6.28,-2.32,2.97,8.68,12.71,16.34,15.53,10.36,3.45,-3.14,-7.73,0.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+40,University of Ottawa,Ottawa,Canada,-11.80,-10.37,-3.80,4.82,12.55,17.77,20.27,19.40,15.16,7.88,0.79,-6.99,4.21,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+41,University of Toronto,Toronto,Canada,-6.42,-5.94,-1.05,5.18,12.17,18.18,21.62,20.97,16.74,9.39,2.74,-2.84,6.51,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+42,University of Victoria,Victoria,Canada,5.15,5.67,7.21,9.26,12.18,14.35,16.93,17.31,15.11,10.91,7.47,5.19,9.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+43,Western University,London,Canada,-5.10,-4.53,0.09,6.34,13.26,19.16,22.17,21.50,17.39,10.31,3.69,-1.74,7.41,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+44,Pontificia Universidad Católica de Chile,Santiago,Chile,21.83,21.08,19.49,15.91,12.42,9.03,8.36,9.71,11.71,14.44,17.87,20.43,16.11,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+45,Universidad de Chile,Santiago,Chile,21.83,21.08,19.49,15.91,12.42,9.03,8.36,9.71,11.71,14.44,17.87,20.43,16.11,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+46,"Universidad del Desarrollo (UDD), Campus Santiago",Santiago,Chile,18.67,18.58,16.92,13.70,11.39,9.55,8.58,9.09,10.21,11.78,14.07,16.65,13.18,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+47,Fudan University,Shanghai,China,4.53,6.05,9.79,15.20,20.64,24.42,28.27,28.39,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+48,Peking University,Beijing,China,-5.34,-1.65,4.78,13.17,20.26,24.81,26.49,24.85,19.58,11.68,2.71,-3.81,7.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+49,Shanghai Jiao Tong University,Shanghai,China,4.53,6.05,9.79,15.20,20.64,24.42,28.27,28.39,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+50,Shanghai University of Finance and Economics,Shanghai,China,4.53,6.05,9.79,15.20,20.64,24.42,28.27,28.39,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+51,"The Chinese University of Hong Kong, Campus Shenzhen (CUHKSZ)",Shenzhen,China,16.12,17.52,20.06,23.15,26.19,27.95,28.50,28.50,27.64,25.14,21.64,17.35,22.94,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+52,Tongji University,Shanghai,China,4.53,6.05,9.79,15.20,20.64,24.42,28.27,28.39,24.56,19.26,13.55,7.04,16.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+53,Tsinghua University,Beijing,China,-5.34,-1.65,4.78,13.17,20.26,24.81,26.49,24.85,19.58,11.68,2.71,-3.81,7.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+54,University of International Business and Economics (UIBE),Beijing,China,-5.34,-1.65,4.78,13.17,20.26,24.81,26.49,24.85,19.58,11.68,2.71,-3.81,7.54,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+55,"University of Nottingham Ningbo, China",Ningbo,China,4.90,6.43,10.06,15.35,20.40,24.07,27.80,27.82,24.16,18.99,13.62,7.37,16.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+56,Universidad De Los Andes,Bogotá,Colombia,18.74,19.23,19.27,18.98,18.65,18.13,17.96,18.25,18.59,18.44,18.17,18.46,18.41,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+57,Universidad EAFIT,Medellín,Colombia,16.07,16.50,16.71,16.66,16.61,16.36,16.25,16.33,16.21,15.95,15.89,16.01,16.02,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+58,American University in Cairo,Cairo,Egypt,12.07,13.37,16.60,20.82,25.18,28.40,29.80,29.73,27.33,23.69,18.57,13.84,20.86,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+59,Estonian Business School,Tallinn,Estonia,-3.69,-4.75,-1.75,3.45,9.08,14.06,17.71,17.20,12.73,6.79,1.99,-1.47,5.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+60,University of the Faroe Islands,Tórshavn,Faroe Islands,5.11,4.76,4.94,5.87,7.19,9.09,10.64,11.08,10.13,8.28,6.55,5.41,7.59,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+61,Hanken School of Economics,Helsinki,Finland,-2.84,-4.15,-1.58,2.86,8.13,13.29,17.11,16.94,12.88,7.29,2.99,-0.47,5.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+62,Aalto University,Espoo,Finland,-3.14,-4.31,-1.60,2.99,8.32,13.39,17.10,16.80,12.64,6.99,2.65,-0.84,5.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+63,Audencia Business School,Nantes,France,5.17,5.42,7.99,10.41,14.02,17.25,19.15,19.14,16.19,12.63,8.44,5.65,10.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+64,Ecole de Management de Lyon,Lyon,France,1.92,2.81,6.58,10.21,14.52,18.70,21.40,21.37,16.69,11.82,6.06,2.66,9.31,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+65,EDHEC Business School,Lille,France,2.91,3.47,6.34,9.43,13.13,16.00,18.03,17.83,14.79,10.86,6.57,3.46,8.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+66,EDHEC Business School,Nice,France,2.91,3.47,6.34,9.43,13.13,16.00,18.03,17.83,14.79,10.86,6.57,3.46,8.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+67,ESSEC Business School,Cergy,France,3.11,3.68,6.74,9.75,13.42,16.64,18.79,18.69,15.26,11.20,6.67,3.61,9.19,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+68,Grenoble Ecole de Management,Grenoble,France,-0.82,-0.34,3.21,6.56,10.83,14.67,16.89,16.92,12.78,8.81,3.39,0.04,6.25,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+69,HEC Paris,Jouy-en-Josas,France,3.11,3.68,6.74,9.75,13.42,16.64,18.79,18.69,15.26,11.20,6.67,3.61,9.19,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+70,IÉSEG School of Management,Lille / Paris,France,2.91,3.47,6.34,9.43,13.13,16.00,18.03,17.83,14.79,10.86,6.57,3.46,8.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+71,INSEEC Grande Ecole,Paris,France,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+72,ISC Paris School of Management,Paris,France,2.98,3.62,6.84,10.02,13.80,17.06,19.26,19.07,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+73,Kedge Business School,Bordeaux,France,10.11,9.87,11.64,13.49,16.64,20.29,22.86,23.34,20.39,17.34,13.63,11.06,15.61,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+74,Kedge Business School,Marseille,France,10.11,9.87,11.64,13.49,16.64,20.29,22.86,23.34,20.39,17.34,13.63,11.06,15.61,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+75,Paris School of Business,Paris,France,2.98,3.62,6.84,10.02,13.80,17.06,19.26,19.07,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+76,Rennes School of Business,Rennes,France,5.14,5.45,7.79,10.12,13.54,16.70,18.65,18.67,15.94,12.30,8.37,5.60,10.55,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+77,Sciences Po (Institut d'Etudes Politiques de Paris),Paris,France,2.98,3.62,6.84,10.02,13.80,17.06,19.26,19.07,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+78,Sciences Po (Institut d'Etudes Politiques de Paris),Regional campuses,France,2.98,3.62,6.84,10.02,13.80,17.06,19.26,19.07,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+79,Toulouse Business School,Toulouse,France,5.29,5.88,8.90,11.60,15.67,19.94,22.84,23.15,19.02,14.61,8.98,6.09,12.18,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+80,Université Catholique de Lyon,Lyon,France,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+81,Université de Strasbourg,Strasbourg,France,0.55,1.62,5.48,9.70,14.15,17.94,20.03,19.74,15.20,10.25,4.80,1.34,7.90,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+82,Université Paris Dauphine,Paris,France,2.98,3.62,6.84,10.02,13.80,17.06,19.26,19.07,15.50,11.29,6.61,3.50,9.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+83,Université Toulouse Capitole,Toulouse,France,5.29,5.88,8.90,11.60,15.67,19.94,22.84,23.15,19.02,14.61,8.98,6.09,12.18,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+84,Frankfurt School of Finance and Management,Frankfurt,Germany,0.17,1.18,5.01,9.56,14.20,18.20,20.64,20.22,15.44,9.91,4.58,1.06,7.75,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+85,Freie Universität Berlin,Berlin,Germany,-0.66,0.45,3.74,8.90,13.89,17.90,20.25,19.81,15.04,9.39,4.00,0.45,7.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+86,Humboldt-Universität zu Berlin,Berlin,Germany,-0.66,0.45,3.74,8.90,13.89,17.90,20.25,19.81,15.04,9.39,4.00,0.45,7.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+87,Johann Wolfgang Goethe Universität,Frankfurt,Germany,0.17,1.18,5.01,9.56,14.20,18.20,20.64,20.22,15.44,9.91,4.58,1.06,7.75,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+88,Ludwig-Maximilians-Universität München,Munich,Germany,-1.53,-0.58,3.44,7.96,12.61,16.21,17.97,17.74,13.26,8.71,3.23,-0.51,6.17,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+89,Technische Universität München,Munich,Germany,-1.53,-0.58,3.44,7.96,12.61,16.21,17.97,17.74,13.26,8.71,3.23,-0.51,6.17,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+90,Universität Hamburg,Hamburg,Germany,0.53,1.13,3.97,8.41,12.67,15.81,17.99,17.73,14.08,9.35,4.64,1.49,7.39,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+91,Universität Mannheim,Mannheim,Germany,0.08,1.04,4.88,9.31,13.90,17.86,20.26,19.94,15.17,9.82,4.49,1.00,7.62,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+92,Universität zu Köln,Cologne,Germany,1.32,2.05,5.32,9.23,13.38,16.71,19.15,18.89,14.91,10.09,5.40,2.12,8.13,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+93,Universität Münster,Münster,Germany,1.27,1.98,5.05,9.10,13.19,16.34,18.57,18.28,14.64,9.96,5.42,2.15,8.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+94,WHU,Vallendar,Germany,0.04,0.77,4.22,8.35,12.62,16.18,18.70,18.46,14.09,8.99,4.25,0.92,7.06,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+95,Zeppelin University,Friedrichshafen,Germany,-1.32,-0.57,3.58,7.83,12.41,16.05,17.87,17.67,13.40,9.09,3.41,-0.46,6.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+96,Athens University of Economics & Business - AUEB,Athens,Greece,9.05,9.44,11.34,14.57,19.75,24.79,27.23,27.06,23.54,19.03,14.61,10.71,16.97,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+97,Greenland University,Nuuk,Greenland,-7.89,-8.95,-7.73,-3.40,0.47,3.82,6.11,5.84,3.18,-0.43,-3.86,-5.92,-1.76,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+98,City University of Hong Kong (CityU),Hong Kong,Hong Kong,16.07,17.58,20.17,23.25,26.06,27.75,28.29,28.20,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+99,Hong Kong Baptist University,Hong Kong,Hong Kong,16.07,17.58,20.17,23.25,26.06,27.75,28.29,28.20,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+100,The Chinese University of Hong Kong (CUHK),Hong Kong,Hong Kong,16.07,17.58,20.17,23.25,26.06,27.75,28.29,28.20,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+101,The Hong Kong Polytechnic University,Hong Kong,Hong Kong,16.07,17.58,20.17,23.25,26.06,27.75,28.29,28.20,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+102,The Hong Kong University of Science and Technology (HKUST),Hong Kong,Hong Kong,16.07,17.58,20.17,23.25,26.06,27.75,28.29,28.20,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+103,The University of Hong Kong (HKU),Hong Kong,Hong Kong,16.07,17.58,20.17,23.25,26.06,27.75,28.29,28.20,27.34,24.81,21.35,17.19,22.67,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+104,Reykjavik University,Reykjavík,Iceland,-0.08,-0.17,0.45,2.78,5.84,9.10,10.98,10.35,7.74,4.08,1.54,0.09,3.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+105,University of Iceland,Reykjavík,Iceland,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+106,Universitas Gadjah Mada,Yogyakarta,Indonesia,25.93,25.96,26.18,26.35,26.00,25.32,24.65,24.80,25.64,26.40,26.40,26.01,26.11,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+107,University College Cork,Cork,Ireland,5.51,5.52,6.42,8.06,10.69,13.24,14.83,14.61,12.97,10.31,7.65,6.05,9.24,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+108,University College Dublin,Dublin,Ireland,5.77,5.68,6.57,8.24,10.77,13.40,15.07,15.00,13.42,10.94,8.27,6.43,9.76,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+109,University of Limerick,Limerick,Ireland,5.22,5.35,6.38,8.20,10.95,13.50,15.02,14.75,13.01,10.17,7.48,5.72,9.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+110,Reichman University (IDC Herzliya),Herzliya,Israel,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',Rome,Italy,7.05,7.47,10.18,13.42,17.94,22.49,25.73,26.12,21.35,16.94,12.09,8.08,14.62,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+112,Università Ca' Foscari Venezia,Venice,Italy,5.21,6.03,9.31,13.33,18.11,22.47,25.12,25.23,20.72,15.85,10.81,6.53,13.48,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+113,Università Commerciale Luigi Bocconi,Milan,Italy,2.74,4.31,8.55,12.47,17.09,21.23,23.79,23.67,18.80,13.55,7.89,3.46,10.93,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+114,Università degli Studi di Bologna 'Alma Mater Studiorum',Bologna,Italy,3.42,4.56,8.49,12.48,17.59,22.53,25.65,25.49,19.80,14.38,8.66,4.33,11.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+115,Università degli Studi di Bologna 'Alma Mater Studiorum',Bologna,Italy,3.42,4.56,8.49,12.48,17.59,22.53,25.65,25.49,19.80,14.38,8.66,4.33,11.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+116,Università degli Studi di Torino,Turin,Italy,1.18,2.50,6.43,10.01,14.55,18.85,21.60,21.45,16.60,11.28,5.69,1.78,8.84,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+117,Hitotsubashi University,Kunitachi (Tokyo),Japan,2.33,3.21,6.75,12.01,16.93,20.66,24.57,25.64,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+118,Keio University,Tokyo,Japan,2.33,3.21,6.75,12.01,16.93,20.66,24.57,25.64,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+119,NUCB Undergraduate School,Nagoya,Japan,4.26,4.91,8.24,13.22,18.00,21.94,25.82,26.85,23.60,18.01,12.34,6.82,15.19,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+120,Rikkyo University,Tokyo,Japan,2.33,3.21,6.75,12.01,16.93,20.66,24.57,25.64,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+121,Ritsumeikan Asia Pacific University,Beppu,Japan,4.75,5.56,8.51,13.16,17.69,21.48,25.24,26.20,22.92,17.76,12.49,7.08,15.06,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+122,Ritsumeikan University,Kyoto,Japan,2.31,2.92,6.14,11.47,16.49,20.57,24.66,25.47,21.75,15.86,10.15,4.74,13.13,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+123,Waseda University,Tokyo,Japan,2.33,3.21,6.75,12.01,16.93,20.66,24.57,25.64,22.00,16.07,10.41,4.90,13.35,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+124,Vilnius University,Vilnius,Lithuania,-6.14,-5.14,-0.57,6.35,12.32,15.95,18.18,17.49,12.38,6.08,0.78,-4.00,3.81,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+125,Monash University Malaysia,Bandar Sunway,Malaysia,24.64,25.04,25.70,26.20,26.22,25.70,25.26,25.28,25.37,25.41,25.25,24.77,25.20,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+126,University of Malaya,Kuala Lumpur,Malaysia,24.64,25.04,25.70,26.20,26.22,25.70,25.26,25.28,25.37,25.41,25.25,24.77,25.20,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+127,Instituto Tecnológico Autónomo de México (ITAM),Mexico City,Mexico,10.26,12.05,14.05,16.15,17.00,16.06,14.87,14.62,13.97,12.90,11.57,10.75,12.30,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+128,"Tec de Monterrey, Campus Guadalajara",Guadalajara,Mexico,15.76,17.58,19.85,22.39,24.26,23.20,20.78,20.37,19.87,19.12,17.58,16.26,18.21,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+129,"Tec de Monterrey, Campus Mexico City",Mexico City,Mexico,10.26,12.05,14.05,16.15,17.00,16.06,14.87,14.62,13.97,12.90,11.57,10.75,12.30,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+130,"Tec de Monterrey, Campus Monterrey",Monterrey,Mexico,13.79,16.46,19.75,23.54,26.26,27.36,27.01,26.87,24.25,21.34,17.29,14.37,19.31,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+131,"Tec de Monterrey, Campus Querétaro",Querétaro,Mexico,13.08,15.10,17.60,20.29,21.56,20.30,18.68,18.34,17.62,16.44,14.65,13.60,15.58,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+132,"Tec de Monterrey, Campus Santa Fe",Mexico City,Mexico,10.26,12.05,14.05,16.15,17.00,16.06,14.87,14.62,13.97,12.90,11.57,10.75,12.30,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+133,Al Akhawayn University,Ifrane,Morocco,5.35,6.51,9.19,11.68,15.58,20.37,25.09,25.21,20.17,15.21,9.46,6.56,12.85,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+134,Rabat Business School,Rabat,Morocco,13.68,14.14,15.67,16.89,19.28,21.75,23.63,24.26,22.81,20.71,17.27,14.99,18.94,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+135,Erasmus Universiteit Rotterdam,Rotterdam,Netherlands,3.65,3.79,5.93,8.98,12.58,15.54,17.95,18.26,15.68,11.80,7.77,4.71,9.99,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+136,Maastricht University,Maastricht,Netherlands,2.02,2.69,5.87,9.56,13.66,16.75,18.90,18.58,15.02,10.58,6.01,2.79,8.60,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+137,Radboud Universiteit Nijmegen,Nijmegen,Netherlands,2.11,2.70,5.60,9.25,13.17,16.09,18.12,17.75,14.54,10.29,6.01,2.87,8.43,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+138,Tilburg University,Tilburg,Netherlands,2.41,3.01,5.98,9.55,13.56,16.58,18.75,18.46,15.14,10.79,6.37,3.16,8.86,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+139,Universiteit Utrecht,Utrecht,Netherlands,2.46,2.95,5.72,9.19,13.06,16.00,18.20,18.02,14.90,10.63,6.36,3.25,8.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+140,Universiteit van Amsterdam,Amsterdam,Netherlands,3.33,3.45,5.67,8.88,12.52,15.44,17.71,17.86,15.22,11.33,7.33,4.37,9.56,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+141,University of Groningen,Groningen,Netherlands,2.19,2.59,5.10,8.75,12.56,15.59,17.82,17.71,14.67,10.40,6.16,3.11,8.59,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+142,Vrije Universiteit Amsterdam,Amsterdam,Netherlands,3.33,3.45,5.67,8.88,12.52,15.44,17.71,17.86,15.22,11.33,7.33,4.37,9.56,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+143,Auckland University of Technology,Auckland,New Zealand,19.73,20.34,18.92,16.83,14.61,12.49,11.43,11.61,12.77,14.17,15.87,18.13,15.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+144,Lincoln University,Lincoln,New Zealand,17.37,17.21,14.95,11.80,9.08,6.41,5.72,6.82,8.69,10.86,12.96,15.65,12.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+145,University of Canterbury,Christchurch,New Zealand,17.37,17.21,14.95,11.80,9.08,6.41,5.72,6.82,8.69,10.86,12.96,15.65,12.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+146,University of Otago,Dunedin,New Zealand,13.80,14.00,13.04,11.43,9.84,8.02,7.43,7.83,8.78,9.90,11.04,12.56,10.57,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+147,Victoria University of Wellington,Wellington,New Zealand,16.56,17.01,15.80,13.96,12.35,10.51,9.71,9.87,10.77,11.92,13.16,15.12,12.74,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+148,BI Norwegian Business School,Oslo,Norway,-5.83,-5.42,-1.74,3.82,9.45,13.47,15.91,14.63,10.17,4.33,-0.97,-5.03,2.13,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+149,Norwegian School of Economics,Bergen,Norway,1.82,1.31,2.43,5.38,8.68,11.77,14.17,14.33,11.92,8.19,4.85,2.72,6.92,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+150,Universidad ESAN,Lima,Peru,19.32,19.98,20.03,19.30,18.19,17.18,16.69,16.90,17.26,17.43,17.71,18.50,17.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+151,Universidad San Ignacio de Loyola (USIL),Lima,Peru,19.32,19.98,20.03,19.30,18.19,17.18,16.69,16.90,17.26,17.43,17.71,18.50,17.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+152,Kozminski University,Warsaw,Poland,-3.88,-2.24,2.03,8.39,14.04,17.60,19.81,19.30,14.13,8.08,2.62,-2.01,5.71,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+153,ISCTE - Instituto Universitário de Lisboa,Lisbon,Portugal,12.86,12.87,14.03,15.06,16.83,18.85,19.99,20.54,19.89,18.26,15.59,13.75,16.87,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+154,Universidade Católica Portuguesa,Lisbon,Portugal,12.86,12.87,14.03,15.06,16.83,18.85,19.99,20.54,19.89,18.26,15.59,13.75,16.87,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+155,Universidade Católica Portuguesa,Porto,Portugal,12.86,12.87,14.03,15.06,16.83,18.85,19.99,20.54,19.89,18.26,15.59,13.75,16.87,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+156,Universidade de Lisboa,Lisbon,Portugal,12.86,12.87,14.03,15.06,16.83,18.85,19.99,20.54,19.89,18.26,15.59,13.75,16.87,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+157,Universidade Nova de Lisboa,Lisbon,Portugal,11.50,11.81,13.38,14.65,16.70,18.94,20.18,20.68,19.78,17.64,14.47,12.34,16.06,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+158,Nanyang Technological University,Singapore,Singapore,25.88,26.15,26.96,27.76,27.96,27.51,27.06,26.99,27.06,27.20,26.82,26.19,26.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+159,National University of Singapore,Singapore,Singapore,25.88,26.15,26.96,27.76,27.96,27.51,27.06,26.99,27.06,27.20,26.82,26.19,26.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+160,Singapore Management University,Singapore,Singapore,25.88,26.15,26.96,27.76,27.96,27.51,27.06,26.99,27.06,27.20,26.82,26.19,26.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+161,University of Ljubljana,Ljubljana,Slovenia,-1.22,-0.10,3.96,8.60,13.34,17.40,19.54,19.55,14.43,9.49,4.52,-0.17,7.07,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+162,Chung-Ang University,Seoul,South Korea,-3.21,-1.01,3.62,9.74,15.60,20.60,23.97,24.76,20.21,13.72,6.40,-0.68,9.91,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+163,Ewha Womans University,Seoul,South Korea,-3.21,-1.01,3.62,9.74,15.60,20.60,23.97,24.76,20.21,13.72,6.40,-0.68,9.91,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+164,Korea University,Seoul,South Korea,-3.21,-1.01,3.62,9.74,15.60,20.60,23.97,24.76,20.21,13.72,6.40,-0.68,9.91,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+165,Korea University,Seoul,South Korea,-3.21,-1.01,3.62,9.74,15.60,20.60,23.97,24.76,20.21,13.72,6.40,-0.68,9.91,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+166,Yonsei University,Seoul,South Korea,-3.21,-1.01,3.62,9.74,15.60,20.60,23.97,24.76,20.21,13.72,6.40,-0.68,9.91,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+167,IE University,Madrid,Spain,2.63,3.63,6.65,9.16,13.40,18.43,21.82,21.81,17.24,11.88,6.31,3.54,9.74,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+168,Universidad Carlos III de Madrid,Madrid,Spain,3.54,4.84,8.11,10.94,15.53,21.21,25.01,24.63,19.53,13.59,7.52,4.42,11.27,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+169,Universidad CEU San Pablo,Madrid,Spain,3.54,4.84,8.11,10.94,15.53,21.21,25.01,24.63,19.53,13.59,7.52,4.42,11.27,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+170,"Universidad de Deusto, Campus Bilbao",Bilbao,Spain,9.93,9.89,11.27,12.51,15.15,17.97,20.20,21.15,19.52,16.79,13.02,10.81,15.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+171,"Universidad de Deusto, Campus San Sebastian",San Sebastián,Spain,9.93,9.89,11.27,12.51,15.15,17.97,20.20,21.15,19.52,16.79,13.02,10.81,15.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+172,Universidad de Navarra,Pamplona,Spain,4.75,5.28,7.81,9.85,13.34,16.63,18.69,19.29,16.51,12.91,8.15,5.48,10.76,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+173,Universidad Pontificia Comillas de Madrid (ICADE),Madrid,Spain,3.54,4.84,8.11,10.94,15.53,21.21,25.01,24.63,19.53,13.59,7.52,4.42,11.27,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+174,Universidad Rey Juan Carlos,Madrid,Spain,3.54,4.84,8.11,10.94,15.53,21.21,25.01,24.63,19.53,13.59,7.52,4.42,11.27,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+175,Universitat Autònoma de Barcelona (UAB),Bellaterra / Barcelona,Spain,7.39,8.20,10.90,13.41,17.32,21.60,24.43,24.53,20.74,16.67,11.38,8.14,14.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+176,Universitat de Barcelona,Barcelona,Spain,7.39,8.20,10.90,13.41,17.32,21.60,24.43,24.53,20.74,16.67,11.38,8.14,14.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+177,Universitat de València,Valencia,Spain,8.06,8.95,11.72,14.33,18.31,22.91,25.96,25.93,21.78,17.32,11.88,8.88,14.97,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+178,Universitat Pompeu Fabra,Barcelona,Spain,7.39,8.20,10.90,13.41,17.32,21.60,24.43,24.53,20.74,16.67,11.38,8.14,14.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+179,Universitat Pompeu Fabra,Barcelona,Spain,7.39,8.20,10.90,13.41,17.32,21.60,24.43,24.53,20.74,16.67,11.38,8.14,14.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+180,Universitat Ramon Llull,Sant Cugat del Vallès,Spain,7.39,8.20,10.90,13.41,17.32,21.60,24.43,24.53,20.74,16.67,11.38,8.14,14.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+181,Universitat Ramon Llull,Sant Cugat del Vallès,Spain,7.39,8.20,10.90,13.41,17.32,21.60,24.43,24.53,20.74,16.67,11.38,8.14,14.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+182,Lund University,Lund,Sweden,1.07,0.85,2.51,6.14,10.83,14.82,17.63,17.78,14.33,9.91,5.87,2.61,8.18,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+183,Stockholm School of Economics,Stockholm,Sweden,-3.17,-2.89,0.08,4.71,9.99,14.73,18.01,17.12,12.40,6.61,2.06,-1.58,4.87,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+184,Stockholm University,Stockholm,Sweden,-3.17,-2.89,0.08,4.71,9.99,14.73,18.01,17.12,12.40,6.61,2.06,-1.58,4.87,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+185,University of Gothenburg,Gothenburg,Sweden,0.47,0.12,2.03,6.22,10.97,14.55,17.12,17.01,13.54,9.02,5.00,2.00,7.39,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+186,Uppsala universitet,Uppsala,Sweden,-4.50,-3.84,-0.43,4.65,10.08,14.68,17.74,16.58,11.77,5.74,1.00,-2.89,3.90,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+187,Université de Genève,Geneva,Switzerland,-0.75,-0.06,3.92,7.79,12.17,16.14,18.52,18.52,14.14,9.69,3.92,0.24,7.00,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+188,Université de Lausanne,Lausanne,Switzerland,-2.31,-1.69,2.31,6.30,10.72,14.60,16.72,16.64,12.39,8.18,2.48,-1.23,5.46,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+189,Universität Bern,Bern,Switzerland,-0.82,-0.10,3.76,7.64,12.05,15.83,17.77,17.65,13.41,9.11,3.53,0.03,6.52,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+190,Universität St. Gallen,St. Gallen,Switzerland,-1.32,-0.57,3.58,7.83,12.41,16.05,17.87,17.67,13.40,9.09,3.41,-0.46,6.36,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+191,Universität Zürich,Zurich,Switzerland,-0.69,0.16,4.32,8.47,13.00,16.63,18.42,18.18,13.90,9.46,3.81,0.12,6.82,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+192,National Chengchi University (NCCU),Taipei,Taiwan,14.28,14.91,17.18,20.78,23.90,26.24,27.55,27.24,25.51,22.51,19.87,16.16,21.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+193,National Taiwan University (NTU),Taipei,Taiwan,14.28,14.91,17.18,20.78,23.90,26.24,27.55,27.24,25.51,22.51,19.87,16.16,21.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+194,Soochow University,Taipei,Taiwan,14.28,14.91,17.18,20.78,23.90,26.24,27.55,27.24,25.51,22.51,19.87,16.16,21.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+195,Chulalongkorn University,Bangkok,Thailand,26.72,28.22,29.37,30.08,29.47,28.61,28.10,27.92,27.52,27.14,26.21,25.53,26.60,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+196,Chulalongkorn University,Bangkok,Thailand,26.72,28.22,29.37,30.08,29.47,28.61,28.10,27.92,27.52,27.14,26.21,25.53,26.60,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+197,Thammasat University,Bangkok,Thailand,26.45,28.76,30.31,30.68,29.45,28.37,27.80,27.52,27.16,26.79,25.62,24.82,26.10,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+198,Istanbul Bilgi University,Istanbul,Turkey,5.59,5.98,7.96,11.95,17.10,21.98,24.67,25.04,21.49,16.83,11.91,7.67,14.47,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+199,Koc University,Istanbul,Turkey,5.59,5.98,7.96,11.95,17.10,21.98,24.67,25.04,21.49,16.83,11.91,7.67,14.47,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+200,Sabanci University,Istanbul,Turkey,5.58,5.97,7.88,11.71,16.59,21.23,23.88,24.30,20.91,16.49,11.69,7.60,14.17,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+201,Aston University,Birmingham,United Kingdom,3.48,3.79,5.72,8.14,11.42,14.39,16.34,15.98,13.44,9.93,6.38,3.98,8.43,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+202,Cardiff University,Cardiff,United Kingdom,4.98,4.94,6.35,8.49,11.65,14.52,16.41,16.32,14.28,11.16,7.98,5.65,9.77,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+203,"City St. George's, University of London",London,United Kingdom,4.06,4.22,6.23,8.79,12.12,15.23,17.50,17.30,14.52,10.89,7.11,4.62,9.29,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+204,"European Business School (EBS) London, Regent's University London",London,United Kingdom,4.06,4.22,6.23,8.79,12.12,15.23,17.50,17.30,14.52,10.89,7.11,4.62,9.29,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+205,King's College London,London,United Kingdom,4.06,4.22,6.23,8.79,12.12,15.23,17.50,17.30,14.52,10.89,7.11,4.62,9.29,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+206,London Metropolitan University,London,United Kingdom,4.06,4.22,6.23,8.79,12.12,15.23,17.50,17.30,14.52,10.89,7.11,4.62,9.29,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+207,Oxford Brookes University,Oxford,United Kingdom,3.61,3.84,5.82,8.27,11.60,14.71,16.95,16.65,13.93,10.26,6.59,4.16,8.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+208,Regent's University London,London,United Kingdom,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+209,The University of Manchester,Manchester,United Kingdom,3.44,3.66,5.24,7.52,10.73,13.57,15.36,15.10,12.86,9.63,6.38,4.06,8.23,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+210,University of Aberdeen,Aberdeen,United Kingdom,5.75,5.31,5.77,6.95,9.03,11.48,13.64,13.98,12.77,10.76,8.49,6.62,9.66,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+211,University of Bath,Bath,United Kingdom,4.49,4.57,6.25,8.51,11.80,14.82,16.95,16.76,14.35,10.89,7.45,5.08,9.44,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+212,University of Bristol,Bristol,United Kingdom,4.49,4.57,6.25,8.51,11.80,14.82,16.95,16.76,14.35,10.89,7.45,5.08,9.44,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+213,University of Edinburgh,Edinburgh,United Kingdom,3.31,3.42,4.66,6.71,9.57,12.41,14.35,14.13,12.04,8.97,5.94,3.79,7.68,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+214,University of Essex,Colchester,United Kingdom,4.76,4.68,6.32,8.67,11.84,14.81,17.17,17.36,15.06,11.81,8.14,5.55,10.14,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+215,University of Exeter,Exeter,United Kingdom,6.43,6.13,7.16,8.83,11.55,14.19,16.14,16.27,14.61,12.02,9.17,7.18,10.74,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+216,University of Glasgow,Glasgow,United Kingdom,2.80,2.94,4.20,6.37,9.28,12.09,13.78,13.44,11.37,8.25,5.35,3.24,7.05,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+217,University of Leeds,Leeds,United Kingdom,3.18,3.63,5.43,7.80,10.97,13.92,15.90,15.55,13.03,9.57,6.07,3.63,8.08,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+218,University of Leicester,Leicester,United Kingdom,3.43,3.73,5.70,8.15,11.42,14.44,16.47,16.14,13.54,9.99,6.37,3.95,8.46,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+219,University of Liverpool,Liverpool,United Kingdom,4.68,4.71,5.98,8.03,11.09,13.82,15.63,15.61,13.74,10.78,7.74,5.47,9.43,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+220,University of Sheffield,Sheffield,United Kingdom,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+221,University of Sheffield,Sheffield,United Kingdom,3.27,3.65,5.54,7.94,11.18,14.15,16.12,15.79,13.22,9.74,6.19,3.73,8.22,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+222,University of Strathclyde Glasgow,Glasgow,United Kingdom,2.80,2.94,4.20,6.37,9.28,12.09,13.78,13.44,11.37,8.25,5.35,3.24,7.05,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+223,University of Warwick,Coventry,United Kingdom,3.48,3.79,5.72,8.14,11.42,14.39,16.34,15.98,13.44,9.93,6.38,3.98,8.43,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+224,University of Westminster,London,United Kingdom,26.80,27.30,27.74,27.72,27.21,25.24,24.05,23.99,24.71,25.65,26.29,26.46,25.78,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+225,University of Westminster,London,United Kingdom,4.06,4.22,6.23,8.79,12.12,15.23,17.50,17.30,14.52,10.89,7.11,4.62,9.29,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+226,Arizona State University,Tempe,United States,11.24,12.90,16.34,20.16,25.64,31.44,33.66,32.92,29.80,23.13,16.15,10.89,19.99,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+227,Babson College,Wellesley,United States,-3.64,-2.69,1.22,7.19,13.26,18.57,22.22,21.72,17.71,11.10,5.04,-0.18,8.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+228,Bentley University,Waltham,United States,-3.64,-2.69,1.22,7.19,13.26,18.57,22.22,21.72,17.71,11.10,5.04,-0.18,8.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+229,Boston College,Chestnut Hill / Boston,United States,-3.64,-2.69,1.22,7.19,13.26,18.57,22.22,21.72,17.71,11.10,5.04,-0.18,8.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+230,Boston University,Boston,United States,-3.64,-2.69,1.22,7.19,13.26,18.57,22.22,21.72,17.71,11.10,5.04,-0.18,8.42,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+231,City University of New York,New York City,United States,1.13,1.33,4.06,8.84,14.12,19.72,23.51,23.35,20.25,14.58,8.95,4.27,12.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+232,Cornell University,Ithaca,United States,-5.86,-5.04,-0.63,6.18,13.18,18.33,21.01,20.27,16.19,9.18,2.66,-2.69,6.33,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+233,Cornell University,Ithaca,United States,-5.86,-5.04,-0.63,6.18,13.18,18.33,21.01,20.27,16.19,9.18,2.66,-2.69,6.33,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+234,Emory University,Atlanta,United States,4.66,6.74,10.76,15.37,20.27,24.44,26.54,26.01,22.64,16.49,10.12,6.09,13.83,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+235,George Washington University,"Washington, D.C.",United States,4.18,4.80,6.77,9.14,12.78,15.14,18.06,18.16,15.49,10.71,6.59,3.85,9.16,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+236,Indiana University,Bloomington,United States,-1.68,0.31,5.60,11.98,17.62,22.28,24.34,24.02,20.09,13.11,5.90,0.51,9.90,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+237,New York University,New York City,United States,1.13,1.33,4.06,8.84,14.12,19.72,23.51,23.35,20.25,14.58,8.95,4.27,12.01,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+238,North Carolina State University,Raleigh,United States,3.36,5.12,9.30,14.82,19.79,24.40,26.70,25.54,21.84,15.56,9.34,5.17,12.98,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+239,Ohio State University,Columbus,United States,-2.71,-1.11,3.85,10.39,16.34,21.13,23.30,22.87,18.91,11.93,4.87,-0.35,8.84,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+240,Purdue University,West Lafayette,United States,-3.82,-1.55,3.97,10.44,16.51,21.40,23.25,22.57,18.77,11.85,4.54,-1.10,8.51,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+241,"State University of New York, Stony Brook",Stony Brook,United States,-0.08,0.02,3.07,8.33,13.88,19.38,23.21,23.01,19.81,14.04,8.25,3.24,11.33,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+242,Texas A&M University,College Station,United States,9.39,11.70,15.56,19.64,24.24,27.82,29.20,29.70,26.37,20.97,14.77,10.53,18.16,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+243,Tulane University,New Orleans,United States,12.12,13.95,17.10,20.74,24.72,27.69,28.47,28.51,26.60,22.06,16.83,13.45,19.73,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+244,University of Hawaii at Manoa,Honolulu,United States,22.79,22.55,22.80,23.46,24.34,25.23,25.72,26.15,26.23,25.79,24.70,23.57,25.07,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+245,University of Maryland,College Park,United States,0.07,1.25,5.58,11.78,17.28,22.55,25.68,24.87,20.95,14.02,7.54,2.48,11.25,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+246,University of Michigan,Ann Arbor,United States,-5.50,-4.14,1.05,7.40,14.06,19.46,22.15,21.47,17.30,10.15,3.15,-2.41,7.05,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+247,"University of Minnesota, Twin Cities",Minneapolis,United States,-11.26,-8.31,-0.55,6.80,13.99,19.66,22.21,20.98,16.29,8.17,-0.17,-7.50,4.20,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+248,University of North Carolina at Chapel Hill,Chapel Hill,United States,3.36,5.12,9.30,14.82,19.79,24.40,26.70,25.54,21.84,15.56,9.34,5.17,12.98,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+249,University of Pennsylvania,Philadelphia,United States,-0.95,0.12,4.32,10.48,16.19,21.37,24.50,23.71,19.97,13.11,6.76,1.75,10.40,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+250,University of Richmond,Richmond,United States,1.85,3.42,7.67,13.64,18.92,24.00,26.59,25.47,21.59,14.93,8.47,3.86,12.21,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+251,University of South Carolina,Columbia,United States,6.04,7.96,11.99,16.95,22.02,25.98,27.96,26.98,23.63,17.76,11.65,7.55,15.15,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+252,University of Southern California,Los Angeles,United States,11.83,12.11,13.51,15.12,17.45,20.20,23.14,24.06,22.89,19.35,15.15,11.70,17.27,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+253,University of Texas at Austin,Austin,United States,9.26,11.70,15.66,19.95,24.27,27.92,29.58,29.95,26.33,20.93,14.68,10.23,18.04,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+254,University of Washington,Seattle,United States,0.07,1.25,5.58,11.78,17.28,22.55,25.68,24.87,20.95,14.02,7.54,2.48,11.25,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+255,University of Wisconsin - La Crosse,La Crosse,United States,-10.17,-7.34,0.02,6.94,13.90,19.57,22.20,21.07,16.42,8.58,0.61,-6.46,4.79,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+256,University of Wisconsin - Madison,Madison,United States,-8.31,-5.80,0.92,7.32,14.11,19.77,22.18,21.29,16.80,9.38,1.71,-4.93,5.74,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+257,Universidad Católica del Uruguay,Montevideo,Uruguay,22.95,22.61,21.18,17.96,14.70,11.62,10.16,11.44,12.83,15.65,18.52,21.30,17.07,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
+258,Universidad de Montevideo,Montevideo,Uruguay,22.95,22.61,21.18,17.96,14.70,11.62,10.16,11.44,12.83,15.65,18.52,21.30,17.07,1991-2020,https://power.larc.nasa.gov/,2026-10-08T10:46:35.853Z
