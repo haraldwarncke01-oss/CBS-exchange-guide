@@ -43,38 +43,15 @@ const COST_RENT_2026={}; // Fallback only; primary cost snapshot is data/cost_of
 const NUMBEO_URL='https://www.numbeo.com/cost-of-living/rankings_by_country_result.jsp';
 const DENMARK_COST_RENT_2026=54.80; // Numbeo 2026 Mid-Year country Cost of Living + Rent Index
 
-// City-centre or campus-area coordinate fallbacks for partner names that are often not
-// returned correctly by Wikipedia's title-based coordinate lookup. They are used for climate,
-// not for navigation, so city-scale accuracy is sufficient.
-const COORD_OVERRIDES={
-  2:{lat:-34.6037,lon:-58.3816,source:'City fallback — Buenos Aires/Pilar region'},
-  3:{lat:-32.9442,lon:-60.6505,source:'City fallback — Rosario'},
-  26:{lat:50.8798,lon:4.7005,source:'City fallback — Leuven'},
-  28:{lat:-23.5505,lon:-46.6333,source:'City fallback — São Paulo'},
-  46:{lat:-33.4489,lon:-70.6693,source:'City fallback — Santiago'},
-  51:{lat:22.5431,lon:114.0579,source:'City fallback — Shenzhen'},
-  55:{lat:29.8683,lon:121.5440,source:'City fallback — Ningbo'},
-  113:{lat:45.4642,lon:9.1900,source:'City fallback — Milan'},
-  125:{lat:3.0646,lon:101.6031,source:'Campus-area fallback — Bandar Sunway'},
-  127:{lat:19.4326,lon:-99.1332,source:'City fallback — Mexico City'},
-  128:{lat:20.6597,lon:-103.3496,source:'City fallback — Guadalajara'},
-  129:{lat:19.4326,lon:-99.1332,source:'City fallback — Mexico City'},
-  130:{lat:25.6866,lon:-100.3161,source:'City fallback — Monterrey'},
-  131:{lat:20.5888,lon:-100.3899,source:'City fallback — Querétaro'},
-  132:{lat:19.3574,lon:-99.2760,source:'District fallback — Santa Fe, Mexico City'},
-  170:{lat:43.2630,lon:-2.9350,source:'City fallback — Bilbao'},
-  171:{lat:43.3183,lon:-1.9812,source:'City fallback — San Sebastián'}
-};
-
-// City and continent data are loaded from data/university_locations.csv.
-// Wikipedia is used only as a fallback for missing map coordinates.
+// City, continent and map coordinates are loaded from data/university_locations.csv.
+// Climate normals are loaded from the local data/climate.csv snapshot.
 
 const state={
-  all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),gridClimate:new Map(),costByCountry:new Map(),requirements:new Map(),universityHistory:new Map(),
+  all:[],filtered:[],coords:new Map(),markers:new Map(),climate:new Map(),costByCountry:new Map(),requirements:new Map(),universityHistory:new Map(),
   courseApprovals:new Map(),creditWorkloads:new Map(),coursePrograms:[],courseApprovalSource:null,creditSource:null,
   favorites:new Set(),compare:new Set(),
   arwuReady:false,arwuRankedCount:0,arwuPendingCount:0,nameCounts:new Map(),sortKey:'demandScore',sortDir:1,
-  climateLoading:false,climateDone:0,climateTotal:0,currentDetailId:null
+  currentDetailId:null
 };
 const $=s=>document.querySelector(s);
 
@@ -859,48 +836,15 @@ function openDetail(id,source='unknown',trackOpen=true){
     ${coursesCreditsHtml(u)}`;
   wireSelectionControls($('#detailContent'));wireCourseControls(u);
   if(!$('#detailDialog').open)$('#detailDialog').showModal();
-  if(!c)loadClimateForIds([u.id]).then(()=>{if($('#detailDialog').open&&state.currentDetailId===u.id)openDetail(u.id,'internal',false)}).catch(()=>{});
+  // Climate is intentionally static. If a local row is ever missing, show the
+  // unavailable state rather than making a third-party request from the user's browser.
 }
 
-// Coordinates from Wikipedia, with a few city-level fallbacks for partner/campus names.
-const coordKey='cbs-exchange-coords-v2';
-function loadCached(){try{const c=JSON.parse(localStorage.getItem(coordKey)||'{}');for(const [id,v] of Object.entries(c))state.coords.set(Number(id),v)}catch{}for(const [id,c] of Object.entries(COORD_OVERRIDES))state.coords.set(Number(id),c)}
-function saveCached(){try{localStorage.setItem(coordKey,JSON.stringify(Object.fromEntries(state.coords)))}catch{}}
-async function wikiBatch(batch){const titles=batch.map(u=>u.lookupName).join('|');const url='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=coordinates&colimit=max&titles='+encodeURIComponent(titles);const r=await fetch(url);if(!r.ok)throw new Error('Wikipedia coordinate lookup failed');const j=await r.json();const byTitle=new Map(batch.map(u=>[u.lookupName.toLowerCase(),u]));for(const p of Object.values(j.query?.pages||{})){if(!p.coordinates?.[0])continue;let u=byTitle.get((p.title||'').toLowerCase());if(!u)u=batch.find(x=>p.title?.toLowerCase().includes(x.lookupName.toLowerCase())||x.lookupName.toLowerCase().includes((p.title||'').toLowerCase()));if(u&&!COORD_OVERRIDES[u.id])state.coords.set(u.id,{lat:p.coordinates[0].lat,lon:p.coordinates[0].lon,source:'Wikipedia'})}}
-async function wikiSearchOne(u){if(COORD_OVERRIDES[u.id])return;const query=`${u.lookupName} ${u.country}`;const surl='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=0&gsrlimit=1&gsrsearch='+encodeURIComponent(query)+'&prop=coordinates&colimit=max';try{const r=await fetch(surl);if(!r.ok)return;const j=await r.json();const p=Object.values(j.query?.pages||{})[0];if(p?.coordinates?.[0])state.coords.set(u.id,{lat:p.coordinates[0].lat,lon:p.coordinates[0].lon,source:'Wikipedia search'})}catch{}}
-async function resolveCoordinates(){
-  loadCached();renderMarkers();const missing=state.all.filter(u=>!state.coords.has(u.id));
-  for(let i=0;i<missing.length;i+=40){try{await wikiBatch(missing.slice(i,i+40))}catch{}$('#geoStatus').textContent=`· locating universities ${Math.min(i+40,missing.length)}/${missing.length}`;renderMarkers()}
-  const still=state.all.filter(u=>!state.coords.has(u.id));for(let i=0;i<still.length;i+=6){await Promise.all(still.slice(i,i+6).map(wikiSearchOne));$('#geoStatus').textContent=`· resolving ${Math.min(i+6,still.length)}/${still.length} unmatched`;renderMarkers()}
-  for(const [id,c] of Object.entries(COORD_OVERRIDES))state.coords.set(Number(id),c);
-  saveCached();const unresolved=state.all.length-state.coords.size;$('#geoStatus').textContent=`· ${state.coords.size} mapped${unresolved?` · ${unresolved} unresolved`:''}`;renderMarkers();loadClimateAll();
-}
-
-// NASA POWER 1991–2020 2 m air-temperature climatology. Requests are retried because the
-// public endpoint can occasionally throttle or time out.
-const climateKey='cbs-exchange-nasa-power-climate-v2-1991-2020';
-function gridKey(c){const lat=Math.round(c.lat*2)/2,lon=Math.round(c.lon/0.625)*0.625;return `${lat.toFixed(3)},${lon.toFixed(3)}`}
-function loadClimateCache(){try{const c=JSON.parse(localStorage.getItem(climateKey)||'{}');for(const [k,v] of Object.entries(c))state.gridClimate.set(k,v)}catch{}}
-function saveClimateCache(){try{localStorage.setItem(climateKey,JSON.stringify(Object.fromEntries(state.gridClimate)))}catch{}}
-const wait=ms=>new Promise(r=>setTimeout(r,ms));
-async function fetchGridClimate(c){
-  const key=gridKey(c);if(state.gridClimate.has(key))return state.gridClimate.get(key);
-  const url=`https://power.larc.nasa.gov/api/temporal/climatology/point?parameters=T2M&community=SB&longitude=${encodeURIComponent(c.lon)}&latitude=${encodeURIComponent(c.lat)}&format=JSON&start=1991&end=2020`;
-  let lastErr=null;for(let attempt=0;attempt<3;attempt++){try{const ctl=new AbortController();const timer=setTimeout(()=>ctl.abort(),15000);const r=await fetch(url,{signal:ctl.signal,cache:'no-store'});clearTimeout(timer);if(!r.ok)throw new Error(`NASA POWER ${r.status}`);const j=await r.json();const p=j?.properties?.parameter?.T2M;if(!p)throw new Error('No T2M climate data');const v={SEP:Number(p.SEP),OCT:Number(p.OCT),NOV:Number(p.NOV),DEC:Number(p.DEC)};if(!Object.values(v).every(Number.isFinite))throw new Error('Incomplete climate data');state.gridClimate.set(key,v);return v}catch(e){lastErr=e;await wait(350*(attempt+1))}}throw lastErr||new Error('Climate request failed');
-}
 function refreshDataStatus(){
   const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} ranked · ${state.arwuPendingCount} not in top 1000`:'ARWU: loading local snapshot';
-  const climate=state.climateLoading?`Climate: ${state.climate.size}/${state.all.length} local/loaded · filling missing values`:`Climate: ${state.climate.size}/${state.all.length} local/loaded`;
+  const climate=`Climate: ${state.climate.size}/${state.all.length} local snapshot`;
   const req=`MoveON: ${[...state.requirements.values()].filter(x=>x.matchStatus==='matched').length}/${state.all.length} current matches`;
   $('#dataStatus').textContent=`${arwu} · ${climate} · ${req}`;
-}
-async function loadClimateForIds(ids){const groups=new Map();for(const id of ids){if(state.climate.has(id))continue;const c=state.coords.get(id);if(!c)continue;const k=gridKey(c);if(!groups.has(k))groups.set(k,{c,ids:[]});groups.get(k).ids.push(id)}for(const g of groups.values()){try{const v=await fetchGridClimate(g.c);for(const id of g.ids)state.climate.set(id,v)}catch(e){console.warn('Climate unavailable for',g.ids,e)}}saveClimateCache();renderTable();renderMarkers();refreshDataStatus()}
-async function loadClimateAll(){
-  if(state.climateLoading)return;loadClimateCache();const groups=new Map();for(const u of state.all){if(state.climate.has(u.id))continue;const c=state.coords.get(u.id);if(!c)continue;const k=gridKey(c);if(!groups.has(k))groups.set(k,{c,ids:[]});groups.get(k).ids.push(u.id)}
-  for(const g of groups.values()){const cached=state.gridClimate.get(gridKey(g.c));if(cached)for(const id of g.ids)state.climate.set(id,cached)}
-  const pending=[...groups.values()].filter(g=>!state.gridClimate.has(gridKey(g.c)));state.climateLoading=true;state.climateDone=groups.size-pending.length;state.climateTotal=groups.size;refreshDataStatus();renderTable();let next=0;
-  async function worker(){while(next<pending.length){const i=next++,g=pending[i];try{const v=await fetchGridClimate(g.c);for(const id of g.ids)state.climate.set(id,v)}catch(e){console.warn('Climate unavailable for',g.ids,e)}state.climateDone++;if(state.climateDone%5===0||state.climateDone===state.climateTotal){saveClimateCache();refreshDataStatus();applyFilters()}await wait(120)}}
-  await Promise.all(Array.from({length:Math.min(3,pending.length||1)},worker));state.climateLoading=false;saveClimateCache();refreshDataStatus();applyFilters();
 }
 
 function rankLower(rank){if(!rank)return null;const m=String(rank).match(/\d+/);return m?Number(m[0]):null}
@@ -1032,8 +976,8 @@ async function init(){
   updateSavedCounts();applyFilters();refreshDataStatus();
   analyticsCapture('site_visited',{total_universities:state.all.length,initial_compare_count:state.compare.size,shared_compare_link:new URLSearchParams(location.search).has('compare')});
   const unresolved=state.all.length-state.coords.size;$('#geoStatus').textContent=`· ${state.coords.size} mapped${unresolved?` · ${unresolved} unresolved`:''}`;
-  // Static CSVs are primary. These fallbacks only fill gaps until the repository refresh workflow has populated all snapshots.
-  if(unresolved)resolveCoordinates();else if(state.climate.size<state.all.length)loadClimateAll();
+  if(unresolved)console.warn(`${unresolved} universities are missing static coordinates in data/university_locations.csv`);
+  if(state.climate.size<state.all.length)console.warn(`${state.all.length-state.climate.size} universities are missing static climate rows in data/climate.csv`);
   if(new URLSearchParams(location.search).has('compare')&&state.compare.size)switchView('compare');
 }
 function switchView(v){
