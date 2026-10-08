@@ -52,88 +52,98 @@
 
   <main>
     <section class="explorer-controls" aria-label="Search and filters">
-      <div class="primary-filter-row">
+      <div class="smart-filter-layout">
         <label class="main-search">
           <span>Search</span>
           <input id="search" type="search" placeholder="University, city or country…" autocomplete="off" />
         </label>
-        <label class="primary-filter"><span>Country</span><select id="country"><option value="">All countries</option></select></label>
-        <label class="primary-filter"><span>2026/27 status</span><select id="demandLevel">
-          <option value="">Any status</option>
-          <option value="available">Places available</option>
-          <option value="filled">All places filled</option>
-          <option value="competitive">Competitive</option>
-          <option value="very_competitive">Very competitive</option>
-          <option value="unknown">No comparable result</option>
-        </select></label>
-        <label class="primary-filter"><span>Fall 2027 places</span><select id="minPlaces2027">
-          <option value="0">Any / not yet published</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option>
-        </select></label>
-        <label class="primary-filter"><span>My CBS GPA</span><select id="myGpa">
-          <option value="">Any GPA</option><option value="2">2.0</option><option value="4">4.0</option><option value="5">5.0</option><option value="6">6.0</option><option value="7">7.0</option><option value="8">8.0</option><option value="10">10.0</option><option value="12">12.0</option>
-        </select></label>
-        <label class="primary-check"><input id="englishOnly" type="checkbox" /><span>English-only possible</span></label>
-        <details id="filterMenu" class="filter-menu">
-          <summary><span class="filter-summary-label">More filters</span><span id="filterCount" class="filter-count" aria-label="0 active filters">0</span><span class="filter-chevron" aria-hidden="true">⌄</span></summary>
-          <div class="filter-panel">
-            <div class="filter-panel-head">
-              <div><strong>More filters</strong><span>Refine by history, academic profile and practical considerations.</span></div>
-              <button id="reset" type="button" class="text-button">Clear all</button>
-            </div>
-            <div class="filter-sections">
-              <section class="filter-group" aria-labelledby="filterHistoryTitle">
-                <div class="filter-group-head"><div><strong id="filterHistoryTitle">CBS history & capacity</strong><span>Use the actual 2026/27 outcome and the five-year history.</span></div></div>
-                <div class="filter-group-grid">
-                  <label><span>Historical availability</span><select id="availabilityMin"><option value="0">Any history</option><option value="1">Available at least 1 of 5 years</option><option value="2">Available at least 2 of 5 years</option><option value="3">Available at least 3 of 5 years</option><option value="4">Available at least 4 of 5 years</option><option value="5">Available all 5 years</option></select></label>
-                  <label><span>2027 vs 2026/27 capacity</span><select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="not_reduced">Same or more places</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select></label>
-                  <label><span>Min. places 2026/27</span><select id="minPlaces"><option value="0">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="8">8+</option></select></label>
-                  <label><span>Map/list history window</span><select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select></label>
-                </div>
-              </section>
-              <section class="filter-group" aria-labelledby="filterAcademicTitle">
-                <div class="filter-group-head"><div><strong id="filterAcademicTitle">Academic & eligibility</strong><span>Ranking, language and programme requirements.</span></div></div>
-                <div class="filter-group-grid">
-                  <label><span>ARWU 2026</span><select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select></label>
-                  <label><span>Language requirement</span><select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select></label>
-                  <label><span>English proof I can use</span><select id="englishEvidence">
-                    <option value="">Any evidence</option>
-                    <option value="cbs_program">CBS English-taught programme</option>
-                    <option value="cbs_course_one">1 English-taught CBS course</option>
-                    <option value="english_60ects">60 ECTS taught in English</option>
-                    <option value="cbs_proficiency">CBS B2/C1 proficiency letter</option>
-                    <option value="gymnasium">Danish gymnasium English</option>
-                  </select></label>
-                  <label id="gymEnglishLevelWrap" class="conditional-filter" hidden><span>Gymnasium English level</span><select id="gymEnglishLevel">
-                    <option value="">English A or B</option>
-                    <option value="B">English B</option>
-                    <option value="A">English A</option>
-                  </select></label>
-                  <label id="gymEnglishGradeWrap" class="conditional-filter" hidden><span>My gymnasium grade</span><select id="gymEnglishGrade">
-                    <option value="">Any accepted grade</option>
-                    <option value="2">02 or above</option>
-                    <option value="4">4 or above</option>
-                    <option value="7">7 or above</option>
-                    <option value="10">10 or above</option>
-                    <option value="12">12</option>
-                  </select></label>
-                  <label><span>Founded before</span><select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select></label>
-                  <label><span>Academic structure</span><select id="academicStructure"><option value="">Any structure</option><option value="semester">Semester</option><option value="trimester">Trimester</option><option value="quarter">Quarter</option><option value="term">Term</option><option value="unclear">Unclear</option></select></label>
-                </div>
-              </section>
-              <section class="filter-group" aria-labelledby="filterPracticalTitle">
-                <div class="filter-group-head"><div><strong id="filterPracticalTitle">Destination & practical</strong><span>Location, climate, cost and housing.</span></div></div>
-                <div class="filter-group-grid">
-                  <label><span>Continent</span><select id="continent"><option value="">All continents</option><option value="Africa">Africa</option><option value="Asia">Asia</option><option value="Europe">Europe</option><option value="North America">North America</option><option value="Oceania">Oceania</option><option value="South America">South America</option></select></label>
-                  <label><span>Cost vs Denmark</span><select id="maxCost"><option value="">Any cost</option><option value="20">No more than 20% above Denmark</option><option value="0">Same as Denmark or cheaper</option><option value="-10">At least 10% cheaper than Denmark</option><option value="-25">At least 25% cheaper than Denmark</option><option value="-40">At least 40% cheaper than Denmark</option></select></label>
-                  <label><span>Temperature basis</span><select id="tempMetric"><option value="AVG">Sep–Dec average</option><option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option></select></label>
-                  <label><span>Min. temperature</span><select id="minTemp"><option value="">Any</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option></select></label>
-                  <label><span>On-campus housing</span><select id="housingFilter"><option value="">Any housing</option><option value="available">Available</option><option value="unavailable">Not available</option><option value="unclear">Unclear</option></select></label>
-                  <label class="check-row"><input id="favoritesOnly" type="checkbox" /><span>Starred universities only</span></label>
-                </div>
-              </section>
+
+        <div class="smart-filter-bar" role="group" aria-label="Filters">
+          <div class="smart-filter-wrap" data-filter-root="country">
+            <button id="countryFilterButton" class="smart-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-smart-trigger="country">
+              <span>Country</span><span class="smart-filter-badge" data-smart-badge="country" hidden>0</span><span class="smart-filter-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="smart-filter-popover smart-filter-country" data-smart-popover="country" role="dialog" aria-label="Country filter" hidden>
+              <div class="smart-filter-popover-head">
+                <button class="smart-filter-back" type="button" data-smart-back aria-label="Back">←</button>
+                <div><strong>Country</strong><span>Select one or several countries, or a whole continent.</span></div>
+                <div class="smart-filter-head-actions"><button type="button" class="smart-filter-clear" data-smart-clear="country">Clear</button><button type="button" class="smart-filter-close" data-smart-close aria-label="Close filters">×</button></div>
+              </div>
+              <div class="smart-filter-menu-body"><div class="smart-filter-primary-pane" data-smart-primary="country"></div><div class="smart-filter-secondary-pane" data-smart-secondary="country"></div></div>
             </div>
           </div>
-        </details>
+
+          <div class="smart-filter-wrap" data-filter-root="availability">
+            <button id="availabilityFilterButton" class="smart-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-smart-trigger="availability">
+              <span>Availability</span><span class="smart-filter-badge" data-smart-badge="availability" hidden>0</span><span class="smart-filter-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="smart-filter-popover" data-smart-popover="availability" role="dialog" aria-label="Availability filters" hidden>
+              <div class="smart-filter-popover-head">
+                <button class="smart-filter-back" type="button" data-smart-back aria-label="Back">←</button>
+                <div><strong>Availability</strong><span>Capacity and historical demand at CBS.</span></div>
+                <div class="smart-filter-head-actions"><button type="button" class="smart-filter-clear" data-smart-clear="availability">Clear</button><button type="button" class="smart-filter-close" data-smart-close aria-label="Close filters">×</button></div>
+              </div>
+              <div class="smart-filter-menu-body"><div class="smart-filter-primary-pane" data-smart-primary="availability"></div><div class="smart-filter-secondary-pane" data-smart-secondary="availability"></div></div>
+            </div>
+          </div>
+
+          <div class="smart-filter-wrap" data-filter-root="eligibility">
+            <button id="eligibilityFilterButton" class="smart-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-smart-trigger="eligibility">
+              <span>Eligibility</span><span class="smart-filter-badge" data-smart-badge="eligibility" hidden>0</span><span class="smart-filter-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="smart-filter-popover" data-smart-popover="eligibility" role="dialog" aria-label="Eligibility filters" hidden>
+              <div class="smart-filter-popover-head">
+                <button class="smart-filter-back" type="button" data-smart-back aria-label="Back">←</button>
+                <div><strong>Eligibility</strong><span>GPA, teaching language and documentation requirements.</span></div>
+                <div class="smart-filter-head-actions"><button type="button" class="smart-filter-clear" data-smart-clear="eligibility">Clear</button><button type="button" class="smart-filter-close" data-smart-close aria-label="Close filters">×</button></div>
+              </div>
+              <div class="smart-filter-menu-body"><div class="smart-filter-primary-pane" data-smart-primary="eligibility"></div><div class="smart-filter-secondary-pane" data-smart-secondary="eligibility"></div></div>
+            </div>
+          </div>
+
+          <div class="smart-filter-wrap smart-filter-wrap-more" data-filter-root="more">
+            <button id="moreFilterButton" class="smart-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-smart-trigger="more">
+              <span>More filters</span><span class="smart-filter-badge" data-smart-badge="more" hidden>0</span><span class="smart-filter-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="smart-filter-popover" data-smart-popover="more" role="dialog" aria-label="More filters" hidden>
+              <div class="smart-filter-popover-head">
+                <button class="smart-filter-back" type="button" data-smart-back aria-label="Back">←</button>
+                <div><strong>More filters</strong><span>Ranking, cost, climate and practical preferences.</span></div>
+                <div class="smart-filter-head-actions"><button type="button" class="smart-filter-clear" data-smart-clear="more">Clear</button><button type="button" class="smart-filter-close" data-smart-close aria-label="Close filters">×</button></div>
+              </div>
+              <div class="smart-filter-menu-body"><div class="smart-filter-primary-pane" data-smart-primary="more"></div><div class="smart-filter-secondary-pane" data-smart-secondary="more"></div></div>
+            </div>
+          </div>
+
+          <button id="reset" type="button" class="smart-reset-all">Clear all</button>
+        </div>
+      </div>
+
+      <!-- Native controls remain as the single source of truth for filtering logic.
+           The visible menus above update these controls and keep all existing data logic intact. -->
+      <div class="filter-engine" hidden aria-hidden="true">
+        <select id="country" multiple aria-label="Selected countries"></select>
+        <select id="demandLevel"><option value="">Any status</option><option value="available">Places available</option><option value="filled">All places filled</option><option value="competitive">Competitive</option><option value="very_competitive">Very competitive</option><option value="unknown">No comparable result</option></select>
+        <select id="minPlaces2027"><option value="0">Any / not yet published</option><option value="1">1+ place</option><option value="2">2+ places</option><option value="3">3+ places</option><option value="4">4+ places</option><option value="5">5+ places</option><option value="6">6+ places</option><option value="8">8+ places</option><option value="10">10+ places</option></select>
+        <select id="myGpa"><option value="">Any GPA</option><option value="2">2.0</option><option value="4">4.0</option><option value="5">5.0</option><option value="6">6.0</option><option value="7">7.0</option><option value="8">8.0</option><option value="10">10.0</option><option value="12">12.0</option></select>
+        <input id="englishOnly" type="checkbox" />
+        <select id="availabilityMin"><option value="0">Any history</option><option value="1">Available at least 1 of 5 years</option><option value="2">Available at least 2 of 5 years</option><option value="3">Available at least 3 of 5 years</option><option value="4">Available at least 4 of 5 years</option><option value="5">Available all 5 years</option></select>
+        <select id="placesChange"><option value="">Any change</option><option value="published">Fall 2027 published</option><option value="not_reduced">Same or more places</option><option value="increase">More places</option><option value="same">Same number</option><option value="decrease">Fewer places</option><option value="unpublished">Fall 2027 not yet published</option></select>
+        <select id="minPlaces"><option value="0">Any</option><option value="2">2+ places</option><option value="3">3+ places</option><option value="4">4+ places</option><option value="5">5+ places</option><option value="6">6+ places</option><option value="8">8+ places</option></select>
+        <select id="historyWindow"><option value="1">2026–27 only</option><option value="2">Last 2 years</option><option value="3">Last 3 years</option><option value="4">Last 4 years</option><option value="5" selected>All 5 years</option></select>
+        <select id="arwuMax"><option value="0">Any rank</option><option value="100">Top 100</option><option value="200">Top 200</option><option value="500">Top 500</option><option value="1000">Published top 1000</option></select>
+        <select id="languageProof"><option value="">Any requirement</option><option value="none">No documentation required</option><option value="documentation">Documentation required</option><option value="test">Language test required</option></select>
+        <select id="englishEvidence"><option value="">Any evidence</option><option value="cbs_program">CBS English-taught programme</option><option value="cbs_course_one">1 English-taught CBS course</option><option value="english_60ects">60 ECTS taught in English</option><option value="cbs_proficiency">CBS B2/C1 proficiency letter</option><option value="gymnasium">Danish gymnasium English</option></select>
+        <select id="gymEnglishLevel"><option value="">English A or B</option><option value="B">English B</option><option value="A">English A</option></select>
+        <select id="gymEnglishGrade"><option value="">Any accepted grade</option><option value="2">02 or above</option><option value="4">4 or above</option><option value="7">7 or above</option><option value="10">10 or above</option><option value="12">12</option></select>
+        <select id="foundedBefore"><option value="">Any verified founding year</option><option value="2000">Before 2000</option><option value="1950">Before 1950</option><option value="1900">Before 1900</option><option value="1850">Before 1850</option><option value="1800">Before 1800</option><option value="1700">Before 1700</option><option value="1500">Before 1500</option></select>
+        <select id="academicStructure"><option value="">Any structure</option><option value="semester">Semester</option><option value="trimester">Trimester</option><option value="quarter">Quarter</option><option value="term">Term</option><option value="unclear">Unclear</option></select>
+        <select id="tempMetric"><option value="AVG">Sep–Dec average</option><option value="SEP">September</option><option value="OCT">October</option><option value="NOV">November</option><option value="DEC">December</option></select>
+        <select id="minTemp"><option value="">Any minimum</option><option value="0">0°C+</option><option value="5">5°C+</option><option value="10">10°C+</option><option value="15">15°C+</option><option value="20">20°C+</option><option value="25">25°C+</option></select>
+        <select id="maxCost"><option value="">Any cost</option><option value="20">No more than 20% above Denmark</option><option value="0">Same as Denmark or cheaper</option><option value="-10">At least 10% cheaper than Denmark</option><option value="-25">At least 25% cheaper than Denmark</option><option value="-40">At least 40% cheaper than Denmark</option></select>
+        <select id="housingFilter"><option value="">Any housing</option><option value="available">Available</option><option value="unavailable">Not available</option><option value="unclear">Unclear</option></select>
+        <input id="favoritesOnly" type="checkbox" />
+        <span id="filterCount" hidden>0</span>
       </div>
     </section>
 
@@ -230,6 +240,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=32-calendar-climate"></script>
+  <script src="assets/app.js?v=33-filter-redesign"></script>
 </body>
 </html>
