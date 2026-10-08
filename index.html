@@ -7,7 +7,7 @@
   <title>CBS Exchange Explorer</title>
   <link rel="preconnect" href="https://unpkg.com" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css?v=36-filter-visual-tweak" />
+  <link rel="stylesheet" href="assets/styles.css?v=37-results-empty-state" />
   <!-- Private product analytics: explicit anonymous events only; no autocapture/replay/heatmaps. -->
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config startSessionRecording stopSessionRecording isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -162,12 +162,19 @@
         </div>
       </div>
       <div class="status-stack">
-        <div class="result-summary"><strong id="visibleCount">0</strong> matches <span id="geoStatus" class="muted">· locating universities…</span></div>
+        <div class="result-summary" aria-live="polite">
+          <div class="result-match-line"><strong id="visibleCount">0</strong><span id="resultMatchLabel">universities match</span></div>
+          <span id="geoStatus" class="muted">locating universities…</span>
+        </div>
         <div id="dataStatus" class="data-status muted">Loading local data snapshots…</div>
       </div>
     </section>
 
     <section id="mapView" class="view active">
+      <div class="no-results-notice" data-empty-results hidden>
+        <div><strong>No universities match your current filters</strong><span>Try adjusting one of your filters or clear them to see all exchange options again.</span></div>
+        <button type="button" class="secondary-button no-results-reset">Clear all filters</button>
+      </div>
       <div id="map" aria-label="Interactive world map of exchange universities"></div>
       <div class="legend" aria-label="CBS historical competitiveness legend">
         <strong id="legendWindow">Map colors · all 5 years</strong>
@@ -180,6 +187,10 @@
     </section>
 
     <section id="listView" class="view">
+      <div class="no-results-notice" data-empty-results hidden>
+        <div><strong>No universities match your current filters</strong><span>Try adjusting one of your filters or clear them to see all exchange options again.</span></div>
+        <button type="button" class="secondary-button no-results-reset">Clear all filters</button>
+      </div>
       <div class="table-wrap">
         <table class="university-table">
           <colgroup>
@@ -243,6 +254,6 @@
   </dialog>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/app.js?v=34-filter-flyout-fix"></script>
+  <script src="assets/app.js?v=38-favorites-reset"></script>
 </body>
 </html>
