@@ -5,7 +5,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 4,Universidad Torcuato di Tella (UTDT),Argentina,Buenos Aires,South America,-34.611781,-58.417309,CBS MoveON snapshot 2026-09-21
 5,Australian National University,Australia,Canberra,Oceania,-35.27637,149.120489,CBS MoveON snapshot 2026-09-21
 6,Bond University,Australia,Gold Coast,Oceania,-28.075709,153.414682,CBS MoveON snapshot 2026-09-21
-7,Curtin University,Australia,Perth,Oceania,,,
+7,Curtin University,Australia,Perth,Oceania,-32.0048589,115.8936669,Wikipedia/Wikidata verified 2026-10-08
 8,Deakin University,Australia,Melbourne,Oceania,-37.814251,144.963169,CBS MoveON snapshot 2026-09-21
 9,Griffith University,Australia,Brisbane / Gold Coast,Oceania,-27.554516,153.050977,CBS MoveON snapshot 2026-09-21
 10,La Trobe University,Australia,Melbourne,Oceania,-37.721328,145.047012,CBS MoveON snapshot 2026-09-21
@@ -28,7 +28,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 27,Fundação Getulio Vargas (FGV-EAESP),Brazil,São Paulo,South America,-23.548943,-46.638818,CBS MoveON snapshot 2026-09-21
 28,INSPER,Brazil,São Paulo,South America,-23.548943,-46.638818,CBS MoveON snapshot 2026-09-21
 29,Concordia University,Canada,Montreal,North America,45.477378,-73.608568,CBS MoveON snapshot 2026-09-21
-30,Dalhousie University,Canada,Halifax,North America,,,
+30,Dalhousie University,Canada,Halifax,North America,44.63694,-63.59167,Wikipedia verified 2026-10-08
 31,HEC Montréal,Canada,Montreal,North America,45.545447,-73.639076,CBS MoveON snapshot 2026-09-21
 32,McGill University,Canada,Montreal,North America,45.506933,-73.578758,CBS MoveON snapshot 2026-09-21
 33,Queen's University,Canada,Kingston,North America,44.226212,-76.494223,CBS MoveON snapshot 2026-09-21
@@ -69,7 +69,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 68,Grenoble Ecole de Management,France,Grenoble,Europe,45.190264,5.713202,CBS MoveON snapshot 2026-09-21
 69,HEC Paris,France,Jouy-en-Josas,Europe,48.758113,2.169929,CBS MoveON snapshot 2026-09-21
 70,IÉSEG School of Management,France,Lille / Paris,Europe,50.632777,3.046759,CBS MoveON snapshot 2026-09-21
-71,INSEEC Grande Ecole,France,Paris,Europe,,,
+71,INSEEC Grande Ecole,France,Paris,Europe,48.8764089,2.3701517,Wikidata verified 2026-10-08
 72,ISC Paris School of Management,France,Paris,Europe,48.893043,2.302242,CBS MoveON snapshot 2026-09-21
 73,Kedge Business School,France,Bordeaux,Europe,43.236942,5.437471,CBS MoveON snapshot 2026-09-21
 74,Kedge Business School,France,Marseille,Europe,43.236942,5.437471,CBS MoveON snapshot 2026-09-21
@@ -78,7 +78,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 77,Sciences Po (Institut d'Etudes Politiques de Paris),France,Paris,Europe,48.8542,2.3283,CBS MoveON snapshot 2026-09-21
 78,Sciences Po (Institut d'Etudes Politiques de Paris),France,Regional campuses,Europe,48.8542,2.3283,CBS MoveON snapshot 2026-09-21
 79,Toulouse Business School,France,Toulouse,Europe,43.609674,1.432839,CBS MoveON snapshot 2026-09-21
-80,Université Catholique de Lyon,France,Lyon,Europe,,,
+80,Université Catholique de Lyon,France,Lyon,Europe,45.7513889,4.8269444,Wikidata verified 2026-10-08
 81,Université de Strasbourg,France,Strasbourg,Europe,48.580077,7.766799,CBS MoveON snapshot 2026-09-21
 82,Université Paris Dauphine,France,Paris,Europe,48.870784,2.274384,CBS MoveON snapshot 2026-09-21
 83,Université Toulouse Capitole,France,Toulouse,Europe,43.606872,1.43716,CBS MoveON snapshot 2026-09-21
@@ -103,12 +103,12 @@ id,university,country,city,continent,latitude,longitude,location_source
 102,The Hong Kong University of Science and Technology (HKUST),Hong Kong,Hong Kong,Asia,22.320336,114.23905,CBS MoveON snapshot 2026-09-21
 103,The University of Hong Kong (HKU),Hong Kong,Hong Kong,Asia,22.362242,114.105301,CBS MoveON snapshot 2026-09-21
 104,Reykjavik University,Iceland,Reykjavík,Europe,64.135338,-21.89521,CBS MoveON snapshot 2026-09-21
-105,University of Iceland,Iceland,Reykjavík,Europe,,,
+105,University of Iceland,Iceland,Reykjavík,Europe,64.1405556,-21.9494444,Wikidata verified 2026-10-08
 106,Universitas Gadjah Mada,Indonesia,Yogyakarta,Asia,-7.797224,110.368797,CBS MoveON snapshot 2026-09-21
 107,University College Cork,Ireland,Cork,Europe,51.89217,-8.49286,CBS MoveON snapshot 2026-09-21
 108,University College Dublin,Ireland,Dublin,Europe,53.307,-6.21519,CBS MoveON snapshot 2026-09-21
 109,University of Limerick,Ireland,Limerick,Europe,52.673162,-8.569708,CBS MoveON snapshot 2026-09-21
-110,Reichman University (IDC Herzliya),Israel,Herzliya,Asia,,,
+110,Reichman University (IDC Herzliya),Israel,Herzliya,Asia,32.176575,34.835625,Wikidata verified 2026-10-08
 111,Libera Università Internazionale degli Studi Sociali (LUISS) 'Guido Carli',Italy,Rome,Europe,41.895466,12.482324,CBS MoveON snapshot 2026-09-21
 112,Università Ca' Foscari Venezia,Italy,Venice,Europe,45.434314,12.326025,CBS MoveON snapshot 2026-09-21
 113,Università Commerciale Luigi Bocconi,Italy,Milan,Europe,45.448343,9.189857,CBS MoveON snapshot 2026-09-21
@@ -206,7 +206,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 205,King's College London,United Kingdom,London,Europe,51.512342,-0.115994,CBS MoveON snapshot 2026-09-21
 206,London Metropolitan University,United Kingdom,London,Europe,51.512939,-0.076631,CBS MoveON snapshot 2026-09-21
 207,Oxford Brookes University,United Kingdom,Oxford,Europe,51.754405,-1.222053,CBS MoveON snapshot 2026-09-21
-208,Regent's University London,United Kingdom,London,Europe,,,
+208,Regent's University London,United Kingdom,London,Europe,51.526,-0.155,Wikipedia verified 2026-10-08
 209,The University of Manchester,United Kingdom,Manchester,Europe,53.464983,-2.23249,CBS MoveON snapshot 2026-09-21
 210,University of Aberdeen,United Kingdom,Aberdeen,Europe,57.165477,-2.102337,CBS MoveON snapshot 2026-09-21
 211,University of Bath,United Kingdom,Bath,Europe,51.375502,-2.324644,CBS MoveON snapshot 2026-09-21
@@ -218,11 +218,11 @@ id,university,country,city,continent,latitude,longitude,location_source
 217,University of Leeds,United Kingdom,Leeds,Europe,53.805821,-1.55581,CBS MoveON snapshot 2026-09-21
 218,University of Leicester,United Kingdom,Leicester,Europe,52.623308,-1.1248,CBS MoveON snapshot 2026-09-21
 219,University of Liverpool,United Kingdom,Liverpool,Europe,53.404517,-2.964176,CBS MoveON snapshot 2026-09-21
-220,University of Sheffield,United Kingdom,Sheffield,Europe,,,
+220,University of Sheffield,United Kingdom,Sheffield,Europe,53.38139,-1.48861,Wikipedia verified 2026-10-08
 221,University of Sheffield,United Kingdom,Sheffield,Europe,53.381056,-1.490825,CBS MoveON snapshot 2026-09-21
 222,University of Strathclyde Glasgow,United Kingdom,Glasgow,Europe,55.872584,-4.28994,CBS MoveON snapshot 2026-09-21
 223,University of Warwick,United Kingdom,Coventry,Europe,52.380498,-1.562762,CBS MoveON snapshot 2026-09-21
-224,University of Westminster,United Kingdom,London,Europe,,,
+224,University of Westminster,United Kingdom,London,Europe,51.51694,-0.14306,Wikipedia/Wikidata verified 2026-10-08
 225,University of Westminster,United Kingdom,London,Europe,51.516897,-0.142664,CBS MoveON snapshot 2026-09-21
 226,Arizona State University,United States,Tempe,North America,33.424116,-111.927507,CBS MoveON snapshot 2026-09-21
 227,Babson College,United States,Wellesley,North America,42.29822,-71.265431,CBS MoveON snapshot 2026-09-21
