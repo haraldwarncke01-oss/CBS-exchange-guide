@@ -757,3 +757,68 @@ dialog{border-radius:2px;border-top:6px solid var(--cbs-blue)}
   .smart-filter-trigger{padding:0 9px;font-size:12px}
   .smart-filter-badge{min-width:18px;height:18px;line-height:18px;padding:0 5px}
 }
+
+/* v34 — compact first-level filter menus + hover flyouts */
+@media (min-width:721px){
+  .smart-filter-popover,
+  .smart-filter-country{
+    width:272px;
+    max-width:272px;
+    overflow:visible;
+  }
+  [data-filter-root="country"] .smart-filter-popover{left:0;right:auto}
+  [data-filter-root="availability"] .smart-filter-popover{left:auto;right:0}
+  [data-filter-root="eligibility"] .smart-filter-popover,
+  [data-filter-root="more"] .smart-filter-popover{left:auto;right:0}
+
+  .smart-filter-menu-body{
+    display:block;
+    min-height:0;
+    max-height:none;
+    overflow:visible;
+  }
+  .smart-filter-primary-pane{
+    max-height:420px;
+    overflow-y:auto;
+    border-right:0;
+    border-radius:0 0 3px 3px;
+  }
+  .smart-filter-secondary-pane{
+    display:none;
+    position:absolute;
+    top:-1px;
+    left:calc(100% - 1px);
+    width:340px;
+    max-height:430px;
+    padding:14px 15px 16px;
+    overflow-y:auto;
+    background:#fff;
+    border:1px solid #cfd6df;
+    border-radius:3px;
+    box-shadow:0 18px 44px rgba(25,39,57,.18);
+    z-index:1;
+  }
+  .smart-filter-popover.secondary-open .smart-filter-secondary-pane{display:block}
+  [data-filter-root="eligibility"] .smart-filter-secondary-pane,
+  [data-filter-root="more"] .smart-filter-secondary-pane{
+    left:auto;
+    right:calc(100% - 1px);
+  }
+  .smart-filter-popover.secondary-open .smart-filter-primary-pane{
+    box-shadow:inset -1px 0 0 #eef1f4;
+  }
+  .smart-secondary-title{
+    min-height:48px;
+    margin-bottom:8px;
+  }
+}
+
+@media (min-width:721px) and (max-width:940px){
+  .smart-filter-popover,
+  .smart-filter-country{
+    width:248px;
+    max-width:248px;
+  }
+  .smart-filter-secondary-pane{width:300px}
+  .smart-primary-copy small{max-width:155px}
+}

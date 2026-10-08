@@ -676,7 +676,7 @@ const SMART_FILTER_SECTIONS={
     {key:'favoritesOnly',label:'Favorites',kind:'toggle',onLabel:'Favorites only',offLabel:'All universities'}
   ]
 };
-const smartFilterUI={open:null,activeSection:{country:'Europe',availability:'minPlaces2027',eligibility:'myGpa',more:'arwuMax'},hoverTimer:null,ready:false};
+const smartFilterUI={open:null,secondaryOpen:null,activeSection:{country:'Europe',availability:'minPlaces2027',eligibility:'myGpa',more:'arwuMax'},hoverTimer:null,ready:false};
 function isSmartFilterMobile(){return window.matchMedia('(max-width: 720px)').matches}
 function nativeDefaultValue(id){return ({minPlaces2027:'0',availabilityMin:'0',minPlaces:'0',arwuMax:'0',historyWindow:'5',tempMetric:'AVG'}[id]??'')}
 function nativeControlIsActive(id){
@@ -752,7 +752,7 @@ function renderClimateChoices(){
 function renderCountryPrimary(){
   const pane=$('[data-smart-primary="country"]');if(!pane)return;
   pane.innerHTML=preferredContinents().map(contName=>{
-    const st=countrySelectionState(contName),count=continentMatchCount(contName),active=smartFilterUI.activeSection.country===contName;
+    const st=countrySelectionState(contName),count=continentMatchCount(contName),active=smartFilterUI.secondaryOpen==='country'&&smartFilterUI.activeSection.country===contName;
     const mark=st.checked?'✓':st.partial?'−':'';
     return `<div class="smart-country-primary ${active?'active':''}" data-smart-section="${esc(contName)}"><button type="button" class="smart-continent-toggle ${st.checked||st.partial?'selected':''}" data-country-continent-toggle="${esc(contName)}" aria-pressed="${st.checked}" aria-label="${st.checked?'Deselect':'Select'} all countries in ${esc(contName)}"><span aria-hidden="true">${mark}</span></button><button type="button" class="smart-primary-nav" data-smart-section="${esc(contName)}"><span><strong>${esc(contName)}</strong><small>${st.n?`${st.n} selected`:''}</small></span><span class="smart-primary-tail"><b>${count}</b><i aria-hidden="true">›</i></span></button></div>`;
   }).join('');
@@ -767,7 +767,7 @@ function renderCountrySecondary(){
 function renderGenericPrimary(category){
   const pane=$(`[data-smart-primary="${category}"]`);if(!pane)return;
   const sections=smartSections(category);if(!sections.some(s=>s.key===smartFilterUI.activeSection[category]))smartFilterUI.activeSection[category]=sections[0]?.key||'';
-  pane.innerHTML=sections.map(section=>{const active=smartFilterUI.activeSection[category]===section.key,summary=smartSectionSummary(section);return `<button type="button" class="smart-primary-item ${active?'active':''} ${smartSectionActive(section)?'has-value':''}" data-smart-section="${esc(section.key)}"><span class="smart-primary-copy"><strong>${esc(section.label)}</strong>${summary?`<small>${esc(summary)}</small>`:''}</span><span class="smart-primary-tail">${smartSectionActive(section)?'<b class="smart-active-dot" aria-hidden="true"></b>':''}<i aria-hidden="true">›</i></span></button>`}).join('');
+  pane.innerHTML=sections.map(section=>{const active=smartFilterUI.secondaryOpen===category&&smartFilterUI.activeSection[category]===section.key,summary=smartSectionSummary(section);return `<button type="button" class="smart-primary-item ${active?'active':''} ${smartSectionActive(section)?'has-value':''}" data-smart-section="${esc(section.key)}"><span class="smart-primary-copy"><strong>${esc(section.label)}</strong>${summary?`<small>${esc(summary)}</small>`:''}</span><span class="smart-primary-tail">${smartSectionActive(section)?'<b class="smart-active-dot" aria-hidden="true"></b>':''}<i aria-hidden="true">›</i></span></button>`}).join('');
 }
 function renderGenericSecondary(category){
   const pane=$(`[data-smart-secondary="${category}"]`);if(!pane)return;
@@ -782,6 +782,8 @@ function renderGenericSecondary(category){
 function renderSmartFilter(category){
   if(category==='country'){renderCountryPrimary();renderCountrySecondary()}
   else{renderGenericPrimary(category);renderGenericSecondary(category)}
+  const pop=$(`[data-smart-popover="${category}"]`);
+  pop?.classList.toggle('secondary-open',smartFilterUI.secondaryOpen===category);
 }
 function updateSmartFilterButtons(){
   for(const category of ['country','availability','eligibility','more']){
@@ -798,20 +800,20 @@ function refreshSmartFilterUI(){
   if(smartFilterUI.open)renderSmartFilter(smartFilterUI.open);
 }
 function closeSmartFilters(){
-  smartFilterUI.open=null;clearTimeout(smartFilterUI.hoverTimer);
-  document.querySelectorAll('[data-smart-popover]').forEach(p=>{p.hidden=true;p.classList.remove('mobile-secondary-open')});
+  smartFilterUI.open=null;smartFilterUI.secondaryOpen=null;clearTimeout(smartFilterUI.hoverTimer);
+  document.querySelectorAll('[data-smart-popover]').forEach(p=>{p.hidden=true;p.classList.remove('mobile-secondary-open','secondary-open')});
   document.querySelectorAll('[data-smart-trigger]').forEach(b=>b.setAttribute('aria-expanded','false'));
   document.body.classList.remove('smart-filter-mobile-open');
 }
 function openSmartFilter(category){
   if(smartFilterUI.open===category){closeSmartFilters();return}
-  closeSmartFilters();smartFilterUI.open=category;
+  closeSmartFilters();smartFilterUI.open=category;smartFilterUI.secondaryOpen=null;
   const pop=$(`[data-smart-popover="${category}"]`),trigger=$(`[data-smart-trigger="${category}"]`);if(!pop)return;
   pop.hidden=false;trigger?.setAttribute('aria-expanded','true');renderSmartFilter(category);
   if(isSmartFilterMobile())document.body.classList.add('smart-filter-mobile-open');
 }
 function activateSmartSection(category,key,viaClick=false){
-  smartFilterUI.activeSection[category]=key;renderSmartFilter(category);
+  smartFilterUI.activeSection[category]=key;smartFilterUI.secondaryOpen=category;renderSmartFilter(category);
   const pop=$(`[data-smart-popover="${category}"]`);if(viaClick&&isSmartFilterMobile())pop?.classList.add('mobile-secondary-open');
 }
 function dispatchControlChange(el){if(el)el.dispatchEvent(new Event('change',{bubbles:true}))}
