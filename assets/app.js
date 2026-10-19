@@ -954,7 +954,7 @@ function detailSectionHead(title,subtitle,infoKey='',infoTitle=''){
 function requirementsHtml(u){
   const r=requirement(u);
   if(!r||r.matchStatus!=='matched')return `<section class="detail-section eligibility-section">${detailSectionHead('Entry requirements','What you need to meet before applying.')}
-    <div class="detail-empty-state"><strong>No current MoveON match</strong><span>This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 5 October 2026. Requirements therefore cannot be shown reliably.</span></div></section>`;
+    <div class="detail-empty-state"><strong>No current MoveON match</strong><span>This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 19 October 2026. Requirements therefore cannot be shown reliably.</span></div></section>`;
   const gpa=Number.isFinite(r.minGpa)?r.minGpa.toFixed(1):'Not stated';
   const tests=[];if(Number.isFinite(r.ielts))tests.push(`IELTS ${r.ielts}`);if(Number.isFinite(r.toefl))tests.push(`TOEFL iBT ${r.toefl}`);if(Number.isFinite(r.cambridge))tests.push(`Cambridge ${r.cambridge}`);
   const langs=nonEnglishLabel(r);const sourceDate=r.sourceCheckedDate||'2026-10-05';
