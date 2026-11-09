@@ -257,3 +257,5 @@ university_id,university,city,country,jan_c,feb_c,mar_c,apr_c,may_c,jun_c,jul_c,
 256,University of Wisconsin - Madison,Madison,United States,-8.3,-5.8,0.9,7.3,14.1,19.8,22.2,21.3,16.8,9.4,1.7,-4.9,5.8,1991-2020,https://power.larc.nasa.gov/,2026-11-09
 257,Universidad Católica del Uruguay,Montevideo,Uruguay,22.9,22.6,21.2,18.0,14.7,11.6,10.2,11.4,12.8,15.7,18.5,21.3,17.1,1991-2020,https://power.larc.nasa.gov/,2026-11-09
 258,Universidad de Montevideo,Montevideo,Uruguay,22.9,22.6,21.2,18.0,14.7,11.6,10.2,11.4,12.8,15.7,18.5,21.3,17.1,1991-2020,https://power.larc.nasa.gov/,2026-11-09
+259,"Tec de Monterrey, Campus Puebla",Puebla,Mexico,13.3,15.1,17.2,19.4,20.0,18.6,17.1,16.9,16.4,15.6,14.4,13.6,15.0,1991-2020,https://power.larc.nasa.gov/api/temporal/climatology/point?parameters=T2M&community=SB&longitude=-98.242235&latitude=19.018467&format=JSON&start=1991&end=2020,2026-11-09
+260,Università della Svizzera italiana,Lugano,Switzerland,3.9,5.1,8.9,12.3,16.4,20.4,22.5,22.1,17.9,13.3,8.4,4.6,11.1,1991-2020,https://ds.data.jma.go.jp/gmd/tcc/tcc/products/climate/climatview/graph_mkhtml_nrm.php?e=6&k=0&m=2&n=06770&r=0&s=1&y=2025,2026-11-09

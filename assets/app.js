@@ -330,8 +330,15 @@ function courseProgramMeta(id){return state.coursePrograms.find(p=>p.id===id)||n
 function nl2br(v){return esc(v||'').replace(/\n/g,'<br>')}
 function placesDeltaFromHistory(u){const p27=requirement(u)?.fall2027Places;return Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null}
 function annual2027Capacity(r){
-  const match=r?.numberOfPlacesRaw.match(/(\d+)\s*\(\s*2027\s*\/\s*28\s*\)/);
+  const match=r?.numberOfPlacesRaw?.match(/(\d+)\s*\(\s*2027\s*\/\s*28\s*\)/);
   return match?`${match[1]} places for 2027/28 (annual)`:'';
+}
+function fall2027Capacity(r){
+  if(r?.matchStatus!=='matched')return {status:'not_listed',label:'No current MoveON match'};
+  if(Number.isFinite(r.fall2027Places))return {status:'published',label:'MoveON published',places:r.fall2027Places};
+  const annual=annual2027Capacity(r);
+  if(annual)return {status:'annual',label:annual};
+  return {status:'unpublished',label:'Not yet published'};
 }
 function historicalAvailability(u){return YEARS.filter(y=>u.history[y]?.status==='available').length}
 function gpaPass(r,myGpa){
@@ -549,15 +556,16 @@ function popupActions(u){
 }
 function popupHtml(u){
   const c=state.climate.get(u.id),s=competitionSummary(u),avg=climateValue(c,'AVG'),ci=costIndex(u);
-  return `<div class="popup-name">${esc(listUniversityTitle(u))}</div><div class="popup-meta"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span> ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}</div>${popupActions(u)}`;
+  const capacity=fall2027Capacity(requirement(u));
+  return `<div class="popup-name">${esc(listUniversityTitle(u))}</div><div class="popup-meta"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span> ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>Fall 2027 places <strong>${esc(capacity.places??capacity.label)}</strong></span><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}</div>${popupActions(u)}`;
 }
 function sharedMarkerPopup(universities){
   const entries=universities.map(u=>{
-    const places=requirement(u)?.fall2027Places;
+    const capacity=fall2027Capacity(requirement(u));
     return `<section class="shared-marker-entry">
       <div class="popup-name">${esc(listUniversityTitle(u))}</div>
       <div class="popup-facts">${demandChip(competitionSummary(u).status)}
-        <span>Fall 2027 places <strong>${places??'—'}</strong></span>
+        <span>Fall 2027 places <strong>${esc(capacity.places??capacity.label)}</strong></span>
       </div>
       ${popupActions(u)}
     </section>`;
@@ -579,10 +587,10 @@ function sortValue(u,key){
 function cmp(a,b,key,dir){let av=sortValue(a,key),bv=sortValue(b,key);const aNull=av==null||Number.isNaN(av),bNull=bv==null||Number.isNaN(bv);if(aNull&&bNull)return 0;if(aNull)return 1;if(bNull)return -1;if(typeof av==='string'||typeof bv==='string')return String(av).localeCompare(String(bv))*dir;return (av-bv)*dir}
 function renderTable(){
   const body=$('#tableBody');if(!body)return;const rows=[...state.filtered].sort((a,b)=>cmp(a,b,state.sortKey,state.sortDir));
-  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),ci=costIndex(u),r=requirement(u),p27=r?.fall2027Places,delta=placesDeltaFromHistory(u);return `<tr>
+  body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),ci=costIndex(u),r=requirement(u),capacity=fall2027Capacity(r),delta=placesDeltaFromHistory(u);return `<tr>
     <td class="university-cell"><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(listUniversityTitle(u))}</button></div><span class="muted university-school">${isMultiAgreement(u)?'Separate CBS agreement':esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td>
     <td class="location-cell">${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td>
-    <td class="places-cell places-2027-cell"><strong>${Number.isFinite(p27)?p27:'—'}</strong><span class="cell-caption">${Number.isFinite(p27)?'MoveON published':annual2027Capacity(r)||'not published'}</span></td>
+    <td class="places-cell places-2027-cell"><strong>${capacity.places??'—'}</strong><span class="cell-caption">${esc(capacity.label)}</span></td>
     <td class="places-cell"><strong>${u.latestPlaces??'—'}</strong><span class="cell-caption">CBS history</span></td>
     <td class="places-change-cell"><strong class="${Number.isFinite(delta)?(delta>0?'delta-up':delta<0?'delta-down':'delta-same'):''}">${Number.isFinite(delta)?`${delta>0?'+':''}${delta}`:'—'}</strong><span class="cell-caption">${Number.isFinite(delta)?(delta>0?'more':delta<0?'fewer':'same'):'no comparison'}</span></td>
     <td class="availability-cell">${Object.keys(u.history).length?`<strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years available</span>`:'<strong>—</strong><span class="cell-caption">no CBS history</span>'}</td>
@@ -677,8 +685,8 @@ function readFilterCriteria(){
   };
 }
 function matchesFilters(u,c){
-  const climate=state.climate.get(u.id),tv=climateValue(climate,c.tempMetric),ci=costVsDenmark(u),r=requirement(u),p27=r?.fall2027Places,delta=placesDeltaFromHistory(u);
-  const changeOk=!c.placesChange||(c.placesChange==='published'&&Number.isFinite(p27))||(c.placesChange==='unpublished'&&!Number.isFinite(p27))||(c.placesChange==='not_reduced'&&Number.isFinite(delta)&&delta>=0)||(c.placesChange==='increase'&&Number.isFinite(delta)&&delta>0)||(c.placesChange==='same'&&Number.isFinite(delta)&&delta===0)||(c.placesChange==='decrease'&&Number.isFinite(delta)&&delta<0);
+  const climate=state.climate.get(u.id),tv=climateValue(climate,c.tempMetric),ci=costVsDenmark(u),r=requirement(u),capacity=fall2027Capacity(r),p27=capacity.places,delta=placesDeltaFromHistory(u);
+  const changeOk=!c.placesChange||c.placesChange===capacity.status||(c.placesChange==='not_reduced'&&Number.isFinite(delta)&&delta>=0)||(c.placesChange==='increase'&&Number.isFinite(delta)&&delta>0)||(c.placesChange==='same'&&Number.isFinite(delta)&&delta===0)||(c.placesChange==='decrease'&&Number.isFinite(delta)&&delta<0);
   return (!c.q||`${u.name} ${u.school} ${u.country} ${city(u)||''}`.toLowerCase().includes(c.q))&&(!c.countries?.length||c.countries.includes(u.country))&&(!c.demand||u.latestStatus===c.demand)&&(!c.minP27||(Number.isFinite(p27)&&p27>=c.minP27))&&gpaPass(r,c.myGpa)&&(!c.englishOnly||r?.englishOnlyPossible==='yes')&&(historicalAvailability(u)>=c.availabilityMin)&&changeOk&&((u.latestPlaces??0)>=c.minP)&&(!c.arwuMax||(u.arwuSort&&u.arwuSort<=c.arwuMax))&&(!c.languageProof||r?.proofCategory===c.languageProof)&&englishEvidencePass(r,c.englishEvidence,c.gymEnglishLevel,c.gymEnglishGrade)&&(c.foundedBefore==null||(historyIsVerified(universityHistory(u))&&Number.isFinite(universityHistory(u)?.foundedYear)&&universityHistory(u).foundedYear<c.foundedBefore))&&(!c.academicStructure||r?.academicStructure===c.academicStructure)&&(c.minTemp==null||(Number.isFinite(tv)&&tv>=c.minTemp))&&(c.maxCost==null||(Number.isFinite(ci)&&ci<=c.maxCost))&&(!c.housingFilter||r?.onCampusHousing===c.housingFilter)&&(!c.favoritesOnly||state.favorites.has(u.id));
 }
 const COUNTABLE_SELECTS=['demandLevel','minPlaces2027','myGpa','availabilityMin','placesChange','minPlaces','arwuMax','languageProof','englishEvidence','gymEnglishLevel','gymEnglishGrade','foundedBefore','academicStructure','minTemp','maxCost','housingFilter'];
@@ -942,27 +950,30 @@ function renderCompare(){
   updateSavedCounts();
   if(!chosen.length){box.innerHTML=`<div class="compare-empty"><div class="compare-empty-icon">⇄</div><h3>No universities selected yet</h3><p>Use the <strong>Compare</strong> button next to a university on the map, list or detail view. You can compare up to six.</p></div>`;return}
   if(chosen.length===1){const u=chosen[0];box.innerHTML=`<div class="compare-empty"><div class="compare-one">${favoriteButton(u,true)}<strong>${esc(u.name)}</strong><span>${esc(u.country)}</span></div><h3>Add one more university</h3><p>A comparison becomes most useful with two or more universities.</p><button type="button" class="secondary-button" data-detail="${u.id}">View selected university</button></div>`;box.querySelector('[data-detail]')?.addEventListener('click',()=>openDetail(u.id,'compare'));wireSelectionControls(box);return}
-  const cell=u=>({
-    demand:demandChip(competitionSummary(u).status),
-    places:String(u.latestPlaces??'—'),
-    places27:Number.isFinite(requirement(u)?.fall2027Places)?String(requirement(u).fall2027Places):esc(annual2027Capacity(requirement(u))||'—'),
-    delta:Number.isFinite(placesDeltaFromHistory(u))?`${placesDeltaFromHistory(u)>0?'+':''}${placesDeltaFromHistory(u)}`:'—',
-    avail:Object.keys(u.history).length?`${availabilityInWindow(u)}/${selectedYears().length}`:'—',
-    arwu:esc(rankText(u)),
-    avg:tempText(climateValue(state.climate.get(u.id),'AVG')),
-    sep:tempText(climateValue(state.climate.get(u.id),'SEP')),
-    oct:tempText(climateValue(state.climate.get(u.id),'OCT')),
-    nov:tempText(climateValue(state.climate.get(u.id),'NOV')),
-    dec:tempText(climateValue(state.climate.get(u.id),'DEC')),
-    cost:esc(costVsDenmarkText(u)),
-    gpa:Number.isFinite(requirement(u)?.minGpa)?requirement(u).minGpa.toFixed(1):'—',
-    proof:esc(proofLabel(requirement(u)?.proofCategory||'unclear')),
-    english:esc(englishCoursesLabel(requirement(u)?.englishCoursesCategory||'unclear')),
-    otherLang:esc(nonEnglishLabel(requirement(u))),
-    academic:esc(academicLabel(requirement(u)?.academicStructure||'unclear')),
-    housing:esc(housingLabel(requirement(u)?.onCampusHousing||'unclear')),
-    founded:esc(foundingLine(u))
-  });
+  const cell=u=>{
+    const capacity=fall2027Capacity(requirement(u));
+    return {
+      demand:demandChip(competitionSummary(u).status),
+      places:String(u.latestPlaces??'—'),
+      places27:esc(capacity.places??capacity.label),
+      delta:Number.isFinite(placesDeltaFromHistory(u))?`${placesDeltaFromHistory(u)>0?'+':''}${placesDeltaFromHistory(u)}`:'—',
+      avail:Object.keys(u.history).length?`${availabilityInWindow(u)}/${selectedYears().length}`:'—',
+      arwu:esc(rankText(u)),
+      avg:tempText(climateValue(state.climate.get(u.id),'AVG')),
+      sep:tempText(climateValue(state.climate.get(u.id),'SEP')),
+      oct:tempText(climateValue(state.climate.get(u.id),'OCT')),
+      nov:tempText(climateValue(state.climate.get(u.id),'NOV')),
+      dec:tempText(climateValue(state.climate.get(u.id),'DEC')),
+      cost:esc(costVsDenmarkText(u)),
+      gpa:Number.isFinite(requirement(u)?.minGpa)?requirement(u).minGpa.toFixed(1):'—',
+      proof:esc(proofLabel(requirement(u)?.proofCategory||'unclear')),
+      english:esc(englishCoursesLabel(requirement(u)?.englishCoursesCategory||'unclear')),
+      otherLang:esc(nonEnglishLabel(requirement(u))),
+      academic:esc(academicLabel(requirement(u)?.academicStructure||'unclear')),
+      housing:esc(housingLabel(requirement(u)?.onCampusHousing||'unclear')),
+      founded:esc(foundingLine(u))
+    };
+  };
   const rows=[
     ['Location',u=>`${countryLineHtml(u.country)}${city(u)?`<span class="city-line">${esc(city(u))}</span>`:''}<span class="muted location-continent">${esc(continent(u))}</span>`],
     [`Competitiveness · ${windowLabel()}`,u=>cell(u).demand],
@@ -995,15 +1006,26 @@ function universityBackgroundInline(u){
   return `<span class="founding-inline provisional" title="${esc(title)}"><span class="founding-separator" aria-hidden="true">·</span><span>${esc(label)}</span></span>`;
 }
 
-function climateDetails(u,c){if(!c)return `<p class="muted climate-wait">Climate snapshot unavailable for this location…</p>`;const p=detailClimatePeriod(u,c);if(!p)return `<p class="muted climate-wait">Climate snapshot unavailable for this period…</p>`;const note=p.calendarBased?'MoveON Fall period':'Standard comparison window';return `<div class="climate-summary"><strong>${tempText(p.avg)}</strong><span>${esc(p.label)} average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${p.months.map(k=>`<div class="climate-card"><span>${esc(CLIMATE_MONTH_LABEL[k])}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details><small class="metric-support">${esc(note)}</small>`}
-function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><small class="metric-support">No comparable country-level snapshot is available.</small>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><small class="metric-support">${esc(costLevel(u))} · ${esc(u.country)} index ${ci.toFixed(1)} vs Denmark 54.8</small><small>Country-level comparison</small>`}
+function climateDetails(u,c){if(!c)return `<p class="muted climate-wait">Climate snapshot unavailable for this location…</p>`;const p=detailClimatePeriod(u,c);if(!p)return `<p class="muted climate-wait">Climate snapshot unavailable for this period…</p>`;const note=p.calendarBased?'MoveON Fall period':'Standard comparison window';return `<div class="climate-summary"><strong>${tempText(p.avg)}</strong><span>${esc(p.label)} average</span></div><details class="month-breakdown"><summary>Monthly breakdown</summary><div class="climate-grid">${p.months.map(k=>`<div class="climate-card"><span>${esc(CLIMATE_MONTH_LABEL[k])}</span><strong>${tempText(c[k])}</strong></div>`).join('')}</div></details><small class="metric-support">${esc(note)}${c.sourceUrl?.startsWith('https://')?` · <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">Climate source ↗</a>`:''}</small>`}
+function costDetails(u){const ci=costIndex(u),pct=costVsDenmark(u);if(!Number.isFinite(ci))return `<strong>Cost comparison unavailable</strong><small class="metric-support">Numbeo’s 2026 Mid-Year country table has no comparable figure for ${esc(u.country)}.</small>`;const raw=Math.round(Math.abs(pct));const comparison=raw<3?'About the same as Denmark':pct<0?`${raw}% cheaper than Denmark`:`${raw}% more expensive than Denmark`;return `<strong>${esc(comparison)}</strong><small class="metric-support">${esc(costLevel(u))} · ${esc(u.country)} index ${ci.toFixed(1)} vs Denmark 54.8</small><small>Country-level comparison</small>`}
 function detailSectionHead(title,subtitle,infoKey='',infoTitle=''){
   return `<div class="detail-section-head"><div><h3 class="detail-section-title">${esc(title)}${infoKey?infoButton(infoKey,infoTitle||title):''}</h3>${subtitle?`<p>${esc(subtitle)}</p>`:''}</div></div>`;
+}
+function moveonNotes(title,subtitle,notes){
+  const items=notes.filter(([,value])=>value?.trim()&&!/^(?:n\/?a|none|not available|[-–—])[.\s]*$/i.test(value.trim()));
+  if(!items.length)return '';
+  return `<details class="detail-disclosure source-disclosure">
+    <summary><span><strong>${esc(title)}</strong><small>${esc(subtitle)}</small></span><b aria-hidden="true">⌄</b></summary>
+    <div class="detail-note-list">${items.map(([label,value,url])=>`
+      <details class="month-breakdown"><summary>${esc(label)}</summary>
+        <p>${esc(value)}${url?`<br><a href="${esc(url)}" target="_blank" rel="noopener">Open documents in MoveON ↗</a>`:''}</p>
+      </details>`).join('')}</div>
+  </details>`;
 }
 function requirementsHtml(u){
   const r=requirement(u);
   if(!r||r.matchStatus!=='matched')return `<section class="detail-section eligibility-section">${detailSectionHead('Entry requirements','What you need to meet before applying.')}
-    <div class="detail-empty-state"><strong>No current MoveON match</strong><span>This university is in the five-year CBS placement workbook but was not found in the current Regular / Undergraduate MoveON list checked on 9 November 2026. Requirements therefore cannot be shown reliably.</span></div></section>`;
+    <div class="detail-empty-state"><strong>Historical CBS record only</strong><span>This agreement appears in the CBS placement workbook. The current MoveON snapshot has no matching Regular undergraduate agreement, so current eligibility and capacity are unconfirmed.</span></div></section>`;
   const gpa=Number.isFinite(r.minGpa)?r.minGpa.toFixed(1):'Not stated';
   const tests=[];if(Number.isFinite(r.ielts))tests.push(`IELTS ${r.ielts}`);if(Number.isFinite(r.toefl))tests.push(`TOEFL iBT ${r.toefl}`);if(Number.isFinite(r.cambridge))tests.push(`Cambridge ${r.cambridge}`);
   const langs=nonEnglishLabel(r);const sourceDate=r.sourceCheckedDate||'2026-10-05';
@@ -1017,6 +1039,13 @@ function requirementsHtml(u){
       <div class="metric-card essential-card"><span>English-taught courses</span><strong>${esc(englishCoursesLabel(r.englishCoursesCategory))}</strong><small>English-only exchange possible: ${esc(englishOnlyLabel(r.englishOnlyPossible))}</small></div>
       <div class="metric-card essential-card ${spanishRequired?'language-warning-card':''}"><span>Non-English language</span><strong>${esc(langs)}</strong>${r.languageLevels?`<small>${esc(r.languageLevels)}</small>`:''}${spanishWarning}</div>
     </div>
+    ${moveonNotes('Programme access & restrictions','Check which programmes and courses this agreement covers',[
+      ['Agreement covers',r.agreementWithRaw],
+      ['Limitations and restrictions',r.limitationsRaw],
+      ['Programme information',r.programInformationRaw],
+      ['Course availability',r.courseAvailabilityRaw],
+      ['Work experience details',r.workExperienceDetailsRaw],
+    ])}
     <div class="practical-section">
       <div class="practical-section-head"><div><h4>Practical exchange details</h4><p>Calendar, housing and exchange-network information.</p></div></div>
       <div class="detail-metrics practical-metrics">
@@ -1025,15 +1054,18 @@ function requirementsHtml(u){
         <div class="metric-card"><span>Erasmus+ / PIM</span><strong>${esc(r.erasmusPlus==='yes'?'Erasmus+ mentioned':'Erasmus+ not stated')}</strong><small>PIM: ${esc(r.pim==='yes'?'Yes':r.pim==='no'?'No':'Not stated')}</small></div>
       </div>
     </div>
-    ${(r.languageRequirementsRaw||r.coursesInEnglishRaw||r.limitationsRaw||r.courseAvailabilityRaw)?`<details class="detail-disclosure source-disclosure">
-      <summary><span><strong>Detailed CBS notes</strong><small>Language wording, course access and restrictions</small></span><b aria-hidden="true">⌄</b></summary>
-      <div class="detail-note-list">
-        ${r.languageRequirementsRaw?`<details class="month-breakdown"><summary>Full language requirements</summary><p>${esc(r.languageRequirementsRaw)}</p></details>`:''}
-        ${r.coursesInEnglishRaw?`<details class="month-breakdown"><summary>English-course availability</summary><p>${esc(r.coursesInEnglishRaw)}</p></details>`:''}
-        ${r.limitationsRaw?`<details class="month-breakdown"><summary>Limitations / restrictions</summary><p>${esc(r.limitationsRaw)}</p></details>`:''}
-        ${r.courseAvailabilityRaw?`<details class="month-breakdown"><summary>Course availability</summary><p>${esc(r.courseAvailabilityRaw)}</p></details>`:''}
-      </div>
-    </details>`:''}
+    ${moveonNotes('Language details','MoveON’s wording on instruction and language proof',[
+      ['Language of instruction',r.languageInstructionRaw],
+      ['Full language requirements',r.languageRequirementsRaw],
+      ['English-course availability',r.coursesInEnglishRaw],
+    ])}
+    ${moveonNotes('Practical notes & documents','Visa guidance, funding, fact sheets and other MoveON notes',[
+      ['Visa guidance',r.visaRaw],
+      ['Financial support',r.financialSupportRaw],
+      ['Fact sheets and documents',r.factSheetRaw,r.detailUrl],
+      ['Additional information',r.additionalInformationRaw],
+      ['About the university',r.infoAboutUniversityRaw],
+    ])}
   </section>`;
 }
 
@@ -1111,8 +1143,9 @@ function openDetail(id,source='unknown',trackOpen=true){
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><small class="metric-support">${esc(arwuRankNote(u.arwuRank))}</small>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<small class="metric-support">ARWU institution: ${esc(u.arwuMatchedInstitution)}</small>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><small class="metric-support">Not present in the published ARWU 2026 top 1000.</small>`:`<strong>No verified ARWU match</strong><small class="metric-support">The local match could not be verified.</small>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
   const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h?.status||'no_data';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h?.statusLabel||'Unknown')}</span></div>`}).join('');
-  const moveonReq=requirement(u),moveon27=moveonReq?.fall2027Places,moveonDelta=placesDeltaFromHistory(u);
-  const annualCapacity=annual2027Capacity(moveonReq);
+  const capacity=fall2027Capacity(requirement(u)),moveonDelta=placesDeltaFromHistory(u);
+  const capacityTitle=capacity.places??(capacity.status==='annual'?'No Fall breakdown':capacity.label);
+  const capacityNote=capacity.status==='annual'?capacity.label:capacity.status==='not_listed'?'Historical CBS record only':'CBS MoveON capacity snapshot';
   const deltaLabel=Number.isFinite(moveonDelta)?`${moveonDelta>0?'+':''}${moveonDelta}`:'—';
   $('#detailContent').innerHTML=`<div class="detail-header"><div><div class="detail-title-row"><h2 class="detail-title">${esc(u.name)}</h2>${universityBackgroundInline(u)}</div><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
     <section class="detail-section overview-section">
@@ -1126,7 +1159,7 @@ function openDetail(id,source='unknown',trackOpen=true){
     </section>
     <section class="detail-section placement-section">
       <div class="detail-section-head placement-head"><div><h3 class="detail-section-title">CBS placement history ${infoButton('competitiveness','How CBS competitiveness is calculated')}</h3><p>See how many places remained after allocation in each of the last five years.</p></div><span class="section-meta">Highlighted years drive the current map color</span></div>
-      <div class="upcoming-capacity"><div><span>Fall 2027 places</span><strong>${Number.isFinite(moveon27)?moveon27:annualCapacity?'No Fall breakdown':'Not yet published'}</strong><small>${esc(annualCapacity||'CBS MoveON current capacity')}</small></div><div><span>Change vs 2026/27</span><strong class="${Number.isFinite(moveonDelta)?(moveonDelta>0?'delta-up':moveonDelta<0?'delta-down':'delta-same'):''}">${deltaLabel}</strong><small>${Number.isFinite(u.latestPlaces)?`CBS history 2026/27: ${u.latestPlaces}`:'Needs historical baseline'}</small></div><p>Fall 2027 capacity is separate from the historical competitiveness result and does not affect the map color.</p></div>
+      <div class="upcoming-capacity"><div><span>Fall 2027 places</span><strong>${esc(capacityTitle)}</strong><small>${esc(capacityNote)}</small></div><div><span>Change vs 2026/27</span><strong class="${Number.isFinite(moveonDelta)?(moveonDelta>0?'delta-up':moveonDelta<0?'delta-down':'delta-same'):''}">${deltaLabel}</strong><small>${Number.isFinite(u.latestPlaces)?`CBS history 2026/27: ${u.latestPlaces}`:'Needs historical baseline'}</small></div><p>Map colors reflect historical CBS competitiveness. MoveON shows the current capacity separately.</p></div>
       <div class="history">${yearsHtml}</div>
       <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
     </section>
@@ -1192,10 +1225,10 @@ async function loadUniversityLocations(){
   }catch(e){console.warn('University location CSV unavailable',e)}
 }
 async function loadStaticClimate(){
-  try{const rows=await csvObjects('data/climate.csv');for(const r of rows){const id=Number(r.university_id),v={JAN:numCsv(r.jan_c),FEB:numCsv(r.feb_c),MAR:numCsv(r.mar_c),APR:numCsv(r.apr_c),MAY:numCsv(r.may_c),JUN:numCsv(r.jun_c),JUL:numCsv(r.jul_c),AUG:numCsv(r.aug_c),SEP:numCsv(r.sep_c),OCT:numCsv(r.oct_c),NOV:numCsv(r.nov_c),DEC:numCsv(r.dec_c)};if(Number.isFinite(id)&&['SEP','OCT','NOV','DEC'].every(k=>Number.isFinite(v[k])))state.climate.set(id,v)}}catch(e){console.warn('Climate CSV unavailable',e)}
+  try{const rows=await csvObjects('data/climate.csv');for(const r of rows){const id=Number(r.university_id),v={JAN:numCsv(r.jan_c),FEB:numCsv(r.feb_c),MAR:numCsv(r.mar_c),APR:numCsv(r.apr_c),MAY:numCsv(r.may_c),JUN:numCsv(r.jun_c),JUL:numCsv(r.jul_c),AUG:numCsv(r.aug_c),SEP:numCsv(r.sep_c),OCT:numCsv(r.oct_c),NOV:numCsv(r.nov_c),DEC:numCsv(r.dec_c),sourceUrl:r.source_url||''};if(Number.isFinite(id)&&['SEP','OCT','NOV','DEC'].every(k=>Number.isFinite(v[k])))state.climate.set(id,v)}}catch(e){console.warn('Climate CSV unavailable',e)}
 }
 async function loadStaticRequirements(){
-  try{const rows=await csvObjects('data/partner_requirements.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.requirements.set(id,{matchStatus:r.match_status||'unclear',moveonUniversity:r.moveon_university||'',coreId:r.core_id||'',relationId:r.relation_id||'',detailUrl:r.moveon_detail_url||'',fall2026Places:numCsv(r.fall_2026_places),fall2027Places:numCsv(r.fall_2027_places),placesDelta:numCsv(r.places_change_2027_vs_2026_27_history||r.places_change_2027_vs_2026),numberOfPlacesRaw:r.number_of_places_raw||'',minGpa:numCsv(r.minimum_gpa_danish7),minimumGpaRaw:r.minimum_gpa_raw||'',academicStructure:r.academic_structure||'unclear',academicCalendarRaw:r.academic_calendar_raw||'',fallStartMonth:r.fall_period_start_month||'',fallEndMonth:r.fall_period_end_month||'',fallPeriodLabel:r.fall_period_label||'',fallPeriodStatus:r.fall_period_parse_status||'',workExperience:r.work_experience_required||'unclear',languageInstructionRaw:r.language_of_instruction_raw||'',englishCoursesCategory:r.courses_in_english_category||'unclear',coursesInEnglishRaw:r.courses_in_english_raw||'',proofCategory:r.language_proof_category||'unclear',proofRaw:r.proof_of_language_raw||'',languageRequirementsRaw:r.language_requirements_raw||'',englishOnlyPossible:r.english_only_possible||'unclear',nonEnglishRequirement:r.non_english_requirement||'unclear',nonEnglishLanguages:r.non_english_languages||'',languageLevels:r.language_levels||'',cbsLetterAccepted:boolCsv(r.cbs_letter_accepted),cbsEnglishProgrammeAccepted:boolCsv(r.cbs_english_programme_accepted),cbsEnglishProgrammeAnyWithConditions:boolCsv(r.cbs_english_programme_any_with_conditions),oneEnglishCourseAccepted:boolCsv(r.one_english_taught_cbs_course_accepted),english60EctsAccepted:boolCsv(r.english_60_ects_accepted),cbsEnglishProficiencyLetterAccepted:boolCsv(r.cbs_english_proficiency_letter_accepted),gymEnglishAMin:numCsv(r.danish_gymnasium_english_a_min_grade),gymEnglishBMin:numCsv(r.danish_gymnasium_english_b_min_grade),gymEnglishGenericMin:numCsv(r.danish_gymnasium_english_generic_min_grade),ielts:numCsv(r.ielts_overall_min),toefl:numCsv(r.toefl_ibt_overall_min),cambridge:numCsv(r.cambridge_overall_min),onCampusHousing:r.on_campus_housing||'unclear',housingRaw:r.housing_raw||'',erasmusPlus:r.erasmus_plus||'unclear',pim:r.pim||'unclear',limitationsRaw:r.limitations_raw||'',courseAvailabilityRaw:r.course_availability_raw||'',programInformationRaw:r.program_information_raw||'',additionalInformationRaw:r.additional_information_raw||'',infoAboutUniversityRaw:r.info_about_university_raw||'',visaRaw:r.visa_raw||'',sourceCheckedDate:r.source_checked_date||''})}}catch(e){console.warn('MoveON requirements CSV unavailable',e)}
+  try{const rows=await csvObjects('data/partner_requirements.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.requirements.set(id,{matchStatus:r.match_status||'unclear',moveonUniversity:r.moveon_university||'',coreId:r.core_id||'',relationId:r.relation_id||'',detailUrl:r.moveon_detail_url||'',fall2026Places:numCsv(r.fall_2026_places),fall2027Places:numCsv(r.fall_2027_places),placesDelta:numCsv(r.places_change_2027_vs_2026_27_history||r.places_change_2027_vs_2026),numberOfPlacesRaw:r.number_of_places_raw||'',minGpa:numCsv(r.minimum_gpa_danish7),minimumGpaRaw:r.minimum_gpa_raw||'',academicStructure:r.academic_structure||'unclear',academicCalendarRaw:r.academic_calendar_raw||'',fallStartMonth:r.fall_period_start_month||'',fallEndMonth:r.fall_period_end_month||'',fallPeriodLabel:r.fall_period_label||'',fallPeriodStatus:r.fall_period_parse_status||'',workExperience:r.work_experience_required||'unclear',workExperienceDetailsRaw:r.work_experience_details_raw||'',agreementWithRaw:r.agreement_with_raw||'',languageInstructionRaw:r.language_of_instruction_raw||'',englishCoursesCategory:r.courses_in_english_category||'unclear',coursesInEnglishRaw:r.courses_in_english_raw||'',proofCategory:r.language_proof_category||'unclear',proofRaw:r.proof_of_language_raw||'',languageRequirementsRaw:r.language_requirements_raw||'',englishOnlyPossible:r.english_only_possible||'unclear',nonEnglishRequirement:r.non_english_requirement||'unclear',nonEnglishLanguages:r.non_english_languages||'',languageLevels:r.language_levels||'',cbsLetterAccepted:boolCsv(r.cbs_letter_accepted),cbsEnglishProgrammeAccepted:boolCsv(r.cbs_english_programme_accepted),cbsEnglishProgrammeAnyWithConditions:boolCsv(r.cbs_english_programme_any_with_conditions),oneEnglishCourseAccepted:boolCsv(r.one_english_taught_cbs_course_accepted),english60EctsAccepted:boolCsv(r.english_60_ects_accepted),cbsEnglishProficiencyLetterAccepted:boolCsv(r.cbs_english_proficiency_letter_accepted),gymEnglishAMin:numCsv(r.danish_gymnasium_english_a_min_grade),gymEnglishBMin:numCsv(r.danish_gymnasium_english_b_min_grade),gymEnglishGenericMin:numCsv(r.danish_gymnasium_english_generic_min_grade),ielts:numCsv(r.ielts_overall_min),toefl:numCsv(r.toefl_ibt_overall_min),cambridge:numCsv(r.cambridge_overall_min),onCampusHousing:r.on_campus_housing||'unclear',housingRaw:r.housing_raw||'',erasmusPlus:r.erasmus_plus||'unclear',pim:r.pim||'unclear',limitationsRaw:r.limitations_raw||'',courseAvailabilityRaw:r.course_availability_raw||'',programInformationRaw:r.program_information_raw||'',additionalInformationRaw:r.additional_information_raw||'',infoAboutUniversityRaw:r.info_about_university_raw||'',visaRaw:r.visa_raw||'',financialSupportRaw:r.financial_support_raw||'',factSheetRaw:r.fact_sheet_raw||'',sourceCheckedDate:r.source_checked_date||''})}}catch(e){console.warn('MoveON requirements CSV unavailable',e)}
 }
 async function loadUniversityHistory(){
   try{const rows=await csvObjects('data/university_history.csv');for(const r of rows){const id=Number(r.university_id);if(!Number.isFinite(id))continue;state.universityHistory.set(id,{foundedYear:numCsv(r.founded_year),age2026:numCsv(r.age_2026),rootsYear:numCsv(r.roots_year),historyNote:r.history_note||'',officialWebsite:r.official_website||'',sourceUrl:r.source_url||'',sourceType:r.source_type||'',verificationStatus:r.verification_status||'candidate_unverified'})}}catch(e){console.warn('University history CSV unavailable',e)}

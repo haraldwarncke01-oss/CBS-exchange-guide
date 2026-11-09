@@ -257,3 +257,5 @@ university_id,university,rank,matched_institution,match_method,status,source_url
 256,University of Wisconsin - Madison,35,"University of Wisconsin, Madison",verified_existing_match,matched,https://www.shanghairanking.com/rankings/arwu/2026,2026,United States,university-of-wisconsin-madison
 257,Universidad Católica del Uruguay,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
 258,Universidad de Montevideo,,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+259,"Tec de Monterrey, Campus Puebla",,,verified_absent_from_official_top_1000,not_top_1000,https://www.shanghairanking.com/rankings/arwu/2026,2026,,
+260,Università della Svizzera italiana,601-700,Università Della Svizzera Italiana,verified,matched,https://www.shanghairanking.com/universities/universit-della-svizzera-italiana,2026,Switzerland,universit-della-svizzera-italiana

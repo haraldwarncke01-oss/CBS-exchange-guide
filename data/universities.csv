@@ -258,3 +258,4 @@ id,university,lookup_name,school,country,level,latest_places,available_last2
 257,Universidad Católica del Uruguay,Universidad Católica del Uruguay,Regular,Uruguay,UG,2,false
 258,Universidad de Montevideo,Universidad de Montevideo,Regular,Uruguay,UG,0,false
 259,"Tec de Monterrey, Campus Puebla","Tec de Monterrey, Campus Puebla",Regular,Mexico,UG,,false
+260,Università della Svizzera italiana,Università della Svizzera italiana,Faculty of Economics and Faculty of Communication Sciences,Switzerland,UG,,false

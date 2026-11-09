@@ -15492,5 +15492,19 @@
     "latestPlaces": null,
     "history": {},
     "latestStatus": "unknown"
+  },
+  {
+    "id": 260,
+    "country": "Switzerland",
+    "name": "Università della Svizzera italiana",
+    "lookupName": "Università della Svizzera italiana",
+    "school": "Faculty of Economics and Faculty of Communication Sciences",
+    "rawName": "Università della Svizzera italiana / Faculty of Economics and Faculty of Communication Sciences / Regular / Undergraduate",
+    "level": "UG",
+    "availabilityYears": 0,
+    "availableLast2": false,
+    "latestPlaces": null,
+    "history": {},
+    "latestStatus": "unknown"
   }
 ]

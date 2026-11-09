@@ -258,3 +258,4 @@ id,university,country,city,continent,latitude,longitude,location_source
 257,Universidad Católica del Uruguay,Uruguay,Montevideo,South America,-34.894119,-56.067451,CBS MoveON snapshot 2026-09-21
 258,Universidad de Montevideo,Uruguay,Montevideo,South America,-34.901916,-56.17669,CBS MoveON snapshot 2026-09-21
 259,"Tec de Monterrey, Campus Puebla",Mexico,Puebla,North America,19.018467,-98.242235,Tecnológico de Monterrey campus map https://tec.mx/es/puebla
+260,Università della Svizzera italiana,Switzerland,Lugano,Europe,46.010422,8.957784,CBS MoveON snapshot 2026-11-09; Lugano campus https://www.usi.ch/en/university/where-to-find-us/lugano-west-campus
