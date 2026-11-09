@@ -11,12 +11,12 @@ id,university,country,city,continent,latitude,longitude,location_source
 10,La Trobe University,Australia,Melbourne,Oceania,-37.721328,145.047012,CBS MoveON snapshot 2026-09-21
 11,Macquarie University,Australia,Sydney,Oceania,-33.774322,151.111988,CBS MoveON snapshot 2026-09-21
 12,Monash University,Australia,Melbourne,Oceania,-37.910546,145.134935,CBS MoveON snapshot 2026-09-21
-13,Queensland University of Technology,Australia,Brisbane,Oceania,-27.664696,153.148226,CBS MoveON snapshot 2026-09-21
+13,Queensland University of Technology,Australia,Brisbane,Oceania,-27.475595,153.028074,CBS MoveON snapshot 2026-11-09 (corrected university mapping)
 14,Swinburne University of Technology,Australia,Melbourne,Oceania,-37.814251,144.963169,CBS MoveON snapshot 2026-09-21
 15,University of Melbourne,Australia,Melbourne,Oceania,-37.796152,144.961352,CBS MoveON snapshot 2026-09-21
 16,University of New South Wales,Australia,Sydney,Oceania,-33.917547,151.231055,CBS MoveON snapshot 2026-09-21
 17,University of Newcastle,Australia,Newcastle,Oceania,-32.926357,151.78122,CBS MoveON snapshot 2026-09-21
-18,University of Queensland,Australia,Brisbane,Oceania,-27.475595,153.028074,CBS MoveON snapshot 2026-09-21
+18,University of Queensland,Australia,Brisbane,Oceania,-27.664696,153.148226,CBS MoveON snapshot 2026-11-09 (corrected university mapping)
 19,University of Sydney,Australia,Sydney,Oceania,-33.887926,151.186923,CBS MoveON snapshot 2026-09-21
 20,"University of Technology, Sydney",Australia,Sydney,Oceania,-33.884026,151.201551,CBS MoveON snapshot 2026-09-21
 21,University of Western Australia,Australia,Perth,Oceania,-31.975924,115.81721,CBS MoveON snapshot 2026-09-21
@@ -64,17 +64,17 @@ id,university,country,city,continent,latitude,longitude,location_source
 63,Audencia Business School,France,Nantes,Europe,47.246879,-1.55372,CBS MoveON snapshot 2026-09-21
 64,Ecole de Management de Lyon,France,Lyon,Europe,45.786587,4.764917,CBS MoveON snapshot 2026-09-21
 65,EDHEC Business School,France,Lille,Europe,50.632778,3.045227,CBS MoveON snapshot 2026-09-21
-66,EDHEC Business School,France,Nice,Europe,50.632778,3.045227,CBS MoveON snapshot 2026-09-21
+66,EDHEC Business School,France,Nice,Europe,43.669296,7.220836,manual campus correction 2026-11-09 (official EDHEC Nice address)
 67,ESSEC Business School,France,Cergy,Europe,49.032997,2.078922,CBS MoveON snapshot 2026-09-21
 68,Grenoble Ecole de Management,France,Grenoble,Europe,45.190264,5.713202,CBS MoveON snapshot 2026-09-21
 69,HEC Paris,France,Jouy-en-Josas,Europe,48.758113,2.169929,CBS MoveON snapshot 2026-09-21
 70,IÉSEG School of Management,France,Lille / Paris,Europe,50.632777,3.046759,CBS MoveON snapshot 2026-09-21
 71,INSEEC Grande Ecole,France,Paris,Europe,48.8764089,2.3701517,Wikidata verified 2026-10-08
 72,ISC Paris School of Management,France,Paris,Europe,48.893043,2.302242,CBS MoveON snapshot 2026-09-21
-73,Kedge Business School,France,Bordeaux,Europe,43.236942,5.437471,CBS MoveON snapshot 2026-09-21
+73,Kedge Business School,France,Bordeaux,Europe,44.79671,-0.60214,manual campus correction 2026-11-09 (official KEDGE Bordeaux address)
 74,Kedge Business School,France,Marseille,Europe,43.236942,5.437471,CBS MoveON snapshot 2026-09-21
 75,Paris School of Business,France,Paris,Europe,48.862373,2.377798,CBS MoveON snapshot 2026-09-21
-76,Rennes School of Business,France,Rennes,Europe,48.12812,-1.692644,CBS MoveON snapshot 2026-09-21
+76,Rennes School of Business,France,Rennes,Europe,48.12812,-1.692644,manual verification 2026-11-09 (Rennes longitude retained; current MoveON sign appears incorrect)
 77,Sciences Po (Institut d'Etudes Politiques de Paris),France,Paris,Europe,48.8542,2.3283,CBS MoveON snapshot 2026-09-21
 78,Sciences Po (Institut d'Etudes Politiques de Paris),France,Regional campuses,Europe,48.8542,2.3283,CBS MoveON snapshot 2026-09-21
 79,Toulouse Business School,France,Toulouse,Europe,43.609674,1.432839,CBS MoveON snapshot 2026-09-21
@@ -153,7 +153,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 152,Kozminski University,Poland,Warsaw,Europe,52.272254,21.014949,CBS MoveON snapshot 2026-09-21
 153,ISCTE - Instituto Universitário de Lisboa,Portugal,Lisbon,Europe,38.747623,-9.153291,CBS MoveON snapshot 2026-09-21
 154,Universidade Católica Portuguesa,Portugal,Lisbon,Europe,38.749461,-9.16497,CBS MoveON snapshot 2026-09-21
-155,Universidade Católica Portuguesa,Portugal,Porto,Europe,38.749461,-9.16497,CBS MoveON snapshot 2026-09-21
+155,Universidade Católica Portuguesa,Portugal,Porto,Europe,41.153214,-8.671661,manual campus correction 2026-11-09 (official Católica Porto GPS)
 156,Universidade de Lisboa,Portugal,Lisbon,Europe,38.733706,-9.159978,CBS MoveON snapshot 2026-09-21
 157,Universidade Nova de Lisboa,Portugal,Lisbon,Europe,38.752493,-9.159114,CBS MoveON snapshot 2026-09-21
 158,Nanyang Technological University,Singapore,Singapore,Asia,1.348427,103.684355,CBS MoveON snapshot 2026-09-21
@@ -169,12 +169,12 @@ id,university,country,city,continent,latitude,longitude,location_source
 168,Universidad Carlos III de Madrid,Spain,Madrid,Europe,40.333578,-3.766407,CBS MoveON snapshot 2026-09-21
 169,Universidad CEU San Pablo,Spain,Madrid,Europe,40.442853,-3.719095,CBS MoveON snapshot 2026-09-21
 170,"Universidad de Deusto, Campus Bilbao",Spain,Bilbao,Europe,43.26979,-2.931519,CBS MoveON snapshot 2026-09-21
-171,"Universidad de Deusto, Campus San Sebastian",Spain,San Sebastián,Europe,43.26979,-2.931519,CBS MoveON snapshot 2026-09-21
+171,"Universidad de Deusto, Campus San Sebastian",Spain,San Sebastián,Europe,43.30949,-1.9759,manual campus correction 2026-11-09 (Deusto San Sebastian campus)
 172,Universidad de Navarra,Spain,Pamplona,Europe,42.800935,-1.65814,CBS MoveON snapshot 2026-09-21
 173,Universidad Pontificia Comillas de Madrid (ICADE),Spain,Madrid,Europe,40.430095,-3.711358,CBS MoveON snapshot 2026-09-21
 174,Universidad Rey Juan Carlos,Spain,Madrid,Europe,40.334719,-3.872745,CBS MoveON snapshot 2026-09-21
-175,Universitat Autònoma de Barcelona (UAB),Spain,Bellaterra / Barcelona,Europe,41.386554,2.164033,CBS MoveON snapshot 2026-09-21
-176,Universitat de Barcelona,Spain,Barcelona,Europe,41.504336,2.100031,CBS MoveON snapshot 2026-09-21
+175,Universitat Autònoma de Barcelona (UAB),Spain,Bellaterra / Barcelona,Europe,41.504336,2.100031,CBS MoveON snapshot 2026-11-09 (corrected university mapping)
+176,Universitat de Barcelona,Spain,Barcelona,Europe,41.386554,2.164033,CBS MoveON snapshot 2026-11-09 (corrected university mapping)
 177,Universitat de València,Spain,Valencia,Europe,39.479301,-0.36413,CBS MoveON snapshot 2026-09-21
 178,Universitat Pompeu Fabra,Spain,Barcelona,Europe,41.3833,2.1834,CBS MoveON snapshot 2026-09-21
 179,Universitat Pompeu Fabra,Spain,Barcelona,Europe,41.378995,2.179152,CBS MoveON snapshot 2026-09-21
@@ -233,7 +233,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 232,Cornell University,United States,Ithaca,North America,42.447576,-76.476089,CBS MoveON snapshot 2026-09-21
 233,Cornell University,United States,Ithaca,North America,42.447576,-76.476089,CBS MoveON snapshot 2026-09-21
 234,Emory University,United States,Atlanta,North America,33.791111,-84.323333,CBS MoveON snapshot 2026-09-21
-235,George Washington University,United States,"Washington, D.C.",North America,47.658345,-122.303017,CBS MoveON snapshot 2026-09-21
+235,George Washington University,United States,"Washington, D.C.",North America,38.905242,-77.050052,CBS MoveON snapshot 2026-11-09 (corrected university mapping)
 236,Indiana University,United States,Bloomington,North America,39.166757,-86.526944,CBS MoveON snapshot 2026-09-21
 237,New York University,United States,New York City,North America,40.729427,-73.997318,CBS MoveON snapshot 2026-09-21
 238,North Carolina State University,United States,Raleigh,North America,35.784344,-78.662501,CBS MoveON snapshot 2026-09-21
@@ -252,7 +252,7 @@ id,university,country,city,continent,latitude,longitude,location_source
 251,University of South Carolina,United States,Columbia,North America,33.999949,-81.027401,CBS MoveON snapshot 2026-09-21
 252,University of Southern California,United States,Los Angeles,North America,34.018503,-118.283301,CBS MoveON snapshot 2026-09-21
 253,University of Texas at Austin,United States,Austin,North America,30.285758,-97.73588,CBS MoveON snapshot 2026-09-21
-254,University of Washington,United States,Seattle,North America,38.905242,-77.050052,CBS MoveON snapshot 2026-09-21
+254,University of Washington,United States,Seattle,North America,47.658345,-122.303017,CBS MoveON snapshot 2026-11-09 (corrected university mapping)
 255,University of Wisconsin - La Crosse,United States,La Crosse,North America,43.812818,-91.22964,CBS MoveON snapshot 2026-09-21
 256,University of Wisconsin - Madison,United States,Madison,North America,43.075871,-89.399927,CBS MoveON snapshot 2026-09-21
 257,Universidad Católica del Uruguay,Uruguay,Montevideo,South America,-34.894119,-56.067451,CBS MoveON snapshot 2026-09-21
