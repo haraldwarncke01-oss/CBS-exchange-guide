@@ -234,7 +234,7 @@ const layer=L.layerGroup().addTo(map);
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function selectedYears(){const n=Number($('#historyWindow')?.value||5);return YEARS.slice(0,n)}
 function windowLabel(){const n=Number($('#historyWindow')?.value||5);return n===1?'2026–27 only':n===5?'all 5 years':`last ${n} years`}
-function places(u,y){const h=u.history[y],v=h?.places;return v==null?(h?.noPlaces?'—':h?.noData?'—':'?'):v}
+function places(u,y){const h=u.history[y],v=h?.places;return v==null?(!h||h.noPlaces||h.noData?'—':'?'):v}
 function tempText(v){return Number.isFinite(v)?`${v.toFixed(1)}°C`:'…'}
 function climateValue(c,key){if(!c)return null;if(key==='AVG'){const vals=['SEP','OCT','NOV','DEC'].map(k=>c[k]).filter(Number.isFinite);return vals.length===4?vals.reduce((a,b)=>a+b,0)/4:null}return Number.isFinite(c[key])?c[key]:null}
 const CLIMATE_MONTHS=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
@@ -329,6 +329,10 @@ function saveCourseProgram(v){try{localStorage.setItem(courseProgramKey,v)}catch
 function courseProgramMeta(id){return state.coursePrograms.find(p=>p.id===id)||null}
 function nl2br(v){return esc(v||'').replace(/\n/g,'<br>')}
 function placesDeltaFromHistory(u){const p27=requirement(u)?.fall2027Places;return Number.isFinite(p27)&&Number.isFinite(u.latestPlaces)?p27-u.latestPlaces:null}
+function annual2027Capacity(r){
+  const match=r?.numberOfPlacesRaw.match(/(\d+)\s*\(\s*2027\s*\/\s*28\s*\)/);
+  return match?`${match[1]} places for 2027/28 (annual)`:'';
+}
 function historicalAvailability(u){return YEARS.filter(y=>u.history[y]?.status==='available').length}
 function gpaPass(r,myGpa){
   if(myGpa==null)return true;
@@ -540,9 +544,25 @@ function summaryExplanation(s){
   return text;
 }
 function markerIcon(u){const s=competitionSummary(u),m=STATUS_META[s.status]||STATUS_META.unknown;return L.divIcon({className:'',html:`<div class="uni-marker" style="background:${m.bg};border-color:${m.border}"></div>`,iconSize:[17,17],iconAnchor:[8,8]})}
+function popupActions(u){
+  return `<div class="popup-actions"><button class="popup-btn" data-detail="${u.id}" aria-label="View details for ${esc(listUniversityTitle(u))}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`;
+}
 function popupHtml(u){
   const c=state.climate.get(u.id),s=competitionSummary(u),avg=climateValue(c,'AVG'),ci=costIndex(u);
-  return `<div class="popup-name">${esc(u.name)}</div><div class="popup-meta"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span> ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}</div><div class="popup-actions"><button class="popup-btn" data-detail="${u.id}">View details</button>${favoriteButton(u,true)}${compareButton(u,true)}</div>`
+  return `<div class="popup-name">${esc(listUniversityTitle(u))}</div><div class="popup-meta"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span> ${esc(u.country)}${city(u)?` · ${esc(city(u))}`:''} · ${esc(continent(u))} · ${esc(windowLabel())}</div><div class="popup-facts"><div class="popup-demand">${demandChip(s.status)}</div><span>ARWU: <strong>${esc(rankText(u))}</strong></span>${Number.isFinite(avg)?`<span>Sep–Dec average: <strong>${tempText(avg)}</strong></span>`:''}${Number.isFinite(ci)?`<span>Cost: <strong>${esc(costVsDenmarkText(u))}</strong></span>`:''}</div>${popupActions(u)}`;
+}
+function sharedMarkerPopup(universities){
+  const entries=universities.map(u=>{
+    const places=requirement(u)?.fall2027Places;
+    return `<section class="shared-marker-entry">
+      <div class="popup-name">${esc(listUniversityTitle(u))}</div>
+      <div class="popup-facts">${demandChip(competitionSummary(u).status)}
+        <span>Fall 2027 places <strong>${places??'—'}</strong></span>
+      </div>
+      ${popupActions(u)}
+    </section>`;
+  }).join('');
+  return `<div class="popup-name">${universities.length} exchange options at this location</div>${entries}`;
 }
 
 function sortValue(u,key){
@@ -562,10 +582,10 @@ function renderTable(){
   body.innerHTML=rows.map(u=>{const c=state.climate.get(u.id),s=competitionSummary(u),ci=costIndex(u),r=requirement(u),p27=r?.fall2027Places,delta=placesDeltaFromHistory(u);return `<tr>
     <td class="university-cell"><div class="uni-cell-head">${favoriteButton(u,true)}<button class="uni-link" data-detail="${u.id}">${esc(listUniversityTitle(u))}</button></div><span class="muted university-school">${isMultiAgreement(u)?'Separate CBS agreement':esc(u.school||'Regular')}</span><div class="row-compare">${compareButton(u,false)}</div></td>
     <td class="location-cell">${countryLineHtml(u.country)}<span class="city-line">${esc(city(u)||'—')}</span></td>
-    <td class="places-cell places-2027-cell"><strong>${Number.isFinite(p27)?p27:'—'}</strong><span class="cell-caption">${Number.isFinite(p27)?'MoveON published':'not published'}</span></td>
+    <td class="places-cell places-2027-cell"><strong>${Number.isFinite(p27)?p27:'—'}</strong><span class="cell-caption">${Number.isFinite(p27)?'MoveON published':annual2027Capacity(r)||'not published'}</span></td>
     <td class="places-cell"><strong>${u.latestPlaces??'—'}</strong><span class="cell-caption">CBS history</span></td>
     <td class="places-change-cell"><strong class="${Number.isFinite(delta)?(delta>0?'delta-up':delta<0?'delta-down':'delta-same'):''}">${Number.isFinite(delta)?`${delta>0?'+':''}${delta}`:'—'}</strong><span class="cell-caption">${Number.isFinite(delta)?(delta>0?'more':delta<0?'fewer':'same'):'no comparison'}</span></td>
-    <td class="availability-cell"><strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years available</span></td>
+    <td class="availability-cell">${Object.keys(u.history).length?`<strong>${availabilityInWindow(u)}/${selectedYears().length}</strong><span class="cell-caption">years available</span>`:'<strong>—</strong><span class="cell-caption">no CBS history</span>'}</td>
     <td class="competition-cell">${demandChip(s.status)}</td>
     <td class="gpa-cell">${Number.isFinite(r?.minGpa)?`<strong>${r.minGpa.toFixed(1)}</strong>`:r?.matchStatus==='matched'?'<span class="muted">Not stated</span>':'—'}</td>
     <td class="language-cell"><span class="muted">${esc(r?.matchStatus==='matched'?proofLabel(r.proofCategory):'No current MoveON match')}</span></td>
@@ -576,7 +596,36 @@ function renderTable(){
   body.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>openDetail(Number(b.dataset.detail),'list')));wireSelectionControls(body);
 }
 function renderMarkers(){
-  layer.clearLayers();state.markers.clear();for(const u of state.filtered){const c=state.coords.get(u.id);if(!c)continue;const m=L.marker([c.lat,c.lon],{icon:markerIcon(u)}).bindPopup(popupHtml(u));m.on('popupopen',e=>{const root=e.popup.getElement();const btn=root?.querySelector('[data-detail]');if(btn)btn.onclick=()=>openDetail(Number(btn.dataset.detail),'map');if(root)wireSelectionControls(root)});m.addTo(layer);state.markers.set(u.id,m)}
+  layer.clearLayers();
+  state.markers.clear();
+  const locations=new Map();
+  for(const u of state.filtered){
+    const coords=state.coords.get(u.id);
+    if(!coords)continue;
+    const key=`${coords.lat},${coords.lon}`;
+    if(!locations.has(key))locations.set(key,{coords,universities:[]});
+    locations.get(key).universities.push(u);
+  }
+  for(const {coords,universities} of locations.values()){
+    const count=universities.length;
+    const shared=count>1;
+    const title=shared?`${count} exchange options at this location`:listUniversityTitle(universities[0]);
+    const icon=shared
+      ?L.divIcon({className:'',html:`<div class="uni-marker shared-marker" aria-hidden="true">${count}</div>`,iconSize:[24,24],iconAnchor:[12,12]})
+      :markerIcon(universities[0]);
+    const content=shared?sharedMarkerPopup(universities):popupHtml(universities[0]);
+    const marker=L.marker([coords.lat,coords.lon],{icon,title}).bindPopup(content,{maxHeight:340});
+    marker.on('popupopen',e=>{
+      const root=e.popup.getElement();
+      if(!root)return;
+      root.querySelectorAll('[data-detail]').forEach(btn=>{
+        btn.onclick=()=>openDetail(Number(btn.dataset.detail),'map');
+      });
+      wireSelectionControls(root);
+    });
+    marker.addTo(layer);
+    for(const u of universities)state.markers.set(u.id,marker);
+  }
 }
 function updateLegend(){const el=$('#legendWindow');if(el)el.textContent=`Map colors · ${windowLabel()}`}
 function syncLanguageEvidenceControls(){
@@ -896,9 +945,9 @@ function renderCompare(){
   const cell=u=>({
     demand:demandChip(competitionSummary(u).status),
     places:String(u.latestPlaces??'—'),
-    places27:Number.isFinite(requirement(u)?.fall2027Places)?String(requirement(u).fall2027Places):'—',
+    places27:Number.isFinite(requirement(u)?.fall2027Places)?String(requirement(u).fall2027Places):esc(annual2027Capacity(requirement(u))||'—'),
     delta:Number.isFinite(placesDeltaFromHistory(u))?`${placesDeltaFromHistory(u)>0?'+':''}${placesDeltaFromHistory(u)}`:'—',
-    avail:`${availabilityInWindow(u)}/${selectedYears().length}`,
+    avail:Object.keys(u.history).length?`${availabilityInWindow(u)}/${selectedYears().length}`:'—',
     arwu:esc(rankText(u)),
     avg:tempText(climateValue(state.climate.get(u.id),'AVG')),
     sep:tempText(climateValue(state.climate.get(u.id),'SEP')),
@@ -1061,8 +1110,9 @@ function openDetail(id,source='unknown',trackOpen=true){
   const u=state.all.find(x=>x.id===id);if(!u)return;if(trackOpen){analyticsCapture('university_opened',analyticsUniversityProps(u,{source}));startDetailEngagement(u,source)}state.currentDetailId=id;const c=state.climate.get(u.id),s=competitionSummary(u),windowSet=new Set(selectedYears());
   const rankMeta=state.arwuReady?(u.arwuRank?`<strong>${esc(formatRank(u.arwuRank))}</strong><small class="metric-support">${esc(arwuRankNote(u.arwuRank))}</small>${u.arwuMatchedInstitution&&u.arwuMatchedInstitution!==u.name?`<small class="metric-support">ARWU institution: ${esc(u.arwuMatchedInstitution)}</small>`:''}`:u.arwuStatus==='not_top_1000'?`<strong>Not in top 1000</strong><small class="metric-support">Not present in the published ARWU 2026 top 1000.</small>`:`<strong>No verified ARWU match</strong><small class="metric-support">The local match could not be verified.</small>`):'<strong>Rank data loading…</strong>';
   const shift=s.override?'<span class="recent-shift">Recent years weighted more</span>':'';
-  const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h.status||'unknown';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h.statusLabel||'Unknown')}</span></div>`}).join('');
-  const moveonReq=requirement(u),moveon26=moveonReq?.fall2026Places,moveon27=moveonReq?.fall2027Places,moveonDelta=placesDeltaFromHistory(u);
+  const yearsHtml=YEARS.map(y=>{const h=u.history[y],st=h?.status||'no_data';return `<div class="year-card status-${esc(st)} ${windowSet.has(y)?'':'outside-window'}"><strong>${y.replace('-','–')}</strong><b>${places(u,y)}</b><span class="year-status">${esc(STATUS_META[st]?.label||h?.statusLabel||'Unknown')}</span></div>`}).join('');
+  const moveonReq=requirement(u),moveon27=moveonReq?.fall2027Places,moveonDelta=placesDeltaFromHistory(u);
+  const annualCapacity=annual2027Capacity(moveonReq);
   const deltaLabel=Number.isFinite(moveonDelta)?`${moveonDelta>0?'+':''}${moveonDelta}`:'—';
   $('#detailContent').innerHTML=`<div class="detail-header"><div><div class="detail-title-row"><h2 class="detail-title">${esc(u.name)}</h2>${universityBackgroundInline(u)}</div><p class="detail-sub"><span>${esc(u.school||'Regular')}</span><span class="meta-sep">·</span><span class="detail-country"><span class="country-flag" aria-hidden="true">${countryFlag(u.country)}</span>${esc(u.country)}</span>${city(u)?`<span class="meta-sep">·</span><span>${esc(city(u))}</span>`:''}<span class="meta-sep">·</span><span>${esc(continent(u))}</span></p></div><div class="detail-actions">${favoriteButton(u,false)}${compareButton(u,false)}</div></div>
     <section class="detail-section overview-section">
@@ -1076,7 +1126,7 @@ function openDetail(id,source='unknown',trackOpen=true){
     </section>
     <section class="detail-section placement-section">
       <div class="detail-section-head placement-head"><div><h3 class="detail-section-title">CBS placement history ${infoButton('competitiveness','How CBS competitiveness is calculated')}</h3><p>See how many places remained after allocation in each of the last five years.</p></div><span class="section-meta">Highlighted years drive the current map color</span></div>
-      <div class="upcoming-capacity"><div><span>Fall 2027 places</span><strong>${Number.isFinite(moveon27)?moveon27:'Not yet published'}</strong><small>CBS MoveON current capacity</small></div><div><span>Change vs 2026/27</span><strong class="${Number.isFinite(moveonDelta)?(moveonDelta>0?'delta-up':moveonDelta<0?'delta-down':'delta-same'):''}">${deltaLabel}</strong><small>${Number.isFinite(u.latestPlaces)?`CBS history 2026/27: ${u.latestPlaces}`:'Needs historical baseline'}</small></div><p>Fall 2027 capacity is separate from the historical competitiveness result and does not affect the map color.</p></div>
+      <div class="upcoming-capacity"><div><span>Fall 2027 places</span><strong>${Number.isFinite(moveon27)?moveon27:annualCapacity?'No Fall breakdown':'Not yet published'}</strong><small>${esc(annualCapacity||'CBS MoveON current capacity')}</small></div><div><span>Change vs 2026/27</span><strong class="${Number.isFinite(moveonDelta)?(moveonDelta>0?'delta-up':moveonDelta<0?'delta-down':'delta-same'):''}">${deltaLabel}</strong><small>${Number.isFinite(u.latestPlaces)?`CBS history 2026/27: ${u.latestPlaces}`:'Needs historical baseline'}</small></div><p>Fall 2027 capacity is separate from the historical competitiveness result and does not affect the map color.</p></div>
       <div class="history">${yearsHtml}</div>
       <div class="history-summary-line"><strong>Overall for ${esc(windowLabel())}: ${esc(STATUS_META[s.status]?.short||'No comparable years')}</strong><span>${s.observed}/${s.selected} comparable years</span></div>
     </section>
@@ -1089,7 +1139,7 @@ function openDetail(id,source='unknown',trackOpen=true){
 }
 
 function refreshDataStatus(){
-  const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} ranked · ${state.arwuPendingCount} not in top 1000`:'ARWU: loading local snapshot';
+  const arwu=state.arwuReady?`ARWU: ${state.arwuRankedCount} ranked · ${state.arwuPendingCount} without a rank`:'ARWU: loading local snapshot';
   const climate=`Climate: ${state.climate.size}/${state.all.length} local snapshot`;
   const req=`MoveON: ${[...state.requirements.values()].filter(x=>x.matchStatus==='matched').length}/${state.all.length} current matches`;
   $('#dataStatus').textContent=`${arwu} · ${climate} · ${req}`;

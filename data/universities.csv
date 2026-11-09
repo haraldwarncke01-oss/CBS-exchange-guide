@@ -178,8 +178,8 @@ id,university,lookup_name,school,country,level,latest_places,available_last2
 177,Universitat de València,Universitat de València,Facultat d'Economia,Spain,UG,8,false
 178,Universitat Pompeu Fabra,Universitat Pompeu Fabra,Escola Superior de Comerc International (ESCI),Spain,UG,4,false
 179,Universitat Pompeu Fabra,Universitat Pompeu Fabra,International Business Economics,Spain,UG,4,false
-180,Universitat Ramon Llull,Universitat Ramon Llull,ESADE Business School / Regular,Spain,UG,3,false
-181,Universitat Ramon Llull,Universitat Ramon Llull,ESADE Business School,Spain,UG,10,false
+180,Universitat Ramon Llull,Universitat Ramon Llull,ESADE Business School / Digital Management only,Spain,UG,3,false
+181,Universitat Ramon Llull,Universitat Ramon Llull,ESADE Business School / Regular (BBA),Spain,UG,10,false
 182,Lund University,Lund University,School of Economics and Management,Sweden,UG,2,true
 183,Stockholm School of Economics,Stockholm School of Economics,Regular,Sweden,UG,2,false
 184,Stockholm University,Stockholm University,Stockholm Business School / Regular,Sweden,UG,2,true
@@ -257,3 +257,4 @@ id,university,lookup_name,school,country,level,latest_places,available_last2
 256,University of Wisconsin - Madison,University of Wisconsin - Madison,Wisconsin School of Business,United States,UG,6,true
 257,Universidad Católica del Uruguay,Universidad Católica del Uruguay,Regular,Uruguay,UG,2,false
 258,Universidad de Montevideo,Universidad de Montevideo,Regular,Uruguay,UG,0,false
+259,"Tec de Monterrey, Campus Puebla","Tec de Monterrey, Campus Puebla",Regular,Mexico,UG,,false

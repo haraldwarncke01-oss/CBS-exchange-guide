@@ -178,8 +178,8 @@ id,university,country,city,continent,latitude,longitude,location_source
 177,Universitat de València,Spain,Valencia,Europe,39.479301,-0.36413,CBS MoveON snapshot 2026-09-21
 178,Universitat Pompeu Fabra,Spain,Barcelona,Europe,41.3833,2.1834,CBS MoveON snapshot 2026-09-21
 179,Universitat Pompeu Fabra,Spain,Barcelona,Europe,41.378995,2.179152,CBS MoveON snapshot 2026-09-21
-180,Universitat Ramon Llull,Spain,Sant Cugat del Vallès,Europe,41.411307,2.131272,CBS MoveON snapshot 2026-09-21
-181,Universitat Ramon Llull,Spain,Sant Cugat del Vallès,Europe,41.411307,2.131272,CBS MoveON snapshot 2026-09-21
+180,Universitat Ramon Llull,Spain,Sant Cugat del Vallès,Europe,41.466992,2.089221,Esade Sant Cugat campus map https://esade.edu/en/about-us/campus-services/sant-cugat
+181,Universitat Ramon Llull,Spain,Sant Cugat del Vallès,Europe,41.466992,2.089221,Esade Sant Cugat campus map https://esade.edu/en/about-us/campus-services/sant-cugat
 182,Lund University,Sweden,Lund,Europe,55.707026,13.195767,CBS MoveON snapshot 2026-09-21
 183,Stockholm School of Economics,Sweden,Stockholm,Europe,59.341598,18.056823,CBS MoveON snapshot 2026-09-21
 184,Stockholm University,Sweden,Stockholm,Europe,59.362945,18.059721,CBS MoveON snapshot 2026-09-21
@@ -257,3 +257,4 @@ id,university,country,city,continent,latitude,longitude,location_source
 256,University of Wisconsin - Madison,United States,Madison,North America,43.075871,-89.399927,CBS MoveON snapshot 2026-09-21
 257,Universidad Católica del Uruguay,Uruguay,Montevideo,South America,-34.894119,-56.067451,CBS MoveON snapshot 2026-09-21
 258,Universidad de Montevideo,Uruguay,Montevideo,South America,-34.901916,-56.17669,CBS MoveON snapshot 2026-09-21
+259,"Tec de Monterrey, Campus Puebla",Mexico,Puebla,North America,19.018467,-98.242235,Tecnológico de Monterrey campus map https://tec.mx/es/puebla

@@ -10744,7 +10744,7 @@
     "country": "Spain",
     "name": "Universitat Ramon Llull",
     "lookupName": "Universitat Ramon Llull",
-    "school": "ESADE Business School / Regular",
+    "school": "ESADE Business School / Digital Management only",
     "rawName": "Universitat Ramon Llull / ESADE Business School / Regular / BSc Digital Management / Undergraduate",
     "level": "UG",
     "availabilityYears": 0,
@@ -10804,7 +10804,7 @@
     "country": "Spain",
     "name": "Universitat Ramon Llull",
     "lookupName": "Universitat Ramon Llull",
-    "school": "ESADE Business School",
+    "school": "ESADE Business School / Regular (BBA)",
     "rawName": "Universitat Ramon Llull / ESADE Business School / Regular / Undergraduate",
     "level": "UG",
     "availabilityYears": 0,
@@ -15478,5 +15478,19 @@
       }
     },
     "latestStatus": "no_places"
+  },
+  {
+    "id": 259,
+    "country": "Mexico",
+    "name": "Tec de Monterrey, Campus Puebla",
+    "lookupName": "Tec de Monterrey, Campus Puebla",
+    "school": "Regular",
+    "rawName": "Tec de Monterrey, Campus Puebla / Regular / Undergraduate",
+    "level": "UG",
+    "availabilityYears": 0,
+    "availableLast2": false,
+    "latestPlaces": null,
+    "history": {},
+    "latestStatus": "unknown"
   }
 ]
